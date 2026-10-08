@@ -1,0 +1,10 @@
+[versions]
+tink = "1.23.0"
+cryptography = "0.6.0"
+
+[libraries]
+tink-android = { module = "com.google.crypto.tink:tink-android", version.ref = "tink" }
+tink = { module = "com.google.crypto.tink:tink", version.ref = "tink" }
+cryptography-core = { module = "dev.whyoleg.cryptography:cryptography-core", version.ref = "cryptography" }
+cryptography-provider-cryptokit = { module = "dev.whyoleg.cryptography:cryptography-provider-cryptokit", version.ref = "cryptography" }
+cryptography-provider-webcrypto = { module = "dev.whyoleg.cryptography:cryptography-provider-webcrypto", version.ref = "cryptography" }

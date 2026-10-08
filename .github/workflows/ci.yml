@@ -1,0 +1,49 @@
+name: CI
+
+# Sinew for Kotlin: tests, ABI and the dependency-graph check on every pull request (see the docs: Testing and CI).
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  jvm-android:
+    name: Check (JVM, Android host tests, graph)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v6
+      - run: ./gradlew jvmTest testAndroidHostTest checkSinewGraph :sample:androidApp:assembleStagingDebug
+
+  web:
+    name: wasmJs compile
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v6
+      - run: ./gradlew compileKotlinWasmJs
+
+  ios:
+    name: iOS simulator tests
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v6
+      - run: ./gradlew iosSimulatorArm64Test

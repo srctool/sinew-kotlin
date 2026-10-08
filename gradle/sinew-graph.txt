@@ -1,0 +1,27 @@
+# Allowed project-to-project dependencies between Sinew modules (from -> to).
+# Mirrors the dependency graph in the docs (base Architecture, ADR-21). checkSinewGraph fails on any other edge.
+sinew-exception -> sinew-models
+sinew-l10n -> sinew-exception
+sinew-paging -> sinew-models
+sinew-paging -> sinew-exception
+sinew-viewmodel -> sinew-presentation
+sinew-viewmodel -> sinew-models
+sinew-viewmodel -> sinew-exception
+sinew-network -> sinew-exception
+sinew-storage -> sinew-exception
+sinew-storage -> sinew-security
+sinew-camouflage -> sinew-paging
+sinew-camouflage -> sinew-exception
+sinew-camouflage -> sinew-l10n
+sinew-devtools -> sinew-network
+sinew-devtools -> sinew-storage
+sinew-devtools-ui -> sinew-devtools
+sinew-devtools-ui -> sinew-l10n
+sinew-devtools-noop -> sinew-network
+sinew-devtools-noop -> sinew-storage
+sinew-testing -> sinew-models
+sinew-testing -> sinew-exception
+sinew-testing -> sinew-paging
+sinew-testing -> sinew-network
+sinew-testing -> sinew-storage
+sinew-testing -> sinew-security

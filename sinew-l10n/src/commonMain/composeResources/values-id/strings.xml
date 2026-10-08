@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sinew_error_noInternet">Kamu sedang offline. Periksa koneksimu lalu coba lagi.</string>
+    <string name="sinew_error_timeout">Prosesnya terlalu lama. Silakan coba lagi.</string>
+    <string name="sinew_error_validation">Periksa kembali isian yang ditandai.</string>
+    <string name="sinew_error_unauthorized">Sesimu telah berakhir. Silakan masuk kembali.</string>
+    <string name="sinew_error_forbidden">Kamu tidak punya akses ke halaman ini.</string>
+    <string name="sinew_error_notFound">Data ini sudah tidak tersedia.</string>
+    <string name="sinew_error_conflict">Data ini sudah diubah oleh orang lain. Muat ulang lalu coba lagi.</string>
+    <string name="sinew_error_rateLimitedNoTime">Terlalu banyak percobaan. Coba lagi sebentar lagi.</string>
+    <string name="sinew_error_server">Terjadi kesalahan di sistem kami.</string>
+    <string name="sinew_error_unavailable">Layanan sedang sibuk. Silakan coba lagi.</string>
+    <string name="sinew_error_generic">Terjadi kesalahan.</string>
+    <string name="sinew_error_storageFull">Penyimpanan perangkatmu penuh.</string>
+    <string name="sinew_error_stillProcessing">Masih diproses. Coba cek lagi nanti.</string>
+    <plurals name="sinew_error_rateLimited">
+        <item quantity="other">Terlalu banyak percobaan. Coba lagi dalam %1$d detik.</item>
+    </plurals>
+</resources>

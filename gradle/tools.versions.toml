@@ -1,0 +1,13 @@
+[versions]
+turbine = "1.2.1"
+kover = "0.9.11"
+vanniktech-publish = "0.37.0"
+
+[libraries]
+turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+kover-gradle-plugin = { module = "org.jetbrains.kotlinx:kover-gradle-plugin", version.ref = "kover" }
+vanniktech-publish-gradle-plugin = { module = "com.vanniktech:gradle-maven-publish-plugin", version.ref = "vanniktech-publish" }
+
+[plugins]
+kover = { id = "org.jetbrains.kotlinx.kover", version.ref = "kover" }
+vanniktech-publish = { id = "com.vanniktech.maven.publish", version.ref = "vanniktech-publish" }

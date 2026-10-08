@@ -1,0 +1,25 @@
+# Gradle (local state and build output)
+.gradle/
+.kotlin/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Machine-specific (Android SDK path)
+local.properties
+
+# IntelliJ / Android Studio
+.idea/
+*.iml
+
+# Xcode (iOS targets)
+xcuserdata/
+*.xcworkspace/xcuserdata/
+DerivedData/
+
+# Kotlin/Native, CocoaPods
+.konan/
+Pods/
+
+# macOS
+.DS_Store
+*.xcuserstate

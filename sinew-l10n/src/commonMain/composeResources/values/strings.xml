@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sinew_error_noInternet">You\'re offline. Check your connection and try again.</string>
+    <string name="sinew_error_timeout">This is taking too long. Please try again.</string>
+    <string name="sinew_error_validation">Please check the highlighted fields.</string>
+    <string name="sinew_error_unauthorized">Your session has ended. Please sign in again.</string>
+    <string name="sinew_error_forbidden">You don\'t have access to this.</string>
+    <string name="sinew_error_notFound">This item no longer exists.</string>
+    <string name="sinew_error_conflict">This was changed by someone else. Reload and try again.</string>
+    <string name="sinew_error_rateLimitedNoTime">Too many attempts. Try again in a moment.</string>
+    <string name="sinew_error_server">Something went wrong on our side.</string>
+    <string name="sinew_error_unavailable">The service is busy. Please try again.</string>
+    <string name="sinew_error_generic">Something went wrong.</string>
+    <string name="sinew_error_storageFull">Your device is out of space.</string>
+    <string name="sinew_error_stillProcessing">This is still processing. Check again later.</string>
+    <plurals name="sinew_error_rateLimited">
+        <item quantity="one">Too many attempts. Try again in %1$d second.</item>
+        <item quantity="other">Too many attempts. Try again in %1$d seconds.</item>
+    </plurals>
+</resources>

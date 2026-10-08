@@ -1,0 +1,20 @@
+[versions]
+agp = "9.4.1"
+compileSdk = "37"
+minSdk = "24"
+lifecycle = "2.11.0"
+datastore = "1.2.1"
+biometric = "1.1.0"
+activity = "1.13.0"
+
+[libraries]
+lifecycle-viewmodel = { module = "org.jetbrains.androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycle" }
+lifecycle-runtime-compose = { module = "org.jetbrains.androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
+datastore-preferences-core = { module = "androidx.datastore:datastore-preferences-core", version.ref = "datastore" }
+biometric = { module = "androidx.biometric:biometric", version.ref = "biometric" }
+activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity" }
+gradle-plugin = { module = "com.android.tools.build:gradle", version.ref = "agp" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+android-kmp-library = { id = "com.android.kotlin.multiplatform.library", version.ref = "agp" }
