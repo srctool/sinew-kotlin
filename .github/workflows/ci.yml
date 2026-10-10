@@ -3,9 +3,9 @@ name: CI
 # Sinew for Kotlin: tests, ABI and the dependency-graph check on every pull request (see the docs: Testing and CI).
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ main ]
   pull_request:
-    branches: [ main, develop ]
+    branches: [ main ]
 
 concurrency:
   group: ci-${{ github.ref }}
