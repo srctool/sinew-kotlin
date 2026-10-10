@@ -9,7 +9,7 @@ The design and the full documentation live in the umbrella repository, [srctool/
 | Module | Holds |
 |---|---|
 | `sinew-models` | `Domain`, `Response`, `Entity`, envelope bases, paging shapes, `ViewState` |
-| `sinew-exception` | `AppException` types, handlers, `processCall`, `CrashReporter`, `Localizer` |
+| `sinew-exception` | `SinewException` types, handlers, `processCall`, `CrashReporter`, `Localizer` |
 | `sinew-l10n` | English and Indonesian for the local error keys (Compose resources) |
 | `sinew-paging` | `Pager`, `PagingState`, `LoadType` |
 | `sinew-presentation` | `StateEffectHandler`, `EventActionHandler`, `EffectEmitter` |

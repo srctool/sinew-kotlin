@@ -3,7 +3,7 @@ plugins {
     id("com.srctool.publish")
 }
 
-description = "AppException types, handlers, processCall, CrashReporter, Localizer."
+description = "SinewException types, handlers, processCall, CrashReporter, Localizer."
 
 kotlin {
     sourceSets {
