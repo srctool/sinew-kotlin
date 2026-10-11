@@ -10,5 +10,8 @@ kotlin {
         commonMain.dependencies {
             api(kotlinLibs.coroutines.core)
         }
+        commonTest.dependencies {
+            implementation(projects.sinewTesting)               // Turbine, runTest, Pager and ControlledFetch for the sample handler
+        }
     }
 }
