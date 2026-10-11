@@ -1,9 +1,12 @@
+@file:OptIn(ExperimentalCoroutinesApi::class)
+
 package com.srctool.sinew.network
 
 import com.srctool.sinew.exception.NoInternetConnectionException
 import com.srctool.sinew.exception.UnexpectedException
 import com.srctool.sinew.models.ExceptionLayer
 import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import io.ktor.client.request.get
 import kotlinx.coroutines.async
 import kotlinx.coroutines.launch

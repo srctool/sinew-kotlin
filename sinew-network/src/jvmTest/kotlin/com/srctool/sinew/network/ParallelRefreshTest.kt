@@ -17,12 +17,16 @@ import kotlin.test.Test
 import kotlin.test.assertEquals
 
 class ParallelRefreshTest {
-    /** Real threads, real interleavings: fifty requests with an expired token still cause exactly one refresh. */
+    /**
+     * Real threads, real interleavings: fifty requests with an expired token still cause exactly one refresh. The
+     * refresh finishes at once, so 401s keep arriving just as it completes: the window where a request that read the
+     * old token must not start a second refresh. CI caught that race once; this test reproduces it without the fix.
+     */
     @Test
     fun fiftyParallel401sOnRealThreadsCauseOneRefresh() = runBlocking {
-        repeat(20) { round ->
+        repeat(200) { round ->
             val tokens = FakeTokenSource("token-1").apply {
-                onRefresh = { delay(20); rotate(); RefreshOutcome.Refreshed }
+                onRefresh = { rotate(); RefreshOutcome.Refreshed }
             }
             val client = SinewHttp.client(config(), tokens, MockEngine) {
                 engine {

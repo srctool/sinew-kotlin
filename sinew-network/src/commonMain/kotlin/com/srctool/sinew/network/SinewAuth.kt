@@ -36,12 +36,21 @@ internal class SingleFlightRefresher(private val source: TokenSource, private va
     private var inFlight: CompletableDeferred<RefreshOutcome>? = null
     private var job: Job? = null
 
-    /** Joins the running refresh, or starts one. A refresh that threw rethrows here, in every waiter. */
-    suspend fun refresh(): RefreshOutcome {
+    /**
+     * For a 401 on a request sent with [sentWith]: joins the running refresh, starts one, or returns
+     * [RefreshOutcome.Refreshed] at once when the token already changed. That check runs under the same lock that
+     * clears a finished refresh, so a 401 arriving just as a refresh completes sees the new token instead of starting a
+     * second refresh. A refresh that threw rethrows here, in every waiter.
+     */
+    suspend fun refresh(sentWith: String?): RefreshOutcome {
         val outcome = mutex.withLock {
-            inFlight ?: CompletableDeferred<RefreshOutcome>().also { started ->
-                inFlight = started
-                job = scope.launch { run(started) }
+            inFlight ?: run {
+                val current = source.accessToken()
+                if (current != null && current != sentWith) return RefreshOutcome.Refreshed
+                CompletableDeferred<RefreshOutcome>().also { started ->
+                    inFlight = started
+                    job = scope.launch { run(started) }
+                }
             }
         }
         return outcome.await()
@@ -180,9 +189,8 @@ public val SinewAuth: ClientPlugin<SinewAuthConfig> = createClientPlugin("SinewA
         if (call.response.status != HttpStatusCode.Unauthorized) return@on call
         if (request.attributes.contains(Replayed)) return@on call
 
-        val current = source.accessToken()
-        if (current == null && sentWith != null) return@on call                    // signed out meanwhile: never refresh
-        val outcome = if (current != null && current != sentWith) RefreshOutcome.Refreshed else refresher.refresh()
+        if (source.accessToken() == null && sentWith != null) return@on call      // signed out meanwhile: never refresh
+        val outcome = refresher.refresh(sentWith)
         when (outcome) {
             RefreshOutcome.Refreshed -> {
                 if (request.body is OutgoingContent.ReadChannelContent) return@on call   // can't be sent twice: the app retries
