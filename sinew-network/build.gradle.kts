@@ -1,6 +1,7 @@
 plugins {
     id("com.srctool.kmp.library")
     id("com.srctool.publish")
+    alias(kotlinLibs.plugins.serialization)            // test DTOs
 }
 
 description = "SinewHttp, the auth layer, processApiCall, retry and polling, NetworkChecker."
@@ -14,6 +15,10 @@ kotlin {
             implementation(ktorLibs.serialization.json)
             implementation(kotlinLibs.serialization.json)
             implementation(kotlinLibs.datetime)
+        }
+        commonTest.dependencies {
+            implementation(ktorLibs.client.mock)
+            implementation(kotlinLibs.coroutines.test)
         }
         androidMain.dependencies { implementation(ktorLibs.client.okhttp) }
         jvmMain.dependencies { implementation(ktorLibs.client.okhttp) }
