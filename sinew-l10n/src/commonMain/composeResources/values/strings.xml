@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="sinew_error_noInternet">You\'re offline. Check your connection and try again.</string>
+    <string name="sinew_error_noInternet">You're offline. Check your connection and try again.</string>
     <string name="sinew_error_timeout">This is taking too long. Please try again.</string>
     <string name="sinew_error_validation">Please check the highlighted fields.</string>
     <string name="sinew_error_unauthorized">Your session has ended. Please sign in again.</string>
-    <string name="sinew_error_forbidden">You don\'t have access to this.</string>
+    <string name="sinew_error_forbidden">You don't have access to this.</string>
     <string name="sinew_error_notFound">This item no longer exists.</string>
     <string name="sinew_error_conflict">This was changed by someone else. Reload and try again.</string>
     <string name="sinew_error_rateLimitedNoTime">Too many attempts. Try again in a moment.</string>

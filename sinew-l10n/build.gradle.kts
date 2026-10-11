@@ -11,6 +11,13 @@ kotlin {
         commonMain.dependencies {
             api(projects.sinewException)
             implementation(composeLibs.components.resources)
+            implementation(kotlinLibs.coroutines.core)        // the localizer's request channel
+        }
+        commonTest.dependencies {
+            implementation(kotlinLibs.coroutines.test)
+        }
+        jvmTest.dependencies {
+            implementation(compose.desktop.currentOs)          // the resource environment needs Skiko's native library on the JVM
         }
     }
 }
