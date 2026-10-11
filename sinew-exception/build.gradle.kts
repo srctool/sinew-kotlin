@@ -9,6 +9,10 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             api(projects.sinewModels)
+            implementation(kotlinLibs.coroutines.core)        // processCall checks the caller's job before classifying a CancellationException
+        }
+        commonTest.dependencies {
+            implementation(kotlinLibs.coroutines.test)
         }
     }
 }
