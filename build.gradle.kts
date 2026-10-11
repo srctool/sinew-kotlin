@@ -1,4 +1,5 @@
 import org.gradle.api.artifacts.ProjectDependency
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 plugins {
     id("com.srctool.root")
@@ -34,7 +35,13 @@ tasks.register("checkSinewGraph") {
         .map { it.split("->").map(String::trim).let { (from, to) -> from to to } }.toSet()
     val edges = provider {
         subprojects.filter { it.name.startsWith("sinew-") && it.name != "sinew-bom" }.flatMap { p ->
-            p.configurations.flatMap { c -> c.dependencies.withType(ProjectDependency::class.java) }
+            // Only the buckets a build file declares into: each source set's api/implementation/compileOnly/runtimeOnly,
+            // main and test alike. Plugin-internal configurations can pick up project dependencies depending on which
+            // other tasks are in the graph (e.g. iOS simulator tests), which made the result vary per invocation.
+            p.extensions.getByType(KotlinMultiplatformExtension::class.java).sourceSets
+                .flatMap { listOf(it.apiConfigurationName, it.implementationConfigurationName, it.compileOnlyConfigurationName, it.runtimeOnlyConfigurationName) }
+                .mapNotNull(p.configurations::findByName)
+                .flatMap { c -> c.dependencies.withType(ProjectDependency::class.java) }
                 .map { p.name to it.path.removePrefix(":") }
                 .filter { (from, to) -> to.startsWith("sinew-") && to != from }   // a module's tests depend on the module itself
         }.toSet()
