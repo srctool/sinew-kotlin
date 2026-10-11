@@ -1,5 +1,12 @@
 package com.srctool.sinew.network
 
+import com.srctool.sinew.exception.ApiErrorException
+import com.srctool.sinew.exception.ConflictException
+import com.srctool.sinew.exception.ForbiddenException
+import com.srctool.sinew.exception.NotFoundException
+import com.srctool.sinew.exception.UnauthorizedException
+import com.srctool.sinew.exception.UndefinedErrorResponseException
+import com.srctool.sinew.exception.ValidationException
 import com.srctool.sinew.exception.processCall
 import com.srctool.sinew.models.ExceptionLayer
 import com.srctool.sinew.models.Result
@@ -40,6 +47,32 @@ public sealed interface RefreshResult {
 
     /** The refresh couldn't be completed (offline, a timeout, a 5xx): the session is kept. */
     public data class Unavailable(val cause: SinewException) : RefreshResult
+
+    public companion object {
+        /**
+         * The answer a guarded refresh call means, so a [RefreshCall] is only the HTTP call:
+         *
+         * ```kotlin
+         * RefreshCall { token -> RefreshResult.from(processApiCall("AUTH", "REFRESH") { authApi.refresh(token) }) }
+         * ```
+         *
+         * The backend refusing the token is [Rejected]: a 401 or 403, a 400 or 422 (OAuth's `invalid_grant`), a
+         * readable refusal (`ApiErrorException`) and any other 4xx. Everything else keeps the session as
+         * [Unavailable]: offline, a timeout, a 408 or 429, a 5xx, and an unreadable answer, which is a bug, not a
+         * sign-out.
+         */
+        public fun from(result: Result<Tokens>): RefreshResult = when (result) {
+            is Result.Success -> result.data
+            is Result.Failure -> if (result.error.isRefusal()) Rejected else Unavailable(result.error)
+        }
+
+        private fun SinewException.isRefusal(): Boolean = when (this) {
+            is UnauthorizedException, is ForbiddenException, is ValidationException, is ApiErrorException,
+            is NotFoundException, is ConflictException -> true
+            is UndefinedErrorResponseException -> status in 400..499 && status != 408
+            else -> false
+        }
+    }
 }
 
 /**
