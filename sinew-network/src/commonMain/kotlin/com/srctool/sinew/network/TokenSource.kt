@@ -13,7 +13,7 @@ public interface TokenSource {
     /**
      * Gets a new token pair from the backend and stores it. Called by the auth layer once for any number of
      * concurrent 401s. The call must not go through a client with the auth layer, so a refresh never refreshes
-     * itself.
+     * itself. On a rejection, the source ends the session itself (see [RefreshOutcome.Rejected]).
      */
     public suspend fun refresh(): RefreshOutcome
 
@@ -33,8 +33,10 @@ public sealed interface RefreshOutcome {
     public data object Refreshed : RefreshOutcome
 
     /**
-     * The backend refused the refresh token, or the session ended while refreshing. The session is over: waiting
-     * requests fail with `UnauthorizedException`.
+     * The backend refused the refresh token, or the session ended while refreshing. Waiting requests fail with
+     * `UnauthorizedException`. The source ends the session itself, as [TokenSource.clear] would, but only if it's
+     * still the session the refresh started in: the auth layer never clears on this outcome, because a refresh
+     * voided by another user's sign-in must not sign them out.
      */
     public data object Rejected : RefreshOutcome
 
