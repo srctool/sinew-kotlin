@@ -7,6 +7,9 @@ plugins {
 description = "SinewHttp, the auth layer, processApiCall, retry and polling, NetworkChecker."
 
 kotlin {
+    android {
+        withDeviceTest { instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }   // NetworkChecker on a device
+    }
     sourceSets {
         commonMain.dependencies {
             api(projects.sinewException)
@@ -22,6 +25,12 @@ kotlin {
             implementation(kotlinLibs.coroutines.test)
         }
         androidMain.dependencies { implementation(ktorLibs.client.okhttp) }
+        getByName("androidDeviceTest").dependencies {
+            implementation(androidxLibs.test.runner)
+            implementation(androidxLibs.test.ext.junit)
+            implementation(kotlin("test"))
+            implementation(kotlinLibs.coroutines.test)
+        }
         jvmMain.dependencies { implementation(ktorLibs.client.okhttp) }
         iosMain.dependencies { implementation(ktorLibs.client.darwin) }
         wasmJsMain.dependencies { implementation(ktorLibs.client.js) }
