@@ -12,5 +12,8 @@ kotlin {
             api(projects.sinewException)
             implementation(kotlinLibs.coroutines.core)
         }
+        commonTest.dependencies {
+            implementation(projects.sinewTesting)               // ControlledFetch, runTest
+        }
     }
 }
