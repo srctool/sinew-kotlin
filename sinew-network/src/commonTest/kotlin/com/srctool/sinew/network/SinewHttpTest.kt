@@ -19,6 +19,7 @@ import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.HttpStatusCode
 import io.ktor.http.headersOf
+import com.srctool.sinew.testing.FakeTokenSource
 import kotlinx.coroutines.test.runTest
 import kotlinx.serialization.Serializable
 import kotlin.test.Test
@@ -36,6 +37,7 @@ internal fun config(
     defaultHeaders: () -> Map<String, String> = { emptyMap() },
     logHttp: Boolean = false,
     errorBodyReader: ErrorBodyReader = ErrorBodyReader.Default,
+    anonymousPaths: Set<String> = emptySet(),
 ) = SinewConfig(
     baseUrl = baseUrl,
     locale = locale,
@@ -45,6 +47,7 @@ internal fun config(
     writeTimeout = 20.seconds,
     logHttp = logHttp,
     errorBodyReader = errorBodyReader,
+    anonymousPaths = anonymousPaths,
 )
 
 /** A Sinew client on a MockEngine that records every request it receives. */
@@ -54,7 +57,7 @@ internal class Mock(
     handler: MockRequestHandler = { respond("{}", HttpStatusCode.OK, json) },
 ) {
     val requests = mutableListOf<HttpRequestData>()
-    val client: HttpClient = SinewHttp.client(config, MockEngine, logger) {
+    val client: HttpClient = SinewHttp.client(config, FakeTokenSource(accessToken = null), MockEngine, logger) {
         engine {
             addHandler { request ->
                 requests += request

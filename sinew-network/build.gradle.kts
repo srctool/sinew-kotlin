@@ -17,6 +17,7 @@ kotlin {
             implementation(kotlinLibs.datetime)
         }
         commonTest.dependencies {
+            implementation(projects.sinewTesting)               // FakeTokenSource
             implementation(ktorLibs.client.mock)
             implementation(kotlinLibs.coroutines.test)
         }
