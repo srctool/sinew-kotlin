@@ -98,7 +98,7 @@ public class RateLimitedException(
 
 private fun rateLimitedMessage(retryAfter: Duration?): ErrorMessage =
     if (retryAfter == null) {
-        local("rateLimitedNoTime", "Too many attempts. Try again shortly.")
+        local("rateLimitedNoTime", "Too many attempts. Try again in a moment.")
     } else {
         local("rateLimited", "Too many attempts. Try again in {seconds} seconds.", mapOf("seconds" to retryAfter.inWholeSeconds))
     }
