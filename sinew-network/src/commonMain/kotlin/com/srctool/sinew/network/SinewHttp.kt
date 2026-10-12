@@ -7,6 +7,7 @@ import io.ktor.client.engine.HttpClientEngineFactory
 import io.ktor.client.plugins.HttpResponseValidator
 import io.ktor.client.plugins.HttpTimeout
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
+import io.ktor.http.Url
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
@@ -30,28 +31,30 @@ public object SinewHttp {
      * `config.anonymousPaths`, and refreshes once for any number of concurrent 401s. On sign-out, call [resetAuth]
      * and `tokenSource.clear()`.
      *
+     * `config.certificatePins` are applied on the engine at the TLS handshake.
+     *
      * @param logger where the log goes when `config.logHttp` is on.
      * @param configure the app's own settings, applied last. Don't install Ktor's `HttpRedirect`, `Auth` or
-     *   `Logging`: Sinew's own take their place. To configure the engine (certificate pinning), pass it explicitly.
+     *   `Logging`: Sinew's own take their place. To configure the engine itself, pass it explicitly.
      */
     public fun client(
         config: SinewConfig,
         tokenSource: TokenSource,
         logger: HttpLogger = HttpLogger.Default,
         configure: HttpClientConfig<*>.() -> Unit = {},
-    ): HttpClient = HttpClient(platformEngine()) {
-        installSinew(config, tokenSource, logger, Dispatchers.Default)
-        configure()
-    }
+    ): HttpClient = client(config, tokenSource, platformEngine(), logger, Dispatchers.Default, configure)
 
     /**
      * The same client on an explicit [engine], so [configure] can reach the engine's own settings:
      *
      * ```kotlin
-     * SinewHttp.client(config, OkHttp) {
-     *     engine { config { certificatePinner(pins) } }
+     * SinewHttp.client(config, tokens, OkHttp) {
+     *     engine { config { connectionPool(pool) } }
      * }
      * ```
+     *
+     * `config.certificatePins` need an engine that can pin (OkHttp, Darwin): with any other, building the client
+     * throws, so a pinned client never goes unpinned.
      */
     public fun <T : HttpClientEngineConfig> client(
         config: SinewConfig,
@@ -71,6 +74,14 @@ public object SinewHttp {
         configure: HttpClientConfig<T>.() -> Unit,
     ): HttpClient = HttpClient(engine) {
         installSinew(config, tokenSource, logger, refreshContext)
+        if (config.certificatePins.isNotEmpty()) {
+            val host = Url(config.baseUrl).host
+            engine {
+                check(installCertificatePins(host, config.certificatePins)) {
+                    "certificatePins need an engine that can pin (OkHttp or Darwin), not ${this::class.simpleName}"
+                }
+            }
+        }
         configure()
     }
 

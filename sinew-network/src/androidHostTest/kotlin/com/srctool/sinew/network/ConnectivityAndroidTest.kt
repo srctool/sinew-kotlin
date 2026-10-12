@@ -57,6 +57,15 @@ class ConnectivityAndroidTest {
     }
 
     @Test
+    fun aPinningFailureSuppressedBehindARefusedConnectionIsNotOffline() = runTest {
+        // OkHttp's shape when one address refuses the connection and the other fails the pin.
+        val refused = ConnectException("Failed to connect to localhost/[::1]").apply {
+            addSuppressed(SSLPeerUnverifiedException("Certificate pinning failure!"))
+        }
+        assertIs<UnexpectedException>(failure(refused))
+    }
+
+    @Test
     fun aTlsFailureCausedByAResetIsStillNotOffline() = runTest {
         val handshake = SSLHandshakeException("Remote host terminated the handshake").apply { initCause(SocketException("Connection reset")) }
         assertIs<UnexpectedException>(failure(handshake))

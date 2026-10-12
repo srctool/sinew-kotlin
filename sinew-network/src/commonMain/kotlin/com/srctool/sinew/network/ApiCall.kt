@@ -162,6 +162,14 @@ internal fun Throwable.causeChain(): Sequence<Throwable> = generateSequence(this
 
 internal fun isTimeoutFailure(e: Throwable): Boolean = e.causeChain().any(::isTimeout)
 
-/** No connection anywhere in the chain, and no TLS or certificate failure anywhere in it: that's never "offline". */
+/**
+ * No connection anywhere in the chain, and no TLS or certificate failure anywhere in it or among its suppressed
+ * exceptions: that's never "offline". OkHttp throws the first route's failure and attaches the others as suppressed,
+ * so a pinning failure on one address can sit behind a refused connection to another.
+ */
 internal fun isNoConnectionFailure(e: Throwable): Boolean =
-    e.statusError() == null && e.causeChain().none(::isSecurityFailure) && e.causeChain().any(::isNoConnection)
+    e.statusError() == null && e.withSuppressed().none(::isSecurityFailure) && e.causeChain().any(::isNoConnection)
+
+/** [causeChain], with each exception's suppressed exceptions beside it. */
+private fun Throwable.withSuppressed(): Sequence<Throwable> =
+    causeChain().flatMap { sequenceOf(it) + it.suppressedExceptions.asSequence().flatMap { s -> s.causeChain() } }
