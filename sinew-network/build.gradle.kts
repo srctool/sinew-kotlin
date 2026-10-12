@@ -32,6 +32,10 @@ kotlin {
             implementation(kotlinLibs.coroutines.test)
         }
         jvmMain.dependencies { implementation(ktorLibs.client.okhttp) }
+        jvmTest.dependencies {
+            implementation(ktorLibs.okhttp.tls)                 // a CA and server certificates, in memory
+            implementation(ktorLibs.okhttp.mockwebserver)       // a real HTTPS server
+        }
         iosMain.dependencies { implementation(ktorLibs.client.darwin) }
         wasmJsMain.dependencies { implementation(ktorLibs.client.js) }
     }

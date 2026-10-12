@@ -20,6 +20,10 @@ import kotlin.time.Duration.Companion.seconds
  *   reset, the refresh call). Matched relative to [baseUrl]'s path: with `https://api.example.com/v1`, `/auth/login`
  *   matches `/v1/auth/login`.
  * @property errorBodyReader how this backend's error bodies read.
+ * @property certificatePins SHA-256 public-key pins (`sha256/…`) for [baseUrl]'s host, applied by the preset at the
+ *   TLS handshake on OkHttp and Darwin: a chain with none of them fails before anything is sent, as a reported
+ *   `UnexpectedException`. Pin your authority's or intermediate's key plus a backup, so a renewal doesn't lock users
+ *   out. Empty means no pinning. Ignored in the browser (wasm), which owns TLS.
  */
 public class SinewConfig(
     public val baseUrl: String,
@@ -31,6 +35,7 @@ public class SinewConfig(
     public val logHttp: Boolean = false,
     public val anonymousPaths: Set<String> = emptySet(),
     public val errorBodyReader: ErrorBodyReader = ErrorBodyReader.Default,
+    public val certificatePins: Set<String> = emptySet(),
 ) {
     init {
         require(baseUrl.isNotBlank()) { "baseUrl is blank" }
@@ -39,5 +44,6 @@ public class SinewConfig(
         }
         val relative = anonymousPaths.filterNot { it.startsWith("/") }
         require(relative.isEmpty()) { "Anonymous paths must start with '/': $relative" }
+        requireValidPins(certificatePins)
     }
 }
