@@ -8,6 +8,7 @@ sinew-viewmodel -> sinew-presentation
 sinew-viewmodel -> sinew-models
 sinew-viewmodel -> sinew-exception
 sinew-network -> sinew-exception
+sinew-security -> sinew-models
 sinew-storage -> sinew-exception
 sinew-storage -> sinew-security
 sinew-camouflage -> sinew-paging
