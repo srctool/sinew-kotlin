@@ -5,29 +5,16 @@ import dev.whyoleg.cryptography.CryptographyProvider
 import dev.whyoleg.cryptography.algorithms.AES
 import dev.whyoleg.cryptography.providers.cryptokit.CryptoKit
 import dev.whyoleg.cryptography.random.CryptographyRandom
-import kotlinx.cinterop.BetaInteropApi
 import kotlinx.cinterop.ExperimentalForeignApi
-import kotlinx.cinterop.addressOf
 import kotlinx.cinterop.alloc
 import kotlinx.cinterop.memScoped
 import kotlinx.cinterop.ptr
-import kotlinx.cinterop.usePinned
 import kotlinx.cinterop.value
-import platform.CoreFoundation.CFDictionaryAddValue
-import platform.CoreFoundation.CFDictionaryCreateMutable
 import platform.CoreFoundation.CFDictionaryRef
-import platform.CoreFoundation.CFMutableDictionaryRef
-import platform.CoreFoundation.CFRelease
-import platform.CoreFoundation.CFStringRef
-import platform.CoreFoundation.CFTypeRef
 import platform.CoreFoundation.CFTypeRefVar
 import platform.CoreFoundation.kCFBooleanTrue
-import platform.CoreFoundation.kCFTypeDictionaryKeyCallBacks
-import platform.CoreFoundation.kCFTypeDictionaryValueCallBacks
 import platform.Foundation.CFBridgingRelease
-import platform.Foundation.CFBridgingRetain
 import platform.Foundation.NSData
-import platform.Foundation.create
 import platform.Security.SecItemAdd
 import platform.Security.SecItemCopyMatching
 import platform.Security.SecItemDelete
@@ -44,7 +31,6 @@ import platform.Security.kSecMatchLimit
 import platform.Security.kSecMatchLimitOne
 import platform.Security.kSecReturnData
 import platform.Security.kSecValueData
-import platform.posix.memcpy
 
 internal actual fun platformFieldCipher(platform: PlatformContext, keyAlias: String): FieldCipher =
     LayoutFieldCipher { RingKeys.open(CryptoKitAesGcm, KeychainRingStore(keyAlias)) }
@@ -94,7 +80,7 @@ internal class KeychainRingStore(private val service: String) : RingStore<ByteAr
     /** Updates the item in place, or adds it: the keyring is never absent between two writes. */
     override suspend fun save(ring: Keyring<ByteArray>) {
         val data = encodeRing(ring).toNSData()
-        val updated = withQuery { query -> withDictionary({ it.put(kSecValueData, data) }) { SecItemUpdate(query, it) } }
+        val updated = withQuery { query -> withDictionary({ it.putBridged(kSecValueData, data) }) { SecItemUpdate(query, it) } }
         val status = if (updated == errSecItemNotFound) withQuery(value = data) { SecItemAdd(it, null) } else updated
         if (status != errSecSuccess) throw KeychainException("write", status)
     }
@@ -107,10 +93,10 @@ internal class KeychainRingStore(private val service: String) : RingStore<ByteAr
     private fun <T> withQuery(value: NSData? = null, returnData: Boolean = false, block: (CFDictionaryRef?) -> T): T =
         withDictionary({ query ->
             query.put(kSecClass, kSecClassGenericPassword)
-            query.put(kSecAttrService, service)
-            query.put(kSecAttrAccount, "keyring")
+            query.putBridged(kSecAttrService, service)
+            query.putBridged(kSecAttrAccount, "keyring")
             if (value != null) {
-                query.put(kSecValueData, value)
+                query.putBridged(kSecValueData, value)
                 query.put(kSecAttrAccessible, kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly)
             }
             if (returnData) {
@@ -119,35 +105,6 @@ internal class KeychainRingStore(private val service: String) : RingStore<ByteAr
             }
         }, block)
 }
-
-/** A CoreFoundation dictionary being filled: Kotlin values are bridged, and released with the dictionary. */
-@OptIn(ExperimentalForeignApi::class)
-private class CFQuery(val dictionary: CFMutableDictionaryRef?) {
-    val bridged = mutableListOf<CFTypeRef?>()
-
-    fun put(key: CFStringRef?, value: CFTypeRef?) = CFDictionaryAddValue(dictionary, key, value)
-
-    fun put(key: CFStringRef?, value: Any) {
-        val ref = CFBridgingRetain(value)
-        bridged += ref
-        CFDictionaryAddValue(dictionary, key, ref)
-    }
-}
-
-@OptIn(ExperimentalForeignApi::class)
-private fun <T> withDictionary(fill: (CFQuery) -> Unit, block: (CFDictionaryRef?) -> T): T {
-    val query = CFQuery(CFDictionaryCreateMutable(null, 0, kCFTypeDictionaryKeyCallBacks.ptr, kCFTypeDictionaryValueCallBacks.ptr))
-    try {
-        fill(query)
-        return block(query.dictionary)
-    } finally {
-        query.bridged.forEach { CFRelease(it) }
-        CFRelease(query.dictionary)
-    }
-}
-
-/** A Keychain call failed with [status], an `OSStatus`. */
-internal class KeychainException(operation: String, val status: Int) : IllegalStateException("Keychain $operation failed: $status")
 
 private const val KEY_SIZE = 32
 
@@ -169,11 +126,3 @@ internal fun decodeRing(bytes: ByteArray): Keyring<ByteArray>? {
     val primary = bytes.readBigEndian(0)
     return if (primary in keys) Keyring(primary, keys) else null
 }
-
-@OptIn(ExperimentalForeignApi::class)
-private fun NSData.toByteArray(): ByteArray = ByteArray(length.toInt()).also { bytes ->
-    if (bytes.isNotEmpty()) bytes.usePinned { memcpy(it.addressOf(0), this.bytes, length) }
-}
-
-@OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
-private fun ByteArray.toNSData(): NSData = usePinned { NSData.create(bytes = it.addressOf(0), length = size.toULong()) }
