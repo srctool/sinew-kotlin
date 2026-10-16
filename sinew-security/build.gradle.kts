@@ -36,6 +36,7 @@ kotlin {
         }
         androidMain.dependencies {
             implementation(securityLibs.tink.android)
+            implementation(kotlinLibs.coroutines.android)          // Dispatchers.Main for BiometricPrompt
             implementation(androidxLibs.biometric)
         }
         getByName("androidDeviceTest").dependencies {

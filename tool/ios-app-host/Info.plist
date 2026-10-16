@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- The minimal app around a Kotlin/Native test binary (see tool/ios-app-test.sh). -->
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>com.srctool.sinew.tests</string>
+    <key>CFBundleExecutable</key>
+    <string>SinewTests</string>
+    <key>CFBundleName</key>
+    <string>SinewTests</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>LSRequiresIPhoneOS</key>
+    <true/>
+    <key>MinimumOSVersion</key>
+    <string>15.0</string>
+    <key>NSFaceIDUsageDescription</key>
+    <string>Sinew's biometric vault tests</string>
+</dict>
+</plist>

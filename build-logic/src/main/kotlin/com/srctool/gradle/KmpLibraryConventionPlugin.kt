@@ -7,8 +7,10 @@ import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.api.plugins.ExtensionAware
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
+import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.ExperimentalWasmDsl
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.targets.native.tasks.KotlinNativeSimulatorTest
 
 /**
  * A Kotlin Multiplatform library on every Sinew target: Android, iOS (arm64 + simulator arm64), JVM desktop, wasmJs.
@@ -38,7 +40,17 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
             }
 
             iosArm64()
-            iosSimulatorArm64()
+            iosSimulatorArm64 {
+                // Tests that need the Keychain or Face ID (classes named *AppHostTest) run as an app on the simulator,
+                // through tool/ios-app-test.sh, which sets sinew.iosAppHost. A bare test binary gets no Keychain, and
+                // the simulator only honors entitlements embedded at link time, as Xcode does for simulator builds.
+                if (providers.gradleProperty("sinew.iosAppHost").isPresent) {
+                    binaries.getTest("DEBUG").linkerOpts(
+                        "-sectcreate", "__TEXT", "__entitlements",
+                        rootProject.file("tool/ios-app-host/entitlements.plist").path,
+                    )
+                }
+            }
             jvm()
             @OptIn(ExperimentalWasmDsl::class)
             wasmJs { browser() }
@@ -46,6 +58,11 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
             sourceSets.getByName("commonTest").dependencies {
                 implementation(kotlin("test"))
             }
+        }
+
+        tasks.withType<KotlinNativeSimulatorTest>().configureEach {
+            filter.excludeTestsMatching("*AppHostTest")                  // run by tool/ios-app-test.sh
+            filter.isFailOnNoMatchingTests = false
         }
     }
 }

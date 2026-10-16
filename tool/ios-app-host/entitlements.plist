@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Linked into the iOS test binary's __TEXT,__entitlements section by -Psinew.iosAppHost, so the simulator gives the
+     test app a Keychain access group. Simulator only: nothing is signed with a team. -->
+<plist version="1.0">
+<dict>
+    <key>application-identifier</key>
+    <string>SINEWTESTS.com.srctool.sinew.tests</string>
+    <key>keychain-access-groups</key>
+    <array>
+        <string>SINEWTESTS.com.srctool.sinew.tests</string>
+    </array>
+</dict>
+</plist>
