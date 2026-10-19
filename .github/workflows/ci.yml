@@ -11,6 +11,10 @@ concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
+# Every job only reads the repository; artifact uploads don't need the token.
+permissions:
+  contents: read
+
 jobs:
   jvm-android:
     name: Check (JVM, Android host tests, graph)
