@@ -95,6 +95,16 @@ abstract class SecureStoreContract {
     }
 
     @Test
+    fun itCanBeInspected() = runTest {
+        val store = store("inspected")
+        store.write("b", "2")
+        store.write("a", "1")
+        assertEquals("inspected", store.name)
+        assertEquals(listOf("a", "b"), store.keys())
+        assertEquals("1", store.read("a"))
+    }
+
+    @Test
     fun concurrentWritesAllLand() = runTest {
         val store = store()
         List(30) { i -> async { store.write("key$i", "value $i") } }.awaitAll()

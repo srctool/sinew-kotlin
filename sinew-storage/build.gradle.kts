@@ -31,7 +31,9 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(kotlinLibs.coroutines.test)
+            implementation(projects.sinewTesting)                  // Pager, for pagedQuery with Pager.offset
         }
+        jvmTest.dependencies { implementation(androidxLibs.sqlite.bundled) }   // a real SQLite table for pagedQuery
         getByName("dataStoreMain").dependencies { implementation(androidxLibs.datastore.preferences.core) }
         getByName("androidDeviceTest").dependencies {
             implementation(androidxLibs.test.runner)
