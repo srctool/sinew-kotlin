@@ -17,7 +17,7 @@ import com.srctool.sinew.models.PlatformContext
  * | JVM | DataStore Preferences in the user's app-data folder, `sinew/<name>.preferences_pb` |
  * | wasm | the page's `localStorage`, keys prefixed `<name>.` |
  */
-public interface KeyValueStore {
+public interface KeyValueStore : InspectableStore {
     public suspend fun getString(key: String): String?
     public suspend fun setString(key: String, value: String)
 

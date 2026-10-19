@@ -17,23 +17,29 @@ import kotlin.concurrent.Volatile
 
 /** [KeyValueStore] on a DataStore Preferences file. Keys match by name, whatever the type they were written with. */
 internal class DataStoreKeyValueStore(private val file: Path) : KeyValueStore {
+    override val name: String = file.name.removeSuffix(".preferences_pb")
+
     @Volatile
     private var opened: DataStore<Preferences>? = null
 
     private suspend fun store(): DataStore<Preferences> = opened ?: OpenStores.get(file).also { opened = it }
 
-    private suspend fun read(key: String): Any? = store().data.first().asMap().entries.firstOrNull { it.key.name == key }?.value
+    private suspend fun value(key: String): Any? = store().data.first().asMap().entries.firstOrNull { it.key.name == key }?.value
 
-    override suspend fun getString(key: String): String? = read(key) as? String
+    override suspend fun keys(): List<String> = store().data.first().asMap().keys.map { it.name }.sorted()
+
+    override suspend fun read(key: String): String? = value(key)?.toString()
+
+    override suspend fun getString(key: String): String? = value(key) as? String
     override suspend fun setString(key: String, value: String) = write { it[stringPreferencesKey(key)] = value }
 
-    override suspend fun getInt(key: String): Int? = read(key) as? Int
+    override suspend fun getInt(key: String): Int? = value(key) as? Int
     override suspend fun setInt(key: String, value: Int) = write { it[intPreferencesKey(key)] = value }
 
-    override suspend fun getBool(key: String): Boolean? = read(key) as? Boolean
+    override suspend fun getBool(key: String): Boolean? = value(key) as? Boolean
     override suspend fun setBool(key: String, value: Boolean) = write { it[booleanPreferencesKey(key)] = value }
 
-    override suspend fun getDouble(key: String): Double? = read(key) as? Double
+    override suspend fun getDouble(key: String): Double? = value(key) as? Double
     override suspend fun setDouble(key: String, value: Double) = write { it[doublePreferencesKey(key)] = value }
 
     override suspend fun remove(key: String) = write { prefs ->

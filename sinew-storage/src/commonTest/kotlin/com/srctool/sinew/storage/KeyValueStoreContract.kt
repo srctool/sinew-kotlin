@@ -98,6 +98,23 @@ abstract class KeyValueStoreContract {
     }
 
     @Test
+    fun itCanBeInspected() = runTest {
+        val store = newStore()
+        assertEquals(emptyList(), store.keys())
+        store.setString("theme", "dark")
+        store.setInt("launches", 3)
+        store.setBool("onboarded", true)
+        store.setDouble("ratio", 1.5)
+        assertEquals(listOf("launches", "onboarded", "ratio", "theme"), store.keys())
+        assertEquals("dark", store.read("theme"))
+        assertEquals("3", store.read("launches"))
+        assertEquals("true", store.read("onboarded"))
+        assertEquals("1.5", store.read("ratio"))
+        assertNull(store.read("missing"))
+        assertEquals(emptyList(), otherStore().keys())
+    }
+
+    @Test
     fun concurrentWritesAllLand() = runTest {
         val store = newStore()
         List(50) { i -> async { store.setInt("key$i", i) } }.awaitAll()

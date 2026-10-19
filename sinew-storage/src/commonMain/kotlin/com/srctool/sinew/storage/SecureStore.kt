@@ -21,8 +21,9 @@ import kotlinx.coroutines.sync.withLock
  *   iOS Keychain).
  * - Writes are serialized, so the last one wins.
  */
-public interface SecureStore {
-    public suspend fun read(key: String): String?
+public interface SecureStore : InspectableStore {
+    /** The secret for [key], or `null` when absent or undecryptable. The devtools show it masked. */
+    override suspend fun read(key: String): String?
 
     public suspend fun write(key: String, value: String)
 
@@ -55,6 +56,10 @@ internal class EncryptedSecureStore(
     private val cipher: FieldCipher,
 ) : SecureStore {
     private val writes = Mutex()
+
+    override val name: String get() = namespace
+
+    override suspend fun keys(): List<String> = values.keys()
 
     private fun context(key: String) = "$namespace:$key"
 
