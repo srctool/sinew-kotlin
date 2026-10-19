@@ -1,6 +1,8 @@
 package com.srctool.sinew.storage
 
 import com.srctool.sinew.models.PlatformContext
+import com.srctool.sinew.security.FieldCipher
+import com.srctool.sinew.security.create
 import okio.Path.Companion.toOkioPath
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -24,4 +26,14 @@ internal fun appDataDirectory(): Path {
         else -> System.getenv("XDG_DATA_HOME")?.takeIf { it.isNotBlank() }?.let { Paths.get(it) }
             ?: home.resolve(".local/share")
     }
+}
+
+/** A desktop secure store: its values in [directory]'s `<namespace>_secure` store, its key file in [directory] too. */
+public fun SecureStore.Companion.create(directory: Path, namespace: String = "sinew"): SecureStore {
+    requireNamespace(namespace)
+    return EncryptedSecureStore(
+        namespace,
+        KeyValueStore.create(directory, "${namespace}_secure"),
+        FieldCipher.create(directory, "sinew.secure.$namespace"),
+    )
 }
