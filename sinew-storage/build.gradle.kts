@@ -20,6 +20,9 @@ kotlin {
             }
         }
     }
+    android {
+        withDeviceTest { instrumentationRunner = "androidx.test.runner.AndroidJUnitRunner" }   // SecureStore on the Keystore
+    }
     sourceSets {
         commonMain.dependencies {
             api(projects.sinewException)
@@ -30,5 +33,11 @@ kotlin {
             implementation(kotlinLibs.coroutines.test)
         }
         getByName("dataStoreMain").dependencies { implementation(androidxLibs.datastore.preferences.core) }
+        getByName("androidDeviceTest").dependencies {
+            implementation(androidxLibs.test.runner)
+            implementation(androidxLibs.test.ext.junit)
+            implementation(kotlin("test"))
+            implementation(kotlinLibs.coroutines.test)
+        }
     }
 }
