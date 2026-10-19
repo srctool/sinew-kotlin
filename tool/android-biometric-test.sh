@@ -75,15 +75,18 @@ answer_with_back() {
   sleep 1
 }
 
-focused() { "${adb[@]}" shell dumpsys window | grep -q "mCurrentFocus=.*$1"; }
+# grep reads everything: with -q it would stop at the match, and pipefail would count dumpsys's broken pipe as a miss.
+focused() { "${adb[@]}" shell dumpsys window | grep -E "mCurrentFocus=.*($1)" >/dev/null; }
 
-# Waits up to 60 s for a window whose name contains $1.
+# Waits up to 60 s for a window whose name matches $1 (an extended regex).
 await_focus() { for _ in $(seq 1 120); do focused "$1" && return 0; sleep 0.5; done; return 1; }
 
 # Fingerprint enrollment in Settings: confirm the PIN, accept the intro, and touch until the print count goes up.
 enroll_finger() {
   local before
   before="$(prints)"
+  # A Settings task left in the background would be brought to the front instead of a new enrollment.
+  "${adb[@]}" shell am force-stop com.android.settings
   "${adb[@]}" shell am start -a android.settings.FINGERPRINT_ENROLL >/dev/null
   await_focus ConfirmLockPassword
   "${adb[@]}" shell input text 1111
@@ -93,7 +96,9 @@ enroll_finger() {
   "${adb[@]}" shell input tap 912 2242      # "I agree" first scrolls the terms to the end
   sleep 2
   "${adb[@]}" shell input tap 912 2242      # "I agree"
-  sleep 3
+  # A touch before the sensor screen shows is lost, and a loaded emulator can take a while to show it.
+  await_focus 'FingerprintEnrollFindSensor|FingerprintEnrollEnrolling'
+  sleep 1
   for _ in $(seq 1 40); do
     touch_finger "$1"
     sleep 1.5
@@ -122,7 +127,8 @@ else
 "${adb[@]}" shell input keyevent 224      # wake up
 "${adb[@]}" shell wm dismiss-keyguard
 sleep 1
-if "${adb[@]}" shell dumpsys window | grep -q "mDreamingLockscreen=true\|isKeyguardShowing=true\|mShowingLockscreen=true"; then
+# grep reads everything, as in focused().
+if "${adb[@]}" shell dumpsys window | grep -E "mDreamingLockscreen=true|isKeyguardShowing=true|mShowingLockscreen=true" >/dev/null; then
   "${adb[@]}" shell input text 1111
   "${adb[@]}" shell input keyevent 66
   sleep 1
