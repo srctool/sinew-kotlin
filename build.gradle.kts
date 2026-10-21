@@ -39,13 +39,15 @@ tasks.register("checkSinewGraph") {
             // main and test alike. Plugin-internal configurations can pick up project dependencies depending on which
             // other tasks are in the graph (e.g. iOS simulator tests), which made the result vary per invocation.
             p.extensions.getByType(KotlinMultiplatformExtension::class.java).sourceSets.flatMap { sourceSet ->
-                val isTest = sourceSet.name.endsWith("Test")
+                val isCommonTest = sourceSet.name == "commonTest"
                 listOf(sourceSet.apiConfigurationName, sourceSet.implementationConfigurationName, sourceSet.compileOnlyConfigurationName, sourceSet.runtimeOnlyConfigurationName)
                     .mapNotNull(p.configurations::findByName)
                     .flatMap { c -> c.dependencies.withType(ProjectDependency::class.java) }
                     .map { p.name to it.path.removePrefix(":") }
                     .filter { (from, to) -> to.startsWith("sinew-") && to != from }   // a module's tests depend on the module itself
-                    .filterNot { (_, to) -> isTest && to == "sinew-testing" }        // sinew-testing is allowed in tests only; from main it fails
+                    // sinew-testing is allowed in commonTest only, so every target's tests share it; from main or a
+                    // platform's tests it fails.
+                    .filterNot { (_, to) -> isCommonTest && to == "sinew-testing" }
             }
         }.toSet()
     }

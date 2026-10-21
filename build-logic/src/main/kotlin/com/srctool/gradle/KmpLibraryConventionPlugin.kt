@@ -53,7 +53,17 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
             }
             jvm()
             @OptIn(ExperimentalWasmDsl::class)
-            wasmJs { browser() }
+            wasmJs {
+                browser {
+                    testTask {
+                        useKarma {
+                            useChromeHeadless()
+                            // fixture(): serve the test resources (tool/karma.config.d/fixtures.js).
+                            useConfigDirectory(rootProject.file("tool/karma.config.d"))
+                        }
+                    }
+                }
+            }
 
             sourceSets.getByName("commonTest").dependencies {
                 implementation(kotlin("test"))
@@ -63,6 +73,8 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
         tasks.withType<KotlinNativeSimulatorTest>().configureEach {
             filter.excludeTestsMatching("*AppHostTest")                  // run by tool/ios-app-test.sh
             filter.isFailOnNoMatchingTests = false
+            // fixture(): the simulator test reads the module's test resources from the Mac's file system.
+            environment("SIMCTL_CHILD_SINEW_TEST_RESOURCES", project.file("src/commonTest/resources").absolutePath)
         }
     }
 }

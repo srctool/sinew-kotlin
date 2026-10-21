@@ -5,6 +5,10 @@ import com.srctool.sinew.models.PagingMetaDomain
 import com.srctool.sinew.models.Result
 import com.srctool.sinew.models.SinewException
 import kotlinx.coroutines.CompletableDeferred
+import kotlinx.coroutines.awaitCancellation
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.test.TestScope
 import kotlin.coroutines.cancellation.CancellationException
 
 /**
@@ -16,7 +20,7 @@ import kotlin.coroutines.cancellation.CancellationException
  * pending.
  *
  * ```
- * val fetch = ControlledFetch<Order>()
+ * val fetch = controlledFetch<Order>()        // in runTest: a call left pending fails the test
  * val pager = Pager.offset<Order> { page, query -> fetch(page, query) }
  * ```
  */
@@ -32,6 +36,9 @@ public class ControlledFetch<T> {
 
     private val _calls = mutableListOf<Call>()
 
+    /** Whether the test is ending: a call cancelled then was left pending, not superseded. */
+    internal var testEnding: () -> Boolean = { false }
+
     /** Every call so far, in order. */
     public val calls: List<Call> get() = _calls.toList()
 
@@ -42,7 +49,7 @@ public class ControlledFetch<T> {
         try {
             return call.answer.await()
         } catch (e: CancellationException) {
-            call.cancelled = true
+            if (!testEnding()) call.cancelled = true                       // the end of the test isn't a superseded load
             throw e
         }
     }
@@ -68,4 +75,21 @@ public class ControlledFetch<T> {
         val pending = _calls.withIndex().filter { (_, call) -> !call.answer.isCompleted && !call.cancelled }.map { it.index }
         if (pending.isNotEmpty()) throw AssertionError("Calls $pending were never answered")
     }
+}
+
+/**
+ * A [ControlledFetch] whose [ControlledFetch.assertAllCompleted] runs when the test ends, so a race left unanswered
+ * fails the test instead of passing silently.
+ */
+public fun <T> TestScope.controlledFetch(): ControlledFetch<T> {
+    val fetch = ControlledFetch<T>()
+    fetch.testEnding = { !isActive }                                     // the test body has returned
+    backgroundScope.launch {
+        try {
+            awaitCancellation()
+        } finally {
+            fetch.assertAllCompleted()                                   // runTest cancels backgroundScope at the end
+        }
+    }
+    return fetch
 }
