@@ -22,7 +22,13 @@ The design and the full documentation live in the umbrella repository, [srctool/
 | `sinew-devtools`, `sinew-devtools-ui`, `sinew-devtools-noop` | developer tools, and their no-op stand-in for production |
 | `sinew-bom` | pins every module to one version |
 
-Status: milestone **S0** (skeleton). Each module holds a placeholder until its milestone.
+**Status: pre-1.0, not published yet.** The API may change before 1.0.
+
+- **Implemented:** `sinew-models`, `sinew-exception`, `sinew-l10n`, `sinew-paging`, `sinew-presentation`, `sinew-viewmodel`, `sinew-network`, `sinew-security`, `sinew-storage`, `sinew-testing`.
+- **In progress:** `sinew-camouflage` and the sample list screen.
+- **Planned for 1.1:** `sinew-devtools`, `sinew-devtools-ui`, `sinew-devtools-noop` (placeholders for now).
+
+See the [roadmap](https://sinew-dev.srctool.com/guide/project/roadmap).
 
 ## Build
 
