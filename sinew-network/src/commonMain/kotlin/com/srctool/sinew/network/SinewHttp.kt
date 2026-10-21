@@ -64,8 +64,11 @@ public object SinewHttp {
         configure: HttpClientConfig<T>.() -> Unit = {},
     ): HttpClient = client(config, tokenSource, engine, logger, Dispatchers.Default, configure)
 
-    /** The same, with the context refreshes run in: a test dispatcher in tests. */
-    internal fun <T : HttpClientEngineConfig> client(
+    /**
+     * The same, with [refreshContext], the context refreshes run in (`Dispatchers.Default` in the other overloads).
+     * For tests: with the test's dispatcher, a refresh runs on its scheduler, in virtual time with everything else.
+     */
+    public fun <T : HttpClientEngineConfig> client(
         config: SinewConfig,
         tokenSource: TokenSource,
         engine: HttpClientEngineFactory<T>,
