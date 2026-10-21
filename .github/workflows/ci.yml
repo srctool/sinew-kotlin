@@ -29,7 +29,7 @@ jobs:
       - run: ./gradlew jvmTest testAndroidHostTest checkSinewGraph :sample:androidApp:assembleStagingDebug
 
   web:
-    name: wasmJs compile
+    name: wasmJs compile and browser tests
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v7
@@ -38,7 +38,14 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: gradle/actions/setup-gradle@v6
-      - run: ./gradlew compileKotlinWasmJs
+      # Browser tests run in headless Chrome through Karma; the ubuntu image ships Google Chrome.
+      - run: ./gradlew compileKotlinWasmJs wasmJsBrowserTest
+      - name: Keep the test reports
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: wasm-browser-test-reports
+          path: '*/build/reports/tests/wasmJsBrowserTest/'
 
   ios:
     name: iOS simulator tests
