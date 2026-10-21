@@ -18,5 +18,7 @@ kotlin {
             api(kotlinLibs.coroutines.test)
             api(toolLibs.turbine)
         }
+        // DataStore's I/O error on iOS, for platformStorageError.
+        iosMain.dependencies { implementation(toolLibs.okio) }
     }
 }
