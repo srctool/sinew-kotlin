@@ -1,0 +1,3 @@
+[submodule "third_party/camouflage-kotlin"]
+	path = third_party/camouflage-kotlin
+	url = https://github.com/srctool/camouflage-kotlin.git

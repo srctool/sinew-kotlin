@@ -1,0 +1,8 @@
+# Camouflage isn't published until its v0.1 (its milestone M15). Until then this version is a placeholder: Gradle
+# builds camouflage-core from the pinned third_party/camouflage-kotlin submodule (settings.gradle.kts).
+# Before Sinew 1.0: set the released version here, and remove the submodule and its includeBuild.
+[versions]
+camouflage = "0.1.0-SNAPSHOT"
+
+[libraries]
+core = { module = "com.srctool.camouflage:camouflage-core", version.ref = "camouflage" }

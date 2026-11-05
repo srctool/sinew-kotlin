@@ -21,9 +21,13 @@ dependencyResolutionManagement {
         create("androidxLibs") { from(files("gradle/androidx.versions.toml")) }    // lifecycle, datastore, biometric, AGP
         create("composeLibs") { from(files("gradle/compose.versions.toml")) }      // compose multiplatform, resources, material3
         create("securityLibs") { from(files("gradle/security.versions.toml")) }    // tink, cryptography-kotlin
+        create("camouflageLibs") { from(files("gradle/camouflage.versions.toml")) }  // camouflage-core, for sinew-camouflage only
         create("toolLibs") { from(files("gradle/tools.versions.toml")) }           // turbine, kover, vanniktech
     }
 }
+
+// Camouflage from source at a pinned commit, until it's published (see gradle/camouflage.versions.toml).
+includeBuild("third_party/camouflage-kotlin")
 
 include(
     ":sinew-models", ":sinew-exception", ":sinew-l10n", ":sinew-paging", ":sinew-presentation", ":sinew-viewmodel",
