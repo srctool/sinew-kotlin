@@ -72,6 +72,18 @@ public class Redaction private constructor(
         headers.mapValues { (name, values) -> if (isSensitiveHeader(name)) values.map { mask } else values }
 
     /**
+     * Free text, such as an exception message or a stack trace, with the secrets it can recognize masked: a
+     * `Bearer` or `Basic` credential, `name=value` pairs (query strings, forms, log lines) and JSON `"name": value`
+     * pairs whose names are sensitive. Anything else is kept, so prefer the structured redactions where there are any.
+     */
+    public fun redactText(text: String): String {
+        var out = CREDENTIAL.replace(text) { "${it.groupValues[1]} $mask" }
+        out = JSON_PAIR.replace(out) { m -> if (isSensitive(m.groupValues[2])) "${m.groupValues[1]}\"$mask\"" else m.value }
+        out = KEY_VALUE.replace(out) { m -> if (isSensitive(m.groupValues[1])) "${m.groupValues[1]}=$mask" else m.value }
+        return out
+    }
+
+    /**
      * [url] with the value of every sensitive query parameter masked, and of every sensitive fragment parameter (an
      * OAuth redirect's `#access_token=…`). The rest is unchanged.
      */
@@ -174,6 +186,11 @@ public class Redaction private constructor(
         public const val SHOW_TAIL_FROM: Int = 16
 
         private const val FORM = "application/x-www-form-urlencoded"
+
+        private val CREDENTIAL = Regex("""(?i)\b(bearer|basic)\s+[A-Za-z0-9._~+/=\-]+""")
+        /** `"name": value`: group 1 is everything before the value, group 2 the name. */
+        private val JSON_PAIR = Regex("""("([^"\\]+)"\s*:\s*)("(?:[^"\\]|\\.)*"|-?\d+(?:\.\d+)?|true|false)""")
+        private val KEY_VALUE = Regex("""([A-Za-z0-9_.\-]+)=([^&\s,;"'<>)\]]+)""")
 
         private fun normalize(name: String): String = name.lowercase().filterNot { it == '_' || it == '-' || it == '.' }
 

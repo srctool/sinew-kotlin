@@ -158,6 +158,22 @@ class RedactionTest {
         assertTrue(masked(big, "application/json"))
     }
 
+    // Free text
+
+    @Test
+    fun freeTextHidesCredentialsPairsAndJsonValues() {
+        assertEquals("Authorization: Bearer $mask, then basic $mask",redaction.redactText("Authorization: Bearer abc.def-1, then basic dXNlcjpw"))
+        assertEquals(
+            "GET https://api.test/me?token=$mask&page=2 failed; password=$mask",
+            redaction.redactText("GET https://api.test/me?token=abc&page=2 failed; password=hunter2"),
+        )
+        assertEquals(
+            """body {"name":"ana","otp": "$mask","pin":"$mask","refresh_token":"$mask"}""",
+            redaction.redactText("""body {"name":"ana","otp": 445566,"pin":true,"refresh_token":"r\"1"}"""),
+        )
+        assertEquals("nothing to hide: status=500", redaction.redactText("nothing to hide: status=500"))
+    }
+
     // Query parameters and form bodies
 
     @Test
