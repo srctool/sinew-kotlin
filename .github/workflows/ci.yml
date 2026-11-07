@@ -64,6 +64,8 @@ jobs:
           java-version: 17
       - uses: gradle/actions/setup-gradle@v6
       - run: ./gradlew iosSimulatorArm64Test
+      - name: The sample's iOS app builds
+        run: xcodebuild -project sample/iosApp/iosApp.xcodeproj -scheme iosApp -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' build
 
   android-device:
     name: Android device tests (emulator)
@@ -72,6 +74,7 @@ jobs:
     # The instrumented tests that need a real Android runtime: FieldCipher on the Keystore (and a lost master key),
     # SecureStore and Android's SQLite errors, and the network checker following Wi-Fi and data. The biometric vault
     # tests skip themselves here: they need an enrolled fingerprint and touches, run by tool/android-biometric-test.sh.
+    # The sample's list screen runs its full cycle here too.
     steps:
       - uses: actions/checkout@v7
         with:
@@ -87,7 +90,7 @@ jobs:
           sudo udevadm control --reload-rules
           sudo udevadm trigger --name-match=kvm
       - name: Build the test APKs before the emulator starts
-        run: ./gradlew :sinew-security:assembleAndroidDeviceTest :sinew-storage:assembleAndroidDeviceTest :sinew-network:assembleAndroidDeviceTest
+        run: ./gradlew :sinew-security:assembleAndroidDeviceTest :sinew-storage:assembleAndroidDeviceTest :sinew-network:assembleAndroidDeviceTest :sample:androidApp:assembleStagingDebugAndroidTest
       - uses: reactivecircus/android-emulator-runner@v2
         with:
           api-level: 35
@@ -95,7 +98,7 @@ jobs:
           target: google_apis
           disable-animations: true
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
-          script: ./gradlew :sinew-security:connectedAndroidDeviceTest :sinew-storage:connectedAndroidDeviceTest :sinew-network:connectedAndroidDeviceTest
+          script: ./gradlew :sinew-security:connectedAndroidDeviceTest :sinew-storage:connectedAndroidDeviceTest :sinew-network:connectedAndroidDeviceTest :sample:androidApp:connectedStagingDebugAndroidTest
       - name: Keep the test reports
         if: failure()
         uses: actions/upload-artifact@v7
