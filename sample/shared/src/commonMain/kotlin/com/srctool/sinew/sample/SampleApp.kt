@@ -1,16 +1,20 @@
 package com.srctool.sinew.sample
 
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.text.BasicText
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.srctool.camouflage.core.provider.CamouflageProvider
+import com.srctool.camouflage.skin.minimal.MinimalSkin
+import com.srctool.camouflage.skin.minimal.minimalTheme
 
-/** The sample app. Until milestone S5 it shows a placeholder; then it becomes the list screen through CamoPagedList. */
+/** The sample app: one list screen, through `Pager` → `PagingState` → `toCamo` → `CamoPagedList`. */
 @Composable
 fun SampleApp() {
-    Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        BasicText("Sinew sample (S0)")
-    }
+    SampleTheme { OrderListScreen(viewModel { OrderListViewModel(MockOrderBackend()) }) }
+}
+
+/** The sample's Camouflage skin and theme. */
+@Composable
+fun SampleTheme(content: @Composable () -> Unit) {
+    CamouflageProvider(skin = MinimalSkin, theme = minimalTheme(dark = isSystemInDarkTheme()), content = content)
 }

@@ -7,6 +7,7 @@ runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "com
 foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose-multiplatform" }
 material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
 ui-test = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "compose-multiplatform" }
+ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version = "1.11.0" }
 components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "compose-multiplatform" }
 gradle-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-multiplatform" }
 

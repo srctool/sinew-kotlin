@@ -7,6 +7,9 @@ plugins {
 description = "English and Indonesian translations of the local error keys (Compose resources)."
 
 kotlin {
+    android {
+        androidResources { enable = true }   // off by default on AGP's KMP target; without it the strings never reach the APK
+    }
     sourceSets {
         commonMain.dependencies {
             api(projects.sinewException)

@@ -6,3 +6,4 @@ camouflage = "0.1.0-SNAPSHOT"
 
 [libraries]
 core = { module = "com.srctool.camouflage:camouflage-core", version.ref = "camouflage" }
+skin-minimal = { module = "com.srctool.camouflage:camouflage-skin-minimal", version.ref = "camouflage" }
