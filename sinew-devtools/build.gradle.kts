@@ -10,6 +10,7 @@ kotlin {
         commonMain.dependencies {
             api(projects.sinewNetwork)
             api(projects.sinewStorage)
+            implementation(kotlinLibs.serialization.json)       // walking JSON bodies to redact them
         }
     }
 }
