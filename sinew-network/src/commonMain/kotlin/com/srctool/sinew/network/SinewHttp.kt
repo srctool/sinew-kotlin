@@ -34,6 +34,8 @@ public object SinewHttp {
      * `config.certificatePins` are applied on the engine at the TLS handshake.
      *
      * @param logger where the log goes when `config.logHttp` is on.
+     * @param hooks devtools' hooks (`DevTools.httpHooks`), installed inside the auth layer. [SinewHttpHooks.None], the
+     *   default, leaves every request alone. Pass them from the platform entry point, never from shared code.
      * @param configure the app's own settings, applied last. Don't install Ktor's `HttpRedirect`, `Auth` or
      *   `Logging`: Sinew's own take their place. To configure the engine itself, pass it explicitly.
      */
@@ -41,8 +43,9 @@ public object SinewHttp {
         config: SinewConfig,
         tokenSource: TokenSource,
         logger: HttpLogger = HttpLogger.Default,
+        hooks: SinewHttpHooks = SinewHttpHooks.None,
         configure: HttpClientConfig<*>.() -> Unit = {},
-    ): HttpClient = client(config, tokenSource, platformEngine(), logger, Dispatchers.Default, configure)
+    ): HttpClient = client(config, tokenSource, platformEngine(), logger, Dispatchers.Default, hooks, configure)
 
     /**
      * The same client on an explicit [engine], so [configure] can reach the engine's own settings:
@@ -61,8 +64,9 @@ public object SinewHttp {
         tokenSource: TokenSource,
         engine: HttpClientEngineFactory<T>,
         logger: HttpLogger = HttpLogger.Default,
+        hooks: SinewHttpHooks = SinewHttpHooks.None,
         configure: HttpClientConfig<T>.() -> Unit = {},
-    ): HttpClient = client(config, tokenSource, engine, logger, Dispatchers.Default, configure)
+    ): HttpClient = client(config, tokenSource, engine, logger, Dispatchers.Default, hooks, configure)
 
     /**
      * The same, with [refreshContext], the context refreshes run in (`Dispatchers.Default` in the other overloads).
@@ -74,9 +78,10 @@ public object SinewHttp {
         engine: HttpClientEngineFactory<T>,
         logger: HttpLogger,
         refreshContext: CoroutineContext,
+        hooks: SinewHttpHooks = SinewHttpHooks.None,
         configure: HttpClientConfig<T>.() -> Unit,
     ): HttpClient = HttpClient(engine) {
-        installSinew(config, tokenSource, logger, refreshContext)
+        installSinew(config, tokenSource, logger, refreshContext, hooks)
         if (config.certificatePins.isNotEmpty()) {
             val host = Url(config.baseUrl).host
             engine {
@@ -96,6 +101,15 @@ public object SinewHttp {
     public suspend fun resetAuth(client: HttpClient) {
         client.refresher()?.reset()
     }
+
+    /**
+     * Devtools' "Expire access token": the next request from [client] that carries a token sends an invalid one
+     * instead, so the backend answers 401 and the real refresh runs. Needs [SinewHooks] on the client, which the
+     * preset installs. Only devtools calls it.
+     */
+    public fun debugExpireToken(client: HttpClient) {
+        client.expireNextToken()
+    }
 }
 
 private fun HttpClientConfig<*>.installSinew(
@@ -103,6 +117,7 @@ private fun HttpClientConfig<*>.installSinew(
     tokenSource: TokenSource,
     logger: HttpLogger,
     refreshContext: CoroutineContext,
+    hooks: SinewHttpHooks,
 ) {
     expectSuccess = false
     followRedirects = false
@@ -124,6 +139,10 @@ private fun HttpClientConfig<*>.installSinew(
         this.tokenSource = tokenSource
         anonymousPaths = config.anonymousPaths
         this.refreshContext = refreshContext
+    }
+    install(SinewHooks) {                                           // inside SinewAuth: a forced 401 runs the real refresh
+        this.hooks = hooks
+        defaults = config.defaultHeaders
     }
     if (config.logHttp) install(SinewLog) { this.logger = logger }
 }

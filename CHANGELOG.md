@@ -5,6 +5,12 @@ All notable changes to Sinew for Kotlin are documented here. Every module shares
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
+- S6 `sinew-network` and `sinew-devtools` (#44): devtools' way into a client.
+  - `SinewHttpHooks` (`attached`, `detached`, `hostOverride`, `fault`, `record`; `None` by default) and the `SinewHooks` plugin, installed by the preset **inside** `SinewAuth`, so a forced 401 runs the real refresh and each replay after a refresh is recorded on its own. `SinewHttp.client(…, hooks = …)` takes them, and so does `mockHttp`.
+  - A `FaultDecision` waits, drops the connection (classified as `NoInternetConnectionException`, like a real drop) or answers a status and body without reaching the network. That answer goes through `HttpClientCall`'s `@InternalAPI` constructor, the only way to fake a response in Ktor.
+  - `SinewHttp.debugExpireToken(client)`: the next request that carries a token sends an invalid one, so the real 401 → refresh runs. `SinewAuth` is unchanged.
+  - Devtools: `FaultRule` and `FaultRules` (in memory only, newest match wins, path patterns that match the end of the path, `*` for any run), `HostOverride` (the app's hosts, the choice remembered in `sinew.devtools.apiHost`, a stored host the app no longer lists forgotten), and `DevTools.httpHooks`, `faults`, `hosts`, `canReplay`, `replay` and `expireAccessToken`.
+  - A replay goes through the client that sent the record, so the auth layer adds a fresh token and the client its own headers. Faults and the host override apply, and the result is a new record marked as a replay. A record that lost a secret, was cleared, or whose client closed can't be replayed.
 - S6 `sinew-devtools` (#43): the recorders.
   - `NetworkRecorder` (capacity 200, newest first, a `StateFlow`): `record(NetworkExchange)` redacts before storing, using the client's `defaultHeaders` too. `recordCacheServe` covers responses served from a cache.
   - `NetworkRecord.replayable` is true only when nothing but `Authorization` or the client's own headers lost a value and the body wasn't cut or binary. `asText()` and `asCurl()` give the redacted record.

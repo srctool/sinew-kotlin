@@ -1,5 +1,6 @@
 package com.srctool.sinew.devtools
 
+import com.srctool.sinew.network.SinewHttpHooks
 import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlin.concurrent.atomics.AtomicBoolean
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
@@ -15,6 +16,38 @@ public object DevTools {
 
     /** The Exception Log's records. */
     public val exceptions: ExceptionRecorder = ExceptionRecorder()
+
+    /** The active fault rules, in memory only. */
+    public val faults: FaultRules = FaultRules()
+
+    /** The API Host page's choice. */
+    public val hosts: HostOverride = HostOverride()
+
+    private val hooks = DevToolsHttpHooks(network, faults, hosts)
+
+    /**
+     * The hooks to build each client with, from the platform entry point:
+     * `SinewHttp.client(config, tokens, hooks = DevTools.httpHooks)`. They record every exchange in [network], apply
+     * [faults] and the [hosts] override inside the auth layer, and let [replay] and [expireAccessToken] reach the client.
+     */
+    public val httpHooks: SinewHttpHooks get() = hooks
+
+    /** Whether [record] can be sent again now: it kept everything it needs, and its client is still open. */
+    public fun canReplay(record: NetworkRecord): Boolean = hooks.canReplay(record)
+
+    /**
+     * Sends [record]'s request again through the client that sent it, with a fresh token, and records the result as
+     * a new record marked as a replay. Throws `IllegalArgumentException` for a record that isn't replayable and
+     * `IllegalStateException` when its client is closed; a failed response is in the new record, not thrown.
+     */
+    public suspend fun replay(record: NetworkRecord) {
+        hooks.replay(record)
+    }
+
+    /** "Expire access token": the next request of each client that carries a token sends an invalid one, so the real refresh runs. */
+    public fun expireAccessToken() {
+        hooks.expireAccessToken()
+    }
 
     /** Records an uncaught coroutine failure in the Exception Log. Add it to the app's root scopes. */
     public val coroutineHandler: CoroutineExceptionHandler =
