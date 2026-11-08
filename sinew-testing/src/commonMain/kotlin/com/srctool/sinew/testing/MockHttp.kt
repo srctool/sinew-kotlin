@@ -3,6 +3,7 @@ package com.srctool.sinew.testing
 import com.srctool.sinew.network.HttpLogger
 import com.srctool.sinew.network.SinewConfig
 import com.srctool.sinew.network.SinewHttp
+import com.srctool.sinew.network.SinewHttpHooks
 import com.srctool.sinew.network.TokenSource
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.mock.MockEngine
@@ -39,13 +40,14 @@ public fun TestScope.mockHttp(
     config: SinewConfig = SinewConfig(baseUrl = "https://test.local/v1/", locale = { "en" }),
     tokenSource: TokenSource = FakeTokenSource(),
     logger: HttpLogger = HttpLogger { },
+    hooks: SinewHttpHooks = SinewHttpHooks.None,
     routes: MockRoutes.() -> Unit,
 ): MockHttp {
     val table = MockRoutes().apply(routes)
     val recorded = mutableListOf<HttpRequestData>()
     val dispatcher = StandardTestDispatcher(testScheduler)
     // The engine and refreshes on the test's scheduler: a refresh runs in virtual time with the requests it serves.
-    val client = SinewHttp.client(config, tokenSource, MockEngine, logger, dispatcher) {
+    val client = SinewHttp.client(config, tokenSource, MockEngine, logger, dispatcher, hooks) {
         engine {
             this.dispatcher = dispatcher
             addHandler { request ->

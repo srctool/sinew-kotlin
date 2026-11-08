@@ -24,6 +24,8 @@ public class NetworkExchange(
     public val url: String,
     public val requestHeaders: Map<String, List<String>> = emptyMap(),
     public val requestBody: ByteArray? = null,
+    /** Whether the request body was streamed: it's recorded as binary of unknown size, and can't be replayed. */
+    public val requestBodyStreamed: Boolean = false,
     public val status: Int? = null,
     public val responseHeaders: Map<String, List<String>> = emptyMap(),
     public val responseBody: ByteArray? = null,
@@ -149,7 +151,11 @@ public class NetworkRecorder(
     /** Redacts [exchange] and stores the result. */
     public fun record(exchange: NetworkExchange): NetworkRecord {
         val rules = redaction.withHeaders(exchange.clientHeaders)
-        val requestBody = rules.redactBody(exchange.requestBody, exchange.requestHeaders.contentType())
+        val requestBody = if (exchange.requestBodyStreamed) {
+            RecordedBody.Binary(exchange.requestHeaders.contentType()?.substringBefore(';')?.trim(), UNKNOWN_SIZE)
+        } else {
+            rules.redactBody(exchange.requestBody, exchange.requestHeaders.contentType())
+        }
         val url = rules.redactUrl(exchange.url)
         val readded = exchange.clientHeaders.mapTo(mutableSetOf()) { it.lowercase() } + "authorization"
         val headersKept = exchange.requestHeaders.keys.none { it.lowercase() !in readded && rules.isSensitiveHeader(it) }
@@ -229,8 +235,12 @@ public class NetworkRecorder(
     }
 }
 
-/** A size as the pages show it: `512 B`, `12 KB`, `1.2 MB`. */
+/** The size of a streamed body, which isn't read. */
+internal const val UNKNOWN_SIZE: Long = -1
+
+/** A size as the pages show it: `512 B`, `12 KB`, `1.2 MB`, or `unknown size` for a streamed body. */
 internal fun formatSize(bytes: Long): String = when {
+    bytes < 0 -> "unknown size"
     bytes < 1024 -> "$bytes B"
     bytes < 1024 * 1024 -> "${(bytes + 512) / 1024} KB"
     else -> {

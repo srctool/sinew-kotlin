@@ -168,7 +168,8 @@ internal fun isTimeoutFailure(e: Throwable): Boolean = e.causeChain().any(::isTi
  * so a pinning failure on one address can sit behind a refused connection to another.
  */
 internal fun isNoConnectionFailure(e: Throwable): Boolean =
-    e.statusError() == null && e.withSuppressed().none(::isSecurityFailure) && e.causeChain().any(::isNoConnection)
+    e.statusError() == null && e.withSuppressed().none(::isSecurityFailure) &&
+        e.causeChain().any { it is InjectedConnectionDrop || isNoConnection(it) }
 
 /** [causeChain], with each exception's suppressed exceptions beside it. */
 private fun Throwable.withSuppressed(): Sequence<Throwable> =
