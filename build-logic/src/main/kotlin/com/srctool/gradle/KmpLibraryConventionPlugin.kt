@@ -36,7 +36,9 @@ class KmpLibraryConventionPlugin : Plugin<Project> {
                 namespace = srctool.namespacePrefix.get() + "." + suffix
                 compileSdk = android.findVersion("compileSdk").get().requiredVersion.toInt()
                 minSdk = android.findVersion("minSdk").get().requiredVersion.toInt()
-                withHostTest {}                                  // commonTest also runs as Android host (JVM) tests
+                // commonTest also runs as Android host (JVM) tests. Android resources are included so a Robolectric test can
+                // render Compose (the devtools UI's screenshots); a module without resources is unaffected.
+                withHostTest { isIncludeAndroidResources = true }
             }
 
             iosArm64()

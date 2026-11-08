@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlin.concurrent.atomics.AtomicLong
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
+import kotlin.concurrent.Volatile
 import kotlin.concurrent.atomics.incrementAndFetch
 import kotlin.time.Clock
 import kotlin.time.Duration
@@ -136,11 +137,15 @@ public data class NetworkRecord(
 @OptIn(ExperimentalAtomicApi::class)
 public class NetworkRecorder(
     public val capacity: Int = DEFAULT_CAPACITY,
-    public val redaction: Redaction = Redaction.Default,
+    redaction: Redaction = Redaction.Default,
 ) {
     init {
         require(capacity > 0) { "capacity must be positive, was $capacity" }
     }
+
+    /** What's hidden before a record is stored. `SinewDevTools(redaction = …)` sets the app's rules. */
+    @Volatile
+    public var redaction: Redaction = redaction
 
     private val ids = AtomicLong(0)
     private val _records = MutableStateFlow<List<NetworkRecord>>(emptyList())

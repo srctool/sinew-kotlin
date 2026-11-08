@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlin.concurrent.atomics.AtomicLong
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
+import kotlin.concurrent.Volatile
 import kotlin.concurrent.atomics.incrementAndFetch
 import kotlin.time.Clock
 import kotlin.time.Duration
@@ -64,9 +65,13 @@ public data class ExceptionRecord(
 public class ExceptionRecorder(
     public val capacity: Int = DEFAULT_CAPACITY,
     public val dedupeWindow: Duration = DEFAULT_DEDUPE_WINDOW,
-    public val redaction: Redaction = Redaction.Default,
+    redaction: Redaction = Redaction.Default,
     private val clock: Clock = Clock.System,
 ) {
+    /** What's hidden before a row is stored. `SinewDevTools(redaction = …)` sets the app's rules. */
+    @Volatile
+    public var redaction: Redaction = redaction
+
     init {
         require(capacity > 0) { "capacity must be positive, was $capacity" }
     }
