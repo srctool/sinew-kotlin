@@ -5,6 +5,25 @@ All notable changes to Sinew for Kotlin are documented here. Every module shares
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
+- S6 `sinew-devtools-ui` (#45): the overlay and every built-in page.
+  - `SinewDevTools(sections, ribbon, launcher, redaction, stores, changelog, hosts, showUncaughtErrors, preferences) { App() }` and `DevToolsMenuItem`, on Compose Material 3 with its own theme and back stack. System Back walks that stack, through `NavigationBackHandler` when the app provides a dispatcher.
+  - The entry contract: `DevToolSection`, and `DevToolEntry.Page`, `Group`, `Toggle` and `Action`, with `confirm` asking first. `BuildRibbon`, and the launchers `FloatingLauncher` (draggable, a drag never opens it, its position remembered in `preferences`), `MenuLauncher` and `CustomLauncher`. Sinew's section is first, the app's follow.
+  - The pages:
+    - Network Monitor, with Copy, Copy as cURL, and Replay: a GET replays on tap, other methods ask first, and a record that can't be replayed is disabled with its reason.
+    - Exception Log, with Copy.
+    - Key-Value Store: edits by the value's own type, deletes after asking.
+    - Secure Store: masked, never copyable, "Clear all" after asking.
+    - Local DB, read-only.
+    - Expire Access Token, Fault Injection, API Host and Changelog.
+  - The ribbon adds the active host and "faults on". An optional card shows uncaught errors.
+  - `DevTools.open()`, `close()` and `isOpen`. The recorders' `redaction` can be set, so `SinewDevTools(redaction = …)` applies the app's rules.
+  - Tests:
+    - Compose UI tests run on the JVM, iOS and wasm.
+    - Robolectric UI tests and Roborazzi screenshots run on the Android host. Roborazzi screenshots also run on the desktop.
+    - Screenshot references live per OS under `screenshots/<os>/`, and CI uploads the Linux set it records.
+  - Build:
+    - Android host tests include Android resources in every module, so Robolectric can render Compose.
+    - Mocha's browser timeout is 15 s.
 - S6 `sinew-network` and `sinew-devtools` (#44): devtools' way into a client.
   - `SinewHttpHooks` (`attached`, `detached`, `hostOverride`, `fault`, `record`; `None` by default) and the `SinewHooks` plugin, installed by the preset **inside** `SinewAuth`, so a forced 401 runs the real refresh and each replay after a refresh is recorded on its own. `SinewHttp.client(…, hooks = …)` takes them, and so does `mockHttp`.
   - A `FaultDecision` waits, drops the connection (classified as `NoInternetConnectionException`, like a real drop) or answers a status and body without reaching the network. That answer goes through `HttpClientCall`'s `@InternalAPI` constructor, the only way to fake a response in Ktor.

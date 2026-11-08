@@ -29,6 +29,14 @@ jobs:
           java-version: 17
       - uses: gradle/actions/setup-gradle@v6
       - run: ./gradlew jvmTest testAndroidHostTest checkSinewGraph :sample:androidApp:assembleStagingDebug
+      - name: Keep the devtools screenshots
+        # References are per OS; a test records the ones this OS lacks, so the Linux set can be committed from here.
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: devtools-screenshots-linux
+          path: sinew-devtools-ui/screenshots/linux
+          if-no-files-found: ignore
 
   web:
     name: wasmJs compile and browser tests

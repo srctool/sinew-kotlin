@@ -2,6 +2,9 @@ package com.srctool.sinew.devtools
 
 import com.srctool.sinew.network.SinewHttpHooks
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlin.concurrent.atomics.AtomicBoolean
 import kotlin.concurrent.atomics.ExperimentalAtomicApi
 
@@ -54,6 +57,24 @@ public object DevTools {
         CoroutineExceptionHandler { _, error -> exceptions.record(error, ExceptionSource.Uncaught) }
 
     private val capturing = AtomicBoolean(false)
+
+    private val _isOpen = MutableStateFlow(false)
+
+    /** Whether the dashboard is open. */
+    public val isOpen: StateFlow<Boolean> = _isOpen.asStateFlow()
+
+    /**
+     * Opens the dashboard, from any trigger: the app's own gesture with `CustomLauncher`, or `DevToolsMenuItem`'s row.
+     * It does nothing until `SinewDevTools` is on screen, and in the no-op artifact.
+     */
+    public fun open() {
+        _isOpen.value = true
+    }
+
+    /** Closes the dashboard. */
+    public fun close() {
+        _isOpen.value = false
+    }
 
     /**
      * Records uncaught errors in the Exception Log, through the platform's hook: the default uncaught-exception

@@ -1,13 +1,19 @@
 [versions]
 compose-multiplatform = "1.12.1"
 material3 = "1.9.0"                        # versioned separately from Compose Multiplatform
+roborazzi = "1.77.0"                       # screenshot tests on Android (Robolectric) and desktop
 
 [libraries]
 runtime = { module = "org.jetbrains.compose.runtime:runtime", version.ref = "compose-multiplatform" }
 foundation = { module = "org.jetbrains.compose.foundation:foundation", version.ref = "compose-multiplatform" }
 material3 = { module = "org.jetbrains.compose.material3:material3", version.ref = "material3" }
+navigationevent-compose = { module = "org.jetbrains.androidx.navigationevent:navigationevent-compose", version = "1.1.0" }   # the one Compose 1.12.1 brings
 ui-test = { module = "org.jetbrains.compose.ui:ui-test", version.ref = "compose-multiplatform" }
 ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version = "1.11.0" }
+ui-test-junit4-android = { module = "androidx.compose.ui:ui-test-junit4", version = "1.11.0" }   # createComposeRule under Robolectric
+roborazzi = { module = "io.github.takahirom.roborazzi:roborazzi", version.ref = "roborazzi" }
+roborazzi-compose = { module = "io.github.takahirom.roborazzi:roborazzi-compose", version.ref = "roborazzi" }
+roborazzi-compose-desktop = { module = "io.github.takahirom.roborazzi:roborazzi-compose-desktop", version.ref = "roborazzi" }
 components-resources = { module = "org.jetbrains.compose.components:components-resources", version.ref = "compose-multiplatform" }
 gradle-plugin = { module = "org.jetbrains.compose:compose-gradle-plugin", version.ref = "compose-multiplatform" }
 
