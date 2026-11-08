@@ -11,6 +11,11 @@ kotlin {
             api(projects.sinewNetwork)
             api(projects.sinewStorage)
             implementation(kotlinLibs.serialization.json)       // walking JSON bodies to redact them
+            implementation(kotlinLibs.coroutines.core)          // the recorders' StateFlows, DevTools.coroutineHandler
+        }
+        commonTest.dependencies {
+            implementation(projects.sinewTesting)               // RecordingCrashReporter
+            implementation(kotlinLibs.coroutines.test)
         }
     }
 }
