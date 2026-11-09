@@ -1,0 +1,273 @@
+public final class com/srctool/sinew/devtools/DevTools {
+	public static final field INSTANCE Lcom/srctool/sinew/devtools/DevTools;
+	public final fun canReplay (Lcom/srctool/sinew/devtools/NetworkRecord;)Z
+	public final fun captureUncaughtErrors ()V
+	public final fun clearUserData ()V
+	public final fun close ()V
+	public final fun expireAccessToken ()V
+	public final fun getCoroutineHandler ()Lkotlinx/coroutines/CoroutineExceptionHandler;
+	public final fun getExceptions ()Lcom/srctool/sinew/devtools/ExceptionRecorder;
+	public final fun getFaults ()Lcom/srctool/sinew/devtools/FaultRules;
+	public final fun getHosts ()Lcom/srctool/sinew/devtools/HostOverride;
+	public final fun getHttpHooks ()Lcom/srctool/sinew/network/SinewHttpHooks;
+	public final fun getNetwork ()Lcom/srctool/sinew/devtools/NetworkRecorder;
+	public final fun isOpen ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun open ()V
+	public final fun replay (Lcom/srctool/sinew/devtools/NetworkRecord;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/devtools/DevToolsCrashReporter : com/srctool/sinew/exception/CrashReporter {
+	public fun <init> (Lcom/srctool/sinew/exception/CrashReporter;Lcom/srctool/sinew/devtools/ExceptionRecorder;)V
+	public synthetic fun <init> (Lcom/srctool/sinew/exception/CrashReporter;Lcom/srctool/sinew/devtools/ExceptionRecorder;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun recordNonFatal (Lcom/srctool/sinew/models/SinewException;)V
+}
+
+public final class com/srctool/sinew/devtools/ExceptionRecord {
+	public fun <init> (JLkotlin/time/Instant;Lkotlin/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILcom/srctool/sinew/devtools/ExceptionSource;)V
+	public final fun asText ()Ljava/lang/String;
+	public final fun component1 ()J
+	public final fun component2 ()Lkotlin/time/Instant;
+	public final fun component3 ()Lkotlin/time/Instant;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/lang/String;
+	public final fun component6 ()Ljava/lang/String;
+	public final fun component7 ()Ljava/lang/String;
+	public final fun component8 ()I
+	public final fun component9 ()Lcom/srctool/sinew/devtools/ExceptionSource;
+	public final fun copy (JLkotlin/time/Instant;Lkotlin/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILcom/srctool/sinew/devtools/ExceptionSource;)Lcom/srctool/sinew/devtools/ExceptionRecord;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/devtools/ExceptionRecord;JLkotlin/time/Instant;Lkotlin/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ILcom/srctool/sinew/devtools/ExceptionSource;ILjava/lang/Object;)Lcom/srctool/sinew/devtools/ExceptionRecord;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCode ()Ljava/lang/String;
+	public final fun getCount ()I
+	public final fun getFirstAt ()Lkotlin/time/Instant;
+	public final fun getId ()J
+	public final fun getLastAt ()Lkotlin/time/Instant;
+	public final fun getMessage ()Ljava/lang/String;
+	public final fun getSource ()Lcom/srctool/sinew/devtools/ExceptionSource;
+	public final fun getStackTrace ()Ljava/lang/String;
+	public final fun getType ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/ExceptionRecorder {
+	public static final field Companion Lcom/srctool/sinew/devtools/ExceptionRecorder$Companion;
+	public static final field DEFAULT_CAPACITY I
+	public fun <init> ()V
+	public synthetic fun <init> (IJLcom/srctool/sinew/devtools/Redaction;Lkotlin/time/Clock;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (IJLcom/srctool/sinew/devtools/Redaction;Lkotlin/time/Clock;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun clear ()V
+	public final fun getCapacity ()I
+	public final fun getDedupeWindow-UwyO8pc ()J
+	public final fun getRecords ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun getRedaction ()Lcom/srctool/sinew/devtools/Redaction;
+	public final fun record (Ljava/lang/Throwable;Lcom/srctool/sinew/devtools/ExceptionSource;)V
+	public static synthetic fun record$default (Lcom/srctool/sinew/devtools/ExceptionRecorder;Ljava/lang/Throwable;Lcom/srctool/sinew/devtools/ExceptionSource;ILjava/lang/Object;)V
+	public final fun setRedaction (Lcom/srctool/sinew/devtools/Redaction;)V
+}
+
+public final class com/srctool/sinew/devtools/ExceptionRecorder$Companion {
+	public final fun getDEFAULT_DEDUPE_WINDOW-UwyO8pc ()J
+}
+
+public final class com/srctool/sinew/devtools/ExceptionSource : java/lang/Enum {
+	public static final field Reported Lcom/srctool/sinew/devtools/ExceptionSource;
+	public static final field Uncaught Lcom/srctool/sinew/devtools/ExceptionSource;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/srctool/sinew/devtools/ExceptionSource;
+	public static fun values ()[Lcom/srctool/sinew/devtools/ExceptionSource;
+}
+
+public final class com/srctool/sinew/devtools/FaultRule {
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lkotlin/time/Duration;ZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lkotlin/time/Duration;ZLjava/lang/String;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun component3 ()Ljava/lang/Integer;
+	public final fun component4-FghU774 ()Lkotlin/time/Duration;
+	public final fun component5 ()Z
+	public final fun component6 ()Ljava/lang/String;
+	public final fun copy-FHKeTTw (Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lkotlin/time/Duration;ZLjava/lang/String;)Lcom/srctool/sinew/devtools/FaultRule;
+	public static synthetic fun copy-FHKeTTw$default (Lcom/srctool/sinew/devtools/FaultRule;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Integer;Lkotlin/time/Duration;ZLjava/lang/String;ILjava/lang/Object;)Lcom/srctool/sinew/devtools/FaultRule;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getDelay-FghU774 ()Lkotlin/time/Duration;
+	public final fun getDrop ()Z
+	public final fun getMethod ()Ljava/lang/String;
+	public final fun getPathPattern ()Ljava/lang/String;
+	public final fun getStatus ()Ljava/lang/Integer;
+	public fun hashCode ()I
+	public final fun matches (Ljava/lang/String;Ljava/lang/String;)Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/FaultRules {
+	public fun <init> ()V
+	public final fun add (Lcom/srctool/sinew/devtools/FaultRule;)V
+	public final fun clear ()V
+	public final fun getActive ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun match (Ljava/lang/String;Ljava/lang/String;)Lcom/srctool/sinew/devtools/FaultRule;
+	public final fun remove (Lcom/srctool/sinew/devtools/FaultRule;)V
+}
+
+public final class com/srctool/sinew/devtools/HostOverride {
+	public fun <init> ()V
+	public final fun configure (Ljava/util/List;Lcom/srctool/sinew/storage/KeyValueStore;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun configure$default (Lcom/srctool/sinew/devtools/HostOverride;Ljava/util/List;Lcom/srctool/sinew/storage/KeyValueStore;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public final fun getCurrent ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun getHosts ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun select (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/devtools/NetworkExchange {
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;[BZLjava/lang/Integer;Ljava/util/Map;[BLkotlin/time/Instant;Lkotlin/time/Duration;Ljava/lang/Throwable;Ljava/util/Set;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;[BZLjava/lang/Integer;Ljava/util/Map;[BLkotlin/time/Instant;Lkotlin/time/Duration;Ljava/lang/Throwable;Ljava/util/Set;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getClientHeaders ()Ljava/util/Set;
+	public final fun getDuration-FghU774 ()Lkotlin/time/Duration;
+	public final fun getError ()Ljava/lang/Throwable;
+	public final fun getMethod ()Ljava/lang/String;
+	public final fun getRequestBody ()[B
+	public final fun getRequestBodyStreamed ()Z
+	public final fun getRequestHeaders ()Ljava/util/Map;
+	public final fun getResponseBody ()[B
+	public final fun getResponseHeaders ()Ljava/util/Map;
+	public final fun getStartedAt ()Lkotlin/time/Instant;
+	public final fun getStatus ()Ljava/lang/Integer;
+	public final fun getUrl ()Ljava/lang/String;
+	public final fun isReplay ()Z
+}
+
+public final class com/srctool/sinew/devtools/NetworkRecord {
+	public synthetic fun <init> (JLkotlin/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Lcom/srctool/sinew/devtools/RecordedBody;Ljava/lang/Integer;Ljava/util/Map;Lcom/srctool/sinew/devtools/RecordedBody;Lkotlin/time/Duration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun asCurl ()Ljava/lang/String;
+	public final fun asText ()Ljava/lang/String;
+	public final fun component1 ()J
+	public final fun component10-FghU774 ()Lkotlin/time/Duration;
+	public final fun component11 ()Ljava/lang/String;
+	public final fun component12 ()Ljava/lang/String;
+	public final fun component13 ()Ljava/lang/String;
+	public final fun component14 ()Z
+	public final fun component15 ()Z
+	public final fun component2 ()Lkotlin/time/Instant;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun component4 ()Ljava/lang/String;
+	public final fun component5 ()Ljava/util/Map;
+	public final fun component6 ()Lcom/srctool/sinew/devtools/RecordedBody;
+	public final fun component7 ()Ljava/lang/Integer;
+	public final fun component8 ()Ljava/util/Map;
+	public final fun component9 ()Lcom/srctool/sinew/devtools/RecordedBody;
+	public final fun copy-ThkeUMU (JLkotlin/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Lcom/srctool/sinew/devtools/RecordedBody;Ljava/lang/Integer;Ljava/util/Map;Lcom/srctool/sinew/devtools/RecordedBody;Lkotlin/time/Duration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZ)Lcom/srctool/sinew/devtools/NetworkRecord;
+	public static synthetic fun copy-ThkeUMU$default (Lcom/srctool/sinew/devtools/NetworkRecord;JLkotlin/time/Instant;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;Lcom/srctool/sinew/devtools/RecordedBody;Ljava/lang/Integer;Ljava/util/Map;Lcom/srctool/sinew/devtools/RecordedBody;Lkotlin/time/Duration;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZILjava/lang/Object;)Lcom/srctool/sinew/devtools/NetworkRecord;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCacheSource ()Ljava/lang/String;
+	public final fun getDuration-FghU774 ()Lkotlin/time/Duration;
+	public final fun getErrorCode ()Ljava/lang/String;
+	public final fun getErrorType ()Ljava/lang/String;
+	public final fun getFromCache ()Z
+	public final fun getId ()J
+	public final fun getMethod ()Ljava/lang/String;
+	public final fun getReplayable ()Z
+	public final fun getRequestBody ()Lcom/srctool/sinew/devtools/RecordedBody;
+	public final fun getRequestHeaders ()Ljava/util/Map;
+	public final fun getResponseBody ()Lcom/srctool/sinew/devtools/RecordedBody;
+	public final fun getResponseHeaders ()Ljava/util/Map;
+	public final fun getStartedAt ()Lkotlin/time/Instant;
+	public final fun getStatus ()Ljava/lang/Integer;
+	public final fun getUrl ()Ljava/lang/String;
+	public fun hashCode ()I
+	public final fun isReplay ()Z
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/NetworkRecorder {
+	public static final field Companion Lcom/srctool/sinew/devtools/NetworkRecorder$Companion;
+	public static final field DEFAULT_CAPACITY I
+	public fun <init> ()V
+	public fun <init> (ILcom/srctool/sinew/devtools/Redaction;)V
+	public synthetic fun <init> (ILcom/srctool/sinew/devtools/Redaction;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun clear ()V
+	public final fun getCapacity ()I
+	public final fun getRecords ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun getRedaction ()Lcom/srctool/sinew/devtools/Redaction;
+	public final fun record (Lcom/srctool/sinew/devtools/NetworkExchange;)Lcom/srctool/sinew/devtools/NetworkRecord;
+	public final fun recordCacheServe (Ljava/lang/String;Ljava/lang/String;[BLjava/lang/String;Lkotlin/time/Instant;)Lcom/srctool/sinew/devtools/NetworkRecord;
+	public static synthetic fun recordCacheServe$default (Lcom/srctool/sinew/devtools/NetworkRecorder;Ljava/lang/String;Ljava/lang/String;[BLjava/lang/String;Lkotlin/time/Instant;ILjava/lang/Object;)Lcom/srctool/sinew/devtools/NetworkRecord;
+	public final fun setRedaction (Lcom/srctool/sinew/devtools/Redaction;)V
+}
+
+public final class com/srctool/sinew/devtools/NetworkRecorder$Companion {
+}
+
+public abstract interface class com/srctool/sinew/devtools/RecordedBody {
+}
+
+public final class com/srctool/sinew/devtools/RecordedBody$Binary : com/srctool/sinew/devtools/RecordedBody {
+	public fun <init> (Ljava/lang/String;J)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()J
+	public final fun copy (Ljava/lang/String;J)Lcom/srctool/sinew/devtools/RecordedBody$Binary;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/devtools/RecordedBody$Binary;Ljava/lang/String;JILjava/lang/Object;)Lcom/srctool/sinew/devtools/RecordedBody$Binary;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getContentType ()Ljava/lang/String;
+	public final fun getSize ()J
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/RecordedBody$None : com/srctool/sinew/devtools/RecordedBody {
+	public static final field INSTANCE Lcom/srctool/sinew/devtools/RecordedBody$None;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/RecordedBody$Text : com/srctool/sinew/devtools/RecordedBody {
+	public fun <init> (Ljava/lang/String;JZZ)V
+	public synthetic fun <init> (Ljava/lang/String;JZZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()J
+	public final fun component3 ()Z
+	public final fun component4 ()Z
+	public final fun copy (Ljava/lang/String;JZZ)Lcom/srctool/sinew/devtools/RecordedBody$Text;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/devtools/RecordedBody$Text;Ljava/lang/String;JZZILjava/lang/Object;)Lcom/srctool/sinew/devtools/RecordedBody$Text;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getMasked ()Z
+	public final fun getSize ()J
+	public final fun getText ()Ljava/lang/String;
+	public final fun getTruncated ()Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/Redaction {
+	public static final field Companion Lcom/srctool/sinew/devtools/Redaction$Companion;
+	public static final field DEFAULT_MAX_BODY_BYTES I
+	public static final field SHOW_TAIL_FROM I
+	public final fun getExactFields ()Ljava/util/Set;
+	public final fun getFieldParts ()Ljava/util/Set;
+	public final fun getHeaders ()Ljava/util/Set;
+	public final fun getMask ()Ljava/lang/String;
+	public final fun getMaxBodyBytes ()I
+	public final fun isSensitive (Ljava/lang/String;)Z
+	public final fun isSensitiveHeader (Ljava/lang/String;)Z
+	public final fun plus (Lkotlin/jvm/functions/Function1;)Lcom/srctool/sinew/devtools/Redaction;
+	public final fun redactBody ([BLjava/lang/String;)Lcom/srctool/sinew/devtools/RecordedBody;
+	public final fun redactHeaders (Ljava/util/Map;)Ljava/util/Map;
+	public final fun redactText (Ljava/lang/String;)Ljava/lang/String;
+	public final fun redactUrl (Ljava/lang/String;)Ljava/lang/String;
+	public final fun withHeaders (Ljava/util/Collection;)Lcom/srctool/sinew/devtools/Redaction;
+}
+
+public final class com/srctool/sinew/devtools/Redaction$Companion {
+	public final fun getDefault ()Lcom/srctool/sinew/devtools/Redaction;
+	public final fun maskSecret (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/Redaction$Extension {
+	public final fun getExactFields ()Ljava/util/Set;
+	public final fun getFieldParts ()Ljava/util/Set;
+	public final fun getHeaders ()Ljava/util/Set;
+	public final fun getMaxBodyBytes ()Ljava/lang/Integer;
+	public final fun setMaxBodyBytes (Ljava/lang/Integer;)V
+}
+

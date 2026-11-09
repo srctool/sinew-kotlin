@@ -1,0 +1,137 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-devtools-ui>
+sealed interface com.srctool.sinew.devtools.ui/DevToolEntry { // com.srctool.sinew.devtools.ui/DevToolEntry|null[0]
+    abstract val description // com.srctool.sinew.devtools.ui/DevToolEntry.description|{}description[0]
+        abstract fun <get-description>(): kotlin/String? // com.srctool.sinew.devtools.ui/DevToolEntry.description.<get-description>|<get-description>(){}[0]
+    abstract val icon // com.srctool.sinew.devtools.ui/DevToolEntry.icon|{}icon[0]
+        abstract fun <get-icon>(): androidx.compose.ui.graphics.vector/ImageVector? // com.srctool.sinew.devtools.ui/DevToolEntry.icon.<get-icon>|<get-icon>(){}[0]
+    abstract val name // com.srctool.sinew.devtools.ui/DevToolEntry.name|{}name[0]
+        abstract fun <get-name>(): kotlin/String // com.srctool.sinew.devtools.ui/DevToolEntry.name.<get-name>|<get-name>(){}[0]
+
+    final class Action : com.srctool.sinew.devtools.ui/DevToolEntry { // com.srctool.sinew.devtools.ui/DevToolEntry.Action|null[0]
+        constructor <init>(kotlin/String, kotlin/String? = ..., androidx.compose.ui.graphics.vector/ImageVector? = ..., kotlin/String? = ..., kotlin.coroutines/SuspendFunction0<kotlin/Unit>) // com.srctool.sinew.devtools.ui/DevToolEntry.Action.<init>|<init>(kotlin.String;kotlin.String?;androidx.compose.ui.graphics.vector.ImageVector?;kotlin.String?;kotlin.coroutines.SuspendFunction0<kotlin.Unit>){}[0]
+
+        final val confirm // com.srctool.sinew.devtools.ui/DevToolEntry.Action.confirm|{}confirm[0]
+            final fun <get-confirm>(): kotlin/String? // com.srctool.sinew.devtools.ui/DevToolEntry.Action.confirm.<get-confirm>|<get-confirm>(){}[0]
+        final val description // com.srctool.sinew.devtools.ui/DevToolEntry.Action.description|{}description[0]
+            final fun <get-description>(): kotlin/String? // com.srctool.sinew.devtools.ui/DevToolEntry.Action.description.<get-description>|<get-description>(){}[0]
+        final val icon // com.srctool.sinew.devtools.ui/DevToolEntry.Action.icon|{}icon[0]
+            final fun <get-icon>(): androidx.compose.ui.graphics.vector/ImageVector? // com.srctool.sinew.devtools.ui/DevToolEntry.Action.icon.<get-icon>|<get-icon>(){}[0]
+        final val name // com.srctool.sinew.devtools.ui/DevToolEntry.Action.name|{}name[0]
+            final fun <get-name>(): kotlin/String // com.srctool.sinew.devtools.ui/DevToolEntry.Action.name.<get-name>|<get-name>(){}[0]
+        final val run // com.srctool.sinew.devtools.ui/DevToolEntry.Action.run|{}run[0]
+            final fun <get-run>(): kotlin.coroutines/SuspendFunction0<kotlin/Unit> // com.srctool.sinew.devtools.ui/DevToolEntry.Action.run.<get-run>|<get-run>(){}[0]
+    }
+
+    final class Group : com.srctool.sinew.devtools.ui/DevToolEntry { // com.srctool.sinew.devtools.ui/DevToolEntry.Group|null[0]
+        constructor <init>(kotlin/String, kotlin/String? = ..., androidx.compose.ui.graphics.vector/ImageVector? = ..., androidx.compose.ui.graphics/Color? = ..., kotlin.collections/List<com.srctool.sinew.devtools.ui/DevToolEntry>) // com.srctool.sinew.devtools.ui/DevToolEntry.Group.<init>|<init>(kotlin.String;kotlin.String?;androidx.compose.ui.graphics.vector.ImageVector?;androidx.compose.ui.graphics.Color?;kotlin.collections.List<com.srctool.sinew.devtools.ui.DevToolEntry>){}[0]
+
+        final val children // com.srctool.sinew.devtools.ui/DevToolEntry.Group.children|{}children[0]
+            final fun <get-children>(): kotlin.collections/List<com.srctool.sinew.devtools.ui/DevToolEntry> // com.srctool.sinew.devtools.ui/DevToolEntry.Group.children.<get-children>|<get-children>(){}[0]
+        final val color // com.srctool.sinew.devtools.ui/DevToolEntry.Group.color|{}color[0]
+            final fun <get-color>(): androidx.compose.ui.graphics/Color? // com.srctool.sinew.devtools.ui/DevToolEntry.Group.color.<get-color>|<get-color>(){}[0]
+        final val description // com.srctool.sinew.devtools.ui/DevToolEntry.Group.description|{}description[0]
+            final fun <get-description>(): kotlin/String? // com.srctool.sinew.devtools.ui/DevToolEntry.Group.description.<get-description>|<get-description>(){}[0]
+        final val icon // com.srctool.sinew.devtools.ui/DevToolEntry.Group.icon|{}icon[0]
+            final fun <get-icon>(): androidx.compose.ui.graphics.vector/ImageVector? // com.srctool.sinew.devtools.ui/DevToolEntry.Group.icon.<get-icon>|<get-icon>(){}[0]
+        final val name // com.srctool.sinew.devtools.ui/DevToolEntry.Group.name|{}name[0]
+            final fun <get-name>(): kotlin/String // com.srctool.sinew.devtools.ui/DevToolEntry.Group.name.<get-name>|<get-name>(){}[0]
+    }
+
+    final class Page : com.srctool.sinew.devtools.ui/DevToolEntry { // com.srctool.sinew.devtools.ui/DevToolEntry.Page|null[0]
+        constructor <init>(kotlin/String, kotlin/String? = ..., androidx.compose.ui.graphics.vector/ImageVector? = ..., androidx.compose.ui.graphics/Color? = ..., kotlin/Function3<androidx.compose.foundation.layout/RowScope, androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit> = ..., kotlin/Function2<androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit>) // com.srctool.sinew.devtools.ui/DevToolEntry.Page.<init>|<init>(kotlin.String;kotlin.String?;androidx.compose.ui.graphics.vector.ImageVector?;androidx.compose.ui.graphics.Color?;kotlin.Function3<androidx.compose.foundation.layout.RowScope,androidx.compose.runtime.Composer,kotlin.Int,kotlin.Unit>;kotlin.Function2<androidx.compose.runtime.Composer,kotlin.Int,kotlin.Unit>){}[0]
+
+        final val appBarActions // com.srctool.sinew.devtools.ui/DevToolEntry.Page.appBarActions|{}appBarActions[0]
+            final fun <get-appBarActions>(): kotlin/Function3<androidx.compose.foundation.layout/RowScope, androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit> // com.srctool.sinew.devtools.ui/DevToolEntry.Page.appBarActions.<get-appBarActions>|<get-appBarActions>(){}[0]
+        final val color // com.srctool.sinew.devtools.ui/DevToolEntry.Page.color|{}color[0]
+            final fun <get-color>(): androidx.compose.ui.graphics/Color? // com.srctool.sinew.devtools.ui/DevToolEntry.Page.color.<get-color>|<get-color>(){}[0]
+        final val content // com.srctool.sinew.devtools.ui/DevToolEntry.Page.content|{}content[0]
+            final fun <get-content>(): kotlin/Function2<androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit> // com.srctool.sinew.devtools.ui/DevToolEntry.Page.content.<get-content>|<get-content>(){}[0]
+        final val description // com.srctool.sinew.devtools.ui/DevToolEntry.Page.description|{}description[0]
+            final fun <get-description>(): kotlin/String? // com.srctool.sinew.devtools.ui/DevToolEntry.Page.description.<get-description>|<get-description>(){}[0]
+        final val icon // com.srctool.sinew.devtools.ui/DevToolEntry.Page.icon|{}icon[0]
+            final fun <get-icon>(): androidx.compose.ui.graphics.vector/ImageVector? // com.srctool.sinew.devtools.ui/DevToolEntry.Page.icon.<get-icon>|<get-icon>(){}[0]
+        final val name // com.srctool.sinew.devtools.ui/DevToolEntry.Page.name|{}name[0]
+            final fun <get-name>(): kotlin/String // com.srctool.sinew.devtools.ui/DevToolEntry.Page.name.<get-name>|<get-name>(){}[0]
+    }
+
+    final class Toggle : com.srctool.sinew.devtools.ui/DevToolEntry { // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle|null[0]
+        constructor <init>(kotlin/String, kotlin/String? = ..., androidx.compose.ui.graphics.vector/ImageVector? = ..., kotlin/Function0<kotlin/Boolean>, kotlin/Function1<kotlin/Boolean, kotlin/Unit>) // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle.<init>|<init>(kotlin.String;kotlin.String?;androidx.compose.ui.graphics.vector.ImageVector?;kotlin.Function0<kotlin.Boolean>;kotlin.Function1<kotlin.Boolean,kotlin.Unit>){}[0]
+
+        final val description // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle.description|{}description[0]
+            final fun <get-description>(): kotlin/String? // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle.description.<get-description>|<get-description>(){}[0]
+        final val icon // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle.icon|{}icon[0]
+            final fun <get-icon>(): androidx.compose.ui.graphics.vector/ImageVector? // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle.icon.<get-icon>|<get-icon>(){}[0]
+        final val name // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle.name|{}name[0]
+            final fun <get-name>(): kotlin/String // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle.name.<get-name>|<get-name>(){}[0]
+        final val onChanged // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle.onChanged|{}onChanged[0]
+            final fun <get-onChanged>(): kotlin/Function1<kotlin/Boolean, kotlin/Unit> // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle.onChanged.<get-onChanged>|<get-onChanged>(){}[0]
+        final val value // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle.value|{}value[0]
+            final fun <get-value>(): kotlin/Function0<kotlin/Boolean> // com.srctool.sinew.devtools.ui/DevToolEntry.Toggle.value.<get-value>|<get-value>(){}[0]
+    }
+}
+
+sealed interface com.srctool.sinew.devtools.ui/DevToolsLauncher // com.srctool.sinew.devtools.ui/DevToolsLauncher|null[0]
+
+final class com.srctool.sinew.devtools.ui/BuildRibbon { // com.srctool.sinew.devtools.ui/BuildRibbon|null[0]
+    constructor <init>(kotlin/String) // com.srctool.sinew.devtools.ui/BuildRibbon.<init>|<init>(kotlin.String){}[0]
+
+    final val label // com.srctool.sinew.devtools.ui/BuildRibbon.label|{}label[0]
+        final fun <get-label>(): kotlin/String // com.srctool.sinew.devtools.ui/BuildRibbon.label.<get-label>|<get-label>(){}[0]
+}
+
+final class com.srctool.sinew.devtools.ui/DevToolSection { // com.srctool.sinew.devtools.ui/DevToolSection|null[0]
+    constructor <init>(kotlin/String, kotlin.collections/List<com.srctool.sinew.devtools.ui/DevToolEntry>) // com.srctool.sinew.devtools.ui/DevToolSection.<init>|<init>(kotlin.String;kotlin.collections.List<com.srctool.sinew.devtools.ui.DevToolEntry>){}[0]
+
+    final val entries // com.srctool.sinew.devtools.ui/DevToolSection.entries|{}entries[0]
+        final fun <get-entries>(): kotlin.collections/List<com.srctool.sinew.devtools.ui/DevToolEntry> // com.srctool.sinew.devtools.ui/DevToolSection.entries.<get-entries>|<get-entries>(){}[0]
+    final val title // com.srctool.sinew.devtools.ui/DevToolSection.title|{}title[0]
+        final fun <get-title>(): kotlin/String // com.srctool.sinew.devtools.ui/DevToolSection.title.<get-title>|<get-title>(){}[0]
+}
+
+final class com.srctool.sinew.devtools.ui/FloatingLauncher : com.srctool.sinew.devtools.ui/DevToolsLauncher { // com.srctool.sinew.devtools.ui/FloatingLauncher|null[0]
+    constructor <init>(androidx.compose.ui/Alignment = ...) // com.srctool.sinew.devtools.ui/FloatingLauncher.<init>|<init>(androidx.compose.ui.Alignment){}[0]
+
+    final val initialPosition // com.srctool.sinew.devtools.ui/FloatingLauncher.initialPosition|{}initialPosition[0]
+        final fun <get-initialPosition>(): androidx.compose.ui/Alignment // com.srctool.sinew.devtools.ui/FloatingLauncher.initialPosition.<get-initialPosition>|<get-initialPosition>(){}[0]
+}
+
+final object com.srctool.sinew.devtools.ui/CustomLauncher : com.srctool.sinew.devtools.ui/DevToolsLauncher { // com.srctool.sinew.devtools.ui/CustomLauncher|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.devtools.ui/CustomLauncher.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.devtools.ui/CustomLauncher.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.devtools.ui/CustomLauncher.toString|toString(){}[0]
+}
+
+final object com.srctool.sinew.devtools.ui/MenuLauncher : com.srctool.sinew.devtools.ui/DevToolsLauncher { // com.srctool.sinew.devtools.ui/MenuLauncher|null[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.devtools.ui/MenuLauncher.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.devtools.ui/MenuLauncher.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.devtools.ui/MenuLauncher.toString|toString(){}[0]
+}
+
+final val com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_BuildRibbon$stableprop // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_BuildRibbon$stableprop|#static{}com_srctool_sinew_devtools_ui_BuildRibbon$stableprop[0]
+final val com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_CustomLauncher$stableprop // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_CustomLauncher$stableprop|#static{}com_srctool_sinew_devtools_ui_CustomLauncher$stableprop[0]
+final val com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Action$stableprop // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Action$stableprop|#static{}com_srctool_sinew_devtools_ui_DevToolEntry_Action$stableprop[0]
+final val com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Group$stableprop // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Group$stableprop|#static{}com_srctool_sinew_devtools_ui_DevToolEntry_Group$stableprop[0]
+final val com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Page$stableprop // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Page$stableprop|#static{}com_srctool_sinew_devtools_ui_DevToolEntry_Page$stableprop[0]
+final val com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Toggle$stableprop // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Toggle$stableprop|#static{}com_srctool_sinew_devtools_ui_DevToolEntry_Toggle$stableprop[0]
+final val com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolSection$stableprop // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolSection$stableprop|#static{}com_srctool_sinew_devtools_ui_DevToolSection$stableprop[0]
+final val com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_FloatingLauncher$stableprop // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_FloatingLauncher$stableprop|#static{}com_srctool_sinew_devtools_ui_FloatingLauncher$stableprop[0]
+final val com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_MenuLauncher$stableprop // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_MenuLauncher$stableprop|#static{}com_srctool_sinew_devtools_ui_MenuLauncher$stableprop[0]
+
+final fun com.srctool.sinew.devtools.ui/DevToolsMenuItem(androidx.compose.ui/Modifier?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.srctool.sinew.devtools.ui/DevToolsMenuItem|DevToolsMenuItem(androidx.compose.ui.Modifier?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun com.srctool.sinew.devtools.ui/SinewDevTools(kotlin.collections/List<com.srctool.sinew.devtools.ui/DevToolSection>?, com.srctool.sinew.devtools.ui/BuildRibbon?, com.srctool.sinew.devtools.ui/DevToolsLauncher?, com.srctool.sinew.devtools/Redaction?, kotlin.collections/List<com.srctool.sinew.storage/InspectableStore>?, kotlin/String?, kotlin.collections/List<kotlin/String>?, kotlin/Boolean, com.srctool.sinew.storage/KeyValueStore?, kotlin/Function2<androidx.compose.runtime/Composer, kotlin/Int, kotlin/Unit>, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int) // com.srctool.sinew.devtools.ui/SinewDevTools|SinewDevTools(kotlin.collections.List<com.srctool.sinew.devtools.ui.DevToolSection>?;com.srctool.sinew.devtools.ui.BuildRibbon?;com.srctool.sinew.devtools.ui.DevToolsLauncher?;com.srctool.sinew.devtools.Redaction?;kotlin.collections.List<com.srctool.sinew.storage.InspectableStore>?;kotlin.String?;kotlin.collections.List<kotlin.String>?;kotlin.Boolean;com.srctool.sinew.storage.KeyValueStore?;kotlin.Function2<androidx.compose.runtime.Composer,kotlin.Int,kotlin.Unit>;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
+final fun com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_BuildRibbon$stableprop_getter(): kotlin/Int // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_BuildRibbon$stableprop_getter|com_srctool_sinew_devtools_ui_BuildRibbon$stableprop_getter(){}[0]
+final fun com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_CustomLauncher$stableprop_getter(): kotlin/Int // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_CustomLauncher$stableprop_getter|com_srctool_sinew_devtools_ui_CustomLauncher$stableprop_getter(){}[0]
+final fun com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Action$stableprop_getter(): kotlin/Int // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Action$stableprop_getter|com_srctool_sinew_devtools_ui_DevToolEntry_Action$stableprop_getter(){}[0]
+final fun com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Group$stableprop_getter(): kotlin/Int // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Group$stableprop_getter|com_srctool_sinew_devtools_ui_DevToolEntry_Group$stableprop_getter(){}[0]
+final fun com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Page$stableprop_getter(): kotlin/Int // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Page$stableprop_getter|com_srctool_sinew_devtools_ui_DevToolEntry_Page$stableprop_getter(){}[0]
+final fun com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Toggle$stableprop_getter(): kotlin/Int // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolEntry_Toggle$stableprop_getter|com_srctool_sinew_devtools_ui_DevToolEntry_Toggle$stableprop_getter(){}[0]
+final fun com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolSection$stableprop_getter(): kotlin/Int // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_DevToolSection$stableprop_getter|com_srctool_sinew_devtools_ui_DevToolSection$stableprop_getter(){}[0]
+final fun com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_FloatingLauncher$stableprop_getter(): kotlin/Int // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_FloatingLauncher$stableprop_getter|com_srctool_sinew_devtools_ui_FloatingLauncher$stableprop_getter(){}[0]
+final fun com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_MenuLauncher$stableprop_getter(): kotlin/Int // com.srctool.sinew.devtools.ui/com_srctool_sinew_devtools_ui_MenuLauncher$stableprop_getter|com_srctool_sinew_devtools_ui_MenuLauncher$stableprop_getter(){}[0]

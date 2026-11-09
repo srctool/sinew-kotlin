@@ -7,6 +7,8 @@ plugins {
 description = "DevTools overlay, dashboard and inspector pages."
 
 kotlin {
+    @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
+    abiValidation()                                                // the no-op artifact's API must match this one
     sourceSets {
         commonMain.dependencies {
             api(projects.sinewDevtools)
