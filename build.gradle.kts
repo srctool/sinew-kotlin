@@ -99,3 +99,73 @@ tasks.register("checkDevtoolsNoopAbi") {
         check(problems.isEmpty()) { "sinew-devtools-noop's ABI differs from the real devtools':\n" + problems.joinToString("\n") }
     }
 }
+
+// The gating proof (see the docs: DevTools, Gating): the sample's production outputs carry no devtools code beyond the
+// no-op. Each output is searched for `com.srctool.sinew.devtools` names: class names in an APK's dex and a jar, `kclass:`
+// and `kfun:` symbols in the iOS framework, Compose's trace keys in the wasm. Each name is cut to its top-level
+// declaration, and any the no-op doesn't declare (by its ABI dumps) means real devtools code. A build that should carry
+// the real devtools is checked the opposite way, which shows the search can see it: the Android staging release always,
+// and the iOS, desktop and web outputs with -Psinew.devtools=true.
+val devtoolsGatingExpectReal = providers.gradleProperty("sinew.devtools").map(String::toBoolean).orElse(false)
+
+fun registerDevToolsGatingCheck(target: String, build: String, outputs: List<Pair<String, Provider<Boolean>>>) =
+    tasks.register("checkDevToolsGating$target") {
+        group = "verification"
+        description = "Checks that the sample's $target output carries devtools code only where it should."
+        dependsOn(build.split(' '))
+        val noopApi = layout.projectDirectory.dir("sinew-devtools-noop/api").asFile
+        val checked = outputs.map { (path, expectReal) -> layout.projectDirectory.dir(path).asFile to expectReal }
+        val root = layout.projectDirectory.asFile
+        doLast {
+            val declared = Regex("""com\.srctool\.sinew\.devtools(?:\.ui)?/(\w+)|class com/srctool/sinew/devtools/(?:ui/)?([\w$]+)""")
+            val allowed = noopApi.walk().filter { it.isFile && it.extension == "api" }
+                .flatMap { declared.findAll(it.readText()) }
+                .flatMap { m -> (m.groupValues[1] + "$" + m.groupValues[2]).split('$') }
+                .filter(String::isNotEmpty).toSet()
+            // The bytes searched: a dex or a jar's entry names from inside a zip, any other file as it is.
+            fun contents(file: File): Sequence<String> = when (file.extension) {
+                "apk", "jar" -> java.util.zip.ZipFile(file).use { zip ->
+                    zip.entries().asSequence().flatMap { e ->
+                        if (e.name.endsWith(".dex")) sequenceOf(e.name, zip.getInputStream(e).readBytes().toString(Charsets.ISO_8859_1))
+                        else sequenceOf(e.name)
+                    }.toList().asSequence()
+                }
+                else -> sequenceOf(file.readBytes().toString(Charsets.ISO_8859_1))
+            }
+            val name = Regex("""com[./]srctool[./]sinew[./]devtools(?:[./]ui)?[.#/$](\w+?)(?:_\d+)?(?:\$(\w+))?\b""")
+            val problems = checked.mapNotNull { (dir, expectReal) ->
+                val files = dir.walk().filter { it.isFile && it.extension in setOf("apk", "jar", "wasm", "") && !it.isHidden }.toList()
+                if (files.isEmpty()) return@mapNotNull "$dir: no build output found"
+                val real = files.flatMap(::contents).flatMap { name.findAll(it) }
+                    .map { m -> if (m.groupValues[1] == "ComposableSingletons") m.groupValues[2] else m.groupValues[1] }
+                    .filter { it.isNotEmpty() && it != "ui" && it !in allowed }.toSortedSet()
+                val where = dir.relativeTo(root)
+                when {
+                    expectReal.get() && real.isEmpty() -> "$where should carry the real devtools, but no devtools code was found in it"
+                    !expectReal.get() && real.isNotEmpty() -> "$where carries devtools code the no-op doesn't declare: " + real.take(15).joinToString()
+                    else -> null.also { println("$where: ${if (expectReal.get()) "real devtools (${real.size} names)" else "no-op only"}") }
+                }
+            }
+            check(problems.isEmpty()) { "Devtools gating failed:\n" + problems.joinToString("\n") { "  $it" } }
+        }
+    }
+
+val noReal = provider { false }
+val gatingChecks = listOfNotNull(
+    registerDevToolsGatingCheck(
+        "Android", ":sample:androidApp:assembleProductionRelease :sample:androidApp:assembleStagingRelease",
+        listOf("sample/androidApp/build/outputs/apk/production/release" to noReal, "sample/androidApp/build/outputs/apk/staging/release" to provider { true }),
+    ),
+    registerDevToolsGatingCheck("Desktop", ":sample:shared:packageUberJarForCurrentOS", listOf("sample/shared/build/compose/jars" to devtoolsGatingExpectReal)),
+    registerDevToolsGatingCheck("Web", ":sample:shared:wasmJsBrowserDistribution", listOf("sample/shared/build/dist/wasmJs/productionExecutable" to devtoolsGatingExpectReal)),
+    // The device framework, as an app ships it; Kotlin/Native builds Apple targets only on macOS.
+    if (System.getProperty("os.name").startsWith("Mac")) registerDevToolsGatingCheck(
+        "Ios", ":sample:shared:linkReleaseFrameworkIosArm64", listOf("sample/shared/build/bin/iosArm64/releaseFramework" to devtoolsGatingExpectReal),
+    ) else null,
+)
+
+tasks.register("checkDevToolsGating") {
+    group = "verification"
+    description = "Checks every sample output this host builds for devtools code where it shouldn't be."
+    dependsOn(gatingChecks)
+}

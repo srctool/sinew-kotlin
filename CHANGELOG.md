@@ -5,6 +5,9 @@ All notable changes to Sinew for Kotlin are documented here. Every module shares
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
+- S6 devtools gating in CI (#47): the `devtools-gating` job proves production builds carry no devtools code.
+  - `checkDevToolsGating` builds the sample's production outputs (Android release APK, desktop uber jar, wasm bundle, and on macOS the `iosArm64` release framework) and fails if any holds a `com.srctool.sinew.devtools` declaration that `sinew-devtools-noop` doesn't declare.
+  - The real-devtools builds are checked the opposite way (the Android staging release, and the rest with `-Psinew.devtools=true`), so a search that can't see devtools code fails instead of passing.
 - S6 `sinew-devtools-noop` (#46): the stand-in production builds depend on.
   - It declares exactly what `sinew-devtools` and `sinew-devtools-ui` declare together, in the same packages, with nothing behind it: nothing is recorded, the hooks are `SinewHttpHooks.None`, `SinewDevTools { content }` only calls `content()`, and `DevToolsMenuItem` draws nothing. Where a value must come back it's the safe one: every name counts as sensitive, and no body is kept.
   - Kotlin's ABI validation is on for the three modules, with reference dumps under each module's `api/`. `checkDevtoolsNoopAbi`, in CI, compares the no-op's JVM, Android and klib dumps with the real two together. It ignores what the Compose compiler generates (`ComposableSingletons`, `$stable`, `$stableprop`).

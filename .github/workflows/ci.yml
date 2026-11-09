@@ -75,6 +75,33 @@ jobs:
       - name: The sample's iOS app builds
         run: xcodebuild -project sample/iosApp/iosApp.xcodeproj -scheme iosApp -sdk iphonesimulator -destination 'generic/platform=iOS Simulator' build
 
+  devtools-gating:
+    name: Devtools gating (${{ matrix.name }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    # Proof that production builds carry no devtools code (see the docs: DevTools, Gating). The production outputs may
+    # hold only what sinew-devtools-noop declares; the real-devtools builds (the Android staging release, and the rest
+    # with -Psinew.devtools=true) must hold more, which shows the search can see devtools code.
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { name: 'Android, desktop, web', os: ubuntu-24.04, tasks: checkDevToolsGating, real: checkDevToolsGatingDesktop checkDevToolsGatingWeb }
+          - { name: iOS, os: macos-15, tasks: checkDevToolsGatingIos, real: checkDevToolsGatingIos }
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          submodules: true                 # Camouflage from source, until it's published
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v6
+      - name: Production builds hold only the no-op
+        run: ./gradlew ${{ matrix.tasks }}
+      - name: Real-devtools builds hold the real devtools
+        run: ./gradlew -Psinew.devtools=true ${{ matrix.real }}
+
   android-device:
     name: Android device tests (emulator)
     runs-on: ubuntu-24.04
