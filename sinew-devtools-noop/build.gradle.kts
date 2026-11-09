@@ -7,10 +7,16 @@ plugins {
 description = "The DevTools API with no behavior, for production builds."
 
 kotlin {
+    // Must equal sinew-devtools' and sinew-devtools-ui's together: `checkDevtoolsNoopAbi` compares them.
+    @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
+    abiValidation()
     sourceSets {
         commonMain.dependencies {
+            // The real modules' API names these types, so the no-op exposes them the same way.
             api(projects.sinewNetwork)
             api(projects.sinewStorage)
+            api(kotlinLibs.coroutines.core)
+            api(composeLibs.foundation)
         }
     }
 }

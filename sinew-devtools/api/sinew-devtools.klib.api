@@ -1,0 +1,371 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-devtools>
+final enum class com.srctool.sinew.devtools/ExceptionSource : kotlin/Enum<com.srctool.sinew.devtools/ExceptionSource> { // com.srctool.sinew.devtools/ExceptionSource|null[0]
+    enum entry Reported // com.srctool.sinew.devtools/ExceptionSource.Reported|null[0]
+    enum entry Uncaught // com.srctool.sinew.devtools/ExceptionSource.Uncaught|null[0]
+
+    final val entries // com.srctool.sinew.devtools/ExceptionSource.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.srctool.sinew.devtools/ExceptionSource> // com.srctool.sinew.devtools/ExceptionSource.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.srctool.sinew.devtools/ExceptionSource // com.srctool.sinew.devtools/ExceptionSource.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.srctool.sinew.devtools/ExceptionSource> // com.srctool.sinew.devtools/ExceptionSource.values|values#static(){}[0]
+}
+
+sealed interface com.srctool.sinew.devtools/RecordedBody { // com.srctool.sinew.devtools/RecordedBody|null[0]
+    final class Binary : com.srctool.sinew.devtools/RecordedBody { // com.srctool.sinew.devtools/RecordedBody.Binary|null[0]
+        constructor <init>(kotlin/String?, kotlin/Long) // com.srctool.sinew.devtools/RecordedBody.Binary.<init>|<init>(kotlin.String?;kotlin.Long){}[0]
+
+        final val contentType // com.srctool.sinew.devtools/RecordedBody.Binary.contentType|{}contentType[0]
+            final fun <get-contentType>(): kotlin/String? // com.srctool.sinew.devtools/RecordedBody.Binary.contentType.<get-contentType>|<get-contentType>(){}[0]
+        final val size // com.srctool.sinew.devtools/RecordedBody.Binary.size|{}size[0]
+            final fun <get-size>(): kotlin/Long // com.srctool.sinew.devtools/RecordedBody.Binary.size.<get-size>|<get-size>(){}[0]
+
+        final fun component1(): kotlin/String? // com.srctool.sinew.devtools/RecordedBody.Binary.component1|component1(){}[0]
+        final fun component2(): kotlin/Long // com.srctool.sinew.devtools/RecordedBody.Binary.component2|component2(){}[0]
+        final fun copy(kotlin/String? = ..., kotlin/Long = ...): com.srctool.sinew.devtools/RecordedBody.Binary // com.srctool.sinew.devtools/RecordedBody.Binary.copy|copy(kotlin.String?;kotlin.Long){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.devtools/RecordedBody.Binary.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.devtools/RecordedBody.Binary.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.devtools/RecordedBody.Binary.toString|toString(){}[0]
+    }
+
+    final class Text : com.srctool.sinew.devtools/RecordedBody { // com.srctool.sinew.devtools/RecordedBody.Text|null[0]
+        constructor <init>(kotlin/String, kotlin/Long, kotlin/Boolean, kotlin/Boolean = ...) // com.srctool.sinew.devtools/RecordedBody.Text.<init>|<init>(kotlin.String;kotlin.Long;kotlin.Boolean;kotlin.Boolean){}[0]
+
+        final val masked // com.srctool.sinew.devtools/RecordedBody.Text.masked|{}masked[0]
+            final fun <get-masked>(): kotlin/Boolean // com.srctool.sinew.devtools/RecordedBody.Text.masked.<get-masked>|<get-masked>(){}[0]
+        final val size // com.srctool.sinew.devtools/RecordedBody.Text.size|{}size[0]
+            final fun <get-size>(): kotlin/Long // com.srctool.sinew.devtools/RecordedBody.Text.size.<get-size>|<get-size>(){}[0]
+        final val text // com.srctool.sinew.devtools/RecordedBody.Text.text|{}text[0]
+            final fun <get-text>(): kotlin/String // com.srctool.sinew.devtools/RecordedBody.Text.text.<get-text>|<get-text>(){}[0]
+        final val truncated // com.srctool.sinew.devtools/RecordedBody.Text.truncated|{}truncated[0]
+            final fun <get-truncated>(): kotlin/Boolean // com.srctool.sinew.devtools/RecordedBody.Text.truncated.<get-truncated>|<get-truncated>(){}[0]
+
+        final fun component1(): kotlin/String // com.srctool.sinew.devtools/RecordedBody.Text.component1|component1(){}[0]
+        final fun component2(): kotlin/Long // com.srctool.sinew.devtools/RecordedBody.Text.component2|component2(){}[0]
+        final fun component3(): kotlin/Boolean // com.srctool.sinew.devtools/RecordedBody.Text.component3|component3(){}[0]
+        final fun component4(): kotlin/Boolean // com.srctool.sinew.devtools/RecordedBody.Text.component4|component4(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/Long = ..., kotlin/Boolean = ..., kotlin/Boolean = ...): com.srctool.sinew.devtools/RecordedBody.Text // com.srctool.sinew.devtools/RecordedBody.Text.copy|copy(kotlin.String;kotlin.Long;kotlin.Boolean;kotlin.Boolean){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.devtools/RecordedBody.Text.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.devtools/RecordedBody.Text.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.devtools/RecordedBody.Text.toString|toString(){}[0]
+    }
+
+    final object None : com.srctool.sinew.devtools/RecordedBody { // com.srctool.sinew.devtools/RecordedBody.None|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.devtools/RecordedBody.None.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.devtools/RecordedBody.None.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.devtools/RecordedBody.None.toString|toString(){}[0]
+    }
+}
+
+final class com.srctool.sinew.devtools/DevToolsCrashReporter : com.srctool.sinew.exception/CrashReporter { // com.srctool.sinew.devtools/DevToolsCrashReporter|null[0]
+    constructor <init>(com.srctool.sinew.exception/CrashReporter, com.srctool.sinew.devtools/ExceptionRecorder = ...) // com.srctool.sinew.devtools/DevToolsCrashReporter.<init>|<init>(com.srctool.sinew.exception.CrashReporter;com.srctool.sinew.devtools.ExceptionRecorder){}[0]
+
+    final fun recordNonFatal(com.srctool.sinew.models/SinewException) // com.srctool.sinew.devtools/DevToolsCrashReporter.recordNonFatal|recordNonFatal(com.srctool.sinew.models.SinewException){}[0]
+}
+
+final class com.srctool.sinew.devtools/ExceptionRecord { // com.srctool.sinew.devtools/ExceptionRecord|null[0]
+    constructor <init>(kotlin/Long, kotlin.time/Instant, kotlin.time/Instant, kotlin/String, kotlin/String?, kotlin/String, kotlin/String, kotlin/Int, com.srctool.sinew.devtools/ExceptionSource) // com.srctool.sinew.devtools/ExceptionRecord.<init>|<init>(kotlin.Long;kotlin.time.Instant;kotlin.time.Instant;kotlin.String;kotlin.String?;kotlin.String;kotlin.String;kotlin.Int;com.srctool.sinew.devtools.ExceptionSource){}[0]
+
+    final val code // com.srctool.sinew.devtools/ExceptionRecord.code|{}code[0]
+        final fun <get-code>(): kotlin/String? // com.srctool.sinew.devtools/ExceptionRecord.code.<get-code>|<get-code>(){}[0]
+    final val count // com.srctool.sinew.devtools/ExceptionRecord.count|{}count[0]
+        final fun <get-count>(): kotlin/Int // com.srctool.sinew.devtools/ExceptionRecord.count.<get-count>|<get-count>(){}[0]
+    final val firstAt // com.srctool.sinew.devtools/ExceptionRecord.firstAt|{}firstAt[0]
+        final fun <get-firstAt>(): kotlin.time/Instant // com.srctool.sinew.devtools/ExceptionRecord.firstAt.<get-firstAt>|<get-firstAt>(){}[0]
+    final val id // com.srctool.sinew.devtools/ExceptionRecord.id|{}id[0]
+        final fun <get-id>(): kotlin/Long // com.srctool.sinew.devtools/ExceptionRecord.id.<get-id>|<get-id>(){}[0]
+    final val lastAt // com.srctool.sinew.devtools/ExceptionRecord.lastAt|{}lastAt[0]
+        final fun <get-lastAt>(): kotlin.time/Instant // com.srctool.sinew.devtools/ExceptionRecord.lastAt.<get-lastAt>|<get-lastAt>(){}[0]
+    final val message // com.srctool.sinew.devtools/ExceptionRecord.message|{}message[0]
+        final fun <get-message>(): kotlin/String // com.srctool.sinew.devtools/ExceptionRecord.message.<get-message>|<get-message>(){}[0]
+    final val source // com.srctool.sinew.devtools/ExceptionRecord.source|{}source[0]
+        final fun <get-source>(): com.srctool.sinew.devtools/ExceptionSource // com.srctool.sinew.devtools/ExceptionRecord.source.<get-source>|<get-source>(){}[0]
+    final val stackTrace // com.srctool.sinew.devtools/ExceptionRecord.stackTrace|{}stackTrace[0]
+        final fun <get-stackTrace>(): kotlin/String // com.srctool.sinew.devtools/ExceptionRecord.stackTrace.<get-stackTrace>|<get-stackTrace>(){}[0]
+    final val type // com.srctool.sinew.devtools/ExceptionRecord.type|{}type[0]
+        final fun <get-type>(): kotlin/String // com.srctool.sinew.devtools/ExceptionRecord.type.<get-type>|<get-type>(){}[0]
+
+    final fun asText(): kotlin/String // com.srctool.sinew.devtools/ExceptionRecord.asText|asText(){}[0]
+    final fun component1(): kotlin/Long // com.srctool.sinew.devtools/ExceptionRecord.component1|component1(){}[0]
+    final fun component2(): kotlin.time/Instant // com.srctool.sinew.devtools/ExceptionRecord.component2|component2(){}[0]
+    final fun component3(): kotlin.time/Instant // com.srctool.sinew.devtools/ExceptionRecord.component3|component3(){}[0]
+    final fun component4(): kotlin/String // com.srctool.sinew.devtools/ExceptionRecord.component4|component4(){}[0]
+    final fun component5(): kotlin/String? // com.srctool.sinew.devtools/ExceptionRecord.component5|component5(){}[0]
+    final fun component6(): kotlin/String // com.srctool.sinew.devtools/ExceptionRecord.component6|component6(){}[0]
+    final fun component7(): kotlin/String // com.srctool.sinew.devtools/ExceptionRecord.component7|component7(){}[0]
+    final fun component8(): kotlin/Int // com.srctool.sinew.devtools/ExceptionRecord.component8|component8(){}[0]
+    final fun component9(): com.srctool.sinew.devtools/ExceptionSource // com.srctool.sinew.devtools/ExceptionRecord.component9|component9(){}[0]
+    final fun copy(kotlin/Long = ..., kotlin.time/Instant = ..., kotlin.time/Instant = ..., kotlin/String = ..., kotlin/String? = ..., kotlin/String = ..., kotlin/String = ..., kotlin/Int = ..., com.srctool.sinew.devtools/ExceptionSource = ...): com.srctool.sinew.devtools/ExceptionRecord // com.srctool.sinew.devtools/ExceptionRecord.copy|copy(kotlin.Long;kotlin.time.Instant;kotlin.time.Instant;kotlin.String;kotlin.String?;kotlin.String;kotlin.String;kotlin.Int;com.srctool.sinew.devtools.ExceptionSource){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.devtools/ExceptionRecord.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.devtools/ExceptionRecord.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.devtools/ExceptionRecord.toString|toString(){}[0]
+}
+
+final class com.srctool.sinew.devtools/ExceptionRecorder { // com.srctool.sinew.devtools/ExceptionRecorder|null[0]
+    constructor <init>(kotlin/Int = ..., kotlin.time/Duration = ..., com.srctool.sinew.devtools/Redaction = ..., kotlin.time/Clock = ...) // com.srctool.sinew.devtools/ExceptionRecorder.<init>|<init>(kotlin.Int;kotlin.time.Duration;com.srctool.sinew.devtools.Redaction;kotlin.time.Clock){}[0]
+
+    final val capacity // com.srctool.sinew.devtools/ExceptionRecorder.capacity|{}capacity[0]
+        final fun <get-capacity>(): kotlin/Int // com.srctool.sinew.devtools/ExceptionRecorder.capacity.<get-capacity>|<get-capacity>(){}[0]
+    final val dedupeWindow // com.srctool.sinew.devtools/ExceptionRecorder.dedupeWindow|{}dedupeWindow[0]
+        final fun <get-dedupeWindow>(): kotlin.time/Duration // com.srctool.sinew.devtools/ExceptionRecorder.dedupeWindow.<get-dedupeWindow>|<get-dedupeWindow>(){}[0]
+    final val records // com.srctool.sinew.devtools/ExceptionRecorder.records|{}records[0]
+        final fun <get-records>(): kotlinx.coroutines.flow/StateFlow<kotlin.collections/List<com.srctool.sinew.devtools/ExceptionRecord>> // com.srctool.sinew.devtools/ExceptionRecorder.records.<get-records>|<get-records>(){}[0]
+
+    final var redaction // com.srctool.sinew.devtools/ExceptionRecorder.redaction|{}redaction[0]
+        final fun <get-redaction>(): com.srctool.sinew.devtools/Redaction // com.srctool.sinew.devtools/ExceptionRecorder.redaction.<get-redaction>|<get-redaction>(){}[0]
+        final fun <set-redaction>(com.srctool.sinew.devtools/Redaction) // com.srctool.sinew.devtools/ExceptionRecorder.redaction.<set-redaction>|<set-redaction>(com.srctool.sinew.devtools.Redaction){}[0]
+
+    final fun clear() // com.srctool.sinew.devtools/ExceptionRecorder.clear|clear(){}[0]
+    final fun record(kotlin/Throwable, com.srctool.sinew.devtools/ExceptionSource = ...) // com.srctool.sinew.devtools/ExceptionRecorder.record|record(kotlin.Throwable;com.srctool.sinew.devtools.ExceptionSource){}[0]
+
+    final object Companion { // com.srctool.sinew.devtools/ExceptionRecorder.Companion|null[0]
+        final const val DEFAULT_CAPACITY // com.srctool.sinew.devtools/ExceptionRecorder.Companion.DEFAULT_CAPACITY|{}DEFAULT_CAPACITY[0]
+            final fun <get-DEFAULT_CAPACITY>(): kotlin/Int // com.srctool.sinew.devtools/ExceptionRecorder.Companion.DEFAULT_CAPACITY.<get-DEFAULT_CAPACITY>|<get-DEFAULT_CAPACITY>(){}[0]
+
+        final val DEFAULT_DEDUPE_WINDOW // com.srctool.sinew.devtools/ExceptionRecorder.Companion.DEFAULT_DEDUPE_WINDOW|{}DEFAULT_DEDUPE_WINDOW[0]
+            final fun <get-DEFAULT_DEDUPE_WINDOW>(): kotlin.time/Duration // com.srctool.sinew.devtools/ExceptionRecorder.Companion.DEFAULT_DEDUPE_WINDOW.<get-DEFAULT_DEDUPE_WINDOW>|<get-DEFAULT_DEDUPE_WINDOW>(){}[0]
+    }
+}
+
+final class com.srctool.sinew.devtools/FaultRule { // com.srctool.sinew.devtools/FaultRule|null[0]
+    constructor <init>(kotlin/String? = ..., kotlin/String, kotlin/Int? = ..., kotlin.time/Duration? = ..., kotlin/Boolean = ..., kotlin/String? = ...) // com.srctool.sinew.devtools/FaultRule.<init>|<init>(kotlin.String?;kotlin.String;kotlin.Int?;kotlin.time.Duration?;kotlin.Boolean;kotlin.String?){}[0]
+
+    final val body // com.srctool.sinew.devtools/FaultRule.body|{}body[0]
+        final fun <get-body>(): kotlin/String? // com.srctool.sinew.devtools/FaultRule.body.<get-body>|<get-body>(){}[0]
+    final val delay // com.srctool.sinew.devtools/FaultRule.delay|{}delay[0]
+        final fun <get-delay>(): kotlin.time/Duration? // com.srctool.sinew.devtools/FaultRule.delay.<get-delay>|<get-delay>(){}[0]
+    final val drop // com.srctool.sinew.devtools/FaultRule.drop|{}drop[0]
+        final fun <get-drop>(): kotlin/Boolean // com.srctool.sinew.devtools/FaultRule.drop.<get-drop>|<get-drop>(){}[0]
+    final val method // com.srctool.sinew.devtools/FaultRule.method|{}method[0]
+        final fun <get-method>(): kotlin/String? // com.srctool.sinew.devtools/FaultRule.method.<get-method>|<get-method>(){}[0]
+    final val pathPattern // com.srctool.sinew.devtools/FaultRule.pathPattern|{}pathPattern[0]
+        final fun <get-pathPattern>(): kotlin/String // com.srctool.sinew.devtools/FaultRule.pathPattern.<get-pathPattern>|<get-pathPattern>(){}[0]
+    final val status // com.srctool.sinew.devtools/FaultRule.status|{}status[0]
+        final fun <get-status>(): kotlin/Int? // com.srctool.sinew.devtools/FaultRule.status.<get-status>|<get-status>(){}[0]
+
+    final fun component1(): kotlin/String? // com.srctool.sinew.devtools/FaultRule.component1|component1(){}[0]
+    final fun component2(): kotlin/String // com.srctool.sinew.devtools/FaultRule.component2|component2(){}[0]
+    final fun component3(): kotlin/Int? // com.srctool.sinew.devtools/FaultRule.component3|component3(){}[0]
+    final fun component4(): kotlin.time/Duration? // com.srctool.sinew.devtools/FaultRule.component4|component4(){}[0]
+    final fun component5(): kotlin/Boolean // com.srctool.sinew.devtools/FaultRule.component5|component5(){}[0]
+    final fun component6(): kotlin/String? // com.srctool.sinew.devtools/FaultRule.component6|component6(){}[0]
+    final fun copy(kotlin/String? = ..., kotlin/String = ..., kotlin/Int? = ..., kotlin.time/Duration? = ..., kotlin/Boolean = ..., kotlin/String? = ...): com.srctool.sinew.devtools/FaultRule // com.srctool.sinew.devtools/FaultRule.copy|copy(kotlin.String?;kotlin.String;kotlin.Int?;kotlin.time.Duration?;kotlin.Boolean;kotlin.String?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.devtools/FaultRule.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.devtools/FaultRule.hashCode|hashCode(){}[0]
+    final fun matches(kotlin/String, kotlin/String): kotlin/Boolean // com.srctool.sinew.devtools/FaultRule.matches|matches(kotlin.String;kotlin.String){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.devtools/FaultRule.toString|toString(){}[0]
+}
+
+final class com.srctool.sinew.devtools/FaultRules { // com.srctool.sinew.devtools/FaultRules|null[0]
+    constructor <init>() // com.srctool.sinew.devtools/FaultRules.<init>|<init>(){}[0]
+
+    final val active // com.srctool.sinew.devtools/FaultRules.active|{}active[0]
+        final fun <get-active>(): kotlinx.coroutines.flow/StateFlow<kotlin.collections/List<com.srctool.sinew.devtools/FaultRule>> // com.srctool.sinew.devtools/FaultRules.active.<get-active>|<get-active>(){}[0]
+
+    final fun add(com.srctool.sinew.devtools/FaultRule) // com.srctool.sinew.devtools/FaultRules.add|add(com.srctool.sinew.devtools.FaultRule){}[0]
+    final fun clear() // com.srctool.sinew.devtools/FaultRules.clear|clear(){}[0]
+    final fun match(kotlin/String, kotlin/String): com.srctool.sinew.devtools/FaultRule? // com.srctool.sinew.devtools/FaultRules.match|match(kotlin.String;kotlin.String){}[0]
+    final fun remove(com.srctool.sinew.devtools/FaultRule) // com.srctool.sinew.devtools/FaultRules.remove|remove(com.srctool.sinew.devtools.FaultRule){}[0]
+}
+
+final class com.srctool.sinew.devtools/HostOverride { // com.srctool.sinew.devtools/HostOverride|null[0]
+    constructor <init>() // com.srctool.sinew.devtools/HostOverride.<init>|<init>(){}[0]
+
+    final val current // com.srctool.sinew.devtools/HostOverride.current|{}current[0]
+        final fun <get-current>(): kotlinx.coroutines.flow/StateFlow<kotlin/String?> // com.srctool.sinew.devtools/HostOverride.current.<get-current>|<get-current>(){}[0]
+    final val hosts // com.srctool.sinew.devtools/HostOverride.hosts|{}hosts[0]
+        final fun <get-hosts>(): kotlinx.coroutines.flow/StateFlow<kotlin.collections/List<kotlin/String>> // com.srctool.sinew.devtools/HostOverride.hosts.<get-hosts>|<get-hosts>(){}[0]
+
+    final suspend fun configure(kotlin.collections/List<kotlin/String>, com.srctool.sinew.storage/KeyValueStore? = ...) // com.srctool.sinew.devtools/HostOverride.configure|configure(kotlin.collections.List<kotlin.String>;com.srctool.sinew.storage.KeyValueStore?){}[0]
+    final suspend fun select(kotlin/String?) // com.srctool.sinew.devtools/HostOverride.select|select(kotlin.String?){}[0]
+}
+
+final class com.srctool.sinew.devtools/NetworkExchange { // com.srctool.sinew.devtools/NetworkExchange|null[0]
+    constructor <init>(kotlin/String, kotlin/String, kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> = ..., kotlin/ByteArray? = ..., kotlin/Boolean = ..., kotlin/Int? = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> = ..., kotlin/ByteArray? = ..., kotlin.time/Instant, kotlin.time/Duration? = ..., kotlin/Throwable? = ..., kotlin.collections/Set<kotlin/String> = ..., kotlin/Boolean = ...) // com.srctool.sinew.devtools/NetworkExchange.<init>|<init>(kotlin.String;kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>;kotlin.ByteArray?;kotlin.Boolean;kotlin.Int?;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>;kotlin.ByteArray?;kotlin.time.Instant;kotlin.time.Duration?;kotlin.Throwable?;kotlin.collections.Set<kotlin.String>;kotlin.Boolean){}[0]
+
+    final val clientHeaders // com.srctool.sinew.devtools/NetworkExchange.clientHeaders|{}clientHeaders[0]
+        final fun <get-clientHeaders>(): kotlin.collections/Set<kotlin/String> // com.srctool.sinew.devtools/NetworkExchange.clientHeaders.<get-clientHeaders>|<get-clientHeaders>(){}[0]
+    final val duration // com.srctool.sinew.devtools/NetworkExchange.duration|{}duration[0]
+        final fun <get-duration>(): kotlin.time/Duration? // com.srctool.sinew.devtools/NetworkExchange.duration.<get-duration>|<get-duration>(){}[0]
+    final val error // com.srctool.sinew.devtools/NetworkExchange.error|{}error[0]
+        final fun <get-error>(): kotlin/Throwable? // com.srctool.sinew.devtools/NetworkExchange.error.<get-error>|<get-error>(){}[0]
+    final val isReplay // com.srctool.sinew.devtools/NetworkExchange.isReplay|{}isReplay[0]
+        final fun <get-isReplay>(): kotlin/Boolean // com.srctool.sinew.devtools/NetworkExchange.isReplay.<get-isReplay>|<get-isReplay>(){}[0]
+    final val method // com.srctool.sinew.devtools/NetworkExchange.method|{}method[0]
+        final fun <get-method>(): kotlin/String // com.srctool.sinew.devtools/NetworkExchange.method.<get-method>|<get-method>(){}[0]
+    final val requestBody // com.srctool.sinew.devtools/NetworkExchange.requestBody|{}requestBody[0]
+        final fun <get-requestBody>(): kotlin/ByteArray? // com.srctool.sinew.devtools/NetworkExchange.requestBody.<get-requestBody>|<get-requestBody>(){}[0]
+    final val requestBodyStreamed // com.srctool.sinew.devtools/NetworkExchange.requestBodyStreamed|{}requestBodyStreamed[0]
+        final fun <get-requestBodyStreamed>(): kotlin/Boolean // com.srctool.sinew.devtools/NetworkExchange.requestBodyStreamed.<get-requestBodyStreamed>|<get-requestBodyStreamed>(){}[0]
+    final val requestHeaders // com.srctool.sinew.devtools/NetworkExchange.requestHeaders|{}requestHeaders[0]
+        final fun <get-requestHeaders>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> // com.srctool.sinew.devtools/NetworkExchange.requestHeaders.<get-requestHeaders>|<get-requestHeaders>(){}[0]
+    final val responseBody // com.srctool.sinew.devtools/NetworkExchange.responseBody|{}responseBody[0]
+        final fun <get-responseBody>(): kotlin/ByteArray? // com.srctool.sinew.devtools/NetworkExchange.responseBody.<get-responseBody>|<get-responseBody>(){}[0]
+    final val responseHeaders // com.srctool.sinew.devtools/NetworkExchange.responseHeaders|{}responseHeaders[0]
+        final fun <get-responseHeaders>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> // com.srctool.sinew.devtools/NetworkExchange.responseHeaders.<get-responseHeaders>|<get-responseHeaders>(){}[0]
+    final val startedAt // com.srctool.sinew.devtools/NetworkExchange.startedAt|{}startedAt[0]
+        final fun <get-startedAt>(): kotlin.time/Instant // com.srctool.sinew.devtools/NetworkExchange.startedAt.<get-startedAt>|<get-startedAt>(){}[0]
+    final val status // com.srctool.sinew.devtools/NetworkExchange.status|{}status[0]
+        final fun <get-status>(): kotlin/Int? // com.srctool.sinew.devtools/NetworkExchange.status.<get-status>|<get-status>(){}[0]
+    final val url // com.srctool.sinew.devtools/NetworkExchange.url|{}url[0]
+        final fun <get-url>(): kotlin/String // com.srctool.sinew.devtools/NetworkExchange.url.<get-url>|<get-url>(){}[0]
+}
+
+final class com.srctool.sinew.devtools/NetworkRecord { // com.srctool.sinew.devtools/NetworkRecord|null[0]
+    constructor <init>(kotlin/Long, kotlin.time/Instant, kotlin/String, kotlin/String, kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>, com.srctool.sinew.devtools/RecordedBody, kotlin/Int?, kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>, com.srctool.sinew.devtools/RecordedBody, kotlin.time/Duration?, kotlin/String?, kotlin/String?, kotlin/String?, kotlin/Boolean, kotlin/Boolean) // com.srctool.sinew.devtools/NetworkRecord.<init>|<init>(kotlin.Long;kotlin.time.Instant;kotlin.String;kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>;com.srctool.sinew.devtools.RecordedBody;kotlin.Int?;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>;com.srctool.sinew.devtools.RecordedBody;kotlin.time.Duration?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.Boolean;kotlin.Boolean){}[0]
+
+    final val cacheSource // com.srctool.sinew.devtools/NetworkRecord.cacheSource|{}cacheSource[0]
+        final fun <get-cacheSource>(): kotlin/String? // com.srctool.sinew.devtools/NetworkRecord.cacheSource.<get-cacheSource>|<get-cacheSource>(){}[0]
+    final val duration // com.srctool.sinew.devtools/NetworkRecord.duration|{}duration[0]
+        final fun <get-duration>(): kotlin.time/Duration? // com.srctool.sinew.devtools/NetworkRecord.duration.<get-duration>|<get-duration>(){}[0]
+    final val errorCode // com.srctool.sinew.devtools/NetworkRecord.errorCode|{}errorCode[0]
+        final fun <get-errorCode>(): kotlin/String? // com.srctool.sinew.devtools/NetworkRecord.errorCode.<get-errorCode>|<get-errorCode>(){}[0]
+    final val errorType // com.srctool.sinew.devtools/NetworkRecord.errorType|{}errorType[0]
+        final fun <get-errorType>(): kotlin/String? // com.srctool.sinew.devtools/NetworkRecord.errorType.<get-errorType>|<get-errorType>(){}[0]
+    final val fromCache // com.srctool.sinew.devtools/NetworkRecord.fromCache|{}fromCache[0]
+        final fun <get-fromCache>(): kotlin/Boolean // com.srctool.sinew.devtools/NetworkRecord.fromCache.<get-fromCache>|<get-fromCache>(){}[0]
+    final val id // com.srctool.sinew.devtools/NetworkRecord.id|{}id[0]
+        final fun <get-id>(): kotlin/Long // com.srctool.sinew.devtools/NetworkRecord.id.<get-id>|<get-id>(){}[0]
+    final val isReplay // com.srctool.sinew.devtools/NetworkRecord.isReplay|{}isReplay[0]
+        final fun <get-isReplay>(): kotlin/Boolean // com.srctool.sinew.devtools/NetworkRecord.isReplay.<get-isReplay>|<get-isReplay>(){}[0]
+    final val method // com.srctool.sinew.devtools/NetworkRecord.method|{}method[0]
+        final fun <get-method>(): kotlin/String // com.srctool.sinew.devtools/NetworkRecord.method.<get-method>|<get-method>(){}[0]
+    final val replayable // com.srctool.sinew.devtools/NetworkRecord.replayable|{}replayable[0]
+        final fun <get-replayable>(): kotlin/Boolean // com.srctool.sinew.devtools/NetworkRecord.replayable.<get-replayable>|<get-replayable>(){}[0]
+    final val requestBody // com.srctool.sinew.devtools/NetworkRecord.requestBody|{}requestBody[0]
+        final fun <get-requestBody>(): com.srctool.sinew.devtools/RecordedBody // com.srctool.sinew.devtools/NetworkRecord.requestBody.<get-requestBody>|<get-requestBody>(){}[0]
+    final val requestHeaders // com.srctool.sinew.devtools/NetworkRecord.requestHeaders|{}requestHeaders[0]
+        final fun <get-requestHeaders>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> // com.srctool.sinew.devtools/NetworkRecord.requestHeaders.<get-requestHeaders>|<get-requestHeaders>(){}[0]
+    final val responseBody // com.srctool.sinew.devtools/NetworkRecord.responseBody|{}responseBody[0]
+        final fun <get-responseBody>(): com.srctool.sinew.devtools/RecordedBody // com.srctool.sinew.devtools/NetworkRecord.responseBody.<get-responseBody>|<get-responseBody>(){}[0]
+    final val responseHeaders // com.srctool.sinew.devtools/NetworkRecord.responseHeaders|{}responseHeaders[0]
+        final fun <get-responseHeaders>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> // com.srctool.sinew.devtools/NetworkRecord.responseHeaders.<get-responseHeaders>|<get-responseHeaders>(){}[0]
+    final val startedAt // com.srctool.sinew.devtools/NetworkRecord.startedAt|{}startedAt[0]
+        final fun <get-startedAt>(): kotlin.time/Instant // com.srctool.sinew.devtools/NetworkRecord.startedAt.<get-startedAt>|<get-startedAt>(){}[0]
+    final val status // com.srctool.sinew.devtools/NetworkRecord.status|{}status[0]
+        final fun <get-status>(): kotlin/Int? // com.srctool.sinew.devtools/NetworkRecord.status.<get-status>|<get-status>(){}[0]
+    final val url // com.srctool.sinew.devtools/NetworkRecord.url|{}url[0]
+        final fun <get-url>(): kotlin/String // com.srctool.sinew.devtools/NetworkRecord.url.<get-url>|<get-url>(){}[0]
+
+    final fun asCurl(): kotlin/String // com.srctool.sinew.devtools/NetworkRecord.asCurl|asCurl(){}[0]
+    final fun asText(): kotlin/String // com.srctool.sinew.devtools/NetworkRecord.asText|asText(){}[0]
+    final fun component1(): kotlin/Long // com.srctool.sinew.devtools/NetworkRecord.component1|component1(){}[0]
+    final fun component10(): kotlin.time/Duration? // com.srctool.sinew.devtools/NetworkRecord.component10|component10(){}[0]
+    final fun component11(): kotlin/String? // com.srctool.sinew.devtools/NetworkRecord.component11|component11(){}[0]
+    final fun component12(): kotlin/String? // com.srctool.sinew.devtools/NetworkRecord.component12|component12(){}[0]
+    final fun component13(): kotlin/String? // com.srctool.sinew.devtools/NetworkRecord.component13|component13(){}[0]
+    final fun component14(): kotlin/Boolean // com.srctool.sinew.devtools/NetworkRecord.component14|component14(){}[0]
+    final fun component15(): kotlin/Boolean // com.srctool.sinew.devtools/NetworkRecord.component15|component15(){}[0]
+    final fun component2(): kotlin.time/Instant // com.srctool.sinew.devtools/NetworkRecord.component2|component2(){}[0]
+    final fun component3(): kotlin/String // com.srctool.sinew.devtools/NetworkRecord.component3|component3(){}[0]
+    final fun component4(): kotlin/String // com.srctool.sinew.devtools/NetworkRecord.component4|component4(){}[0]
+    final fun component5(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> // com.srctool.sinew.devtools/NetworkRecord.component5|component5(){}[0]
+    final fun component6(): com.srctool.sinew.devtools/RecordedBody // com.srctool.sinew.devtools/NetworkRecord.component6|component6(){}[0]
+    final fun component7(): kotlin/Int? // com.srctool.sinew.devtools/NetworkRecord.component7|component7(){}[0]
+    final fun component8(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> // com.srctool.sinew.devtools/NetworkRecord.component8|component8(){}[0]
+    final fun component9(): com.srctool.sinew.devtools/RecordedBody // com.srctool.sinew.devtools/NetworkRecord.component9|component9(){}[0]
+    final fun copy(kotlin/Long = ..., kotlin.time/Instant = ..., kotlin/String = ..., kotlin/String = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> = ..., com.srctool.sinew.devtools/RecordedBody = ..., kotlin/Int? = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> = ..., com.srctool.sinew.devtools/RecordedBody = ..., kotlin.time/Duration? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/String? = ..., kotlin/Boolean = ..., kotlin/Boolean = ...): com.srctool.sinew.devtools/NetworkRecord // com.srctool.sinew.devtools/NetworkRecord.copy|copy(kotlin.Long;kotlin.time.Instant;kotlin.String;kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>;com.srctool.sinew.devtools.RecordedBody;kotlin.Int?;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>;com.srctool.sinew.devtools.RecordedBody;kotlin.time.Duration?;kotlin.String?;kotlin.String?;kotlin.String?;kotlin.Boolean;kotlin.Boolean){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.devtools/NetworkRecord.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.devtools/NetworkRecord.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.devtools/NetworkRecord.toString|toString(){}[0]
+}
+
+final class com.srctool.sinew.devtools/NetworkRecorder { // com.srctool.sinew.devtools/NetworkRecorder|null[0]
+    constructor <init>(kotlin/Int = ..., com.srctool.sinew.devtools/Redaction = ...) // com.srctool.sinew.devtools/NetworkRecorder.<init>|<init>(kotlin.Int;com.srctool.sinew.devtools.Redaction){}[0]
+
+    final val capacity // com.srctool.sinew.devtools/NetworkRecorder.capacity|{}capacity[0]
+        final fun <get-capacity>(): kotlin/Int // com.srctool.sinew.devtools/NetworkRecorder.capacity.<get-capacity>|<get-capacity>(){}[0]
+    final val records // com.srctool.sinew.devtools/NetworkRecorder.records|{}records[0]
+        final fun <get-records>(): kotlinx.coroutines.flow/StateFlow<kotlin.collections/List<com.srctool.sinew.devtools/NetworkRecord>> // com.srctool.sinew.devtools/NetworkRecorder.records.<get-records>|<get-records>(){}[0]
+
+    final var redaction // com.srctool.sinew.devtools/NetworkRecorder.redaction|{}redaction[0]
+        final fun <get-redaction>(): com.srctool.sinew.devtools/Redaction // com.srctool.sinew.devtools/NetworkRecorder.redaction.<get-redaction>|<get-redaction>(){}[0]
+        final fun <set-redaction>(com.srctool.sinew.devtools/Redaction) // com.srctool.sinew.devtools/NetworkRecorder.redaction.<set-redaction>|<set-redaction>(com.srctool.sinew.devtools.Redaction){}[0]
+
+    final fun clear() // com.srctool.sinew.devtools/NetworkRecorder.clear|clear(){}[0]
+    final fun record(com.srctool.sinew.devtools/NetworkExchange): com.srctool.sinew.devtools/NetworkRecord // com.srctool.sinew.devtools/NetworkRecorder.record|record(com.srctool.sinew.devtools.NetworkExchange){}[0]
+    final fun recordCacheServe(kotlin/String, kotlin/String, kotlin/ByteArray? = ..., kotlin/String? = ..., kotlin.time/Instant = ...): com.srctool.sinew.devtools/NetworkRecord // com.srctool.sinew.devtools/NetworkRecorder.recordCacheServe|recordCacheServe(kotlin.String;kotlin.String;kotlin.ByteArray?;kotlin.String?;kotlin.time.Instant){}[0]
+
+    final object Companion { // com.srctool.sinew.devtools/NetworkRecorder.Companion|null[0]
+        final const val DEFAULT_CAPACITY // com.srctool.sinew.devtools/NetworkRecorder.Companion.DEFAULT_CAPACITY|{}DEFAULT_CAPACITY[0]
+            final fun <get-DEFAULT_CAPACITY>(): kotlin/Int // com.srctool.sinew.devtools/NetworkRecorder.Companion.DEFAULT_CAPACITY.<get-DEFAULT_CAPACITY>|<get-DEFAULT_CAPACITY>(){}[0]
+    }
+}
+
+final class com.srctool.sinew.devtools/Redaction { // com.srctool.sinew.devtools/Redaction|null[0]
+    final val exactFields // com.srctool.sinew.devtools/Redaction.exactFields|{}exactFields[0]
+        final fun <get-exactFields>(): kotlin.collections/Set<kotlin/String> // com.srctool.sinew.devtools/Redaction.exactFields.<get-exactFields>|<get-exactFields>(){}[0]
+    final val fieldParts // com.srctool.sinew.devtools/Redaction.fieldParts|{}fieldParts[0]
+        final fun <get-fieldParts>(): kotlin.collections/Set<kotlin/String> // com.srctool.sinew.devtools/Redaction.fieldParts.<get-fieldParts>|<get-fieldParts>(){}[0]
+    final val headers // com.srctool.sinew.devtools/Redaction.headers|{}headers[0]
+        final fun <get-headers>(): kotlin.collections/Set<kotlin/String> // com.srctool.sinew.devtools/Redaction.headers.<get-headers>|<get-headers>(){}[0]
+    final val mask // com.srctool.sinew.devtools/Redaction.mask|{}mask[0]
+        final fun <get-mask>(): kotlin/String // com.srctool.sinew.devtools/Redaction.mask.<get-mask>|<get-mask>(){}[0]
+    final val maxBodyBytes // com.srctool.sinew.devtools/Redaction.maxBodyBytes|{}maxBodyBytes[0]
+        final fun <get-maxBodyBytes>(): kotlin/Int // com.srctool.sinew.devtools/Redaction.maxBodyBytes.<get-maxBodyBytes>|<get-maxBodyBytes>(){}[0]
+
+    final fun isSensitive(kotlin/String): kotlin/Boolean // com.srctool.sinew.devtools/Redaction.isSensitive|isSensitive(kotlin.String){}[0]
+    final fun isSensitiveHeader(kotlin/String): kotlin/Boolean // com.srctool.sinew.devtools/Redaction.isSensitiveHeader|isSensitiveHeader(kotlin.String){}[0]
+    final fun plus(kotlin/Function1<com.srctool.sinew.devtools/Redaction.Extension, kotlin/Unit>): com.srctool.sinew.devtools/Redaction // com.srctool.sinew.devtools/Redaction.plus|plus(kotlin.Function1<com.srctool.sinew.devtools.Redaction.Extension,kotlin.Unit>){}[0]
+    final fun redactBody(kotlin/ByteArray?, kotlin/String?): com.srctool.sinew.devtools/RecordedBody // com.srctool.sinew.devtools/Redaction.redactBody|redactBody(kotlin.ByteArray?;kotlin.String?){}[0]
+    final fun redactHeaders(kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> // com.srctool.sinew.devtools/Redaction.redactHeaders|redactHeaders(kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>){}[0]
+    final fun redactText(kotlin/String): kotlin/String // com.srctool.sinew.devtools/Redaction.redactText|redactText(kotlin.String){}[0]
+    final fun redactUrl(kotlin/String): kotlin/String // com.srctool.sinew.devtools/Redaction.redactUrl|redactUrl(kotlin.String){}[0]
+    final fun withHeaders(kotlin.collections/Collection<kotlin/String>): com.srctool.sinew.devtools/Redaction // com.srctool.sinew.devtools/Redaction.withHeaders|withHeaders(kotlin.collections.Collection<kotlin.String>){}[0]
+
+    final class Extension { // com.srctool.sinew.devtools/Redaction.Extension|null[0]
+        final val exactFields // com.srctool.sinew.devtools/Redaction.Extension.exactFields|{}exactFields[0]
+            final fun <get-exactFields>(): kotlin.collections/MutableSet<kotlin/String> // com.srctool.sinew.devtools/Redaction.Extension.exactFields.<get-exactFields>|<get-exactFields>(){}[0]
+        final val fieldParts // com.srctool.sinew.devtools/Redaction.Extension.fieldParts|{}fieldParts[0]
+            final fun <get-fieldParts>(): kotlin.collections/MutableSet<kotlin/String> // com.srctool.sinew.devtools/Redaction.Extension.fieldParts.<get-fieldParts>|<get-fieldParts>(){}[0]
+        final val headers // com.srctool.sinew.devtools/Redaction.Extension.headers|{}headers[0]
+            final fun <get-headers>(): kotlin.collections/MutableSet<kotlin/String> // com.srctool.sinew.devtools/Redaction.Extension.headers.<get-headers>|<get-headers>(){}[0]
+
+        final var maxBodyBytes // com.srctool.sinew.devtools/Redaction.Extension.maxBodyBytes|{}maxBodyBytes[0]
+            final fun <get-maxBodyBytes>(): kotlin/Int? // com.srctool.sinew.devtools/Redaction.Extension.maxBodyBytes.<get-maxBodyBytes>|<get-maxBodyBytes>(){}[0]
+            final fun <set-maxBodyBytes>(kotlin/Int?) // com.srctool.sinew.devtools/Redaction.Extension.maxBodyBytes.<set-maxBodyBytes>|<set-maxBodyBytes>(kotlin.Int?){}[0]
+    }
+
+    final object Companion { // com.srctool.sinew.devtools/Redaction.Companion|null[0]
+        final const val DEFAULT_MAX_BODY_BYTES // com.srctool.sinew.devtools/Redaction.Companion.DEFAULT_MAX_BODY_BYTES|{}DEFAULT_MAX_BODY_BYTES[0]
+            final fun <get-DEFAULT_MAX_BODY_BYTES>(): kotlin/Int // com.srctool.sinew.devtools/Redaction.Companion.DEFAULT_MAX_BODY_BYTES.<get-DEFAULT_MAX_BODY_BYTES>|<get-DEFAULT_MAX_BODY_BYTES>(){}[0]
+        final const val SHOW_TAIL_FROM // com.srctool.sinew.devtools/Redaction.Companion.SHOW_TAIL_FROM|{}SHOW_TAIL_FROM[0]
+            final fun <get-SHOW_TAIL_FROM>(): kotlin/Int // com.srctool.sinew.devtools/Redaction.Companion.SHOW_TAIL_FROM.<get-SHOW_TAIL_FROM>|<get-SHOW_TAIL_FROM>(){}[0]
+
+        final val Default // com.srctool.sinew.devtools/Redaction.Companion.Default|{}Default[0]
+            final fun <get-Default>(): com.srctool.sinew.devtools/Redaction // com.srctool.sinew.devtools/Redaction.Companion.Default.<get-Default>|<get-Default>(){}[0]
+
+        final fun maskSecret(kotlin/String): kotlin/String // com.srctool.sinew.devtools/Redaction.Companion.maskSecret|maskSecret(kotlin.String){}[0]
+    }
+}
+
+final object com.srctool.sinew.devtools/DevTools { // com.srctool.sinew.devtools/DevTools|null[0]
+    final val coroutineHandler // com.srctool.sinew.devtools/DevTools.coroutineHandler|{}coroutineHandler[0]
+        final fun <get-coroutineHandler>(): kotlinx.coroutines/CoroutineExceptionHandler // com.srctool.sinew.devtools/DevTools.coroutineHandler.<get-coroutineHandler>|<get-coroutineHandler>(){}[0]
+    final val exceptions // com.srctool.sinew.devtools/DevTools.exceptions|{}exceptions[0]
+        final fun <get-exceptions>(): com.srctool.sinew.devtools/ExceptionRecorder // com.srctool.sinew.devtools/DevTools.exceptions.<get-exceptions>|<get-exceptions>(){}[0]
+    final val faults // com.srctool.sinew.devtools/DevTools.faults|{}faults[0]
+        final fun <get-faults>(): com.srctool.sinew.devtools/FaultRules // com.srctool.sinew.devtools/DevTools.faults.<get-faults>|<get-faults>(){}[0]
+    final val hosts // com.srctool.sinew.devtools/DevTools.hosts|{}hosts[0]
+        final fun <get-hosts>(): com.srctool.sinew.devtools/HostOverride // com.srctool.sinew.devtools/DevTools.hosts.<get-hosts>|<get-hosts>(){}[0]
+    final val httpHooks // com.srctool.sinew.devtools/DevTools.httpHooks|{}httpHooks[0]
+        final fun <get-httpHooks>(): com.srctool.sinew.network/SinewHttpHooks // com.srctool.sinew.devtools/DevTools.httpHooks.<get-httpHooks>|<get-httpHooks>(){}[0]
+    final val isOpen // com.srctool.sinew.devtools/DevTools.isOpen|{}isOpen[0]
+        final fun <get-isOpen>(): kotlinx.coroutines.flow/StateFlow<kotlin/Boolean> // com.srctool.sinew.devtools/DevTools.isOpen.<get-isOpen>|<get-isOpen>(){}[0]
+    final val network // com.srctool.sinew.devtools/DevTools.network|{}network[0]
+        final fun <get-network>(): com.srctool.sinew.devtools/NetworkRecorder // com.srctool.sinew.devtools/DevTools.network.<get-network>|<get-network>(){}[0]
+
+    final fun canReplay(com.srctool.sinew.devtools/NetworkRecord): kotlin/Boolean // com.srctool.sinew.devtools/DevTools.canReplay|canReplay(com.srctool.sinew.devtools.NetworkRecord){}[0]
+    final fun captureUncaughtErrors() // com.srctool.sinew.devtools/DevTools.captureUncaughtErrors|captureUncaughtErrors(){}[0]
+    final fun clearUserData() // com.srctool.sinew.devtools/DevTools.clearUserData|clearUserData(){}[0]
+    final fun close() // com.srctool.sinew.devtools/DevTools.close|close(){}[0]
+    final fun expireAccessToken() // com.srctool.sinew.devtools/DevTools.expireAccessToken|expireAccessToken(){}[0]
+    final fun open() // com.srctool.sinew.devtools/DevTools.open|open(){}[0]
+    final suspend fun replay(com.srctool.sinew.devtools/NetworkRecord) // com.srctool.sinew.devtools/DevTools.replay|replay(com.srctool.sinew.devtools.NetworkRecord){}[0]
+}

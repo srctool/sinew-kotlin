@@ -5,6 +5,10 @@ All notable changes to Sinew for Kotlin are documented here. Every module shares
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
+- S6 `sinew-devtools-noop` (#46): the stand-in production builds depend on.
+  - It declares exactly what `sinew-devtools` and `sinew-devtools-ui` declare together, in the same packages, with nothing behind it: nothing is recorded, the hooks are `SinewHttpHooks.None`, `SinewDevTools { content }` only calls `content()`, and `DevToolsMenuItem` draws nothing. Where a value must come back it's the safe one: every name counts as sensitive, and no body is kept.
+  - Kotlin's ABI validation is on for the three modules, with reference dumps under each module's `api/`. `checkDevtoolsNoopAbi`, in CI, compares the no-op's JVM, Android and klib dumps with the real two together. It ignores what the Compose compiler generates (`ComposableSingletons`, `$stable`, `$stableprop`).
+  - The sample's four entry points wrap the app in `SinewDevTools`, and CI builds the Android production release, which takes the no-op, so the same code compiles against both artifacts.
 - S6 `sinew-devtools-ui` (#45): the overlay and every built-in page.
   - `SinewDevTools(sections, ribbon, launcher, redaction, stores, changelog, hosts, showUncaughtErrors, preferences) { App() }` and `DevToolsMenuItem`, on Compose Material 3 with its own theme and back stack. System Back walks that stack, through `NavigationBackHandler` when the app provides a dispatcher.
   - The entry contract: `DevToolSection`, and `DevToolEntry.Page`, `Group`, `Toggle` and `Action`, with `confirm` asking first. `BuildRibbon`, and the launchers `FloatingLauncher` (draggable, a drag never opens it, its position remembered in `preferences`), `MenuLauncher` and `CustomLauncher`. Sinew's section is first, the app's follow.

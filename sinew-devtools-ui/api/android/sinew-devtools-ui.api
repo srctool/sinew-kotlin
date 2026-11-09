@@ -1,0 +1,154 @@
+public final class com/srctool/sinew/devtools/ui/BuildRibbon {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;)V
+	public final fun getLabel ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/ui/ComposableSingletons$DashboardKt {
+	public static final field INSTANCE Lcom/srctool/sinew/devtools/ui/ComposableSingletons$DashboardKt;
+	public fun <init> ()V
+	public final fun getLambda$-983202947$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$265963606$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+}
+
+public final class com/srctool/sinew/devtools/ui/ComposableSingletons$EntriesKt {
+	public static final field INSTANCE Lcom/srctool/sinew/devtools/ui/ComposableSingletons$EntriesKt;
+	public fun <init> ()V
+	public final fun getLambda$1971293470$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+}
+
+public final class com/srctool/sinew/devtools/ui/ComposableSingletons$NetworkPagesKt {
+	public static final field INSTANCE Lcom/srctool/sinew/devtools/ui/ComposableSingletons$NetworkPagesKt;
+	public fun <init> ()V
+	public final fun getLambda$-1842661868$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$-679080683$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$1749334557$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$464904657$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+}
+
+public final class com/srctool/sinew/devtools/ui/ComposableSingletons$PagesKt {
+	public static final field INSTANCE Lcom/srctool/sinew/devtools/ui/ComposableSingletons$PagesKt;
+	public fun <init> ()V
+	public final fun getLambda$-1381491443$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$-1603129517$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-1689140022$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$-1955791940$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$-294954162$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-321881498$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$-666709660$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$-682144411$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-79956354$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$-810910886$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$1418439126$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$1908280247$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$1981523900$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$346171221$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+}
+
+public final class com/srctool/sinew/devtools/ui/ComposableSingletons$SinewDevToolsKt {
+	public static final field INSTANCE Lcom/srctool/sinew/devtools/ui/ComposableSingletons$SinewDevToolsKt;
+	public fun <init> ()V
+	public final fun getLambda$-1143169380$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-1175097523$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$-1600288346$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-2072333339$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-236490492$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-349345249$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$-369797747$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$-711773164$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$1010072712$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+	public final fun getLambda$1036856566$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$1564823606$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function3;
+	public final fun getLambda$978335823$com_srctool_sinew_sinew_devtools_ui ()Lkotlin/jvm/functions/Function2;
+}
+
+public final class com/srctool/sinew/devtools/ui/CustomLauncher : com/srctool/sinew/devtools/ui/DevToolsLauncher {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/srctool/sinew/devtools/ui/CustomLauncher;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/devtools/ui/DevToolEntry {
+	public abstract fun getDescription ()Ljava/lang/String;
+	public abstract fun getIcon ()Landroidx/compose/ui/graphics/vector/ImageVector;
+	public abstract fun getName ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/ui/DevToolEntry$Action : com/srctool/sinew/devtools/ui/DevToolEntry {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Landroidx/compose/ui/graphics/vector/ImageVector;Ljava/lang/String;Lkotlin/jvm/functions/Function1;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Landroidx/compose/ui/graphics/vector/ImageVector;Ljava/lang/String;Lkotlin/jvm/functions/Function1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getConfirm ()Ljava/lang/String;
+	public fun getDescription ()Ljava/lang/String;
+	public fun getIcon ()Landroidx/compose/ui/graphics/vector/ImageVector;
+	public fun getName ()Ljava/lang/String;
+	public final fun getRun ()Lkotlin/jvm/functions/Function1;
+}
+
+public final class com/srctool/sinew/devtools/ui/DevToolEntry$Group : com/srctool/sinew/devtools/ui/DevToolEntry {
+	public static final field $stable I
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Landroidx/compose/ui/graphics/vector/ImageVector;Landroidx/compose/ui/graphics/Color;Ljava/util/List;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Landroidx/compose/ui/graphics/vector/ImageVector;Landroidx/compose/ui/graphics/Color;Ljava/util/List;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getChildren ()Ljava/util/List;
+	public final fun getColor-QN2ZGVo ()Landroidx/compose/ui/graphics/Color;
+	public fun getDescription ()Ljava/lang/String;
+	public fun getIcon ()Landroidx/compose/ui/graphics/vector/ImageVector;
+	public fun getName ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/ui/DevToolEntry$Page : com/srctool/sinew/devtools/ui/DevToolEntry {
+	public static final field $stable I
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Landroidx/compose/ui/graphics/vector/ImageVector;Landroidx/compose/ui/graphics/Color;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Landroidx/compose/ui/graphics/vector/ImageVector;Landroidx/compose/ui/graphics/Color;Lkotlin/jvm/functions/Function3;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAppBarActions ()Lkotlin/jvm/functions/Function3;
+	public final fun getColor-QN2ZGVo ()Landroidx/compose/ui/graphics/Color;
+	public final fun getContent ()Lkotlin/jvm/functions/Function2;
+	public fun getDescription ()Ljava/lang/String;
+	public fun getIcon ()Landroidx/compose/ui/graphics/vector/ImageVector;
+	public fun getName ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/ui/DevToolEntry$Toggle : com/srctool/sinew/devtools/ui/DevToolEntry {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;Landroidx/compose/ui/graphics/vector/ImageVector;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/lang/String;Landroidx/compose/ui/graphics/vector/ImageVector;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getDescription ()Ljava/lang/String;
+	public fun getIcon ()Landroidx/compose/ui/graphics/vector/ImageVector;
+	public fun getName ()Ljava/lang/String;
+	public final fun getOnChanged ()Lkotlin/jvm/functions/Function1;
+	public final fun getValue ()Lkotlin/jvm/functions/Function0;
+}
+
+public final class com/srctool/sinew/devtools/ui/DevToolSection {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/String;Ljava/util/List;)V
+	public final fun getEntries ()Ljava/util/List;
+	public final fun getTitle ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/devtools/ui/DevToolsLauncher {
+}
+
+public final class com/srctool/sinew/devtools/ui/FloatingLauncher : com/srctool/sinew/devtools/ui/DevToolsLauncher {
+	public static final field $stable I
+	public fun <init> ()V
+	public fun <init> (Landroidx/compose/ui/Alignment;)V
+	public synthetic fun <init> (Landroidx/compose/ui/Alignment;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getInitialPosition ()Landroidx/compose/ui/Alignment;
+}
+
+public final class com/srctool/sinew/devtools/ui/MenuLauncher : com/srctool/sinew/devtools/ui/DevToolsLauncher {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/srctool/sinew/devtools/ui/MenuLauncher;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/devtools/ui/SinewDevToolsKt {
+	public static final fun DevToolsMenuItem (Landroidx/compose/ui/Modifier;Landroidx/compose/runtime/Composer;II)V
+	public static final fun SinewDevTools (Ljava/util/List;Lcom/srctool/sinew/devtools/ui/BuildRibbon;Lcom/srctool/sinew/devtools/ui/DevToolsLauncher;Lcom/srctool/sinew/devtools/Redaction;Ljava/util/List;Ljava/lang/String;Ljava/util/List;ZLcom/srctool/sinew/storage/KeyValueStore;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;II)V
+}
+
