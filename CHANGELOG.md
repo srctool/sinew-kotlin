@@ -5,6 +5,9 @@ All notable changes to Sinew for Kotlin are documented here. Every module shares
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
+- S7 Camouflage from Maven Central (#85): Sinew builds against Camouflage's released `0.1.0` instead of its source.
+  - `gradle/camouflage.versions.toml` holds `0.1.0`. The `third_party/camouflage-kotlin` submodule, its `includeBuild` and `submodules: true` in CI are gone, so the build, the tests and the sample run against the artifacts consumers get, and the publish job has no source dependency to refuse.
+  - Nothing Sinew uses changed between the old pin and `0.1.0` (the Carbon skin and Camouflage's accessibility checks). The sample's list screen runs its full cycle on the JVM, iOS and wasm against it.
 - S6 devtools gating in CI (#47): the `devtools-gating` job proves production builds carry no devtools code.
   - `checkDevToolsGating` builds the sample's production outputs (Android release APK, desktop uber jar, wasm bundle, and on macOS the `iosArm64` release framework) and fails if any holds a `com.srctool.sinew.devtools` declaration that `sinew-devtools-noop` doesn't declare.
   - The real-devtools builds are checked the opposite way (the Android staging release, and the rest with `-Psinew.devtools=true`), so a search that can't see devtools code fails instead of passing.

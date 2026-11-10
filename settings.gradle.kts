@@ -26,9 +26,6 @@ dependencyResolutionManagement {
     }
 }
 
-// Camouflage from source at a pinned commit, until it's published (see gradle/camouflage.versions.toml).
-includeBuild("third_party/camouflage-kotlin")
-
 include(
     ":sinew-models", ":sinew-exception", ":sinew-l10n", ":sinew-paging", ":sinew-presentation", ":sinew-viewmodel",
     ":sinew-network", ":sinew-security", ":sinew-storage", ":sinew-testing", ":sinew-camouflage",
