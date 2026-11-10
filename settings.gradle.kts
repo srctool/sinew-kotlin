@@ -30,5 +30,5 @@ include(
     ":sinew-models", ":sinew-exception", ":sinew-l10n", ":sinew-paging", ":sinew-presentation", ":sinew-viewmodel",
     ":sinew-network", ":sinew-security", ":sinew-storage", ":sinew-testing", ":sinew-camouflage",
     ":sinew-devtools", ":sinew-devtools-ui", ":sinew-devtools-noop", ":sinew-bom",
-    ":sample:shared", ":sample:androidApp",
+    ":sample:shared", ":sample:androidApp", ":sample:docs",
 )
