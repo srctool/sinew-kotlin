@@ -4,7 +4,7 @@ Thanks for helping improve the Kotlin implementation of Sinew! This repository u
 
 ## Getting started
 - JDK 17 and the Gradle wrapper in this repository (`./gradlew`).
-- The Camouflage submodule: clone with `--recurse-submodules`, or run `git submodule update --init` (`sinew-camouflage` builds it from source until Camouflage is published). Gradle finds the Android SDK for it through `ANDROID_HOME`.
+- The Android SDK, which Gradle finds through `ANDROID_HOME` or `local.properties`.
 - IntelliJ IDEA or Android Studio; Xcode on macOS for the iOS targets.
 
 ## Development workflow
