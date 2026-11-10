@@ -1,0 +1,177 @@
+public final class com/srctool/sinew/exception/ApiErrorException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/ConflictException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/exception/CrashReporter {
+	public static final field Companion Lcom/srctool/sinew/exception/CrashReporter$Companion;
+	public abstract fun recordNonFatal (Lcom/srctool/sinew/models/SinewException;)V
+}
+
+public final class com/srctool/sinew/exception/CrashReporter$Companion {
+	public final fun getCurrent ()Lcom/srctool/sinew/exception/CrashReporter;
+	public final fun getNone ()Lcom/srctool/sinew/exception/CrashReporter;
+	public final fun install (Lcom/srctool/sinew/exception/CrashReporter;)V
+}
+
+public final class com/srctool/sinew/exception/ExceptionHandler {
+	public fun <init> (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)V
+	public final fun getMatches ()Lkotlin/jvm/functions/Function1;
+	public final fun getTransform ()Lkotlin/jvm/functions/Function1;
+}
+
+public final class com/srctool/sinew/exception/ForbiddenException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/GuardsKt {
+	public static final fun envelopeDataMissing (Ljava/lang/String;Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;)Lcom/srctool/sinew/exception/ExceptionHandler;
+	public static final fun processCall (Ljava/lang/String;Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/util/List;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun processResult (Ljava/lang/String;Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun processResult$default (Ljava/lang/String;Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/exception/LocalStorageCorruptionException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/exception/Localizer {
+	public abstract fun resolve (Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/LocalizerKt {
+	public static final fun displayMessage (Lcom/srctool/sinew/models/SinewException;Lcom/srctool/sinew/exception/Localizer;)Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/NoInternetConnectionException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getRetryable ()Z
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/NotFoundException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/ParseException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/PollingTimeOutException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getRetryable ()Z
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/RateLimitedException : com/srctool/sinew/models/SinewException {
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lkotlin/time/Duration;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lkotlin/time/Duration;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public final fun getRetryAfter-FghU774 ()Lkotlin/time/Duration;
+	public fun getRetryable ()Z
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/RequestTimeOutException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getRetryable ()Z
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/ServerException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;ILcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;ILcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public final fun getStatus ()I
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/ServiceUnavailableException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;ILcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;ILcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getRetryable ()Z
+	public final fun getStatus ()I
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/StorageFullException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/StorageReadException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getRetryable ()Z
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/StorageWriteException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getRetryable ()Z
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/UnauthorizedException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/UndefinedErrorResponseException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;ILjava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;ILjava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public final fun getStatus ()I
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/UnexpectedException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public fun getTypeCode ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/exception/ValidationException : com/srctool/sinew/models/SinewException {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/util/Map;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/util/Map;Lcom/srctool/sinew/models/ErrorMessage;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public final fun getFieldErrors ()Ljava/util/Map;
+	public fun getTypeCode ()Ljava/lang/String;
+}
+

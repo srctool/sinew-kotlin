@@ -1,0 +1,23 @@
+public abstract class com/srctool/sinew/viewmodel/EventActionViewModel : com/srctool/sinew/viewmodel/StateEffectViewModel {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/Object;)V
+	protected abstract fun mapEventToAction (Ljava/lang/Object;)Ljava/lang/Object;
+	protected abstract fun onAction (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun onEvent (Ljava/lang/Object;)V
+}
+
+public final class com/srctool/sinew/viewmodel/ObserveEffectsKt {
+	public static final fun ObserveEffects (Lkotlinx/coroutines/flow/Flow;Lkotlin/jvm/functions/Function2;Landroidx/compose/runtime/Composer;I)V
+}
+
+public abstract class com/srctool/sinew/viewmodel/StateEffectViewModel : androidx/lifecycle/ViewModel {
+	public static final field $stable I
+	public fun <init> (Ljava/lang/Object;)V
+	protected final fun emitEffect (Ljava/lang/Object;)V
+	protected final fun getCurrentState ()Ljava/lang/Object;
+	public final fun getEffects ()Lkotlinx/coroutines/flow/Flow;
+	public final fun getState ()Lkotlinx/coroutines/flow/StateFlow;
+	protected final fun isCleared ()Z
+	protected final fun setState (Lkotlin/jvm/functions/Function1;)V
+}
+

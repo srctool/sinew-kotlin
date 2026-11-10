@@ -1,0 +1,233 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-exception>
+abstract fun interface com.srctool.sinew.exception/CrashReporter { // com.srctool.sinew.exception/CrashReporter|null[0]
+    abstract fun recordNonFatal(com.srctool.sinew.models/SinewException) // com.srctool.sinew.exception/CrashReporter.recordNonFatal|recordNonFatal(com.srctool.sinew.models.SinewException){}[0]
+
+    final object Companion { // com.srctool.sinew.exception/CrashReporter.Companion|null[0]
+        final val None // com.srctool.sinew.exception/CrashReporter.Companion.None|{}None[0]
+            final fun <get-None>(): com.srctool.sinew.exception/CrashReporter // com.srctool.sinew.exception/CrashReporter.Companion.None.<get-None>|<get-None>(){}[0]
+        final val current // com.srctool.sinew.exception/CrashReporter.Companion.current|{}current[0]
+            final fun <get-current>(): com.srctool.sinew.exception/CrashReporter // com.srctool.sinew.exception/CrashReporter.Companion.current.<get-current>|<get-current>(){}[0]
+
+        final fun install(com.srctool.sinew.exception/CrashReporter) // com.srctool.sinew.exception/CrashReporter.Companion.install|install(com.srctool.sinew.exception.CrashReporter){}[0]
+    }
+}
+
+abstract fun interface com.srctool.sinew.exception/Localizer { // com.srctool.sinew.exception/Localizer|null[0]
+    abstract fun resolve(kotlin/String, kotlin.collections/Map<kotlin/String, kotlin/Any>): kotlin/String? // com.srctool.sinew.exception/Localizer.resolve|resolve(kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.Any>){}[0]
+}
+
+final class com.srctool.sinew.exception/ApiErrorException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/ApiErrorException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, com.srctool.sinew.models/ErrorMessage, kotlin/Throwable? = ...) // com.srctool.sinew.exception/ApiErrorException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;com.srctool.sinew.models.ErrorMessage;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/ApiErrorException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/ApiErrorException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/ApiErrorException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/ApiErrorException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/ConflictException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/ConflictException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, com.srctool.sinew.models/ErrorMessage = ..., kotlin/Throwable? = ...) // com.srctool.sinew.exception/ConflictException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;com.srctool.sinew.models.ErrorMessage;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/ConflictException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/ConflictException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/ConflictException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/ConflictException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/ExceptionHandler { // com.srctool.sinew.exception/ExceptionHandler|null[0]
+    constructor <init>(kotlin/Function1<kotlin/Throwable, kotlin/Boolean>, kotlin/Function1<kotlin/Throwable, com.srctool.sinew.models/SinewException>) // com.srctool.sinew.exception/ExceptionHandler.<init>|<init>(kotlin.Function1<kotlin.Throwable,kotlin.Boolean>;kotlin.Function1<kotlin.Throwable,com.srctool.sinew.models.SinewException>){}[0]
+
+    final val matches // com.srctool.sinew.exception/ExceptionHandler.matches|{}matches[0]
+        final fun <get-matches>(): kotlin/Function1<kotlin/Throwable, kotlin/Boolean> // com.srctool.sinew.exception/ExceptionHandler.matches.<get-matches>|<get-matches>(){}[0]
+    final val transform // com.srctool.sinew.exception/ExceptionHandler.transform|{}transform[0]
+        final fun <get-transform>(): kotlin/Function1<kotlin/Throwable, com.srctool.sinew.models/SinewException> // com.srctool.sinew.exception/ExceptionHandler.transform.<get-transform>|<get-transform>(){}[0]
+}
+
+final class com.srctool.sinew.exception/ForbiddenException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/ForbiddenException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, com.srctool.sinew.models/ErrorMessage = ..., kotlin/Throwable? = ...) // com.srctool.sinew.exception/ForbiddenException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;com.srctool.sinew.models.ErrorMessage;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/ForbiddenException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/ForbiddenException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/ForbiddenException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/ForbiddenException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/LocalStorageCorruptionException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/LocalStorageCorruptionException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Throwable? = ...) // com.srctool.sinew.exception/LocalStorageCorruptionException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/LocalStorageCorruptionException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/LocalStorageCorruptionException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/LocalStorageCorruptionException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/LocalStorageCorruptionException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/NoInternetConnectionException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/NoInternetConnectionException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Throwable? = ...) // com.srctool.sinew.exception/NoInternetConnectionException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/NoInternetConnectionException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/NoInternetConnectionException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val retryable // com.srctool.sinew.exception/NoInternetConnectionException.retryable|{}retryable[0]
+        final fun <get-retryable>(): kotlin/Boolean // com.srctool.sinew.exception/NoInternetConnectionException.retryable.<get-retryable>|<get-retryable>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/NoInternetConnectionException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/NoInternetConnectionException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/NotFoundException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/NotFoundException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, com.srctool.sinew.models/ErrorMessage = ..., kotlin/Throwable? = ...) // com.srctool.sinew.exception/NotFoundException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;com.srctool.sinew.models.ErrorMessage;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/NotFoundException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/NotFoundException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/NotFoundException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/NotFoundException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/ParseException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/ParseException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Throwable? = ...) // com.srctool.sinew.exception/ParseException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/ParseException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/ParseException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/ParseException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/ParseException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/PollingTimeOutException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/PollingTimeOutException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Throwable? = ...) // com.srctool.sinew.exception/PollingTimeOutException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/PollingTimeOutException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/PollingTimeOutException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val retryable // com.srctool.sinew.exception/PollingTimeOutException.retryable|{}retryable[0]
+        final fun <get-retryable>(): kotlin/Boolean // com.srctool.sinew.exception/PollingTimeOutException.retryable.<get-retryable>|<get-retryable>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/PollingTimeOutException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/PollingTimeOutException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/RateLimitedException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/RateLimitedException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin.time/Duration?, com.srctool.sinew.models/ErrorMessage = ..., kotlin/Throwable? = ...) // com.srctool.sinew.exception/RateLimitedException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.time.Duration?;com.srctool.sinew.models.ErrorMessage;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/RateLimitedException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/RateLimitedException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val retryAfter // com.srctool.sinew.exception/RateLimitedException.retryAfter|{}retryAfter[0]
+        final fun <get-retryAfter>(): kotlin.time/Duration? // com.srctool.sinew.exception/RateLimitedException.retryAfter.<get-retryAfter>|<get-retryAfter>(){}[0]
+    final val retryable // com.srctool.sinew.exception/RateLimitedException.retryable|{}retryable[0]
+        final fun <get-retryable>(): kotlin/Boolean // com.srctool.sinew.exception/RateLimitedException.retryable.<get-retryable>|<get-retryable>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/RateLimitedException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/RateLimitedException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/RequestTimeOutException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/RequestTimeOutException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Throwable? = ...) // com.srctool.sinew.exception/RequestTimeOutException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/RequestTimeOutException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/RequestTimeOutException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val retryable // com.srctool.sinew.exception/RequestTimeOutException.retryable|{}retryable[0]
+        final fun <get-retryable>(): kotlin/Boolean // com.srctool.sinew.exception/RequestTimeOutException.retryable.<get-retryable>|<get-retryable>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/RequestTimeOutException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/RequestTimeOutException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/ServerException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/ServerException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Int, com.srctool.sinew.models/ErrorMessage = ..., kotlin/Throwable? = ...) // com.srctool.sinew.exception/ServerException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Int;com.srctool.sinew.models.ErrorMessage;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/ServerException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/ServerException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val status // com.srctool.sinew.exception/ServerException.status|{}status[0]
+        final fun <get-status>(): kotlin/Int // com.srctool.sinew.exception/ServerException.status.<get-status>|<get-status>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/ServerException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/ServerException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/ServiceUnavailableException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/ServiceUnavailableException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Int, com.srctool.sinew.models/ErrorMessage = ..., kotlin/Throwable? = ...) // com.srctool.sinew.exception/ServiceUnavailableException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Int;com.srctool.sinew.models.ErrorMessage;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/ServiceUnavailableException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/ServiceUnavailableException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val retryable // com.srctool.sinew.exception/ServiceUnavailableException.retryable|{}retryable[0]
+        final fun <get-retryable>(): kotlin/Boolean // com.srctool.sinew.exception/ServiceUnavailableException.retryable.<get-retryable>|<get-retryable>(){}[0]
+    final val status // com.srctool.sinew.exception/ServiceUnavailableException.status|{}status[0]
+        final fun <get-status>(): kotlin/Int // com.srctool.sinew.exception/ServiceUnavailableException.status.<get-status>|<get-status>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/ServiceUnavailableException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/ServiceUnavailableException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/StorageFullException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/StorageFullException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Throwable? = ...) // com.srctool.sinew.exception/StorageFullException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/StorageFullException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/StorageFullException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/StorageFullException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/StorageFullException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/StorageReadException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/StorageReadException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Throwable? = ...) // com.srctool.sinew.exception/StorageReadException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/StorageReadException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/StorageReadException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val retryable // com.srctool.sinew.exception/StorageReadException.retryable|{}retryable[0]
+        final fun <get-retryable>(): kotlin/Boolean // com.srctool.sinew.exception/StorageReadException.retryable.<get-retryable>|<get-retryable>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/StorageReadException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/StorageReadException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/StorageWriteException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/StorageWriteException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Throwable? = ...) // com.srctool.sinew.exception/StorageWriteException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/StorageWriteException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/StorageWriteException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val retryable // com.srctool.sinew.exception/StorageWriteException.retryable|{}retryable[0]
+        final fun <get-retryable>(): kotlin/Boolean // com.srctool.sinew.exception/StorageWriteException.retryable.<get-retryable>|<get-retryable>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/StorageWriteException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/StorageWriteException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/UnauthorizedException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/UnauthorizedException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, com.srctool.sinew.models/ErrorMessage = ..., kotlin/Throwable? = ...) // com.srctool.sinew.exception/UnauthorizedException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;com.srctool.sinew.models.ErrorMessage;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/UnauthorizedException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/UnauthorizedException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/UnauthorizedException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/UnauthorizedException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/UndefinedErrorResponseException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/UndefinedErrorResponseException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Int, kotlin/Throwable? = ...) // com.srctool.sinew.exception/UndefinedErrorResponseException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Int;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/UndefinedErrorResponseException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/UndefinedErrorResponseException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val status // com.srctool.sinew.exception/UndefinedErrorResponseException.status|{}status[0]
+        final fun <get-status>(): kotlin/Int // com.srctool.sinew.exception/UndefinedErrorResponseException.status.<get-status>|<get-status>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/UndefinedErrorResponseException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/UndefinedErrorResponseException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/UnexpectedException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/UnexpectedException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Throwable? = ...) // com.srctool.sinew.exception/UnexpectedException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/UnexpectedException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/UnexpectedException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/UnexpectedException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/UnexpectedException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final class com.srctool.sinew.exception/ValidationException : com.srctool.sinew.models/SinewException { // com.srctool.sinew.exception/ValidationException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> = ..., com.srctool.sinew.models/ErrorMessage = ..., kotlin/Throwable? = ...) // com.srctool.sinew.exception/ValidationException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>;com.srctool.sinew.models.ErrorMessage;kotlin.Throwable?){}[0]
+
+    final val errorMessage // com.srctool.sinew.exception/ValidationException.errorMessage|{}errorMessage[0]
+        final fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.exception/ValidationException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    final val fieldErrors // com.srctool.sinew.exception/ValidationException.fieldErrors|{}fieldErrors[0]
+        final fun <get-fieldErrors>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> // com.srctool.sinew.exception/ValidationException.fieldErrors.<get-fieldErrors>|<get-fieldErrors>(){}[0]
+    final val typeCode // com.srctool.sinew.exception/ValidationException.typeCode|{}typeCode[0]
+        final fun <get-typeCode>(): kotlin/String // com.srctool.sinew.exception/ValidationException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+}
+
+final fun (com.srctool.sinew.models/SinewException).com.srctool.sinew.exception/displayMessage(com.srctool.sinew.exception/Localizer?): kotlin/String // com.srctool.sinew.exception/displayMessage|displayMessage@com.srctool.sinew.models.SinewException(com.srctool.sinew.exception.Localizer?){}[0]
+final fun com.srctool.sinew.exception/envelopeDataMissing(kotlin/String, kotlin/String, com.srctool.sinew.models/ExceptionLayer): com.srctool.sinew.exception/ExceptionHandler // com.srctool.sinew.exception/envelopeDataMissing|envelopeDataMissing(kotlin.String;kotlin.String;com.srctool.sinew.models.ExceptionLayer){}[0]
+final suspend fun <#A: kotlin/Any?> com.srctool.sinew.exception/processCall(kotlin/String, kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin.collections/List<com.srctool.sinew.exception/ExceptionHandler>, kotlin.coroutines/SuspendFunction0<#A>): com.srctool.sinew.models/Result<#A> // com.srctool.sinew.exception/processCall|processCall(kotlin.String;kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.collections.List<com.srctool.sinew.exception.ExceptionHandler>;kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> com.srctool.sinew.exception/processResult(kotlin/String, kotlin/String, com.srctool.sinew.models/ExceptionLayer = ..., kotlin.coroutines/SuspendFunction0<#A>): com.srctool.sinew.models/Result<#A> // com.srctool.sinew.exception/processResult|processResult(kotlin.String;kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]

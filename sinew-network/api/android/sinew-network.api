@@ -1,0 +1,315 @@
+public final class com/srctool/sinew/network/ApiCallKt {
+	public static final fun apiHandlers (Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+	public static final fun processApiCall (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun processOptionalApiCall (Ljava/lang/String;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/network/CertificatePins_androidKt {
+	public static final fun pinCertificates (Lio/ktor/client/engine/okhttp/OkHttpConfig;Ljava/lang/String;Ljava/util/Set;)V
+}
+
+public final class com/srctool/sinew/network/ErrorBody {
+	public fun <init> (Ljava/lang/String;Ljava/util/Map;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Ljava/util/Map;)Lcom/srctool/sinew/network/ErrorBody;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/network/ErrorBody;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lcom/srctool/sinew/network/ErrorBody;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFieldErrors ()Ljava/util/Map;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/network/ErrorBodyReader {
+	public static final field Companion Lcom/srctool/sinew/network/ErrorBodyReader$Companion;
+	public abstract fun read (ILjava/lang/String;)Lcom/srctool/sinew/network/ErrorBody;
+}
+
+public final class com/srctool/sinew/network/ErrorBodyReader$Companion {
+	public final fun getDefault ()Lcom/srctool/sinew/network/ErrorBodyReader;
+}
+
+public final class com/srctool/sinew/network/FaultDecision {
+	public fun <init> ()V
+	public synthetic fun <init> (Lkotlin/time/Duration;Ljava/lang/Integer;Ljava/lang/String;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Lkotlin/time/Duration;Ljava/lang/Integer;Ljava/lang/String;ZLkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getBody ()Ljava/lang/String;
+	public final fun getDelay-FghU774 ()Lkotlin/time/Duration;
+	public final fun getDrop ()Z
+	public final fun getStatus ()Ljava/lang/Integer;
+}
+
+public final class com/srctool/sinew/network/HttpExchange {
+	public synthetic fun <init> (Lio/ktor/client/HttpClient;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/Map;[BZLjava/lang/Integer;Ljava/util/Map;[BLkotlin/time/Instant;JLjava/lang/Throwable;Ljava/util/Set;Lio/ktor/util/Attributes;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAttributes ()Lio/ktor/util/Attributes;
+	public final fun getClient ()Lio/ktor/client/HttpClient;
+	public final fun getDefaultHeaderNames ()Ljava/util/Set;
+	public final fun getDuration-UwyO8pc ()J
+	public final fun getError ()Ljava/lang/Throwable;
+	public final fun getMethod ()Ljava/lang/String;
+	public final fun getRequestBody ()[B
+	public final fun getRequestBodyStreamed ()Z
+	public final fun getRequestHeaders ()Ljava/util/Map;
+	public final fun getRequestedUrl ()Ljava/lang/String;
+	public final fun getResponseBody ()[B
+	public final fun getResponseHeaders ()Ljava/util/Map;
+	public final fun getStartedAt ()Lkotlin/time/Instant;
+	public final fun getStatus ()Ljava/lang/Integer;
+	public final fun getUrl ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/network/HttpLogger {
+	public static final field Companion Lcom/srctool/sinew/network/HttpLogger$Companion;
+	public abstract fun log (Ljava/lang/String;)V
+}
+
+public final class com/srctool/sinew/network/HttpLogger$Companion {
+	public final fun getDefault ()Lcom/srctool/sinew/network/HttpLogger;
+}
+
+public abstract interface class com/srctool/sinew/network/NetworkChecker : java/lang/AutoCloseable {
+	public static final field Companion Lcom/srctool/sinew/network/NetworkChecker$Companion;
+	public abstract fun close ()V
+	public abstract fun getStatus ()Lkotlinx/coroutines/flow/StateFlow;
+	public fun isOnline ()Z
+}
+
+public final class com/srctool/sinew/network/NetworkChecker$Companion {
+	public final fun create (Lcom/srctool/sinew/models/PlatformContext;)Lcom/srctool/sinew/network/NetworkChecker;
+}
+
+public final class com/srctool/sinew/network/NetworkChecker$DefaultImpls {
+	public static fun isOnline (Lcom/srctool/sinew/network/NetworkChecker;)Z
+}
+
+public final class com/srctool/sinew/network/NetworkStatus : java/lang/Enum {
+	public static final field Offline Lcom/srctool/sinew/network/NetworkStatus;
+	public static final field Online Lcom/srctool/sinew/network/NetworkStatus;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/srctool/sinew/network/NetworkStatus;
+	public static fun values ()[Lcom/srctool/sinew/network/NetworkStatus;
+}
+
+public final class com/srctool/sinew/network/PluginsKt {
+	public static final fun getSinewHeaders ()Lio/ktor/client/plugins/api/ClientPlugin;
+	public static final fun getSinewLog ()Lio/ktor/client/plugins/api/ClientPlugin;
+	public static final fun getSinewRedirect ()Lio/ktor/client/plugins/api/ClientPlugin;
+	public static final fun getSinewTimeouts ()Lio/ktor/client/plugins/api/ClientPlugin;
+	public static final fun sinewErrorBody (Lio/ktor/client/plugins/HttpCallValidatorConfig;Lcom/srctool/sinew/network/ErrorBodyReader;)V
+	public static synthetic fun sinewErrorBody$default (Lio/ktor/client/plugins/HttpCallValidatorConfig;Lcom/srctool/sinew/network/ErrorBodyReader;ILjava/lang/Object;)V
+}
+
+public abstract interface class com/srctool/sinew/network/RefreshCall {
+	public abstract fun refresh (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class com/srctool/sinew/network/RefreshOutcome {
+}
+
+public final class com/srctool/sinew/network/RefreshOutcome$Refreshed : com/srctool/sinew/network/RefreshOutcome {
+	public static final field INSTANCE Lcom/srctool/sinew/network/RefreshOutcome$Refreshed;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/network/RefreshOutcome$Rejected : com/srctool/sinew/network/RefreshOutcome {
+	public static final field INSTANCE Lcom/srctool/sinew/network/RefreshOutcome$Rejected;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/network/RefreshOutcome$Unavailable : com/srctool/sinew/network/RefreshOutcome {
+	public fun <init> (Lcom/srctool/sinew/models/SinewException;)V
+	public final fun component1 ()Lcom/srctool/sinew/models/SinewException;
+	public final fun copy (Lcom/srctool/sinew/models/SinewException;)Lcom/srctool/sinew/network/RefreshOutcome$Unavailable;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/network/RefreshOutcome$Unavailable;Lcom/srctool/sinew/models/SinewException;ILjava/lang/Object;)Lcom/srctool/sinew/network/RefreshOutcome$Unavailable;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCause ()Lcom/srctool/sinew/models/SinewException;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/network/RefreshResult {
+	public static final field Companion Lcom/srctool/sinew/network/RefreshResult$Companion;
+}
+
+public final class com/srctool/sinew/network/RefreshResult$Companion {
+	public final fun from (Lcom/srctool/sinew/models/Result;)Lcom/srctool/sinew/network/RefreshResult;
+}
+
+public final class com/srctool/sinew/network/RefreshResult$Rejected : com/srctool/sinew/network/RefreshResult {
+	public static final field INSTANCE Lcom/srctool/sinew/network/RefreshResult$Rejected;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/network/RefreshResult$Tokens : com/srctool/sinew/network/RefreshResult {
+	public fun <init> (Ljava/lang/String;Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/lang/String;)Lcom/srctool/sinew/network/RefreshResult$Tokens;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/network/RefreshResult$Tokens;Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Lcom/srctool/sinew/network/RefreshResult$Tokens;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getAccess ()Ljava/lang/String;
+	public final fun getRefresh ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/network/RefreshResult$Unavailable : com/srctool/sinew/network/RefreshResult {
+	public fun <init> (Lcom/srctool/sinew/models/SinewException;)V
+	public final fun component1 ()Lcom/srctool/sinew/models/SinewException;
+	public final fun copy (Lcom/srctool/sinew/models/SinewException;)Lcom/srctool/sinew/network/RefreshResult$Unavailable;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/network/RefreshResult$Unavailable;Lcom/srctool/sinew/models/SinewException;ILjava/lang/Object;)Lcom/srctool/sinew/network/RefreshResult$Unavailable;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCause ()Lcom/srctool/sinew/models/SinewException;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/network/RefreshTokenStore {
+	public abstract fun delete (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun read (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun write (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/network/RetryKt {
+	public static final fun poll-TgzglbY (Ljava/lang/String;Ljava/lang/String;JJJLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun poll-TgzglbY$default (Ljava/lang/String;Ljava/lang/String;JJJLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static final fun retryWithBackoff-FbhrOv8 (IJJLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun retryWithBackoff-FbhrOv8$default (IJJLkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/network/SessionTokenSource : com/srctool/sinew/network/TokenSource {
+	public fun <init> (Lcom/srctool/sinew/network/RefreshTokenStore;Lcom/srctool/sinew/network/RefreshCall;Lkotlin/jvm/functions/Function1;)V
+	public synthetic fun <init> (Lcom/srctool/sinew/network/RefreshTokenStore;Lcom/srctool/sinew/network/RefreshCall;Lkotlin/jvm/functions/Function1;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun accessToken ()Ljava/lang/String;
+	public fun clear (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun refresh (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun start (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/network/SinewAuthConfig {
+	public fun <init> ()V
+	public final fun getAnonymousPaths ()Ljava/util/Set;
+	public final fun getBaseUrl ()Ljava/lang/String;
+	public final fun getTokenSource ()Lcom/srctool/sinew/network/TokenSource;
+	public final fun setAnonymousPaths (Ljava/util/Set;)V
+	public final fun setBaseUrl (Ljava/lang/String;)V
+	public final fun setTokenSource (Lcom/srctool/sinew/network/TokenSource;)V
+}
+
+public final class com/srctool/sinew/network/SinewAuthKt {
+	public static final fun getSinewAuth ()Lio/ktor/client/plugins/api/ClientPlugin;
+}
+
+public final class com/srctool/sinew/network/SinewBackendKt {
+	public static final fun sinewBackend (Lio/ktor/client/HttpClientConfig;Ljava/lang/String;)V
+}
+
+public final class com/srctool/sinew/network/SinewConfig {
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;JJJZLjava/util/Set;Lcom/srctool/sinew/network/ErrorBodyReader;Ljava/util/Set;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public synthetic fun <init> (Ljava/lang/String;Lkotlin/jvm/functions/Function0;Lkotlin/jvm/functions/Function0;JJJZLjava/util/Set;Lcom/srctool/sinew/network/ErrorBodyReader;Ljava/util/Set;Lkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getAnonymousPaths ()Ljava/util/Set;
+	public final fun getBaseUrl ()Ljava/lang/String;
+	public final fun getCertificatePins ()Ljava/util/Set;
+	public final fun getConnectTimeout-UwyO8pc ()J
+	public final fun getDefaultHeaders ()Lkotlin/jvm/functions/Function0;
+	public final fun getErrorBodyReader ()Lcom/srctool/sinew/network/ErrorBodyReader;
+	public final fun getLocale ()Lkotlin/jvm/functions/Function0;
+	public final fun getLogHttp ()Z
+	public final fun getReadTimeout-UwyO8pc ()J
+	public final fun getWriteTimeout-UwyO8pc ()J
+}
+
+public final class com/srctool/sinew/network/SinewHeadersConfig {
+	public fun <init> ()V
+	public final fun getDefaults ()Lkotlin/jvm/functions/Function0;
+	public final fun getLocale ()Lkotlin/jvm/functions/Function0;
+	public final fun setDefaults (Lkotlin/jvm/functions/Function0;)V
+	public final fun setLocale (Lkotlin/jvm/functions/Function0;)V
+}
+
+public final class com/srctool/sinew/network/SinewHooksConfig {
+	public fun <init> ()V
+	public final fun getBaseUrl ()Ljava/lang/String;
+	public final fun getDefaults ()Lkotlin/jvm/functions/Function0;
+	public final fun getHooks ()Lcom/srctool/sinew/network/SinewHttpHooks;
+	public final fun setBaseUrl (Ljava/lang/String;)V
+	public final fun setDefaults (Lkotlin/jvm/functions/Function0;)V
+	public final fun setHooks (Lcom/srctool/sinew/network/SinewHttpHooks;)V
+}
+
+public final class com/srctool/sinew/network/SinewHooksKt {
+	public static final fun getSinewHooks ()Lio/ktor/client/plugins/api/ClientPlugin;
+}
+
+public final class com/srctool/sinew/network/SinewHttp {
+	public static final field INSTANCE Lcom/srctool/sinew/network/SinewHttp;
+	public final fun client (Lcom/srctool/sinew/network/SinewConfig;Lcom/srctool/sinew/network/TokenSource;Lcom/srctool/sinew/network/HttpLogger;Lcom/srctool/sinew/network/SinewHttpHooks;Lkotlin/jvm/functions/Function1;)Lio/ktor/client/HttpClient;
+	public final fun client (Lcom/srctool/sinew/network/SinewConfig;Lcom/srctool/sinew/network/TokenSource;Lio/ktor/client/engine/HttpClientEngineFactory;Lcom/srctool/sinew/network/HttpLogger;Lcom/srctool/sinew/network/SinewHttpHooks;Lkotlin/jvm/functions/Function1;)Lio/ktor/client/HttpClient;
+	public final fun client (Lcom/srctool/sinew/network/SinewConfig;Lcom/srctool/sinew/network/TokenSource;Lio/ktor/client/engine/HttpClientEngineFactory;Lcom/srctool/sinew/network/HttpLogger;Lkotlin/coroutines/CoroutineContext;Lcom/srctool/sinew/network/SinewHttpHooks;Lkotlin/jvm/functions/Function1;)Lio/ktor/client/HttpClient;
+	public static synthetic fun client$default (Lcom/srctool/sinew/network/SinewHttp;Lcom/srctool/sinew/network/SinewConfig;Lcom/srctool/sinew/network/TokenSource;Lcom/srctool/sinew/network/HttpLogger;Lcom/srctool/sinew/network/SinewHttpHooks;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lio/ktor/client/HttpClient;
+	public static synthetic fun client$default (Lcom/srctool/sinew/network/SinewHttp;Lcom/srctool/sinew/network/SinewConfig;Lcom/srctool/sinew/network/TokenSource;Lio/ktor/client/engine/HttpClientEngineFactory;Lcom/srctool/sinew/network/HttpLogger;Lcom/srctool/sinew/network/SinewHttpHooks;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lio/ktor/client/HttpClient;
+	public static synthetic fun client$default (Lcom/srctool/sinew/network/SinewHttp;Lcom/srctool/sinew/network/SinewConfig;Lcom/srctool/sinew/network/TokenSource;Lio/ktor/client/engine/HttpClientEngineFactory;Lcom/srctool/sinew/network/HttpLogger;Lkotlin/coroutines/CoroutineContext;Lcom/srctool/sinew/network/SinewHttpHooks;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lio/ktor/client/HttpClient;
+	public final fun debugExpireToken (Lio/ktor/client/HttpClient;)V
+	public final fun resetAuth (Lio/ktor/client/HttpClient;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class com/srctool/sinew/network/SinewHttpHooks {
+	public static final field Companion Lcom/srctool/sinew/network/SinewHttpHooks$Companion;
+	public fun attached (Lio/ktor/client/HttpClient;)V
+	public fun detached (Lio/ktor/client/HttpClient;)V
+	public fun fault (Ljava/lang/String;Lio/ktor/http/Url;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun hostOverride ()Ljava/lang/String;
+	public fun record (Lcom/srctool/sinew/network/HttpExchange;)V
+}
+
+public final class com/srctool/sinew/network/SinewHttpHooks$Companion {
+	public final fun getNone ()Lcom/srctool/sinew/network/SinewHttpHooks;
+}
+
+public final class com/srctool/sinew/network/SinewHttpHooks$DefaultImpls {
+	public static fun attached (Lcom/srctool/sinew/network/SinewHttpHooks;Lio/ktor/client/HttpClient;)V
+	public static fun detached (Lcom/srctool/sinew/network/SinewHttpHooks;Lio/ktor/client/HttpClient;)V
+	public static fun fault (Lcom/srctool/sinew/network/SinewHttpHooks;Ljava/lang/String;Lio/ktor/http/Url;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static fun hostOverride (Lcom/srctool/sinew/network/SinewHttpHooks;)Ljava/lang/String;
+	public static fun record (Lcom/srctool/sinew/network/SinewHttpHooks;Lcom/srctool/sinew/network/HttpExchange;)V
+}
+
+public final class com/srctool/sinew/network/SinewJsonKt {
+	public static final fun getSinewJson ()Lkotlinx/serialization/json/Json;
+}
+
+public final class com/srctool/sinew/network/SinewLogConfig {
+	public fun <init> ()V
+	public final fun getLogger ()Lcom/srctool/sinew/network/HttpLogger;
+	public final fun setLogger (Lcom/srctool/sinew/network/HttpLogger;)V
+}
+
+public final class com/srctool/sinew/network/SinewRedirectConfig {
+	public fun <init> ()V
+	public final fun getMaxHops ()I
+	public final fun setMaxHops (I)V
+}
+
+public final class com/srctool/sinew/network/SinewTimeoutsConfig {
+	public fun <init> ()V
+	public final fun getConnect-UwyO8pc ()J
+	public final fun getRead-UwyO8pc ()J
+	public final fun getWrite-UwyO8pc ()J
+	public final fun setConnect-LRDsOJo (J)V
+	public final fun setRead-LRDsOJo (J)V
+	public final fun setWrite-LRDsOJo (J)V
+}
+
+public abstract interface class com/srctool/sinew/network/TokenSource {
+	public abstract fun accessToken ()Ljava/lang/String;
+	public abstract fun clear (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun refresh (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+

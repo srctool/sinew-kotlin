@@ -1,0 +1,56 @@
+public abstract interface class com/srctool/sinew/storage/InspectableStore {
+	public abstract fun getName ()Ljava/lang/String;
+	public abstract fun keys (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun read (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public abstract interface class com/srctool/sinew/storage/KeyValueStore : com/srctool/sinew/storage/InspectableStore {
+	public static final field Companion Lcom/srctool/sinew/storage/KeyValueStore$Companion;
+	public abstract fun clear (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getBool (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getDouble (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getInt (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun getString (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun remove (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun setBool (Ljava/lang/String;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun setDouble (Ljava/lang/String;DLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun setInt (Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun setString (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/storage/KeyValueStore$Companion {
+	public final fun create (Lcom/srctool/sinew/models/PlatformContext;Ljava/lang/String;)Lcom/srctool/sinew/storage/KeyValueStore;
+	public static synthetic fun create$default (Lcom/srctool/sinew/storage/KeyValueStore$Companion;Lcom/srctool/sinew/models/PlatformContext;Ljava/lang/String;ILjava/lang/Object;)Lcom/srctool/sinew/storage/KeyValueStore;
+}
+
+public final class com/srctool/sinew/storage/PagedQueryKt {
+	public static final fun pagedQuery (IIILkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun pagedQuery$default (IIILkotlin/jvm/functions/Function3;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public abstract interface class com/srctool/sinew/storage/SecureStore : com/srctool/sinew/storage/InspectableStore {
+	public static final field Companion Lcom/srctool/sinew/storage/SecureStore$Companion;
+	public abstract fun clearUserData (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun delete (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun read (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun write (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/storage/SecureStore$Companion {
+	public final fun create (Lcom/srctool/sinew/models/PlatformContext;Ljava/lang/String;)Lcom/srctool/sinew/storage/SecureStore;
+	public static synthetic fun create$default (Lcom/srctool/sinew/storage/SecureStore$Companion;Lcom/srctool/sinew/models/PlatformContext;Ljava/lang/String;ILjava/lang/Object;)Lcom/srctool/sinew/storage/SecureStore;
+}
+
+public final class com/srctool/sinew/storage/StorageAccess : java/lang/Enum {
+	public static final field Read Lcom/srctool/sinew/storage/StorageAccess;
+	public static final field Write Lcom/srctool/sinew/storage/StorageAccess;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/srctool/sinew/storage/StorageAccess;
+	public static fun values ()[Lcom/srctool/sinew/storage/StorageAccess;
+}
+
+public final class com/srctool/sinew/storage/StorageGuardKt {
+	public static final fun processStorageCall (Ljava/lang/String;Ljava/lang/String;Lcom/srctool/sinew/storage/StorageAccess;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static final fun storageHandlers (Ljava/lang/String;Ljava/lang/String;Lcom/srctool/sinew/storage/StorageAccess;)Ljava/util/List;
+}
+

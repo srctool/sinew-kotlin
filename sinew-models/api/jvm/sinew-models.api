@@ -1,0 +1,316 @@
+public abstract interface class com/srctool/sinew/models/Domain {
+}
+
+public abstract class com/srctool/sinew/models/DomainNotParsed : kotlinx/serialization/KSerializer {
+	public fun <init> (Ljava/lang/String;)V
+	public fun deserialize (Lkotlinx/serialization/encoding/Decoder;)Ljava/lang/Object;
+	public fun getDescriptor ()Lkotlinx/serialization/descriptors/SerialDescriptor;
+	public fun serialize (Lkotlinx/serialization/encoding/Encoder;Ljava/lang/Object;)V
+}
+
+public abstract class com/srctool/sinew/models/Entity {
+	public fun <init> ()V
+	public abstract fun toDomain ()Lcom/srctool/sinew/models/Domain;
+}
+
+public abstract interface class com/srctool/sinew/models/Envelope {
+	public fun failure ()Lcom/srctool/sinew/models/EnvelopeFailure;
+	public fun message ()Ljava/lang/String;
+	public abstract fun toDomain ()Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/models/Envelope$DefaultImpls {
+	public static fun failure (Lcom/srctool/sinew/models/Envelope;)Lcom/srctool/sinew/models/EnvelopeFailure;
+	public static fun message (Lcom/srctool/sinew/models/Envelope;)Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/models/EnvelopeDataMissing : java/lang/IllegalStateException {
+	public fun <init> ()V
+}
+
+public final class com/srctool/sinew/models/EnvelopeFailure {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;Ljava/util/Map;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Map;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun copy (Ljava/lang/String;Ljava/util/Map;)Lcom/srctool/sinew/models/EnvelopeFailure;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/EnvelopeFailure;Ljava/lang/String;Ljava/util/Map;ILjava/lang/Object;)Lcom/srctool/sinew/models/EnvelopeFailure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getFieldErrors ()Ljava/util/Map;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/models/ErrorMessage {
+}
+
+public final class com/srctool/sinew/models/ErrorMessage$Local : com/srctool/sinew/models/ErrorMessage {
+	public fun <init> (Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun component2 ()Ljava/util/Map;
+	public final fun component3 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;)Lcom/srctool/sinew/models/ErrorMessage$Local;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/ErrorMessage$Local;Ljava/lang/String;Ljava/util/Map;Ljava/lang/String;ILjava/lang/Object;)Lcom/srctool/sinew/models/ErrorMessage$Local;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getArgs ()Ljava/util/Map;
+	public final fun getFallback ()Ljava/lang/String;
+	public final fun getKey ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/models/ErrorMessage$Server : com/srctool/sinew/models/ErrorMessage {
+	public fun <init> (Ljava/lang/String;)V
+	public final fun component1 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/String;)Lcom/srctool/sinew/models/ErrorMessage$Server;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/ErrorMessage$Server;Ljava/lang/String;ILjava/lang/Object;)Lcom/srctool/sinew/models/ErrorMessage$Server;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getText ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/models/ExceptionLayer : java/lang/Enum {
+	public static final field Repository Lcom/srctool/sinew/models/ExceptionLayer;
+	public static final field UseCase Lcom/srctool/sinew/models/ExceptionLayer;
+	public static final field Utility Lcom/srctool/sinew/models/ExceptionLayer;
+	public static final field ViewModel Lcom/srctool/sinew/models/ExceptionLayer;
+	public final fun getCode ()Ljava/lang/String;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/srctool/sinew/models/ExceptionLayer;
+	public static fun values ()[Lcom/srctool/sinew/models/ExceptionLayer;
+}
+
+public abstract class com/srctool/sinew/models/ListEnvelope : com/srctool/sinew/models/Envelope {
+	public fun <init> ()V
+	public fun failure ()Lcom/srctool/sinew/models/EnvelopeFailure;
+	public abstract fun getItems ()Ljava/util/List;
+	public fun message ()Ljava/lang/String;
+	public synthetic fun toDomain ()Ljava/lang/Object;
+	public fun toDomain ()Ljava/util/List;
+}
+
+public abstract class com/srctool/sinew/models/ObjectEnvelope : com/srctool/sinew/models/Envelope {
+	public fun <init> ()V
+	public fun failure ()Lcom/srctool/sinew/models/EnvelopeFailure;
+	public abstract fun getData ()Lcom/srctool/sinew/models/Remote;
+	public fun message ()Ljava/lang/String;
+	public fun toDomain ()Lcom/srctool/sinew/models/Domain;
+	public synthetic fun toDomain ()Ljava/lang/Object;
+}
+
+public abstract class com/srctool/sinew/models/PagedEnvelope : com/srctool/sinew/models/Envelope {
+	public fun <init> ()V
+	public fun failure ()Lcom/srctool/sinew/models/EnvelopeFailure;
+	public abstract fun getItems ()Ljava/util/List;
+	public abstract fun getMeta ()Lcom/srctool/sinew/models/PagingMetaEnvelope;
+	public fun message ()Ljava/lang/String;
+	public fun toDomain ()Lcom/srctool/sinew/models/PagingDomain;
+	public synthetic fun toDomain ()Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/models/PagingDomain {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;Lcom/srctool/sinew/models/PagingMetaDomain;)V
+	public synthetic fun <init> (Ljava/util/List;Lcom/srctool/sinew/models/PagingMetaDomain;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Lcom/srctool/sinew/models/PagingMetaDomain;
+	public final fun copy (Ljava/util/List;Lcom/srctool/sinew/models/PagingMetaDomain;)Lcom/srctool/sinew/models/PagingDomain;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/PagingDomain;Ljava/util/List;Lcom/srctool/sinew/models/PagingMetaDomain;ILjava/lang/Object;)Lcom/srctool/sinew/models/PagingDomain;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getItems ()Ljava/util/List;
+	public final fun getMeta ()Lcom/srctool/sinew/models/PagingMetaDomain;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/models/PagingEntity {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/List;Lcom/srctool/sinew/models/PagingMetaEntity;)V
+	public synthetic fun <init> (Ljava/util/List;Lcom/srctool/sinew/models/PagingMetaEntity;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/util/List;
+	public final fun component2 ()Lcom/srctool/sinew/models/PagingMetaEntity;
+	public final fun copy (Ljava/util/List;Lcom/srctool/sinew/models/PagingMetaEntity;)Lcom/srctool/sinew/models/PagingEntity;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/PagingEntity;Ljava/util/List;Lcom/srctool/sinew/models/PagingMetaEntity;ILjava/lang/Object;)Lcom/srctool/sinew/models/PagingEntity;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getItems ()Ljava/util/List;
+	public final fun getMeta ()Lcom/srctool/sinew/models/PagingMetaEntity;
+	public fun hashCode ()I
+	public final fun toDomain (Lkotlin/jvm/functions/Function1;)Lcom/srctool/sinew/models/PagingDomain;
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/models/PagingMetaDomain {
+	public fun <init> ()V
+	public fun <init> (IIIIZZLjava/lang/String;)V
+	public synthetic fun <init> (IIIIZZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()Z
+	public final fun component6 ()Z
+	public final fun component7 ()Ljava/lang/String;
+	public final fun copy (IIIIZZLjava/lang/String;)Lcom/srctool/sinew/models/PagingMetaDomain;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/PagingMetaDomain;IIIIZZLjava/lang/String;ILjava/lang/Object;)Lcom/srctool/sinew/models/PagingMetaDomain;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHasNextPage ()Z
+	public final fun getHasPreviousPage ()Z
+	public final fun getLimit ()I
+	public final fun getNextKey ()Ljava/lang/String;
+	public final fun getPage ()I
+	public final fun getTotal ()I
+	public final fun getTotalPage ()I
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/models/PagingMetaEntity {
+	public fun <init> ()V
+	public fun <init> (IIIIZZLjava/lang/String;)V
+	public synthetic fun <init> (IIIIZZLjava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()I
+	public final fun component2 ()I
+	public final fun component3 ()I
+	public final fun component4 ()I
+	public final fun component5 ()Z
+	public final fun component6 ()Z
+	public final fun component7 ()Ljava/lang/String;
+	public final fun copy (IIIIZZLjava/lang/String;)Lcom/srctool/sinew/models/PagingMetaEntity;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/PagingMetaEntity;IIIIZZLjava/lang/String;ILjava/lang/Object;)Lcom/srctool/sinew/models/PagingMetaEntity;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getHasNextPage ()Z
+	public final fun getHasPreviousPage ()Z
+	public final fun getLimit ()I
+	public final fun getNextKey ()Ljava/lang/String;
+	public final fun getPage ()I
+	public final fun getTotal ()I
+	public final fun getTotalPage ()I
+	public fun hashCode ()I
+	public final fun toDomain ()Lcom/srctool/sinew/models/PagingMetaDomain;
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract class com/srctool/sinew/models/PagingMetaEnvelope {
+	public fun <init> ()V
+	public abstract fun toDomain ()Lcom/srctool/sinew/models/PagingMetaDomain;
+}
+
+public final class com/srctool/sinew/models/PlatformContext {
+	public fun <init> ()V
+}
+
+public abstract class com/srctool/sinew/models/Remote {
+	public fun <init> ()V
+	public abstract fun toDomain ()Lcom/srctool/sinew/models/Domain;
+}
+
+public abstract interface class com/srctool/sinew/models/Result {
+}
+
+public final class com/srctool/sinew/models/Result$Failure : com/srctool/sinew/models/Result {
+	public fun <init> (Lcom/srctool/sinew/models/SinewException;)V
+	public final fun component1 ()Lcom/srctool/sinew/models/SinewException;
+	public final fun copy (Lcom/srctool/sinew/models/SinewException;)Lcom/srctool/sinew/models/Result$Failure;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/Result$Failure;Lcom/srctool/sinew/models/SinewException;ILjava/lang/Object;)Lcom/srctool/sinew/models/Result$Failure;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getError ()Lcom/srctool/sinew/models/SinewException;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/models/Result$Success : com/srctool/sinew/models/Result {
+	public fun <init> (Ljava/lang/Object;Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/Object;Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Ljava/lang/String;
+	public final fun copy (Ljava/lang/Object;Ljava/lang/String;)Lcom/srctool/sinew/models/Result$Success;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/Result$Success;Ljava/lang/Object;Ljava/lang/String;ILjava/lang/Object;)Lcom/srctool/sinew/models/Result$Success;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/lang/Object;
+	public final fun getMessage ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/models/ResultKt {
+	public static final fun fold (Lcom/srctool/sinew/models/Result;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+	public static final fun getDataOrNull (Lcom/srctool/sinew/models/Result;)Ljava/lang/Object;
+	public static final fun getErrorOrNull (Lcom/srctool/sinew/models/Result;)Lcom/srctool/sinew/models/SinewException;
+	public static final fun getOrThrow (Lcom/srctool/sinew/models/Result;)Ljava/lang/Object;
+	public static final fun isSuccess (Lcom/srctool/sinew/models/Result;)Z
+	public static final fun map (Lcom/srctool/sinew/models/Result;Lkotlin/jvm/functions/Function1;)Lcom/srctool/sinew/models/Result;
+	public static final fun onFailure (Lcom/srctool/sinew/models/Result;Lkotlin/jvm/functions/Function1;)Lcom/srctool/sinew/models/Result;
+	public static final fun onSuccess (Lcom/srctool/sinew/models/Result;Lkotlin/jvm/functions/Function1;)Lcom/srctool/sinew/models/Result;
+}
+
+public abstract class com/srctool/sinew/models/SinewException : java/lang/Exception {
+	public fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/String;Lcom/srctool/sinew/models/ExceptionLayer;Ljava/lang/String;Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getCode ()Ljava/lang/String;
+	public abstract fun getErrorMessage ()Lcom/srctool/sinew/models/ErrorMessage;
+	public final fun getFunction ()Ljava/lang/String;
+	public final fun getLayer ()Lcom/srctool/sinew/models/ExceptionLayer;
+	public fun getMessage ()Ljava/lang/String;
+	public final fun getModule ()Ljava/lang/String;
+	public fun getRetryable ()Z
+	public abstract fun getTypeCode ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/models/ViewState {
+}
+
+public final class com/srctool/sinew/models/ViewState$Done : com/srctool/sinew/models/ViewState {
+	public fun <init> (Ljava/lang/Object;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;)Lcom/srctool/sinew/models/ViewState$Done;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/ViewState$Done;Ljava/lang/Object;ILjava/lang/Object;)Lcom/srctool/sinew/models/ViewState$Done;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/models/ViewState$Failed : com/srctool/sinew/models/ViewState {
+	public fun <init> (Ljava/lang/Object;Lcom/srctool/sinew/models/SinewException;)V
+	public synthetic fun <init> (Ljava/lang/Object;Lcom/srctool/sinew/models/SinewException;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun component2 ()Lcom/srctool/sinew/models/SinewException;
+	public final fun copy (Ljava/lang/Object;Lcom/srctool/sinew/models/SinewException;)Lcom/srctool/sinew/models/ViewState$Failed;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/ViewState$Failed;Ljava/lang/Object;Lcom/srctool/sinew/models/SinewException;ILjava/lang/Object;)Lcom/srctool/sinew/models/ViewState$Failed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/lang/Object;
+	public final fun getError ()Lcom/srctool/sinew/models/SinewException;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/models/ViewState$Loading : com/srctool/sinew/models/ViewState {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Object;)V
+	public synthetic fun <init> (Ljava/lang/Object;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Ljava/lang/Object;
+	public final fun copy (Ljava/lang/Object;)Lcom/srctool/sinew/models/ViewState$Loading;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/models/ViewState$Loading;Ljava/lang/Object;ILjava/lang/Object;)Lcom/srctool/sinew/models/ViewState$Loading;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getData ()Ljava/lang/Object;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/models/ViewStateKt {
+	public static final fun getDataOrNull (Lcom/srctool/sinew/models/ViewState;)Ljava/lang/Object;
+	public static final fun isLoading (Lcom/srctool/sinew/models/ViewState;)Z
+}
+
+public abstract class com/srctool/sinew/models/VoidEnvelope : com/srctool/sinew/models/Envelope {
+	public fun <init> ()V
+	public fun failure ()Lcom/srctool/sinew/models/EnvelopeFailure;
+	public fun message ()Ljava/lang/String;
+	public synthetic fun toDomain ()Ljava/lang/Object;
+	public fun toDomain ()V
+}
+

@@ -1,0 +1,105 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-security>
+final enum class com.srctool.sinew.security/BiometricAvailability : kotlin/Enum<com.srctool.sinew.security/BiometricAvailability> { // com.srctool.sinew.security/BiometricAvailability|null[0]
+    enum entry Available // com.srctool.sinew.security/BiometricAvailability.Available|null[0]
+    enum entry NotEnrolled // com.srctool.sinew.security/BiometricAvailability.NotEnrolled|null[0]
+    enum entry Unavailable // com.srctool.sinew.security/BiometricAvailability.Unavailable|null[0]
+
+    final val entries // com.srctool.sinew.security/BiometricAvailability.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.srctool.sinew.security/BiometricAvailability> // com.srctool.sinew.security/BiometricAvailability.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.srctool.sinew.security/BiometricAvailability // com.srctool.sinew.security/BiometricAvailability.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.srctool.sinew.security/BiometricAvailability> // com.srctool.sinew.security/BiometricAvailability.values|values#static(){}[0]
+}
+
+final enum class com.srctool.sinew.security/BiometricFailure : kotlin/Enum<com.srctool.sinew.security/BiometricFailure> { // com.srctool.sinew.security/BiometricFailure|null[0]
+    enum entry Cancelled // com.srctool.sinew.security/BiometricFailure.Cancelled|null[0]
+    enum entry Invalidated // com.srctool.sinew.security/BiometricFailure.Invalidated|null[0]
+    enum entry LockedOut // com.srctool.sinew.security/BiometricFailure.LockedOut|null[0]
+    enum entry Unavailable // com.srctool.sinew.security/BiometricFailure.Unavailable|null[0]
+
+    final val entries // com.srctool.sinew.security/BiometricFailure.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.srctool.sinew.security/BiometricFailure> // com.srctool.sinew.security/BiometricFailure.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.srctool.sinew.security/BiometricFailure // com.srctool.sinew.security/BiometricFailure.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.srctool.sinew.security/BiometricFailure> // com.srctool.sinew.security/BiometricFailure.values|values#static(){}[0]
+}
+
+abstract interface com.srctool.sinew.security/BiometricVault { // com.srctool.sinew.security/BiometricVault|null[0]
+    abstract suspend fun availability(): com.srctool.sinew.security/BiometricAvailability // com.srctool.sinew.security/BiometricVault.availability|availability(){}[0]
+    abstract suspend fun disable() // com.srctool.sinew.security/BiometricVault.disable|disable(){}[0]
+    abstract suspend fun isStored(): kotlin/Boolean // com.srctool.sinew.security/BiometricVault.isStored|isStored(){}[0]
+    abstract suspend fun store(kotlin/String, kotlin/String): com.srctool.sinew.security/BiometricStore // com.srctool.sinew.security/BiometricVault.store|store(kotlin.String;kotlin.String){}[0]
+    abstract suspend fun unlock(kotlin/String): com.srctool.sinew.security/BiometricUnlock // com.srctool.sinew.security/BiometricVault.unlock|unlock(kotlin.String){}[0]
+
+    final object Companion { // com.srctool.sinew.security/BiometricVault.Companion|null[0]
+        final fun create(com.srctool.sinew.models/PlatformContext, kotlin/String = ..., kotlin/Boolean = ...): com.srctool.sinew.security/BiometricVault // com.srctool.sinew.security/BiometricVault.Companion.create|create(com.srctool.sinew.models.PlatformContext;kotlin.String;kotlin.Boolean){}[0]
+    }
+}
+
+abstract interface com.srctool.sinew.security/FieldCipher { // com.srctool.sinew.security/FieldCipher|null[0]
+    abstract suspend fun decrypt(kotlin/String, kotlin/String = ...): kotlin/String // com.srctool.sinew.security/FieldCipher.decrypt|decrypt(kotlin.String;kotlin.String){}[0]
+    abstract suspend fun encrypt(kotlin/String, kotlin/String = ...): kotlin/String // com.srctool.sinew.security/FieldCipher.encrypt|encrypt(kotlin.String;kotlin.String){}[0]
+    abstract suspend fun rotateKey() // com.srctool.sinew.security/FieldCipher.rotateKey|rotateKey(){}[0]
+
+    final object Companion { // com.srctool.sinew.security/FieldCipher.Companion|null[0]
+        final fun create(com.srctool.sinew.models/PlatformContext, kotlin/String = ...): com.srctool.sinew.security/FieldCipher // com.srctool.sinew.security/FieldCipher.Companion.create|create(com.srctool.sinew.models.PlatformContext;kotlin.String){}[0]
+    }
+}
+
+sealed interface com.srctool.sinew.security/BiometricStore { // com.srctool.sinew.security/BiometricStore|null[0]
+    final class Failed : com.srctool.sinew.security/BiometricStore { // com.srctool.sinew.security/BiometricStore.Failed|null[0]
+        constructor <init>(com.srctool.sinew.security/BiometricFailure) // com.srctool.sinew.security/BiometricStore.Failed.<init>|<init>(com.srctool.sinew.security.BiometricFailure){}[0]
+
+        final val reason // com.srctool.sinew.security/BiometricStore.Failed.reason|{}reason[0]
+            final fun <get-reason>(): com.srctool.sinew.security/BiometricFailure // com.srctool.sinew.security/BiometricStore.Failed.reason.<get-reason>|<get-reason>(){}[0]
+
+        final fun component1(): com.srctool.sinew.security/BiometricFailure // com.srctool.sinew.security/BiometricStore.Failed.component1|component1(){}[0]
+        final fun copy(com.srctool.sinew.security/BiometricFailure = ...): com.srctool.sinew.security/BiometricStore.Failed // com.srctool.sinew.security/BiometricStore.Failed.copy|copy(com.srctool.sinew.security.BiometricFailure){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.security/BiometricStore.Failed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.security/BiometricStore.Failed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.security/BiometricStore.Failed.toString|toString(){}[0]
+    }
+
+    final object Stored : com.srctool.sinew.security/BiometricStore { // com.srctool.sinew.security/BiometricStore.Stored|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.security/BiometricStore.Stored.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.security/BiometricStore.Stored.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.security/BiometricStore.Stored.toString|toString(){}[0]
+    }
+}
+
+sealed interface com.srctool.sinew.security/BiometricUnlock { // com.srctool.sinew.security/BiometricUnlock|null[0]
+    final class Failed : com.srctool.sinew.security/BiometricUnlock { // com.srctool.sinew.security/BiometricUnlock.Failed|null[0]
+        constructor <init>(com.srctool.sinew.security/BiometricFailure) // com.srctool.sinew.security/BiometricUnlock.Failed.<init>|<init>(com.srctool.sinew.security.BiometricFailure){}[0]
+
+        final val reason // com.srctool.sinew.security/BiometricUnlock.Failed.reason|{}reason[0]
+            final fun <get-reason>(): com.srctool.sinew.security/BiometricFailure // com.srctool.sinew.security/BiometricUnlock.Failed.reason.<get-reason>|<get-reason>(){}[0]
+
+        final fun component1(): com.srctool.sinew.security/BiometricFailure // com.srctool.sinew.security/BiometricUnlock.Failed.component1|component1(){}[0]
+        final fun copy(com.srctool.sinew.security/BiometricFailure = ...): com.srctool.sinew.security/BiometricUnlock.Failed // com.srctool.sinew.security/BiometricUnlock.Failed.copy|copy(com.srctool.sinew.security.BiometricFailure){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.security/BiometricUnlock.Failed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.security/BiometricUnlock.Failed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.security/BiometricUnlock.Failed.toString|toString(){}[0]
+    }
+
+    final class Unlocked : com.srctool.sinew.security/BiometricUnlock { // com.srctool.sinew.security/BiometricUnlock.Unlocked|null[0]
+        constructor <init>(kotlin/String) // com.srctool.sinew.security/BiometricUnlock.Unlocked.<init>|<init>(kotlin.String){}[0]
+
+        final val secret // com.srctool.sinew.security/BiometricUnlock.Unlocked.secret|{}secret[0]
+            final fun <get-secret>(): kotlin/String // com.srctool.sinew.security/BiometricUnlock.Unlocked.secret.<get-secret>|<get-secret>(){}[0]
+
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.security/BiometricUnlock.Unlocked.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.security/BiometricUnlock.Unlocked.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.security/BiometricUnlock.Unlocked.toString|toString(){}[0]
+    }
+}
+
+final class com.srctool.sinew.security/DecryptionFailed : kotlin/IllegalStateException { // com.srctool.sinew.security/DecryptionFailed|null[0]
+    constructor <init>(kotlin/Throwable? = ...) // com.srctool.sinew.security/DecryptionFailed.<init>|<init>(kotlin.Throwable?){}[0]
+}

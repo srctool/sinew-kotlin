@@ -1,0 +1,84 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-l10n>
+final object com.srctool.sinew.l10n.resources/Res { // com.srctool.sinew.l10n.resources/Res|null[0]
+    final fun getUri(kotlin/String): kotlin/String // com.srctool.sinew.l10n.resources/Res.getUri|getUri(kotlin.String){}[0]
+    final suspend fun readBytes(kotlin/String): kotlin/ByteArray // com.srctool.sinew.l10n.resources/Res.readBytes|readBytes(kotlin.String){}[0]
+
+    final object array // com.srctool.sinew.l10n.resources/Res.array|null[0]
+
+    final object drawable // com.srctool.sinew.l10n.resources/Res.drawable|null[0]
+
+    final object font // com.srctool.sinew.l10n.resources/Res.font|null[0]
+
+    final object plurals // com.srctool.sinew.l10n.resources/Res.plurals|null[0]
+
+    final object string // com.srctool.sinew.l10n.resources/Res.string|null[0]
+}
+
+final object com.srctool.sinew.l10n/SinewStrings { // com.srctool.sinew.l10n/SinewStrings|null[0]
+    final val keys // com.srctool.sinew.l10n/SinewStrings.keys|{}keys[0]
+        final fun <get-keys>(): kotlin.collections/Set<kotlin/String> // com.srctool.sinew.l10n/SinewStrings.keys.<get-keys>|<get-keys>(){}[0]
+
+    final suspend fun resolve(kotlin/String, kotlin.collections/Map<kotlin/String, kotlin/Any> = ..., org.jetbrains.compose.resources/ResourceEnvironment = ...): kotlin/String? // com.srctool.sinew.l10n/SinewStrings.resolve|resolve(kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.Any>;org.jetbrains.compose.resources.ResourceEnvironment){}[0]
+}
+
+final val com.srctool.sinew.l10n.resources/allDrawableResources // com.srctool.sinew.l10n.resources/allDrawableResources|@com.srctool.sinew.l10n.resources.Res{}allDrawableResources[0]
+    final fun (com.srctool.sinew.l10n.resources/Res).<get-allDrawableResources>(): kotlin.collections/Map<kotlin/String, org.jetbrains.compose.resources/DrawableResource> // com.srctool.sinew.l10n.resources/allDrawableResources.<get-allDrawableResources>|<get-allDrawableResources>@com.srctool.sinew.l10n.resources.Res(){}[0]
+final val com.srctool.sinew.l10n.resources/allFontResources // com.srctool.sinew.l10n.resources/allFontResources|@com.srctool.sinew.l10n.resources.Res{}allFontResources[0]
+    final fun (com.srctool.sinew.l10n.resources/Res).<get-allFontResources>(): kotlin.collections/Map<kotlin/String, org.jetbrains.compose.resources/FontResource> // com.srctool.sinew.l10n.resources/allFontResources.<get-allFontResources>|<get-allFontResources>@com.srctool.sinew.l10n.resources.Res(){}[0]
+final val com.srctool.sinew.l10n.resources/allPluralStringResources // com.srctool.sinew.l10n.resources/allPluralStringResources|@com.srctool.sinew.l10n.resources.Res{}allPluralStringResources[0]
+    final fun (com.srctool.sinew.l10n.resources/Res).<get-allPluralStringResources>(): kotlin.collections/Map<kotlin/String, org.jetbrains.compose.resources/PluralStringResource> // com.srctool.sinew.l10n.resources/allPluralStringResources.<get-allPluralStringResources>|<get-allPluralStringResources>@com.srctool.sinew.l10n.resources.Res(){}[0]
+final val com.srctool.sinew.l10n.resources/allStringArrayResources // com.srctool.sinew.l10n.resources/allStringArrayResources|@com.srctool.sinew.l10n.resources.Res{}allStringArrayResources[0]
+    final fun (com.srctool.sinew.l10n.resources/Res).<get-allStringArrayResources>(): kotlin.collections/Map<kotlin/String, org.jetbrains.compose.resources/StringArrayResource> // com.srctool.sinew.l10n.resources/allStringArrayResources.<get-allStringArrayResources>|<get-allStringArrayResources>@com.srctool.sinew.l10n.resources.Res(){}[0]
+final val com.srctool.sinew.l10n.resources/allStringResources // com.srctool.sinew.l10n.resources/allStringResources|@com.srctool.sinew.l10n.resources.Res{}allStringResources[0]
+    final fun (com.srctool.sinew.l10n.resources/Res).<get-allStringResources>(): kotlin.collections/Map<kotlin/String, org.jetbrains.compose.resources/StringResource> // com.srctool.sinew.l10n.resources/allStringResources.<get-allStringResources>|<get-allStringResources>@com.srctool.sinew.l10n.resources.Res(){}[0]
+final val com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res$stableprop // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res$stableprop|#static{}com_srctool_sinew_l10n_resources_Res$stableprop[0]
+final val com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_array$stableprop // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_array$stableprop|#static{}com_srctool_sinew_l10n_resources_Res_array$stableprop[0]
+final val com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_drawable$stableprop // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_drawable$stableprop|#static{}com_srctool_sinew_l10n_resources_Res_drawable$stableprop[0]
+final val com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_font$stableprop // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_font$stableprop|#static{}com_srctool_sinew_l10n_resources_Res_font$stableprop[0]
+final val com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_plurals$stableprop // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_plurals$stableprop|#static{}com_srctool_sinew_l10n_resources_Res_plurals$stableprop[0]
+final val com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_string$stableprop // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_string$stableprop|#static{}com_srctool_sinew_l10n_resources_Res_string$stableprop[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_conflict // com.srctool.sinew.l10n.resources/sinew_error_conflict|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_conflict[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_conflict>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_conflict.<get-sinew_error_conflict>|<get-sinew_error_conflict>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_forbidden // com.srctool.sinew.l10n.resources/sinew_error_forbidden|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_forbidden[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_forbidden>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_forbidden.<get-sinew_error_forbidden>|<get-sinew_error_forbidden>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_generic // com.srctool.sinew.l10n.resources/sinew_error_generic|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_generic[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_generic>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_generic.<get-sinew_error_generic>|<get-sinew_error_generic>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_noInternet // com.srctool.sinew.l10n.resources/sinew_error_noInternet|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_noInternet[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_noInternet>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_noInternet.<get-sinew_error_noInternet>|<get-sinew_error_noInternet>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_notFound // com.srctool.sinew.l10n.resources/sinew_error_notFound|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_notFound[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_notFound>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_notFound.<get-sinew_error_notFound>|<get-sinew_error_notFound>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_rateLimited // com.srctool.sinew.l10n.resources/sinew_error_rateLimited|@com.srctool.sinew.l10n.resources.Res.plurals{}sinew_error_rateLimited[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.plurals).<get-sinew_error_rateLimited>(): org.jetbrains.compose.resources/PluralStringResource // com.srctool.sinew.l10n.resources/sinew_error_rateLimited.<get-sinew_error_rateLimited>|<get-sinew_error_rateLimited>@com.srctool.sinew.l10n.resources.Res.plurals(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_rateLimitedNoTime // com.srctool.sinew.l10n.resources/sinew_error_rateLimitedNoTime|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_rateLimitedNoTime[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_rateLimitedNoTime>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_rateLimitedNoTime.<get-sinew_error_rateLimitedNoTime>|<get-sinew_error_rateLimitedNoTime>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_server // com.srctool.sinew.l10n.resources/sinew_error_server|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_server[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_server>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_server.<get-sinew_error_server>|<get-sinew_error_server>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_stillProcessing // com.srctool.sinew.l10n.resources/sinew_error_stillProcessing|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_stillProcessing[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_stillProcessing>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_stillProcessing.<get-sinew_error_stillProcessing>|<get-sinew_error_stillProcessing>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_storageFull // com.srctool.sinew.l10n.resources/sinew_error_storageFull|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_storageFull[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_storageFull>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_storageFull.<get-sinew_error_storageFull>|<get-sinew_error_storageFull>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_timeout // com.srctool.sinew.l10n.resources/sinew_error_timeout|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_timeout[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_timeout>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_timeout.<get-sinew_error_timeout>|<get-sinew_error_timeout>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_unauthorized // com.srctool.sinew.l10n.resources/sinew_error_unauthorized|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_unauthorized[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_unauthorized>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_unauthorized.<get-sinew_error_unauthorized>|<get-sinew_error_unauthorized>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_unavailable // com.srctool.sinew.l10n.resources/sinew_error_unavailable|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_unavailable[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_unavailable>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_unavailable.<get-sinew_error_unavailable>|<get-sinew_error_unavailable>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n.resources/sinew_error_validation // com.srctool.sinew.l10n.resources/sinew_error_validation|@com.srctool.sinew.l10n.resources.Res.string{}sinew_error_validation[0]
+    final fun (com.srctool.sinew.l10n.resources/Res.string).<get-sinew_error_validation>(): org.jetbrains.compose.resources/StringResource // com.srctool.sinew.l10n.resources/sinew_error_validation.<get-sinew_error_validation>|<get-sinew_error_validation>@com.srctool.sinew.l10n.resources.Res.string(){}[0]
+final val com.srctool.sinew.l10n/com_srctool_sinew_l10n_SinewStrings$stableprop // com.srctool.sinew.l10n/com_srctool_sinew_l10n_SinewStrings$stableprop|#static{}com_srctool_sinew_l10n_SinewStrings$stableprop[0]
+
+final fun com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res$stableprop_getter(): kotlin/Int // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res$stableprop_getter|com_srctool_sinew_l10n_resources_Res$stableprop_getter(){}[0]
+final fun com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_array$stableprop_getter(): kotlin/Int // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_array$stableprop_getter|com_srctool_sinew_l10n_resources_Res_array$stableprop_getter(){}[0]
+final fun com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_drawable$stableprop_getter(): kotlin/Int // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_drawable$stableprop_getter|com_srctool_sinew_l10n_resources_Res_drawable$stableprop_getter(){}[0]
+final fun com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_font$stableprop_getter(): kotlin/Int // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_font$stableprop_getter|com_srctool_sinew_l10n_resources_Res_font$stableprop_getter(){}[0]
+final fun com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_plurals$stableprop_getter(): kotlin/Int // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_plurals$stableprop_getter|com_srctool_sinew_l10n_resources_Res_plurals$stableprop_getter(){}[0]
+final fun com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_string$stableprop_getter(): kotlin/Int // com.srctool.sinew.l10n.resources/com_srctool_sinew_l10n_resources_Res_string$stableprop_getter|com_srctool_sinew_l10n_resources_Res_string$stableprop_getter(){}[0]
+final fun com.srctool.sinew.l10n/com_srctool_sinew_l10n_SinewStrings$stableprop_getter(): kotlin/Int // com.srctool.sinew.l10n/com_srctool_sinew_l10n_SinewStrings$stableprop_getter|com_srctool_sinew_l10n_SinewStrings$stableprop_getter(){}[0]
+final fun com.srctool.sinew.l10n/rememberSinewLocalizer(com.srctool.sinew.exception/Localizer?, androidx.compose.runtime/Composer?, kotlin/Int, kotlin/Int): com.srctool.sinew.exception/Localizer // com.srctool.sinew.l10n/rememberSinewLocalizer|rememberSinewLocalizer(com.srctool.sinew.exception.Localizer?;androidx.compose.runtime.Composer?;kotlin.Int;kotlin.Int){}[0]
