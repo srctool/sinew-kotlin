@@ -94,6 +94,21 @@ jobs:
       - name: Real-devtools builds hold the real devtools
         run: ./gradlew -Psinew.devtools=true ${{ matrix.real }}
 
+  publish-check:
+    name: Publish check (Maven Local, consumer)
+    runs-on: macos-15
+    timeout-minutes: 60
+    # Every module and the BOM publish to Maven Local, and a separate project that depends on the BOM alone compiles
+    # against them on Android, iOS, the JVM and wasm (tool/verify-publish.sh). Nothing is published anywhere.
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v6
+      - run: tool/verify-publish.sh 0.0.0-ci
+
   android-device:
     name: Android device tests (emulator)
     runs-on: ubuntu-24.04

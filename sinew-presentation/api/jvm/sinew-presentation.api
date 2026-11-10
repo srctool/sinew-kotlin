@@ -1,0 +1,26 @@
+public final class com/srctool/sinew/presentation/EffectEmitter {
+	public fun <init> ()V
+	public final fun dispose ()V
+	public final fun emit (Ljava/lang/Object;)V
+	public final fun getEffects ()Lkotlinx/coroutines/flow/Flow;
+}
+
+public abstract class com/srctool/sinew/presentation/EventActionHandler : com/srctool/sinew/presentation/StateEffectHandler {
+	public fun <init> (Ljava/lang/Object;Lkotlinx/coroutines/CoroutineScope;)V
+	protected abstract fun mapEventToAction (Ljava/lang/Object;)Ljava/lang/Object;
+	protected abstract fun onAction (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun onEvent (Ljava/lang/Object;)V
+}
+
+public abstract class com/srctool/sinew/presentation/StateEffectHandler {
+	public fun <init> (Ljava/lang/Object;Lkotlinx/coroutines/CoroutineScope;)V
+	public fun dispose ()V
+	protected final fun emitEffect (Ljava/lang/Object;)V
+	protected final fun getCurrentState ()Ljava/lang/Object;
+	public final fun getEffects ()Lkotlinx/coroutines/flow/Flow;
+	protected final fun getScope ()Lkotlinx/coroutines/CoroutineScope;
+	public final fun getState ()Lkotlinx/coroutines/flow/StateFlow;
+	protected final fun isDisposed ()Z
+	protected final fun setState (Lkotlin/jvm/functions/Function1;)V
+}
+

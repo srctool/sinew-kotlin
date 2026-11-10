@@ -1,0 +1,44 @@
+public final class com/srctool/sinew/paging/LoadType : java/lang/Enum {
+	public static final field Initial Lcom/srctool/sinew/paging/LoadType;
+	public static final field More Lcom/srctool/sinew/paging/LoadType;
+	public static final field Refresh Lcom/srctool/sinew/paging/LoadType;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/srctool/sinew/paging/LoadType;
+	public static fun values ()[Lcom/srctool/sinew/paging/LoadType;
+}
+
+public final class com/srctool/sinew/paging/Pager {
+	public static final field Companion Lcom/srctool/sinew/paging/Pager$Companion;
+	public final fun cancel ()V
+	public final fun load (Lcom/srctool/sinew/paging/LoadType;Lcom/srctool/sinew/paging/PagingState;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun load$default (Lcom/srctool/sinew/paging/Pager;Lcom/srctool/sinew/paging/LoadType;Lcom/srctool/sinew/paging/PagingState;Ljava/lang/String;Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/paging/Pager$Companion {
+	public final fun cursor (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;)Lcom/srctool/sinew/paging/Pager;
+	public static synthetic fun cursor$default (Lcom/srctool/sinew/paging/Pager$Companion;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lcom/srctool/sinew/paging/Pager;
+	public final fun lastItem (Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;)Lcom/srctool/sinew/paging/Pager;
+	public static synthetic fun lastItem$default (Lcom/srctool/sinew/paging/Pager$Companion;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lcom/srctool/sinew/paging/Pager;
+	public final fun offset (ILkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;)Lcom/srctool/sinew/paging/Pager;
+	public static synthetic fun offset$default (Lcom/srctool/sinew/paging/Pager$Companion;ILkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lcom/srctool/sinew/paging/Pager;
+	public final fun offsetByTotal (ILkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;)Lcom/srctool/sinew/paging/Pager;
+	public static synthetic fun offsetByTotal$default (Lcom/srctool/sinew/paging/Pager$Companion;ILkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function3;ILjava/lang/Object;)Lcom/srctool/sinew/paging/Pager;
+}
+
+public final class com/srctool/sinew/paging/PagingState {
+	public fun <init> ()V
+	public fun <init> (Lcom/srctool/sinew/models/ViewState;Lcom/srctool/sinew/paging/LoadType;)V
+	public synthetic fun <init> (Lcom/srctool/sinew/models/ViewState;Lcom/srctool/sinew/paging/LoadType;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun component1 ()Lcom/srctool/sinew/models/ViewState;
+	public final fun component2 ()Lcom/srctool/sinew/paging/LoadType;
+	public final fun copy (Lcom/srctool/sinew/models/ViewState;Lcom/srctool/sinew/paging/LoadType;)Lcom/srctool/sinew/paging/PagingState;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/paging/PagingState;Lcom/srctool/sinew/models/ViewState;Lcom/srctool/sinew/paging/LoadType;ILjava/lang/Object;)Lcom/srctool/sinew/paging/PagingState;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getCanLoadMore ()Z
+	public final fun getLoadType ()Lcom/srctool/sinew/paging/LoadType;
+	public final fun getRetryType ()Lcom/srctool/sinew/paging/LoadType;
+	public final fun getView ()Lcom/srctool/sinew/models/ViewState;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+

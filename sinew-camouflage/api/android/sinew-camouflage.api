@@ -1,0 +1,5 @@
+public final class com/srctool/sinew/camouflage/PagingStateToCamoKt {
+	public static final fun toCamo (Lcom/srctool/sinew/paging/PagingState;Landroidx/compose/runtime/Composer;I)Lcom/srctool/camouflage/core/pagedlist/CamoPagedListState;
+	public static final fun toCamo (Lcom/srctool/sinew/paging/PagingState;Lcom/srctool/sinew/exception/Localizer;)Lcom/srctool/camouflage/core/pagedlist/CamoPagedListState;
+}
+

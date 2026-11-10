@@ -10,9 +10,8 @@ description = "The DevTools API with no behavior, for production builds."
 extra["sinew.undocumentedAllowed"] = true
 
 kotlin {
-    // Must equal sinew-devtools' and sinew-devtools-ui's together: `checkDevtoolsNoopAbi` compares them.
-    @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
-    abiValidation()
+    // The publish convention validates the ABI, which must equal sinew-devtools' and sinew-devtools-ui's together:
+    // `checkDevtoolsNoopAbi` compares them.
     sourceSets {
         commonMain.dependencies {
             // The real modules' API names these types, so the no-op exposes them the same way.

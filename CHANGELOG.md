@@ -5,6 +5,11 @@ All notable changes to Sinew for Kotlin are documented here. Every module shares
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
+- S7 publishing setup (#38): every module and the BOM are ready for Maven Central, and CI proves a consumer can use them.
+  - The BOM uses the `com.srctool.publish` convention plugin like the modules (POM, signing), so all 15 artifacts are published the same way.
+  - ABI validation is part of that convention now: every published module has its public API dumped under `api/` and checked by `check` (`checkKotlinAbi`), not only the three devtools modules. A change to a public API fails the build until `updateKotlinAbi` is run and the dump committed.
+  - `tool/verify-publish.sh <version>` publishes the whole set to Maven Local, then compiles `tool/consumer-check`, a separate Kotlin Multiplatform project that depends on the BOM alone, on Android, iOS (device and simulator), the JVM and wasm. Its code is the usage docs' samples, and it uses `sinew-testing` as a test dependency. The `publish-check` CI job runs it on every pull request.
+  - Every module's publication has a sources jar and a javadoc jar, and the POM carries the name, description, URL, license, developer and SCM that Central checks.
 - S7 API reference (#88): every public declaration has KDoc, and the build fails on one that doesn't.
   - Dokka is applied to every library module by the `com.srctool.publish` convention plugin, with `reportUndocumented` on and `failOnWarning`, so an undocumented public declaration, or a broken `[link]` in a doc, fails `dokkaGenerate`. CI runs it on every pull request.
   - About 280 declarations were documented across `sinew-models`, `sinew-exception`, `sinew-network`, `sinew-testing`, `sinew-storage`, `sinew-security`, `sinew-paging`, `sinew-devtools` and `sinew-devtools-ui`. `PagingState`'s doc had a broken link, now fixed.

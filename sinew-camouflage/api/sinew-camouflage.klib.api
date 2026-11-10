@@ -1,0 +1,10 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-camouflage>
+final fun <#A: kotlin/Any?> (com.srctool.sinew.paging/PagingState<#A>).com.srctool.sinew.camouflage/toCamo(androidx.compose.runtime/Composer?, kotlin/Int): com.srctool.camouflage.core.pagedlist/CamoPagedListState<#A> // com.srctool.sinew.camouflage/toCamo|toCamo@com.srctool.sinew.paging.PagingState<0:0>(androidx.compose.runtime.Composer?;kotlin.Int){0§<kotlin.Any?>}[0]
+final fun <#A: kotlin/Any?> (com.srctool.sinew.paging/PagingState<#A>).com.srctool.sinew.camouflage/toCamo(com.srctool.sinew.exception/Localizer?): com.srctool.camouflage.core.pagedlist/CamoPagedListState<#A> // com.srctool.sinew.camouflage/toCamo|toCamo@com.srctool.sinew.paging.PagingState<0:0>(com.srctool.sinew.exception.Localizer?){0§<kotlin.Any?>}[0]

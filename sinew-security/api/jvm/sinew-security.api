@@ -1,0 +1,106 @@
+public final class com/srctool/sinew/security/BiometricAvailability : java/lang/Enum {
+	public static final field Available Lcom/srctool/sinew/security/BiometricAvailability;
+	public static final field NotEnrolled Lcom/srctool/sinew/security/BiometricAvailability;
+	public static final field Unavailable Lcom/srctool/sinew/security/BiometricAvailability;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/srctool/sinew/security/BiometricAvailability;
+	public static fun values ()[Lcom/srctool/sinew/security/BiometricAvailability;
+}
+
+public final class com/srctool/sinew/security/BiometricFailure : java/lang/Enum {
+	public static final field Cancelled Lcom/srctool/sinew/security/BiometricFailure;
+	public static final field Invalidated Lcom/srctool/sinew/security/BiometricFailure;
+	public static final field LockedOut Lcom/srctool/sinew/security/BiometricFailure;
+	public static final field Unavailable Lcom/srctool/sinew/security/BiometricFailure;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/srctool/sinew/security/BiometricFailure;
+	public static fun values ()[Lcom/srctool/sinew/security/BiometricFailure;
+}
+
+public abstract interface class com/srctool/sinew/security/BiometricStore {
+}
+
+public final class com/srctool/sinew/security/BiometricStore$Failed : com/srctool/sinew/security/BiometricStore {
+	public fun <init> (Lcom/srctool/sinew/security/BiometricFailure;)V
+	public final fun component1 ()Lcom/srctool/sinew/security/BiometricFailure;
+	public final fun copy (Lcom/srctool/sinew/security/BiometricFailure;)Lcom/srctool/sinew/security/BiometricStore$Failed;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/security/BiometricStore$Failed;Lcom/srctool/sinew/security/BiometricFailure;ILjava/lang/Object;)Lcom/srctool/sinew/security/BiometricStore$Failed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReason ()Lcom/srctool/sinew/security/BiometricFailure;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/security/BiometricStore$Stored : com/srctool/sinew/security/BiometricStore {
+	public static final field INSTANCE Lcom/srctool/sinew/security/BiometricStore$Stored;
+	public fun equals (Ljava/lang/Object;)Z
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/security/BiometricUnlock {
+}
+
+public final class com/srctool/sinew/security/BiometricUnlock$Failed : com/srctool/sinew/security/BiometricUnlock {
+	public fun <init> (Lcom/srctool/sinew/security/BiometricFailure;)V
+	public final fun component1 ()Lcom/srctool/sinew/security/BiometricFailure;
+	public final fun copy (Lcom/srctool/sinew/security/BiometricFailure;)Lcom/srctool/sinew/security/BiometricUnlock$Failed;
+	public static synthetic fun copy$default (Lcom/srctool/sinew/security/BiometricUnlock$Failed;Lcom/srctool/sinew/security/BiometricFailure;ILjava/lang/Object;)Lcom/srctool/sinew/security/BiometricUnlock$Failed;
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getReason ()Lcom/srctool/sinew/security/BiometricFailure;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/security/BiometricUnlock$Unlocked : com/srctool/sinew/security/BiometricUnlock {
+	public fun <init> (Ljava/lang/String;)V
+	public fun equals (Ljava/lang/Object;)Z
+	public final fun getSecret ()Ljava/lang/String;
+	public fun hashCode ()I
+	public fun toString ()Ljava/lang/String;
+}
+
+public abstract interface class com/srctool/sinew/security/BiometricVault {
+	public static final field Companion Lcom/srctool/sinew/security/BiometricVault$Companion;
+	public abstract fun availability (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun disable (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun isStored (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun store (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun unlock (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/security/BiometricVault$Companion {
+	public final fun create (Lcom/srctool/sinew/models/PlatformContext;Ljava/lang/String;Z)Lcom/srctool/sinew/security/BiometricVault;
+	public static synthetic fun create$default (Lcom/srctool/sinew/security/BiometricVault$Companion;Lcom/srctool/sinew/models/PlatformContext;Ljava/lang/String;ZILjava/lang/Object;)Lcom/srctool/sinew/security/BiometricVault;
+}
+
+public final class com/srctool/sinew/security/DecryptionFailed : java/lang/IllegalStateException {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/Throwable;)V
+	public synthetic fun <init> (Ljava/lang/Throwable;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+}
+
+public abstract interface class com/srctool/sinew/security/FieldCipher {
+	public static final field Companion Lcom/srctool/sinew/security/FieldCipher$Companion;
+	public abstract fun decrypt (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun decrypt$default (Lcom/srctool/sinew/security/FieldCipher;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public abstract fun encrypt (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun encrypt$default (Lcom/srctool/sinew/security/FieldCipher;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public abstract fun rotateKey (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/security/FieldCipher$Companion {
+	public final fun create (Lcom/srctool/sinew/models/PlatformContext;Ljava/lang/String;)Lcom/srctool/sinew/security/FieldCipher;
+	public static synthetic fun create$default (Lcom/srctool/sinew/security/FieldCipher$Companion;Lcom/srctool/sinew/models/PlatformContext;Ljava/lang/String;ILjava/lang/Object;)Lcom/srctool/sinew/security/FieldCipher;
+}
+
+public final class com/srctool/sinew/security/FieldCipher$DefaultImpls {
+	public static synthetic fun decrypt$default (Lcom/srctool/sinew/security/FieldCipher;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+	public static synthetic fun encrypt$default (Lcom/srctool/sinew/security/FieldCipher;Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/security/FieldCipher_jvmKt {
+	public static final fun create (Lcom/srctool/sinew/security/FieldCipher$Companion;Ljava/nio/file/Path;Ljava/lang/String;)Lcom/srctool/sinew/security/FieldCipher;
+	public static synthetic fun create$default (Lcom/srctool/sinew/security/FieldCipher$Companion;Ljava/nio/file/Path;Ljava/lang/String;ILjava/lang/Object;)Lcom/srctool/sinew/security/FieldCipher;
+}
+

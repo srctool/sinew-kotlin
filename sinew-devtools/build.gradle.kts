@@ -6,8 +6,7 @@ plugins {
 description = "DevTools capture: recorders, redaction, fault rules, host override."
 
 kotlin {
-    @OptIn(org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation::class)
-    abiValidation()    // the no-op artifact's API must match this one (sinew-devtools-noop)
+    // The publish convention validates the ABI. The no-op artifact's API must match this one (checkDevtoolsNoopAbi).
     sourceSets {
         commonMain.dependencies {
             api(projects.sinewNetwork)

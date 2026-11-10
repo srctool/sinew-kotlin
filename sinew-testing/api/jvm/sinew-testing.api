@@ -1,0 +1,191 @@
+public final class com/srctool/sinew/testing/ControlledFetch {
+	public fun <init> ()V
+	public final fun assertAllCompleted ()V
+	public final fun complete (ILcom/srctool/sinew/models/Result;)V
+	public final fun fail (ILcom/srctool/sinew/models/SinewException;)V
+	public final fun getCalls ()Ljava/util/List;
+	public final fun invoke (Ljava/lang/Object;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun succeed (ILjava/util/List;Lcom/srctool/sinew/models/PagingMetaDomain;)V
+	public static synthetic fun succeed$default (Lcom/srctool/sinew/testing/ControlledFetch;ILjava/util/List;Lcom/srctool/sinew/models/PagingMetaDomain;ILjava/lang/Object;)V
+}
+
+public final class com/srctool/sinew/testing/ControlledFetch$Call {
+	public final fun getCancelled ()Z
+	public final fun getKey ()Ljava/lang/Object;
+	public final fun getQuery ()Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/testing/ControlledFetchKt {
+	public static final fun controlledFetch (Lkotlinx/coroutines/test/TestScope;)Lcom/srctool/sinew/testing/ControlledFetch;
+}
+
+public final class com/srctool/sinew/testing/FakeBiometricVault : com/srctool/sinew/security/BiometricVault {
+	public fun <init> ()V
+	public fun <init> (Lcom/srctool/sinew/security/BiometricAvailability;)V
+	public synthetic fun <init> (Lcom/srctool/sinew/security/BiometricAvailability;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun availability (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun disable (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getAvailability ()Lcom/srctool/sinew/security/BiometricAvailability;
+	public final fun getPrompts ()Ljava/util/List;
+	public final fun getStoredSecret ()Ljava/lang/String;
+	public final fun invalidate ()V
+	public fun isStored (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun nextStore (Lcom/srctool/sinew/security/BiometricFailure;)V
+	public final fun nextUnlock (Lcom/srctool/sinew/security/BiometricFailure;)V
+	public final fun setAvailability (Lcom/srctool/sinew/security/BiometricAvailability;)V
+	public fun store (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun unlock (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/testing/FakeFieldCipher : com/srctool/sinew/security/FieldCipher {
+	public fun <init> ()V
+	public fun decrypt (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun encrypt (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun failNextDecrypt ()V
+	public final fun getRotations ()I
+	public fun rotateKey (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/testing/FakeKeyValueStore : com/srctool/sinew/storage/KeyValueStore {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun clear (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun failNextRead (Ljava/lang/Throwable;)V
+	public static synthetic fun failNextRead$default (Lcom/srctool/sinew/testing/FakeKeyValueStore;Ljava/lang/Throwable;ILjava/lang/Object;)V
+	public final fun failNextWrite (Ljava/lang/Throwable;)V
+	public static synthetic fun failNextWrite$default (Lcom/srctool/sinew/testing/FakeKeyValueStore;Ljava/lang/Throwable;ILjava/lang/Object;)V
+	public final fun failNextWriteWithDiskFull ()V
+	public fun getBool (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getDouble (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getInt (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun getName ()Ljava/lang/String;
+	public final fun getSnapshot ()Ljava/util/Map;
+	public fun getString (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun keys (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun read (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun remove (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun setBool (Ljava/lang/String;ZLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun setDouble (Ljava/lang/String;DLkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun setInt (Ljava/lang/String;ILkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun setString (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/testing/FakeLocalizer : com/srctool/sinew/exception/Localizer {
+	public fun <init> ()V
+	public fun <init> (Ljava/util/Map;Z)V
+	public synthetic fun <init> (Ljava/util/Map;ZILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public final fun getRequested ()Ljava/util/List;
+	public fun resolve (Ljava/lang/String;Ljava/util/Map;)Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/testing/FakeNetworkChecker : com/srctool/sinew/network/NetworkChecker {
+	public fun <init> ()V
+	public fun <init> (Lcom/srctool/sinew/network/NetworkStatus;)V
+	public synthetic fun <init> (Lcom/srctool/sinew/network/NetworkStatus;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun close ()V
+	public final fun getClosed ()Z
+	public fun getStatus ()Lkotlinx/coroutines/flow/StateFlow;
+	public final fun goOffline ()V
+	public final fun goOnline ()V
+	public fun isOnline ()Z
+}
+
+public final class com/srctool/sinew/testing/FakeRefreshTokenStore : com/srctool/sinew/network/RefreshTokenStore {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun delete (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun failNextRead (Ljava/lang/Throwable;)V
+	public static synthetic fun failNextRead$default (Lcom/srctool/sinew/testing/FakeRefreshTokenStore;Ljava/lang/Throwable;ILjava/lang/Object;)V
+	public final fun failNextWrite (Ljava/lang/Throwable;)V
+	public static synthetic fun failNextWrite$default (Lcom/srctool/sinew/testing/FakeRefreshTokenStore;Ljava/lang/Throwable;ILjava/lang/Object;)V
+	public final fun getToken ()Ljava/lang/String;
+	public fun read (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun write (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/testing/FakeSecureStore : com/srctool/sinew/storage/SecureStore {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun clearUserData (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun delete (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun failNextRead (Ljava/lang/Throwable;)V
+	public static synthetic fun failNextRead$default (Lcom/srctool/sinew/testing/FakeSecureStore;Ljava/lang/Throwable;ILjava/lang/Object;)V
+	public final fun failNextWrite (Ljava/lang/Throwable;)V
+	public static synthetic fun failNextWrite$default (Lcom/srctool/sinew/testing/FakeSecureStore;Ljava/lang/Throwable;ILjava/lang/Object;)V
+	public fun getName ()Ljava/lang/String;
+	public final fun getSnapshot ()Ljava/util/Map;
+	public fun keys (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun loseKey ()V
+	public fun read (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public fun write (Ljava/lang/String;Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/testing/FakeTokenSource : com/srctool/sinew/network/TokenSource {
+	public fun <init> ()V
+	public fun <init> (Ljava/lang/String;)V
+	public synthetic fun <init> (Ljava/lang/String;ILkotlin/jvm/internal/DefaultConstructorMarker;)V
+	public fun accessToken ()Ljava/lang/String;
+	public fun clear (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getClears ()I
+	public final fun getOnRefresh ()Lkotlin/jvm/functions/Function2;
+	public final fun getRefreshes ()I
+	public fun refresh (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun rotate ()Ljava/lang/String;
+	public final fun setOnRefresh (Lkotlin/jvm/functions/Function2;)V
+}
+
+public final class com/srctool/sinew/testing/Fixture_jvmKt {
+	public static final fun fixture (Ljava/lang/String;)Ljava/lang/String;
+}
+
+public final class com/srctool/sinew/testing/MockHttp {
+	public final fun getClient ()Lio/ktor/client/HttpClient;
+	public final fun getRequests ()Ljava/util/List;
+	public final fun requests (Lio/ktor/http/HttpMethod;Ljava/lang/String;)Ljava/util/List;
+}
+
+public final class com/srctool/sinew/testing/MockHttpKt {
+	public static final fun mockHttp (Lkotlinx/coroutines/test/TestScope;Lcom/srctool/sinew/network/SinewConfig;Lcom/srctool/sinew/network/TokenSource;Lcom/srctool/sinew/network/HttpLogger;Lcom/srctool/sinew/network/SinewHttpHooks;Lkotlin/jvm/functions/Function1;)Lcom/srctool/sinew/testing/MockHttp;
+	public static synthetic fun mockHttp$default (Lkotlinx/coroutines/test/TestScope;Lcom/srctool/sinew/network/SinewConfig;Lcom/srctool/sinew/network/TokenSource;Lcom/srctool/sinew/network/HttpLogger;Lcom/srctool/sinew/network/SinewHttpHooks;Lkotlin/jvm/functions/Function1;ILjava/lang/Object;)Lcom/srctool/sinew/testing/MockHttp;
+}
+
+public final class com/srctool/sinew/testing/MockRoutes {
+	public final fun on (Lio/ktor/http/HttpMethod;Ljava/lang/String;)Lcom/srctool/sinew/testing/MockRoutes$Route;
+}
+
+public final class com/srctool/sinew/testing/MockRoutes$Route {
+	public final fun drop ()Lcom/srctool/sinew/testing/MockRoutes$Route;
+	public final fun respond-Wn2Vu4Y (ILjava/lang/String;Ljava/util/Map;J)Lcom/srctool/sinew/testing/MockRoutes$Route;
+	public static synthetic fun respond-Wn2Vu4Y$default (Lcom/srctool/sinew/testing/MockRoutes$Route;ILjava/lang/String;Ljava/util/Map;JILjava/lang/Object;)Lcom/srctool/sinew/testing/MockRoutes$Route;
+}
+
+public final class com/srctool/sinew/testing/RecordingCrashReporter : com/srctool/sinew/exception/CrashReporter {
+	public fun <init> ()V
+	public final fun clear ()V
+	public final fun getCodes ()Ljava/util/List;
+	public final fun getReports ()Ljava/util/List;
+	public fun recordNonFatal (Lcom/srctool/sinew/models/SinewException;)V
+}
+
+public final class com/srctool/sinew/testing/RecordingHttpLogger : com/srctool/sinew/network/HttpLogger {
+	public fun <init> ()V
+	public final fun getLines ()Ljava/util/List;
+	public fun log (Ljava/lang/String;)V
+}
+
+public final class com/srctool/sinew/testing/RecordingReporterKt {
+	public static final fun withRecordingReporter (Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/testing/StorageErrorsKt {
+	public static final fun diskFullError ()Ljava/lang/Throwable;
+}
+
+public final class com/srctool/sinew/testing/StorageErrors_jvmKt {
+	public static final fun platformStorageError (Ljava/lang/String;)Ljava/lang/Throwable;
+	public static synthetic fun platformStorageError$default (Ljava/lang/String;ILjava/lang/Object;)Ljava/lang/Throwable;
+}
+

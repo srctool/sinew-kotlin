@@ -1,0 +1,38 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-viewmodel>
+abstract class <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?, #D: kotlin/Any?> com.srctool.sinew.viewmodel/EventActionViewModel : com.srctool.sinew.viewmodel/StateEffectViewModel<#A, #D> { // com.srctool.sinew.viewmodel/EventActionViewModel|null[0]
+    constructor <init>(#A) // com.srctool.sinew.viewmodel/EventActionViewModel.<init>|<init>(1:0){}[0]
+
+    abstract fun mapEventToAction(#B): #C? // com.srctool.sinew.viewmodel/EventActionViewModel.mapEventToAction|mapEventToAction(1:1){}[0]
+    abstract suspend fun onAction(#C) // com.srctool.sinew.viewmodel/EventActionViewModel.onAction|onAction(1:2){}[0]
+    final fun onEvent(#B) // com.srctool.sinew.viewmodel/EventActionViewModel.onEvent|onEvent(1:1){}[0]
+}
+
+abstract class <#A: kotlin/Any?, #B: kotlin/Any?> com.srctool.sinew.viewmodel/StateEffectViewModel : androidx.lifecycle/ViewModel { // com.srctool.sinew.viewmodel/StateEffectViewModel|null[0]
+    constructor <init>(#A) // com.srctool.sinew.viewmodel/StateEffectViewModel.<init>|<init>(1:0){}[0]
+
+    final val currentState // com.srctool.sinew.viewmodel/StateEffectViewModel.currentState|{}currentState[0]
+        final fun <get-currentState>(): #A // com.srctool.sinew.viewmodel/StateEffectViewModel.currentState.<get-currentState>|<get-currentState>(){}[0]
+    final val effects // com.srctool.sinew.viewmodel/StateEffectViewModel.effects|{}effects[0]
+        final fun <get-effects>(): kotlinx.coroutines.flow/Flow<#B> // com.srctool.sinew.viewmodel/StateEffectViewModel.effects.<get-effects>|<get-effects>(){}[0]
+    final val isCleared // com.srctool.sinew.viewmodel/StateEffectViewModel.isCleared|{}isCleared[0]
+        final fun <get-isCleared>(): kotlin/Boolean // com.srctool.sinew.viewmodel/StateEffectViewModel.isCleared.<get-isCleared>|<get-isCleared>(){}[0]
+    final val state // com.srctool.sinew.viewmodel/StateEffectViewModel.state|{}state[0]
+        final fun <get-state>(): kotlinx.coroutines.flow/StateFlow<#A> // com.srctool.sinew.viewmodel/StateEffectViewModel.state.<get-state>|<get-state>(){}[0]
+
+    final fun emitEffect(#B) // com.srctool.sinew.viewmodel/StateEffectViewModel.emitEffect|emitEffect(1:1){}[0]
+    final fun setState(kotlin/Function1<#A, #A>) // com.srctool.sinew.viewmodel/StateEffectViewModel.setState|setState(kotlin.Function1<1:0,1:0>){}[0]
+}
+
+final val com.srctool.sinew.viewmodel/com_srctool_sinew_viewmodel_EventActionViewModel$stableprop // com.srctool.sinew.viewmodel/com_srctool_sinew_viewmodel_EventActionViewModel$stableprop|#static{}com_srctool_sinew_viewmodel_EventActionViewModel$stableprop[0]
+final val com.srctool.sinew.viewmodel/com_srctool_sinew_viewmodel_StateEffectViewModel$stableprop // com.srctool.sinew.viewmodel/com_srctool_sinew_viewmodel_StateEffectViewModel$stableprop|#static{}com_srctool_sinew_viewmodel_StateEffectViewModel$stableprop[0]
+
+final fun <#A: kotlin/Any?> com.srctool.sinew.viewmodel/ObserveEffects(kotlinx.coroutines.flow/Flow<#A>, kotlin.coroutines/SuspendFunction1<#A, kotlin/Unit>, androidx.compose.runtime/Composer?, kotlin/Int) // com.srctool.sinew.viewmodel/ObserveEffects|ObserveEffects(kotlinx.coroutines.flow.Flow<0:0>;kotlin.coroutines.SuspendFunction1<0:0,kotlin.Unit>;androidx.compose.runtime.Composer?;kotlin.Int){0§<kotlin.Any?>}[0]
+final fun com.srctool.sinew.viewmodel/com_srctool_sinew_viewmodel_EventActionViewModel$stableprop_getter(): kotlin/Int // com.srctool.sinew.viewmodel/com_srctool_sinew_viewmodel_EventActionViewModel$stableprop_getter|com_srctool_sinew_viewmodel_EventActionViewModel$stableprop_getter(){}[0]
+final fun com.srctool.sinew.viewmodel/com_srctool_sinew_viewmodel_StateEffectViewModel$stableprop_getter(): kotlin/Int // com.srctool.sinew.viewmodel/com_srctool_sinew_viewmodel_StateEffectViewModel$stableprop_getter|com_srctool_sinew_viewmodel_StateEffectViewModel$stableprop_getter(){}[0]

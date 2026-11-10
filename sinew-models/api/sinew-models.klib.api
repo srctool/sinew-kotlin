@@ -1,0 +1,360 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-models>
+final enum class com.srctool.sinew.models/ExceptionLayer : kotlin/Enum<com.srctool.sinew.models/ExceptionLayer> { // com.srctool.sinew.models/ExceptionLayer|null[0]
+    enum entry Repository // com.srctool.sinew.models/ExceptionLayer.Repository|null[0]
+    enum entry UseCase // com.srctool.sinew.models/ExceptionLayer.UseCase|null[0]
+    enum entry Utility // com.srctool.sinew.models/ExceptionLayer.Utility|null[0]
+    enum entry ViewModel // com.srctool.sinew.models/ExceptionLayer.ViewModel|null[0]
+
+    final val code // com.srctool.sinew.models/ExceptionLayer.code|{}code[0]
+        final fun <get-code>(): kotlin/String // com.srctool.sinew.models/ExceptionLayer.code.<get-code>|<get-code>(){}[0]
+    final val entries // com.srctool.sinew.models/ExceptionLayer.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.srctool.sinew.models/ExceptionLayer> // com.srctool.sinew.models/ExceptionLayer.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.srctool.sinew.models/ExceptionLayer // com.srctool.sinew.models/ExceptionLayer.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.srctool.sinew.models/ExceptionLayer> // com.srctool.sinew.models/ExceptionLayer.values|values#static(){}[0]
+}
+
+abstract interface <#A: out kotlin/Any?> com.srctool.sinew.models/Envelope { // com.srctool.sinew.models/Envelope|null[0]
+    abstract fun toDomain(): #A // com.srctool.sinew.models/Envelope.toDomain|toDomain(){}[0]
+    open fun failure(): com.srctool.sinew.models/EnvelopeFailure? // com.srctool.sinew.models/Envelope.failure|failure(){}[0]
+    open fun message(): kotlin/String? // com.srctool.sinew.models/Envelope.message|message(){}[0]
+}
+
+abstract interface com.srctool.sinew.models/Domain // com.srctool.sinew.models/Domain|null[0]
+
+sealed interface <#A: out kotlin/Any?> com.srctool.sinew.models/Result { // com.srctool.sinew.models/Result|null[0]
+    final class <#A1: out kotlin/Any?> Success : com.srctool.sinew.models/Result<#A1> { // com.srctool.sinew.models/Result.Success|null[0]
+        constructor <init>(#A1, kotlin/String = ...) // com.srctool.sinew.models/Result.Success.<init>|<init>(1:0;kotlin.String){}[0]
+
+        final val data // com.srctool.sinew.models/Result.Success.data|{}data[0]
+            final fun <get-data>(): #A1 // com.srctool.sinew.models/Result.Success.data.<get-data>|<get-data>(){}[0]
+        final val message // com.srctool.sinew.models/Result.Success.message|{}message[0]
+            final fun <get-message>(): kotlin/String // com.srctool.sinew.models/Result.Success.message.<get-message>|<get-message>(){}[0]
+
+        final fun component1(): #A1 // com.srctool.sinew.models/Result.Success.component1|component1(){}[0]
+        final fun component2(): kotlin/String // com.srctool.sinew.models/Result.Success.component2|component2(){}[0]
+        final fun copy(#A1 = ..., kotlin/String = ...): com.srctool.sinew.models/Result.Success<#A1> // com.srctool.sinew.models/Result.Success.copy|copy(1:0;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/Result.Success.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.models/Result.Success.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.models/Result.Success.toString|toString(){}[0]
+    }
+
+    final class Failure : com.srctool.sinew.models/Result<kotlin/Nothing> { // com.srctool.sinew.models/Result.Failure|null[0]
+        constructor <init>(com.srctool.sinew.models/SinewException) // com.srctool.sinew.models/Result.Failure.<init>|<init>(com.srctool.sinew.models.SinewException){}[0]
+
+        final val error // com.srctool.sinew.models/Result.Failure.error|{}error[0]
+            final fun <get-error>(): com.srctool.sinew.models/SinewException // com.srctool.sinew.models/Result.Failure.error.<get-error>|<get-error>(){}[0]
+
+        final fun component1(): com.srctool.sinew.models/SinewException // com.srctool.sinew.models/Result.Failure.component1|component1(){}[0]
+        final fun copy(com.srctool.sinew.models/SinewException = ...): com.srctool.sinew.models/Result.Failure // com.srctool.sinew.models/Result.Failure.copy|copy(com.srctool.sinew.models.SinewException){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/Result.Failure.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.models/Result.Failure.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.models/Result.Failure.toString|toString(){}[0]
+    }
+}
+
+sealed interface <#A: out kotlin/Any?> com.srctool.sinew.models/ViewState { // com.srctool.sinew.models/ViewState|null[0]
+    final class <#A1: out kotlin/Any?> Done : com.srctool.sinew.models/ViewState<#A1> { // com.srctool.sinew.models/ViewState.Done|null[0]
+        constructor <init>(#A1) // com.srctool.sinew.models/ViewState.Done.<init>|<init>(1:0){}[0]
+
+        final val data // com.srctool.sinew.models/ViewState.Done.data|{}data[0]
+            final fun <get-data>(): #A1 // com.srctool.sinew.models/ViewState.Done.data.<get-data>|<get-data>(){}[0]
+
+        final fun component1(): #A1 // com.srctool.sinew.models/ViewState.Done.component1|component1(){}[0]
+        final fun copy(#A1 = ...): com.srctool.sinew.models/ViewState.Done<#A1> // com.srctool.sinew.models/ViewState.Done.copy|copy(1:0){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/ViewState.Done.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.models/ViewState.Done.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.models/ViewState.Done.toString|toString(){}[0]
+    }
+
+    final class <#A1: out kotlin/Any?> Failed : com.srctool.sinew.models/ViewState<#A1> { // com.srctool.sinew.models/ViewState.Failed|null[0]
+        constructor <init>(#A1? = ..., com.srctool.sinew.models/SinewException) // com.srctool.sinew.models/ViewState.Failed.<init>|<init>(1:0?;com.srctool.sinew.models.SinewException){}[0]
+
+        final val data // com.srctool.sinew.models/ViewState.Failed.data|{}data[0]
+            final fun <get-data>(): #A1? // com.srctool.sinew.models/ViewState.Failed.data.<get-data>|<get-data>(){}[0]
+        final val error // com.srctool.sinew.models/ViewState.Failed.error|{}error[0]
+            final fun <get-error>(): com.srctool.sinew.models/SinewException // com.srctool.sinew.models/ViewState.Failed.error.<get-error>|<get-error>(){}[0]
+
+        final fun component1(): #A1? // com.srctool.sinew.models/ViewState.Failed.component1|component1(){}[0]
+        final fun component2(): com.srctool.sinew.models/SinewException // com.srctool.sinew.models/ViewState.Failed.component2|component2(){}[0]
+        final fun copy(#A1? = ..., com.srctool.sinew.models/SinewException = ...): com.srctool.sinew.models/ViewState.Failed<#A1> // com.srctool.sinew.models/ViewState.Failed.copy|copy(1:0?;com.srctool.sinew.models.SinewException){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/ViewState.Failed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.models/ViewState.Failed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.models/ViewState.Failed.toString|toString(){}[0]
+    }
+
+    final class <#A1: out kotlin/Any?> Loading : com.srctool.sinew.models/ViewState<#A1> { // com.srctool.sinew.models/ViewState.Loading|null[0]
+        constructor <init>(#A1? = ...) // com.srctool.sinew.models/ViewState.Loading.<init>|<init>(1:0?){}[0]
+
+        final val data // com.srctool.sinew.models/ViewState.Loading.data|{}data[0]
+            final fun <get-data>(): #A1? // com.srctool.sinew.models/ViewState.Loading.data.<get-data>|<get-data>(){}[0]
+
+        final fun component1(): #A1? // com.srctool.sinew.models/ViewState.Loading.component1|component1(){}[0]
+        final fun copy(#A1? = ...): com.srctool.sinew.models/ViewState.Loading<#A1> // com.srctool.sinew.models/ViewState.Loading.copy|copy(1:0?){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/ViewState.Loading.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.models/ViewState.Loading.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.models/ViewState.Loading.toString|toString(){}[0]
+    }
+}
+
+sealed interface com.srctool.sinew.models/ErrorMessage { // com.srctool.sinew.models/ErrorMessage|null[0]
+    final class Local : com.srctool.sinew.models/ErrorMessage { // com.srctool.sinew.models/ErrorMessage.Local|null[0]
+        constructor <init>(kotlin/String, kotlin.collections/Map<kotlin/String, kotlin/Any> = ..., kotlin/String) // com.srctool.sinew.models/ErrorMessage.Local.<init>|<init>(kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.Any>;kotlin.String){}[0]
+
+        final val args // com.srctool.sinew.models/ErrorMessage.Local.args|{}args[0]
+            final fun <get-args>(): kotlin.collections/Map<kotlin/String, kotlin/Any> // com.srctool.sinew.models/ErrorMessage.Local.args.<get-args>|<get-args>(){}[0]
+        final val fallback // com.srctool.sinew.models/ErrorMessage.Local.fallback|{}fallback[0]
+            final fun <get-fallback>(): kotlin/String // com.srctool.sinew.models/ErrorMessage.Local.fallback.<get-fallback>|<get-fallback>(){}[0]
+        final val key // com.srctool.sinew.models/ErrorMessage.Local.key|{}key[0]
+            final fun <get-key>(): kotlin/String // com.srctool.sinew.models/ErrorMessage.Local.key.<get-key>|<get-key>(){}[0]
+
+        final fun component1(): kotlin/String // com.srctool.sinew.models/ErrorMessage.Local.component1|component1(){}[0]
+        final fun component2(): kotlin.collections/Map<kotlin/String, kotlin/Any> // com.srctool.sinew.models/ErrorMessage.Local.component2|component2(){}[0]
+        final fun component3(): kotlin/String // com.srctool.sinew.models/ErrorMessage.Local.component3|component3(){}[0]
+        final fun copy(kotlin/String = ..., kotlin.collections/Map<kotlin/String, kotlin/Any> = ..., kotlin/String = ...): com.srctool.sinew.models/ErrorMessage.Local // com.srctool.sinew.models/ErrorMessage.Local.copy|copy(kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.Any>;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/ErrorMessage.Local.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.models/ErrorMessage.Local.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.models/ErrorMessage.Local.toString|toString(){}[0]
+    }
+
+    final class Server : com.srctool.sinew.models/ErrorMessage { // com.srctool.sinew.models/ErrorMessage.Server|null[0]
+        constructor <init>(kotlin/String) // com.srctool.sinew.models/ErrorMessage.Server.<init>|<init>(kotlin.String){}[0]
+
+        final val text // com.srctool.sinew.models/ErrorMessage.Server.text|{}text[0]
+            final fun <get-text>(): kotlin/String // com.srctool.sinew.models/ErrorMessage.Server.text.<get-text>|<get-text>(){}[0]
+
+        final fun component1(): kotlin/String // com.srctool.sinew.models/ErrorMessage.Server.component1|component1(){}[0]
+        final fun copy(kotlin/String = ...): com.srctool.sinew.models/ErrorMessage.Server // com.srctool.sinew.models/ErrorMessage.Server.copy|copy(kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/ErrorMessage.Server.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.models/ErrorMessage.Server.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.models/ErrorMessage.Server.toString|toString(){}[0]
+    }
+}
+
+abstract class <#A: kotlin/Any?> com.srctool.sinew.models/DomainNotParsed : kotlinx.serialization/KSerializer<#A> { // com.srctool.sinew.models/DomainNotParsed|null[0]
+    constructor <init>(kotlin/String) // com.srctool.sinew.models/DomainNotParsed.<init>|<init>(kotlin.String){}[0]
+
+    open val descriptor // com.srctool.sinew.models/DomainNotParsed.descriptor|{}descriptor[0]
+        open fun <get-descriptor>(): kotlinx.serialization.descriptors/SerialDescriptor // com.srctool.sinew.models/DomainNotParsed.descriptor.<get-descriptor>|<get-descriptor>(){}[0]
+
+    open fun deserialize(kotlinx.serialization.encoding/Decoder): #A // com.srctool.sinew.models/DomainNotParsed.deserialize|deserialize(kotlinx.serialization.encoding.Decoder){}[0]
+    open fun serialize(kotlinx.serialization.encoding/Encoder, #A) // com.srctool.sinew.models/DomainNotParsed.serialize|serialize(kotlinx.serialization.encoding.Encoder;1:0){}[0]
+}
+
+abstract class <#A: out com.srctool.sinew.models/Domain> com.srctool.sinew.models/Entity { // com.srctool.sinew.models/Entity|null[0]
+    constructor <init>() // com.srctool.sinew.models/Entity.<init>|<init>(){}[0]
+
+    abstract fun toDomain(): #A // com.srctool.sinew.models/Entity.toDomain|toDomain(){}[0]
+}
+
+abstract class <#A: out com.srctool.sinew.models/Domain> com.srctool.sinew.models/Remote { // com.srctool.sinew.models/Remote|null[0]
+    constructor <init>() // com.srctool.sinew.models/Remote.<init>|<init>(){}[0]
+
+    abstract fun toDomain(): #A // com.srctool.sinew.models/Remote.toDomain|toDomain(){}[0]
+}
+
+abstract class <#A: out com.srctool.sinew.models/Remote<#B>, #B: com.srctool.sinew.models/Domain> com.srctool.sinew.models/ListEnvelope : com.srctool.sinew.models/Envelope<kotlin.collections/List<#B>> { // com.srctool.sinew.models/ListEnvelope|null[0]
+    constructor <init>() // com.srctool.sinew.models/ListEnvelope.<init>|<init>(){}[0]
+
+    abstract val items // com.srctool.sinew.models/ListEnvelope.items|{}items[0]
+        abstract fun <get-items>(): kotlin.collections/List<#A>? // com.srctool.sinew.models/ListEnvelope.items.<get-items>|<get-items>(){}[0]
+
+    open fun toDomain(): kotlin.collections/List<#B> // com.srctool.sinew.models/ListEnvelope.toDomain|toDomain(){}[0]
+}
+
+abstract class <#A: out com.srctool.sinew.models/Remote<#B>, #B: com.srctool.sinew.models/Domain> com.srctool.sinew.models/ObjectEnvelope : com.srctool.sinew.models/Envelope<#B> { // com.srctool.sinew.models/ObjectEnvelope|null[0]
+    constructor <init>() // com.srctool.sinew.models/ObjectEnvelope.<init>|<init>(){}[0]
+
+    abstract val data // com.srctool.sinew.models/ObjectEnvelope.data|{}data[0]
+        abstract fun <get-data>(): #A? // com.srctool.sinew.models/ObjectEnvelope.data.<get-data>|<get-data>(){}[0]
+
+    open fun toDomain(): #B // com.srctool.sinew.models/ObjectEnvelope.toDomain|toDomain(){}[0]
+}
+
+abstract class <#A: out com.srctool.sinew.models/Remote<#B>, #B: com.srctool.sinew.models/Domain> com.srctool.sinew.models/PagedEnvelope : com.srctool.sinew.models/Envelope<com.srctool.sinew.models/PagingDomain<#B>> { // com.srctool.sinew.models/PagedEnvelope|null[0]
+    constructor <init>() // com.srctool.sinew.models/PagedEnvelope.<init>|<init>(){}[0]
+
+    abstract val items // com.srctool.sinew.models/PagedEnvelope.items|{}items[0]
+        abstract fun <get-items>(): kotlin.collections/List<#A>? // com.srctool.sinew.models/PagedEnvelope.items.<get-items>|<get-items>(){}[0]
+    abstract val meta // com.srctool.sinew.models/PagedEnvelope.meta|{}meta[0]
+        abstract fun <get-meta>(): com.srctool.sinew.models/PagingMetaEnvelope? // com.srctool.sinew.models/PagedEnvelope.meta.<get-meta>|<get-meta>(){}[0]
+
+    open fun toDomain(): com.srctool.sinew.models/PagingDomain<#B> // com.srctool.sinew.models/PagedEnvelope.toDomain|toDomain(){}[0]
+}
+
+abstract class com.srctool.sinew.models/PagingMetaEnvelope { // com.srctool.sinew.models/PagingMetaEnvelope|null[0]
+    constructor <init>() // com.srctool.sinew.models/PagingMetaEnvelope.<init>|<init>(){}[0]
+
+    abstract fun toDomain(): com.srctool.sinew.models/PagingMetaDomain // com.srctool.sinew.models/PagingMetaEnvelope.toDomain|toDomain(){}[0]
+}
+
+abstract class com.srctool.sinew.models/SinewException : kotlin/Exception { // com.srctool.sinew.models/SinewException|null[0]
+    constructor <init>(kotlin/String, com.srctool.sinew.models/ExceptionLayer, kotlin/String, kotlin/Throwable? = ...) // com.srctool.sinew.models/SinewException.<init>|<init>(kotlin.String;com.srctool.sinew.models.ExceptionLayer;kotlin.String;kotlin.Throwable?){}[0]
+
+    abstract val errorMessage // com.srctool.sinew.models/SinewException.errorMessage|{}errorMessage[0]
+        abstract fun <get-errorMessage>(): com.srctool.sinew.models/ErrorMessage // com.srctool.sinew.models/SinewException.errorMessage.<get-errorMessage>|<get-errorMessage>(){}[0]
+    abstract val typeCode // com.srctool.sinew.models/SinewException.typeCode|{}typeCode[0]
+        abstract fun <get-typeCode>(): kotlin/String // com.srctool.sinew.models/SinewException.typeCode.<get-typeCode>|<get-typeCode>(){}[0]
+    final val code // com.srctool.sinew.models/SinewException.code|{}code[0]
+        final fun <get-code>(): kotlin/String // com.srctool.sinew.models/SinewException.code.<get-code>|<get-code>(){}[0]
+    final val function // com.srctool.sinew.models/SinewException.function|{}function[0]
+        final fun <get-function>(): kotlin/String // com.srctool.sinew.models/SinewException.function.<get-function>|<get-function>(){}[0]
+    final val layer // com.srctool.sinew.models/SinewException.layer|{}layer[0]
+        final fun <get-layer>(): com.srctool.sinew.models/ExceptionLayer // com.srctool.sinew.models/SinewException.layer.<get-layer>|<get-layer>(){}[0]
+    final val module // com.srctool.sinew.models/SinewException.module|{}module[0]
+        final fun <get-module>(): kotlin/String // com.srctool.sinew.models/SinewException.module.<get-module>|<get-module>(){}[0]
+    open val message // com.srctool.sinew.models/SinewException.message|{}message[0]
+        open fun <get-message>(): kotlin/String // com.srctool.sinew.models/SinewException.message.<get-message>|<get-message>(){}[0]
+    open val retryable // com.srctool.sinew.models/SinewException.retryable|{}retryable[0]
+        open fun <get-retryable>(): kotlin/Boolean // com.srctool.sinew.models/SinewException.retryable.<get-retryable>|<get-retryable>(){}[0]
+}
+
+abstract class com.srctool.sinew.models/VoidEnvelope : com.srctool.sinew.models/Envelope<kotlin/Unit> { // com.srctool.sinew.models/VoidEnvelope|null[0]
+    constructor <init>() // com.srctool.sinew.models/VoidEnvelope.<init>|<init>(){}[0]
+
+    open fun toDomain() // com.srctool.sinew.models/VoidEnvelope.toDomain|toDomain(){}[0]
+}
+
+final class <#A: out kotlin/Any?> com.srctool.sinew.models/PagingDomain { // com.srctool.sinew.models/PagingDomain|null[0]
+    constructor <init>(kotlin.collections/List<#A> = ..., com.srctool.sinew.models/PagingMetaDomain = ...) // com.srctool.sinew.models/PagingDomain.<init>|<init>(kotlin.collections.List<1:0>;com.srctool.sinew.models.PagingMetaDomain){}[0]
+
+    final val items // com.srctool.sinew.models/PagingDomain.items|{}items[0]
+        final fun <get-items>(): kotlin.collections/List<#A> // com.srctool.sinew.models/PagingDomain.items.<get-items>|<get-items>(){}[0]
+    final val meta // com.srctool.sinew.models/PagingDomain.meta|{}meta[0]
+        final fun <get-meta>(): com.srctool.sinew.models/PagingMetaDomain // com.srctool.sinew.models/PagingDomain.meta.<get-meta>|<get-meta>(){}[0]
+
+    final fun component1(): kotlin.collections/List<#A> // com.srctool.sinew.models/PagingDomain.component1|component1(){}[0]
+    final fun component2(): com.srctool.sinew.models/PagingMetaDomain // com.srctool.sinew.models/PagingDomain.component2|component2(){}[0]
+    final fun copy(kotlin.collections/List<#A> = ..., com.srctool.sinew.models/PagingMetaDomain = ...): com.srctool.sinew.models/PagingDomain<#A> // com.srctool.sinew.models/PagingDomain.copy|copy(kotlin.collections.List<1:0>;com.srctool.sinew.models.PagingMetaDomain){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/PagingDomain.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.models/PagingDomain.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.models/PagingDomain.toString|toString(){}[0]
+}
+
+final class <#A: out kotlin/Any?> com.srctool.sinew.models/PagingEntity { // com.srctool.sinew.models/PagingEntity|null[0]
+    constructor <init>(kotlin.collections/List<#A> = ..., com.srctool.sinew.models/PagingMetaEntity = ...) // com.srctool.sinew.models/PagingEntity.<init>|<init>(kotlin.collections.List<1:0>;com.srctool.sinew.models.PagingMetaEntity){}[0]
+
+    final val items // com.srctool.sinew.models/PagingEntity.items|{}items[0]
+        final fun <get-items>(): kotlin.collections/List<#A> // com.srctool.sinew.models/PagingEntity.items.<get-items>|<get-items>(){}[0]
+    final val meta // com.srctool.sinew.models/PagingEntity.meta|{}meta[0]
+        final fun <get-meta>(): com.srctool.sinew.models/PagingMetaEntity // com.srctool.sinew.models/PagingEntity.meta.<get-meta>|<get-meta>(){}[0]
+
+    final fun <#A1: kotlin/Any?> toDomain(kotlin/Function1<#A, #A1>): com.srctool.sinew.models/PagingDomain<#A1> // com.srctool.sinew.models/PagingEntity.toDomain|toDomain(kotlin.Function1<1:0,0:0>){0§<kotlin.Any?>}[0]
+    final fun component1(): kotlin.collections/List<#A> // com.srctool.sinew.models/PagingEntity.component1|component1(){}[0]
+    final fun component2(): com.srctool.sinew.models/PagingMetaEntity // com.srctool.sinew.models/PagingEntity.component2|component2(){}[0]
+    final fun copy(kotlin.collections/List<#A> = ..., com.srctool.sinew.models/PagingMetaEntity = ...): com.srctool.sinew.models/PagingEntity<#A> // com.srctool.sinew.models/PagingEntity.copy|copy(kotlin.collections.List<1:0>;com.srctool.sinew.models.PagingMetaEntity){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/PagingEntity.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.models/PagingEntity.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.models/PagingEntity.toString|toString(){}[0]
+}
+
+final class com.srctool.sinew.models/EnvelopeDataMissing : kotlin/IllegalStateException { // com.srctool.sinew.models/EnvelopeDataMissing|null[0]
+    constructor <init>() // com.srctool.sinew.models/EnvelopeDataMissing.<init>|<init>(){}[0]
+}
+
+final class com.srctool.sinew.models/EnvelopeFailure { // com.srctool.sinew.models/EnvelopeFailure|null[0]
+    constructor <init>(kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>? = ...) // com.srctool.sinew.models/EnvelopeFailure.<init>|<init>(kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>?){}[0]
+
+    final val fieldErrors // com.srctool.sinew.models/EnvelopeFailure.fieldErrors|{}fieldErrors[0]
+        final fun <get-fieldErrors>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>? // com.srctool.sinew.models/EnvelopeFailure.fieldErrors.<get-fieldErrors>|<get-fieldErrors>(){}[0]
+    final val message // com.srctool.sinew.models/EnvelopeFailure.message|{}message[0]
+        final fun <get-message>(): kotlin/String? // com.srctool.sinew.models/EnvelopeFailure.message.<get-message>|<get-message>(){}[0]
+
+    final fun component1(): kotlin/String? // com.srctool.sinew.models/EnvelopeFailure.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>? // com.srctool.sinew.models/EnvelopeFailure.component2|component2(){}[0]
+    final fun copy(kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>? = ...): com.srctool.sinew.models/EnvelopeFailure // com.srctool.sinew.models/EnvelopeFailure.copy|copy(kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/EnvelopeFailure.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.models/EnvelopeFailure.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.models/EnvelopeFailure.toString|toString(){}[0]
+}
+
+final class com.srctool.sinew.models/PagingMetaDomain { // com.srctool.sinew.models/PagingMetaDomain|null[0]
+    constructor <init>(kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/String = ...) // com.srctool.sinew.models/PagingMetaDomain.<init>|<init>(kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Boolean;kotlin.Boolean;kotlin.String){}[0]
+
+    final val hasNextPage // com.srctool.sinew.models/PagingMetaDomain.hasNextPage|{}hasNextPage[0]
+        final fun <get-hasNextPage>(): kotlin/Boolean // com.srctool.sinew.models/PagingMetaDomain.hasNextPage.<get-hasNextPage>|<get-hasNextPage>(){}[0]
+    final val hasPreviousPage // com.srctool.sinew.models/PagingMetaDomain.hasPreviousPage|{}hasPreviousPage[0]
+        final fun <get-hasPreviousPage>(): kotlin/Boolean // com.srctool.sinew.models/PagingMetaDomain.hasPreviousPage.<get-hasPreviousPage>|<get-hasPreviousPage>(){}[0]
+    final val limit // com.srctool.sinew.models/PagingMetaDomain.limit|{}limit[0]
+        final fun <get-limit>(): kotlin/Int // com.srctool.sinew.models/PagingMetaDomain.limit.<get-limit>|<get-limit>(){}[0]
+    final val nextKey // com.srctool.sinew.models/PagingMetaDomain.nextKey|{}nextKey[0]
+        final fun <get-nextKey>(): kotlin/String // com.srctool.sinew.models/PagingMetaDomain.nextKey.<get-nextKey>|<get-nextKey>(){}[0]
+    final val page // com.srctool.sinew.models/PagingMetaDomain.page|{}page[0]
+        final fun <get-page>(): kotlin/Int // com.srctool.sinew.models/PagingMetaDomain.page.<get-page>|<get-page>(){}[0]
+    final val total // com.srctool.sinew.models/PagingMetaDomain.total|{}total[0]
+        final fun <get-total>(): kotlin/Int // com.srctool.sinew.models/PagingMetaDomain.total.<get-total>|<get-total>(){}[0]
+    final val totalPage // com.srctool.sinew.models/PagingMetaDomain.totalPage|{}totalPage[0]
+        final fun <get-totalPage>(): kotlin/Int // com.srctool.sinew.models/PagingMetaDomain.totalPage.<get-totalPage>|<get-totalPage>(){}[0]
+
+    final fun component1(): kotlin/Int // com.srctool.sinew.models/PagingMetaDomain.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // com.srctool.sinew.models/PagingMetaDomain.component2|component2(){}[0]
+    final fun component3(): kotlin/Int // com.srctool.sinew.models/PagingMetaDomain.component3|component3(){}[0]
+    final fun component4(): kotlin/Int // com.srctool.sinew.models/PagingMetaDomain.component4|component4(){}[0]
+    final fun component5(): kotlin/Boolean // com.srctool.sinew.models/PagingMetaDomain.component5|component5(){}[0]
+    final fun component6(): kotlin/Boolean // com.srctool.sinew.models/PagingMetaDomain.component6|component6(){}[0]
+    final fun component7(): kotlin/String // com.srctool.sinew.models/PagingMetaDomain.component7|component7(){}[0]
+    final fun copy(kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/String = ...): com.srctool.sinew.models/PagingMetaDomain // com.srctool.sinew.models/PagingMetaDomain.copy|copy(kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Boolean;kotlin.Boolean;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/PagingMetaDomain.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.models/PagingMetaDomain.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.models/PagingMetaDomain.toString|toString(){}[0]
+}
+
+final class com.srctool.sinew.models/PagingMetaEntity { // com.srctool.sinew.models/PagingMetaEntity|null[0]
+    constructor <init>(kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/String = ...) // com.srctool.sinew.models/PagingMetaEntity.<init>|<init>(kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Boolean;kotlin.Boolean;kotlin.String){}[0]
+
+    final val hasNextPage // com.srctool.sinew.models/PagingMetaEntity.hasNextPage|{}hasNextPage[0]
+        final fun <get-hasNextPage>(): kotlin/Boolean // com.srctool.sinew.models/PagingMetaEntity.hasNextPage.<get-hasNextPage>|<get-hasNextPage>(){}[0]
+    final val hasPreviousPage // com.srctool.sinew.models/PagingMetaEntity.hasPreviousPage|{}hasPreviousPage[0]
+        final fun <get-hasPreviousPage>(): kotlin/Boolean // com.srctool.sinew.models/PagingMetaEntity.hasPreviousPage.<get-hasPreviousPage>|<get-hasPreviousPage>(){}[0]
+    final val limit // com.srctool.sinew.models/PagingMetaEntity.limit|{}limit[0]
+        final fun <get-limit>(): kotlin/Int // com.srctool.sinew.models/PagingMetaEntity.limit.<get-limit>|<get-limit>(){}[0]
+    final val nextKey // com.srctool.sinew.models/PagingMetaEntity.nextKey|{}nextKey[0]
+        final fun <get-nextKey>(): kotlin/String // com.srctool.sinew.models/PagingMetaEntity.nextKey.<get-nextKey>|<get-nextKey>(){}[0]
+    final val page // com.srctool.sinew.models/PagingMetaEntity.page|{}page[0]
+        final fun <get-page>(): kotlin/Int // com.srctool.sinew.models/PagingMetaEntity.page.<get-page>|<get-page>(){}[0]
+    final val total // com.srctool.sinew.models/PagingMetaEntity.total|{}total[0]
+        final fun <get-total>(): kotlin/Int // com.srctool.sinew.models/PagingMetaEntity.total.<get-total>|<get-total>(){}[0]
+    final val totalPage // com.srctool.sinew.models/PagingMetaEntity.totalPage|{}totalPage[0]
+        final fun <get-totalPage>(): kotlin/Int // com.srctool.sinew.models/PagingMetaEntity.totalPage.<get-totalPage>|<get-totalPage>(){}[0]
+
+    final fun component1(): kotlin/Int // com.srctool.sinew.models/PagingMetaEntity.component1|component1(){}[0]
+    final fun component2(): kotlin/Int // com.srctool.sinew.models/PagingMetaEntity.component2|component2(){}[0]
+    final fun component3(): kotlin/Int // com.srctool.sinew.models/PagingMetaEntity.component3|component3(){}[0]
+    final fun component4(): kotlin/Int // com.srctool.sinew.models/PagingMetaEntity.component4|component4(){}[0]
+    final fun component5(): kotlin/Boolean // com.srctool.sinew.models/PagingMetaEntity.component5|component5(){}[0]
+    final fun component6(): kotlin/Boolean // com.srctool.sinew.models/PagingMetaEntity.component6|component6(){}[0]
+    final fun component7(): kotlin/String // com.srctool.sinew.models/PagingMetaEntity.component7|component7(){}[0]
+    final fun copy(kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Int = ..., kotlin/Boolean = ..., kotlin/Boolean = ..., kotlin/String = ...): com.srctool.sinew.models/PagingMetaEntity // com.srctool.sinew.models/PagingMetaEntity.copy|copy(kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Int;kotlin.Boolean;kotlin.Boolean;kotlin.String){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.models/PagingMetaEntity.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.models/PagingMetaEntity.hashCode|hashCode(){}[0]
+    final fun toDomain(): com.srctool.sinew.models/PagingMetaDomain // com.srctool.sinew.models/PagingMetaEntity.toDomain|toDomain(){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.models/PagingMetaEntity.toString|toString(){}[0]
+}
+
+final class com.srctool.sinew.models/PlatformContext { // com.srctool.sinew.models/PlatformContext|null[0]
+    constructor <init>() // com.srctool.sinew.models/PlatformContext.<init>|<init>(){}[0]
+}
+
+final val com.srctool.sinew.models/dataOrNull // com.srctool.sinew.models/dataOrNull|@com.srctool.sinew.models.Result<0:0>{0§<kotlin.Any?>}dataOrNull[0]
+    final fun <#A1: kotlin/Any?> (com.srctool.sinew.models/Result<#A1>).<get-dataOrNull>(): #A1? // com.srctool.sinew.models/dataOrNull.<get-dataOrNull>|<get-dataOrNull>@com.srctool.sinew.models.Result<0:0>(){0§<kotlin.Any?>}[0]
+final val com.srctool.sinew.models/dataOrNull // com.srctool.sinew.models/dataOrNull|@com.srctool.sinew.models.ViewState<0:0>{0§<kotlin.Any?>}dataOrNull[0]
+    final fun <#A1: kotlin/Any?> (com.srctool.sinew.models/ViewState<#A1>).<get-dataOrNull>(): #A1? // com.srctool.sinew.models/dataOrNull.<get-dataOrNull>|<get-dataOrNull>@com.srctool.sinew.models.ViewState<0:0>(){0§<kotlin.Any?>}[0]
+final val com.srctool.sinew.models/errorOrNull // com.srctool.sinew.models/errorOrNull|@com.srctool.sinew.models.Result<*>{}errorOrNull[0]
+    final fun (com.srctool.sinew.models/Result<*>).<get-errorOrNull>(): com.srctool.sinew.models/SinewException? // com.srctool.sinew.models/errorOrNull.<get-errorOrNull>|<get-errorOrNull>@com.srctool.sinew.models.Result<*>(){}[0]
+final val com.srctool.sinew.models/isLoading // com.srctool.sinew.models/isLoading|@com.srctool.sinew.models.ViewState<*>{}isLoading[0]
+    final fun (com.srctool.sinew.models/ViewState<*>).<get-isLoading>(): kotlin/Boolean // com.srctool.sinew.models/isLoading.<get-isLoading>|<get-isLoading>@com.srctool.sinew.models.ViewState<*>(){}[0]
+final val com.srctool.sinew.models/isSuccess // com.srctool.sinew.models/isSuccess|@com.srctool.sinew.models.Result<*>{}isSuccess[0]
+    final fun (com.srctool.sinew.models/Result<*>).<get-isSuccess>(): kotlin/Boolean // com.srctool.sinew.models/isSuccess.<get-isSuccess>|<get-isSuccess>@com.srctool.sinew.models.Result<*>(){}[0]
+
+final fun <#A: kotlin/Any?> (com.srctool.sinew.models/Result<#A>).com.srctool.sinew.models/getOrThrow(): #A // com.srctool.sinew.models/getOrThrow|getOrThrow@com.srctool.sinew.models.Result<0:0>(){0§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.srctool.sinew.models/Result<#A>).com.srctool.sinew.models/fold(kotlin/Function1<#A, #B>, kotlin/Function1<com.srctool.sinew.models/SinewException, #B>): #B // com.srctool.sinew.models/fold|fold@com.srctool.sinew.models.Result<0:0>(kotlin.Function1<0:0,0:1>;kotlin.Function1<com.srctool.sinew.models.SinewException,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?, #B: kotlin/Any?> (com.srctool.sinew.models/Result<#A>).com.srctool.sinew.models/map(kotlin/Function1<#A, #B>): com.srctool.sinew.models/Result<#B> // com.srctool.sinew.models/map|map@com.srctool.sinew.models.Result<0:0>(kotlin.Function1<0:0,0:1>){0§<kotlin.Any?>;1§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?> (com.srctool.sinew.models/Result<#A>).com.srctool.sinew.models/onFailure(kotlin/Function1<com.srctool.sinew.models/SinewException, kotlin/Unit>): com.srctool.sinew.models/Result<#A> // com.srctool.sinew.models/onFailure|onFailure@com.srctool.sinew.models.Result<0:0>(kotlin.Function1<com.srctool.sinew.models.SinewException,kotlin.Unit>){0§<kotlin.Any?>}[0]
+final inline fun <#A: kotlin/Any?> (com.srctool.sinew.models/Result<#A>).com.srctool.sinew.models/onSuccess(kotlin/Function1<#A, kotlin/Unit>): com.srctool.sinew.models/Result<#A> // com.srctool.sinew.models/onSuccess|onSuccess@com.srctool.sinew.models.Result<0:0>(kotlin.Function1<0:0,kotlin.Unit>){0§<kotlin.Any?>}[0]
