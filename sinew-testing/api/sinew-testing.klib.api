@@ -1,0 +1,207 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-testing>
+final class <#A: kotlin/Any?> com.srctool.sinew.testing/ControlledFetch { // com.srctool.sinew.testing/ControlledFetch|null[0]
+    constructor <init>() // com.srctool.sinew.testing/ControlledFetch.<init>|<init>(){}[0]
+
+    final val calls // com.srctool.sinew.testing/ControlledFetch.calls|{}calls[0]
+        final fun <get-calls>(): kotlin.collections/List<com.srctool.sinew.testing/ControlledFetch.Call<#A>> // com.srctool.sinew.testing/ControlledFetch.calls.<get-calls>|<get-calls>(){}[0]
+
+    final fun assertAllCompleted() // com.srctool.sinew.testing/ControlledFetch.assertAllCompleted|assertAllCompleted(){}[0]
+    final fun complete(kotlin/Int, com.srctool.sinew.models/Result<com.srctool.sinew.models/PagingDomain<#A>>) // com.srctool.sinew.testing/ControlledFetch.complete|complete(kotlin.Int;com.srctool.sinew.models.Result<com.srctool.sinew.models.PagingDomain<1:0>>){}[0]
+    final fun fail(kotlin/Int, com.srctool.sinew.models/SinewException) // com.srctool.sinew.testing/ControlledFetch.fail|fail(kotlin.Int;com.srctool.sinew.models.SinewException){}[0]
+    final fun succeed(kotlin/Int, kotlin.collections/List<#A>, com.srctool.sinew.models/PagingMetaDomain = ...) // com.srctool.sinew.testing/ControlledFetch.succeed|succeed(kotlin.Int;kotlin.collections.List<1:0>;com.srctool.sinew.models.PagingMetaDomain){}[0]
+    final suspend fun invoke(kotlin/Any?, kotlin/String): com.srctool.sinew.models/Result<com.srctool.sinew.models/PagingDomain<#A>> // com.srctool.sinew.testing/ControlledFetch.invoke|invoke(kotlin.Any?;kotlin.String){}[0]
+
+    final inner class Call { // com.srctool.sinew.testing/ControlledFetch.Call|null[0]
+        final val key // com.srctool.sinew.testing/ControlledFetch.Call.key|{}key[0]
+            final fun <get-key>(): kotlin/Any? // com.srctool.sinew.testing/ControlledFetch.Call.key.<get-key>|<get-key>(){}[0]
+        final val query // com.srctool.sinew.testing/ControlledFetch.Call.query|{}query[0]
+            final fun <get-query>(): kotlin/String // com.srctool.sinew.testing/ControlledFetch.Call.query.<get-query>|<get-query>(){}[0]
+
+        final var cancelled // com.srctool.sinew.testing/ControlledFetch.Call.cancelled|{}cancelled[0]
+            final fun <get-cancelled>(): kotlin/Boolean // com.srctool.sinew.testing/ControlledFetch.Call.cancelled.<get-cancelled>|<get-cancelled>(){}[0]
+    }
+}
+
+final class com.srctool.sinew.testing/FakeBiometricVault : com.srctool.sinew.security/BiometricVault { // com.srctool.sinew.testing/FakeBiometricVault|null[0]
+    constructor <init>(com.srctool.sinew.security/BiometricAvailability = ...) // com.srctool.sinew.testing/FakeBiometricVault.<init>|<init>(com.srctool.sinew.security.BiometricAvailability){}[0]
+
+    final val prompts // com.srctool.sinew.testing/FakeBiometricVault.prompts|{}prompts[0]
+        final fun <get-prompts>(): kotlin.collections/List<kotlin/String> // com.srctool.sinew.testing/FakeBiometricVault.prompts.<get-prompts>|<get-prompts>(){}[0]
+    final val storedSecret // com.srctool.sinew.testing/FakeBiometricVault.storedSecret|{}storedSecret[0]
+        final fun <get-storedSecret>(): kotlin/String? // com.srctool.sinew.testing/FakeBiometricVault.storedSecret.<get-storedSecret>|<get-storedSecret>(){}[0]
+
+    final var availability // com.srctool.sinew.testing/FakeBiometricVault.availability|{}availability[0]
+        final fun <get-availability>(): com.srctool.sinew.security/BiometricAvailability // com.srctool.sinew.testing/FakeBiometricVault.availability.<get-availability>|<get-availability>(){}[0]
+        final fun <set-availability>(com.srctool.sinew.security/BiometricAvailability) // com.srctool.sinew.testing/FakeBiometricVault.availability.<set-availability>|<set-availability>(com.srctool.sinew.security.BiometricAvailability){}[0]
+
+    final fun invalidate() // com.srctool.sinew.testing/FakeBiometricVault.invalidate|invalidate(){}[0]
+    final fun nextStore(com.srctool.sinew.security/BiometricFailure) // com.srctool.sinew.testing/FakeBiometricVault.nextStore|nextStore(com.srctool.sinew.security.BiometricFailure){}[0]
+    final fun nextUnlock(com.srctool.sinew.security/BiometricFailure) // com.srctool.sinew.testing/FakeBiometricVault.nextUnlock|nextUnlock(com.srctool.sinew.security.BiometricFailure){}[0]
+    final suspend fun availability(): com.srctool.sinew.security/BiometricAvailability // com.srctool.sinew.testing/FakeBiometricVault.availability|availability(){}[0]
+    final suspend fun disable() // com.srctool.sinew.testing/FakeBiometricVault.disable|disable(){}[0]
+    final suspend fun isStored(): kotlin/Boolean // com.srctool.sinew.testing/FakeBiometricVault.isStored|isStored(){}[0]
+    final suspend fun store(kotlin/String, kotlin/String): com.srctool.sinew.security/BiometricStore // com.srctool.sinew.testing/FakeBiometricVault.store|store(kotlin.String;kotlin.String){}[0]
+    final suspend fun unlock(kotlin/String): com.srctool.sinew.security/BiometricUnlock // com.srctool.sinew.testing/FakeBiometricVault.unlock|unlock(kotlin.String){}[0]
+}
+
+final class com.srctool.sinew.testing/FakeFieldCipher : com.srctool.sinew.security/FieldCipher { // com.srctool.sinew.testing/FakeFieldCipher|null[0]
+    constructor <init>() // com.srctool.sinew.testing/FakeFieldCipher.<init>|<init>(){}[0]
+
+    final var rotations // com.srctool.sinew.testing/FakeFieldCipher.rotations|{}rotations[0]
+        final fun <get-rotations>(): kotlin/Int // com.srctool.sinew.testing/FakeFieldCipher.rotations.<get-rotations>|<get-rotations>(){}[0]
+
+    final fun failNextDecrypt() // com.srctool.sinew.testing/FakeFieldCipher.failNextDecrypt|failNextDecrypt(){}[0]
+    final suspend fun decrypt(kotlin/String, kotlin/String): kotlin/String // com.srctool.sinew.testing/FakeFieldCipher.decrypt|decrypt(kotlin.String;kotlin.String){}[0]
+    final suspend fun encrypt(kotlin/String, kotlin/String): kotlin/String // com.srctool.sinew.testing/FakeFieldCipher.encrypt|encrypt(kotlin.String;kotlin.String){}[0]
+    final suspend fun rotateKey() // com.srctool.sinew.testing/FakeFieldCipher.rotateKey|rotateKey(){}[0]
+}
+
+final class com.srctool.sinew.testing/FakeKeyValueStore : com.srctool.sinew.storage/KeyValueStore { // com.srctool.sinew.testing/FakeKeyValueStore|null[0]
+    constructor <init>(kotlin/String = ...) // com.srctool.sinew.testing/FakeKeyValueStore.<init>|<init>(kotlin.String){}[0]
+
+    final val name // com.srctool.sinew.testing/FakeKeyValueStore.name|{}name[0]
+        final fun <get-name>(): kotlin/String // com.srctool.sinew.testing/FakeKeyValueStore.name.<get-name>|<get-name>(){}[0]
+    final val snapshot // com.srctool.sinew.testing/FakeKeyValueStore.snapshot|{}snapshot[0]
+        final fun <get-snapshot>(): kotlin.collections/Map<kotlin/String, kotlin/Any> // com.srctool.sinew.testing/FakeKeyValueStore.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+
+    final fun failNextRead(kotlin/Throwable = ...) // com.srctool.sinew.testing/FakeKeyValueStore.failNextRead|failNextRead(kotlin.Throwable){}[0]
+    final fun failNextWrite(kotlin/Throwable = ...) // com.srctool.sinew.testing/FakeKeyValueStore.failNextWrite|failNextWrite(kotlin.Throwable){}[0]
+    final fun failNextWriteWithDiskFull() // com.srctool.sinew.testing/FakeKeyValueStore.failNextWriteWithDiskFull|failNextWriteWithDiskFull(){}[0]
+    final suspend fun clear() // com.srctool.sinew.testing/FakeKeyValueStore.clear|clear(){}[0]
+    final suspend fun getBool(kotlin/String): kotlin/Boolean? // com.srctool.sinew.testing/FakeKeyValueStore.getBool|getBool(kotlin.String){}[0]
+    final suspend fun getDouble(kotlin/String): kotlin/Double? // com.srctool.sinew.testing/FakeKeyValueStore.getDouble|getDouble(kotlin.String){}[0]
+    final suspend fun getInt(kotlin/String): kotlin/Int? // com.srctool.sinew.testing/FakeKeyValueStore.getInt|getInt(kotlin.String){}[0]
+    final suspend fun getString(kotlin/String): kotlin/String? // com.srctool.sinew.testing/FakeKeyValueStore.getString|getString(kotlin.String){}[0]
+    final suspend fun keys(): kotlin.collections/List<kotlin/String> // com.srctool.sinew.testing/FakeKeyValueStore.keys|keys(){}[0]
+    final suspend fun read(kotlin/String): kotlin/String? // com.srctool.sinew.testing/FakeKeyValueStore.read|read(kotlin.String){}[0]
+    final suspend fun remove(kotlin/String) // com.srctool.sinew.testing/FakeKeyValueStore.remove|remove(kotlin.String){}[0]
+    final suspend fun setBool(kotlin/String, kotlin/Boolean) // com.srctool.sinew.testing/FakeKeyValueStore.setBool|setBool(kotlin.String;kotlin.Boolean){}[0]
+    final suspend fun setDouble(kotlin/String, kotlin/Double) // com.srctool.sinew.testing/FakeKeyValueStore.setDouble|setDouble(kotlin.String;kotlin.Double){}[0]
+    final suspend fun setInt(kotlin/String, kotlin/Int) // com.srctool.sinew.testing/FakeKeyValueStore.setInt|setInt(kotlin.String;kotlin.Int){}[0]
+    final suspend fun setString(kotlin/String, kotlin/String) // com.srctool.sinew.testing/FakeKeyValueStore.setString|setString(kotlin.String;kotlin.String){}[0]
+}
+
+final class com.srctool.sinew.testing/FakeLocalizer : com.srctool.sinew.exception/Localizer { // com.srctool.sinew.testing/FakeLocalizer|null[0]
+    constructor <init>(kotlin.collections/Map<kotlin/String, kotlin/String> = ..., kotlin/Boolean = ...) // com.srctool.sinew.testing/FakeLocalizer.<init>|<init>(kotlin.collections.Map<kotlin.String,kotlin.String>;kotlin.Boolean){}[0]
+
+    final val requested // com.srctool.sinew.testing/FakeLocalizer.requested|{}requested[0]
+        final fun <get-requested>(): kotlin.collections/List<kotlin/String> // com.srctool.sinew.testing/FakeLocalizer.requested.<get-requested>|<get-requested>(){}[0]
+
+    final fun resolve(kotlin/String, kotlin.collections/Map<kotlin/String, kotlin/Any>): kotlin/String? // com.srctool.sinew.testing/FakeLocalizer.resolve|resolve(kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.Any>){}[0]
+}
+
+final class com.srctool.sinew.testing/FakeNetworkChecker : com.srctool.sinew.network/NetworkChecker { // com.srctool.sinew.testing/FakeNetworkChecker|null[0]
+    constructor <init>(com.srctool.sinew.network/NetworkStatus = ...) // com.srctool.sinew.testing/FakeNetworkChecker.<init>|<init>(com.srctool.sinew.network.NetworkStatus){}[0]
+
+    final val status // com.srctool.sinew.testing/FakeNetworkChecker.status|{}status[0]
+        final fun <get-status>(): kotlinx.coroutines.flow/StateFlow<com.srctool.sinew.network/NetworkStatus> // com.srctool.sinew.testing/FakeNetworkChecker.status.<get-status>|<get-status>(){}[0]
+
+    final var closed // com.srctool.sinew.testing/FakeNetworkChecker.closed|{}closed[0]
+        final fun <get-closed>(): kotlin/Boolean // com.srctool.sinew.testing/FakeNetworkChecker.closed.<get-closed>|<get-closed>(){}[0]
+
+    final fun close() // com.srctool.sinew.testing/FakeNetworkChecker.close|close(){}[0]
+    final fun goOffline() // com.srctool.sinew.testing/FakeNetworkChecker.goOffline|goOffline(){}[0]
+    final fun goOnline() // com.srctool.sinew.testing/FakeNetworkChecker.goOnline|goOnline(){}[0]
+}
+
+final class com.srctool.sinew.testing/FakeRefreshTokenStore : com.srctool.sinew.network/RefreshTokenStore { // com.srctool.sinew.testing/FakeRefreshTokenStore|null[0]
+    constructor <init>(kotlin/String? = ...) // com.srctool.sinew.testing/FakeRefreshTokenStore.<init>|<init>(kotlin.String?){}[0]
+
+    final var token // com.srctool.sinew.testing/FakeRefreshTokenStore.token|{}token[0]
+        final fun <get-token>(): kotlin/String? // com.srctool.sinew.testing/FakeRefreshTokenStore.token.<get-token>|<get-token>(){}[0]
+
+    final fun failNextRead(kotlin/Throwable = ...) // com.srctool.sinew.testing/FakeRefreshTokenStore.failNextRead|failNextRead(kotlin.Throwable){}[0]
+    final fun failNextWrite(kotlin/Throwable = ...) // com.srctool.sinew.testing/FakeRefreshTokenStore.failNextWrite|failNextWrite(kotlin.Throwable){}[0]
+    final suspend fun delete() // com.srctool.sinew.testing/FakeRefreshTokenStore.delete|delete(){}[0]
+    final suspend fun read(): kotlin/String? // com.srctool.sinew.testing/FakeRefreshTokenStore.read|read(){}[0]
+    final suspend fun write(kotlin/String) // com.srctool.sinew.testing/FakeRefreshTokenStore.write|write(kotlin.String){}[0]
+}
+
+final class com.srctool.sinew.testing/FakeSecureStore : com.srctool.sinew.storage/SecureStore { // com.srctool.sinew.testing/FakeSecureStore|null[0]
+    constructor <init>(kotlin/String = ...) // com.srctool.sinew.testing/FakeSecureStore.<init>|<init>(kotlin.String){}[0]
+
+    final val name // com.srctool.sinew.testing/FakeSecureStore.name|{}name[0]
+        final fun <get-name>(): kotlin/String // com.srctool.sinew.testing/FakeSecureStore.name.<get-name>|<get-name>(){}[0]
+    final val snapshot // com.srctool.sinew.testing/FakeSecureStore.snapshot|{}snapshot[0]
+        final fun <get-snapshot>(): kotlin.collections/Map<kotlin/String, kotlin/String> // com.srctool.sinew.testing/FakeSecureStore.snapshot.<get-snapshot>|<get-snapshot>(){}[0]
+
+    final fun failNextRead(kotlin/Throwable = ...) // com.srctool.sinew.testing/FakeSecureStore.failNextRead|failNextRead(kotlin.Throwable){}[0]
+    final fun failNextWrite(kotlin/Throwable = ...) // com.srctool.sinew.testing/FakeSecureStore.failNextWrite|failNextWrite(kotlin.Throwable){}[0]
+    final fun loseKey() // com.srctool.sinew.testing/FakeSecureStore.loseKey|loseKey(){}[0]
+    final suspend fun clearUserData() // com.srctool.sinew.testing/FakeSecureStore.clearUserData|clearUserData(){}[0]
+    final suspend fun delete(kotlin/String) // com.srctool.sinew.testing/FakeSecureStore.delete|delete(kotlin.String){}[0]
+    final suspend fun keys(): kotlin.collections/List<kotlin/String> // com.srctool.sinew.testing/FakeSecureStore.keys|keys(){}[0]
+    final suspend fun read(kotlin/String): kotlin/String? // com.srctool.sinew.testing/FakeSecureStore.read|read(kotlin.String){}[0]
+    final suspend fun write(kotlin/String, kotlin/String) // com.srctool.sinew.testing/FakeSecureStore.write|write(kotlin.String;kotlin.String){}[0]
+}
+
+final class com.srctool.sinew.testing/FakeTokenSource : com.srctool.sinew.network/TokenSource { // com.srctool.sinew.testing/FakeTokenSource|null[0]
+    constructor <init>(kotlin/String? = ...) // com.srctool.sinew.testing/FakeTokenSource.<init>|<init>(kotlin.String?){}[0]
+
+    final val clears // com.srctool.sinew.testing/FakeTokenSource.clears|{}clears[0]
+        final fun <get-clears>(): kotlin/Int // com.srctool.sinew.testing/FakeTokenSource.clears.<get-clears>|<get-clears>(){}[0]
+    final val refreshes // com.srctool.sinew.testing/FakeTokenSource.refreshes|{}refreshes[0]
+        final fun <get-refreshes>(): kotlin/Int // com.srctool.sinew.testing/FakeTokenSource.refreshes.<get-refreshes>|<get-refreshes>(){}[0]
+
+    final var onRefresh // com.srctool.sinew.testing/FakeTokenSource.onRefresh|{}onRefresh[0]
+        final fun <get-onRefresh>(): kotlin.coroutines/SuspendFunction1<com.srctool.sinew.testing/FakeTokenSource, com.srctool.sinew.network/RefreshOutcome> // com.srctool.sinew.testing/FakeTokenSource.onRefresh.<get-onRefresh>|<get-onRefresh>(){}[0]
+        final fun <set-onRefresh>(kotlin.coroutines/SuspendFunction1<com.srctool.sinew.testing/FakeTokenSource, com.srctool.sinew.network/RefreshOutcome>) // com.srctool.sinew.testing/FakeTokenSource.onRefresh.<set-onRefresh>|<set-onRefresh>(kotlin.coroutines.SuspendFunction1<com.srctool.sinew.testing.FakeTokenSource,com.srctool.sinew.network.RefreshOutcome>){}[0]
+
+    final fun accessToken(): kotlin/String? // com.srctool.sinew.testing/FakeTokenSource.accessToken|accessToken(){}[0]
+    final fun rotate(): kotlin/String // com.srctool.sinew.testing/FakeTokenSource.rotate|rotate(){}[0]
+    final suspend fun clear() // com.srctool.sinew.testing/FakeTokenSource.clear|clear(){}[0]
+    final suspend fun refresh(): com.srctool.sinew.network/RefreshOutcome // com.srctool.sinew.testing/FakeTokenSource.refresh|refresh(){}[0]
+}
+
+final class com.srctool.sinew.testing/MockHttp { // com.srctool.sinew.testing/MockHttp|null[0]
+    final val client // com.srctool.sinew.testing/MockHttp.client|{}client[0]
+        final fun <get-client>(): io.ktor.client/HttpClient // com.srctool.sinew.testing/MockHttp.client.<get-client>|<get-client>(){}[0]
+    final val requests // com.srctool.sinew.testing/MockHttp.requests|{}requests[0]
+        final fun <get-requests>(): kotlin.collections/List<io.ktor.client.request/HttpRequestData> // com.srctool.sinew.testing/MockHttp.requests.<get-requests>|<get-requests>(){}[0]
+
+    final fun requests(io.ktor.http/HttpMethod, kotlin/String): kotlin.collections/List<io.ktor.client.request/HttpRequestData> // com.srctool.sinew.testing/MockHttp.requests|requests(io.ktor.http.HttpMethod;kotlin.String){}[0]
+}
+
+final class com.srctool.sinew.testing/MockRoutes { // com.srctool.sinew.testing/MockRoutes|null[0]
+    final fun on(io.ktor.http/HttpMethod, kotlin/String): com.srctool.sinew.testing/MockRoutes.Route // com.srctool.sinew.testing/MockRoutes.on|on(io.ktor.http.HttpMethod;kotlin.String){}[0]
+
+    final class Route { // com.srctool.sinew.testing/MockRoutes.Route|null[0]
+        final fun drop(): com.srctool.sinew.testing/MockRoutes.Route // com.srctool.sinew.testing/MockRoutes.Route.drop|drop(){}[0]
+        final fun respond(kotlin/Int = ..., kotlin/String = ..., kotlin.collections/Map<kotlin/String, kotlin/String> = ..., kotlin.time/Duration = ...): com.srctool.sinew.testing/MockRoutes.Route // com.srctool.sinew.testing/MockRoutes.Route.respond|respond(kotlin.Int;kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.String>;kotlin.time.Duration){}[0]
+    }
+}
+
+final class com.srctool.sinew.testing/RecordingCrashReporter : com.srctool.sinew.exception/CrashReporter { // com.srctool.sinew.testing/RecordingCrashReporter|null[0]
+    constructor <init>() // com.srctool.sinew.testing/RecordingCrashReporter.<init>|<init>(){}[0]
+
+    final val codes // com.srctool.sinew.testing/RecordingCrashReporter.codes|{}codes[0]
+        final fun <get-codes>(): kotlin.collections/List<kotlin/String> // com.srctool.sinew.testing/RecordingCrashReporter.codes.<get-codes>|<get-codes>(){}[0]
+    final val reports // com.srctool.sinew.testing/RecordingCrashReporter.reports|{}reports[0]
+        final fun <get-reports>(): kotlin.collections/List<com.srctool.sinew.models/SinewException> // com.srctool.sinew.testing/RecordingCrashReporter.reports.<get-reports>|<get-reports>(){}[0]
+
+    final fun clear() // com.srctool.sinew.testing/RecordingCrashReporter.clear|clear(){}[0]
+    final fun recordNonFatal(com.srctool.sinew.models/SinewException) // com.srctool.sinew.testing/RecordingCrashReporter.recordNonFatal|recordNonFatal(com.srctool.sinew.models.SinewException){}[0]
+}
+
+final class com.srctool.sinew.testing/RecordingHttpLogger : com.srctool.sinew.network/HttpLogger { // com.srctool.sinew.testing/RecordingHttpLogger|null[0]
+    constructor <init>() // com.srctool.sinew.testing/RecordingHttpLogger.<init>|<init>(){}[0]
+
+    final val lines // com.srctool.sinew.testing/RecordingHttpLogger.lines|{}lines[0]
+        final fun <get-lines>(): kotlin.collections/List<kotlin/String> // com.srctool.sinew.testing/RecordingHttpLogger.lines.<get-lines>|<get-lines>(){}[0]
+
+    final fun log(kotlin/String) // com.srctool.sinew.testing/RecordingHttpLogger.log|log(kotlin.String){}[0]
+}
+
+final fun (kotlinx.coroutines.test/TestScope).com.srctool.sinew.testing/mockHttp(com.srctool.sinew.network/SinewConfig = ..., com.srctool.sinew.network/TokenSource = ..., com.srctool.sinew.network/HttpLogger = ..., com.srctool.sinew.network/SinewHttpHooks = ..., kotlin/Function1<com.srctool.sinew.testing/MockRoutes, kotlin/Unit>): com.srctool.sinew.testing/MockHttp // com.srctool.sinew.testing/mockHttp|mockHttp@kotlinx.coroutines.test.TestScope(com.srctool.sinew.network.SinewConfig;com.srctool.sinew.network.TokenSource;com.srctool.sinew.network.HttpLogger;com.srctool.sinew.network.SinewHttpHooks;kotlin.Function1<com.srctool.sinew.testing.MockRoutes,kotlin.Unit>){}[0]
+final fun <#A: kotlin/Any?> (kotlinx.coroutines.test/TestScope).com.srctool.sinew.testing/controlledFetch(): com.srctool.sinew.testing/ControlledFetch<#A> // com.srctool.sinew.testing/controlledFetch|controlledFetch@kotlinx.coroutines.test.TestScope(){0§<kotlin.Any?>}[0]
+final fun com.srctool.sinew.testing/diskFullError(): kotlin/Throwable // com.srctool.sinew.testing/diskFullError|diskFullError(){}[0]
+final fun com.srctool.sinew.testing/fixture(kotlin/String): kotlin/String // com.srctool.sinew.testing/fixture|fixture(kotlin.String){}[0]
+final fun com.srctool.sinew.testing/platformStorageError(kotlin/String = ...): kotlin/Throwable // com.srctool.sinew.testing/platformStorageError|platformStorageError(kotlin.String){}[0]
+final inline fun <#A: kotlin/Any?> com.srctool.sinew.testing/withRecordingReporter(kotlin/Function1<com.srctool.sinew.testing/RecordingCrashReporter, #A>): #A // com.srctool.sinew.testing/withRecordingReporter|withRecordingReporter(kotlin.Function1<com.srctool.sinew.testing.RecordingCrashReporter,0:0>){0§<kotlin.Any?>}[0]

@@ -1,0 +1,58 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-storage>
+final enum class com.srctool.sinew.storage/StorageAccess : kotlin/Enum<com.srctool.sinew.storage/StorageAccess> { // com.srctool.sinew.storage/StorageAccess|null[0]
+    enum entry Read // com.srctool.sinew.storage/StorageAccess.Read|null[0]
+    enum entry Write // com.srctool.sinew.storage/StorageAccess.Write|null[0]
+
+    final val entries // com.srctool.sinew.storage/StorageAccess.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.srctool.sinew.storage/StorageAccess> // com.srctool.sinew.storage/StorageAccess.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.srctool.sinew.storage/StorageAccess // com.srctool.sinew.storage/StorageAccess.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.srctool.sinew.storage/StorageAccess> // com.srctool.sinew.storage/StorageAccess.values|values#static(){}[0]
+}
+
+abstract interface com.srctool.sinew.storage/InspectableStore { // com.srctool.sinew.storage/InspectableStore|null[0]
+    abstract val name // com.srctool.sinew.storage/InspectableStore.name|{}name[0]
+        abstract fun <get-name>(): kotlin/String // com.srctool.sinew.storage/InspectableStore.name.<get-name>|<get-name>(){}[0]
+
+    abstract suspend fun keys(): kotlin.collections/List<kotlin/String> // com.srctool.sinew.storage/InspectableStore.keys|keys(){}[0]
+    abstract suspend fun read(kotlin/String): kotlin/String? // com.srctool.sinew.storage/InspectableStore.read|read(kotlin.String){}[0]
+}
+
+abstract interface com.srctool.sinew.storage/KeyValueStore : com.srctool.sinew.storage/InspectableStore { // com.srctool.sinew.storage/KeyValueStore|null[0]
+    abstract suspend fun clear() // com.srctool.sinew.storage/KeyValueStore.clear|clear(){}[0]
+    abstract suspend fun getBool(kotlin/String): kotlin/Boolean? // com.srctool.sinew.storage/KeyValueStore.getBool|getBool(kotlin.String){}[0]
+    abstract suspend fun getDouble(kotlin/String): kotlin/Double? // com.srctool.sinew.storage/KeyValueStore.getDouble|getDouble(kotlin.String){}[0]
+    abstract suspend fun getInt(kotlin/String): kotlin/Int? // com.srctool.sinew.storage/KeyValueStore.getInt|getInt(kotlin.String){}[0]
+    abstract suspend fun getString(kotlin/String): kotlin/String? // com.srctool.sinew.storage/KeyValueStore.getString|getString(kotlin.String){}[0]
+    abstract suspend fun remove(kotlin/String) // com.srctool.sinew.storage/KeyValueStore.remove|remove(kotlin.String){}[0]
+    abstract suspend fun setBool(kotlin/String, kotlin/Boolean) // com.srctool.sinew.storage/KeyValueStore.setBool|setBool(kotlin.String;kotlin.Boolean){}[0]
+    abstract suspend fun setDouble(kotlin/String, kotlin/Double) // com.srctool.sinew.storage/KeyValueStore.setDouble|setDouble(kotlin.String;kotlin.Double){}[0]
+    abstract suspend fun setInt(kotlin/String, kotlin/Int) // com.srctool.sinew.storage/KeyValueStore.setInt|setInt(kotlin.String;kotlin.Int){}[0]
+    abstract suspend fun setString(kotlin/String, kotlin/String) // com.srctool.sinew.storage/KeyValueStore.setString|setString(kotlin.String;kotlin.String){}[0]
+
+    final object Companion { // com.srctool.sinew.storage/KeyValueStore.Companion|null[0]
+        final fun create(com.srctool.sinew.models/PlatformContext, kotlin/String = ...): com.srctool.sinew.storage/KeyValueStore // com.srctool.sinew.storage/KeyValueStore.Companion.create|create(com.srctool.sinew.models.PlatformContext;kotlin.String){}[0]
+    }
+}
+
+abstract interface com.srctool.sinew.storage/SecureStore : com.srctool.sinew.storage/InspectableStore { // com.srctool.sinew.storage/SecureStore|null[0]
+    abstract suspend fun clearUserData() // com.srctool.sinew.storage/SecureStore.clearUserData|clearUserData(){}[0]
+    abstract suspend fun delete(kotlin/String) // com.srctool.sinew.storage/SecureStore.delete|delete(kotlin.String){}[0]
+    abstract suspend fun read(kotlin/String): kotlin/String? // com.srctool.sinew.storage/SecureStore.read|read(kotlin.String){}[0]
+    abstract suspend fun write(kotlin/String, kotlin/String) // com.srctool.sinew.storage/SecureStore.write|write(kotlin.String;kotlin.String){}[0]
+
+    final object Companion { // com.srctool.sinew.storage/SecureStore.Companion|null[0]
+        final fun create(com.srctool.sinew.models/PlatformContext, kotlin/String = ...): com.srctool.sinew.storage/SecureStore // com.srctool.sinew.storage/SecureStore.Companion.create|create(com.srctool.sinew.models.PlatformContext;kotlin.String){}[0]
+    }
+}
+
+final fun com.srctool.sinew.storage/storageHandlers(kotlin/String, kotlin/String, com.srctool.sinew.storage/StorageAccess): kotlin.collections/List<com.srctool.sinew.exception/ExceptionHandler> // com.srctool.sinew.storage/storageHandlers|storageHandlers(kotlin.String;kotlin.String;com.srctool.sinew.storage.StorageAccess){}[0]
+final suspend fun <#A: kotlin/Any?> com.srctool.sinew.storage/pagedQuery(kotlin/Int, kotlin/Int, kotlin/Int = ..., kotlin.coroutines/SuspendFunction2<kotlin/Int, kotlin/Int, kotlin.collections/List<#A>>): com.srctool.sinew.models/PagingEntity<#A> // com.srctool.sinew.storage/pagedQuery|pagedQuery(kotlin.Int;kotlin.Int;kotlin.Int;kotlin.coroutines.SuspendFunction2<kotlin.Int,kotlin.Int,kotlin.collections.List<0:0>>){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> com.srctool.sinew.storage/processStorageCall(kotlin/String, kotlin/String, com.srctool.sinew.storage/StorageAccess, kotlin.coroutines/SuspendFunction0<#A>): com.srctool.sinew.models/Result<#A> // com.srctool.sinew.storage/processStorageCall|processStorageCall(kotlin.String;kotlin.String;com.srctool.sinew.storage.StorageAccess;kotlin.coroutines.SuspendFunction0<0:0>){0§<kotlin.Any?>}[0]

@@ -1,0 +1,72 @@
+public final class com/srctool/sinew/l10n/SinewLocalizerKt {
+	public static final fun rememberSinewLocalizer (Lcom/srctool/sinew/exception/Localizer;Landroidx/compose/runtime/Composer;II)Lcom/srctool/sinew/exception/Localizer;
+}
+
+public final class com/srctool/sinew/l10n/SinewStrings {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/srctool/sinew/l10n/SinewStrings;
+	public final fun getKeys ()Ljava/util/Set;
+	public final fun resolve (Ljava/lang/String;Ljava/util/Map;Lorg/jetbrains/compose/resources/ResourceEnvironment;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public static synthetic fun resolve$default (Lcom/srctool/sinew/l10n/SinewStrings;Ljava/lang/String;Ljava/util/Map;Lorg/jetbrains/compose/resources/ResourceEnvironment;Lkotlin/coroutines/Continuation;ILjava/lang/Object;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/l10n/resources/ActualResourceCollectorsKt {
+	public static final fun getAllDrawableResources (Lcom/srctool/sinew/l10n/resources/Res;)Ljava/util/Map;
+	public static final fun getAllFontResources (Lcom/srctool/sinew/l10n/resources/Res;)Ljava/util/Map;
+	public static final fun getAllPluralStringResources (Lcom/srctool/sinew/l10n/resources/Res;)Ljava/util/Map;
+	public static final fun getAllStringArrayResources (Lcom/srctool/sinew/l10n/resources/Res;)Ljava/util/Map;
+	public static final fun getAllStringResources (Lcom/srctool/sinew/l10n/resources/Res;)Ljava/util/Map;
+}
+
+public final class com/srctool/sinew/l10n/resources/Plurals0_commonMainKt {
+	public static final fun getSinew_error_rateLimited (Lcom/srctool/sinew/l10n/resources/Res$plurals;)Lorg/jetbrains/compose/resources/PluralStringResource;
+}
+
+public final class com/srctool/sinew/l10n/resources/Res {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/srctool/sinew/l10n/resources/Res;
+	public final fun getUri (Ljava/lang/String;)Ljava/lang/String;
+	public final fun readBytes (Ljava/lang/String;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
+public final class com/srctool/sinew/l10n/resources/Res$array {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/srctool/sinew/l10n/resources/Res$array;
+}
+
+public final class com/srctool/sinew/l10n/resources/Res$drawable {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/srctool/sinew/l10n/resources/Res$drawable;
+}
+
+public final class com/srctool/sinew/l10n/resources/Res$font {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/srctool/sinew/l10n/resources/Res$font;
+}
+
+public final class com/srctool/sinew/l10n/resources/Res$plurals {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/srctool/sinew/l10n/resources/Res$plurals;
+}
+
+public final class com/srctool/sinew/l10n/resources/Res$string {
+	public static final field $stable I
+	public static final field INSTANCE Lcom/srctool/sinew/l10n/resources/Res$string;
+}
+
+public final class com/srctool/sinew/l10n/resources/String0_commonMainKt {
+	public static final fun getSinew_error_conflict (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_forbidden (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_generic (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_noInternet (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_notFound (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_rateLimitedNoTime (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_server (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_stillProcessing (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_storageFull (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_timeout (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_unauthorized (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_unavailable (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+	public static final fun getSinew_error_validation (Lcom/srctool/sinew/l10n/resources/Res$string;)Lorg/jetbrains/compose/resources/StringResource;
+}
+

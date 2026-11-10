@@ -1,6 +1,6 @@
 plugins {
     `java-platform`
-    id("com.vanniktech.maven.publish")
+    id("com.srctool.publish")
 }
 
 description = "Pins every Sinew module to one version."

@@ -7,11 +7,15 @@ import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.extra
 import org.gradle.kotlin.dsl.getByType
 import org.jetbrains.dokka.gradle.DokkaExtension
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
 
 /**
  * Maven Central publishing (Central Portal) with the srctool POM. Kotlin libraries also get Dokka, which reports every
- * public declaration without KDoc and fails the build on one, so the API reference has no gaps; a `Module.md` in the
- * module is its module page. Signing applies when a key is configured.
+ * public declaration without KDoc and fails the build on one, so the API reference has no gaps (a `Module.md` in the
+ * module is its module page), and ABI validation: a published module's public API is dumped under `api/`, and
+ * `checkKotlinAbi` (run by `check`) fails on any change until `updateKotlinAbi` is run and the dump committed.
+ * Signing applies when a key is configured.
  */
 class PublishConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) = with(target) {
@@ -19,6 +23,10 @@ class PublishConventionPlugin : Plugin<Project> {
         val srctool = rootProject.extensions.getByType<SrctoolExtension>()
 
         pluginManager.withPlugin("org.jetbrains.kotlin.multiplatform") {
+            extensions.configure<KotlinMultiplatformExtension> {
+                @OptIn(ExperimentalAbiValidation::class)
+                abiValidation()
+            }
             pluginManager.apply("org.jetbrains.dokka")
             extensions.configure<DokkaExtension> {
                 moduleName.set(project.name)

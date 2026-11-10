@@ -1,0 +1,51 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-paging>
+final enum class com.srctool.sinew.paging/LoadType : kotlin/Enum<com.srctool.sinew.paging/LoadType> { // com.srctool.sinew.paging/LoadType|null[0]
+    enum entry Initial // com.srctool.sinew.paging/LoadType.Initial|null[0]
+    enum entry More // com.srctool.sinew.paging/LoadType.More|null[0]
+    enum entry Refresh // com.srctool.sinew.paging/LoadType.Refresh|null[0]
+
+    final val entries // com.srctool.sinew.paging/LoadType.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.srctool.sinew.paging/LoadType> // com.srctool.sinew.paging/LoadType.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.srctool.sinew.paging/LoadType // com.srctool.sinew.paging/LoadType.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.srctool.sinew.paging/LoadType> // com.srctool.sinew.paging/LoadType.values|values#static(){}[0]
+}
+
+final class <#A: kotlin/Any?> com.srctool.sinew.paging/Pager { // com.srctool.sinew.paging/Pager|null[0]
+    final fun cancel() // com.srctool.sinew.paging/Pager.cancel|cancel(){}[0]
+    final suspend fun load(com.srctool.sinew.paging/LoadType, com.srctool.sinew.paging/PagingState<#A>, kotlin/String = ..., kotlin/Function1<com.srctool.sinew.paging/PagingState<#A>, kotlin/Unit>) // com.srctool.sinew.paging/Pager.load|load(com.srctool.sinew.paging.LoadType;com.srctool.sinew.paging.PagingState<1:0>;kotlin.String;kotlin.Function1<com.srctool.sinew.paging.PagingState<1:0>,kotlin.Unit>){}[0]
+
+    final object Companion { // com.srctool.sinew.paging/Pager.Companion|null[0]
+        final fun <#A2: kotlin/Any?> cursor(kotlin/Function1<#A2, kotlin/Any>? = ..., kotlin.coroutines/SuspendFunction2<kotlin/String, kotlin/String, com.srctool.sinew.models/Result<com.srctool.sinew.models/PagingDomain<#A2>>>): com.srctool.sinew.paging/Pager<#A2> // com.srctool.sinew.paging/Pager.Companion.cursor|cursor(kotlin.Function1<0:0,kotlin.Any>?;kotlin.coroutines.SuspendFunction2<kotlin.String,kotlin.String,com.srctool.sinew.models.Result<com.srctool.sinew.models.PagingDomain<0:0>>>){0§<kotlin.Any?>}[0]
+        final fun <#A2: kotlin/Any?> lastItem(kotlin/Function1<#A2, kotlin/String>, kotlin/Function1<#A2, kotlin/Any>? = ..., kotlin.coroutines/SuspendFunction2<kotlin/String?, kotlin/String, com.srctool.sinew.models/Result<com.srctool.sinew.models/PagingDomain<#A2>>>): com.srctool.sinew.paging/Pager<#A2> // com.srctool.sinew.paging/Pager.Companion.lastItem|lastItem(kotlin.Function1<0:0,kotlin.String>;kotlin.Function1<0:0,kotlin.Any>?;kotlin.coroutines.SuspendFunction2<kotlin.String?,kotlin.String,com.srctool.sinew.models.Result<com.srctool.sinew.models.PagingDomain<0:0>>>){0§<kotlin.Any?>}[0]
+        final fun <#A2: kotlin/Any?> offset(kotlin/Int = ..., kotlin/Function1<#A2, kotlin/Any>? = ..., kotlin.coroutines/SuspendFunction2<kotlin/Int, kotlin/String, com.srctool.sinew.models/Result<com.srctool.sinew.models/PagingDomain<#A2>>>): com.srctool.sinew.paging/Pager<#A2> // com.srctool.sinew.paging/Pager.Companion.offset|offset(kotlin.Int;kotlin.Function1<0:0,kotlin.Any>?;kotlin.coroutines.SuspendFunction2<kotlin.Int,kotlin.String,com.srctool.sinew.models.Result<com.srctool.sinew.models.PagingDomain<0:0>>>){0§<kotlin.Any?>}[0]
+        final fun <#A2: kotlin/Any?> offsetByTotal(kotlin/Int = ..., kotlin/Function1<#A2, kotlin/Any>? = ..., kotlin.coroutines/SuspendFunction2<kotlin/Int, kotlin/String, com.srctool.sinew.models/Result<com.srctool.sinew.models/PagingDomain<#A2>>>): com.srctool.sinew.paging/Pager<#A2> // com.srctool.sinew.paging/Pager.Companion.offsetByTotal|offsetByTotal(kotlin.Int;kotlin.Function1<0:0,kotlin.Any>?;kotlin.coroutines.SuspendFunction2<kotlin.Int,kotlin.String,com.srctool.sinew.models.Result<com.srctool.sinew.models.PagingDomain<0:0>>>){0§<kotlin.Any?>}[0]
+    }
+}
+
+final class <#A: out kotlin/Any?> com.srctool.sinew.paging/PagingState { // com.srctool.sinew.paging/PagingState|null[0]
+    constructor <init>(com.srctool.sinew.models/ViewState<com.srctool.sinew.models/PagingDomain<#A>> = ..., com.srctool.sinew.paging/LoadType = ...) // com.srctool.sinew.paging/PagingState.<init>|<init>(com.srctool.sinew.models.ViewState<com.srctool.sinew.models.PagingDomain<1:0>>;com.srctool.sinew.paging.LoadType){}[0]
+
+    final val canLoadMore // com.srctool.sinew.paging/PagingState.canLoadMore|{}canLoadMore[0]
+        final fun <get-canLoadMore>(): kotlin/Boolean // com.srctool.sinew.paging/PagingState.canLoadMore.<get-canLoadMore>|<get-canLoadMore>(){}[0]
+    final val loadType // com.srctool.sinew.paging/PagingState.loadType|{}loadType[0]
+        final fun <get-loadType>(): com.srctool.sinew.paging/LoadType // com.srctool.sinew.paging/PagingState.loadType.<get-loadType>|<get-loadType>(){}[0]
+    final val retryType // com.srctool.sinew.paging/PagingState.retryType|{}retryType[0]
+        final fun <get-retryType>(): com.srctool.sinew.paging/LoadType // com.srctool.sinew.paging/PagingState.retryType.<get-retryType>|<get-retryType>(){}[0]
+    final val view // com.srctool.sinew.paging/PagingState.view|{}view[0]
+        final fun <get-view>(): com.srctool.sinew.models/ViewState<com.srctool.sinew.models/PagingDomain<#A>> // com.srctool.sinew.paging/PagingState.view.<get-view>|<get-view>(){}[0]
+
+    final fun component1(): com.srctool.sinew.models/ViewState<com.srctool.sinew.models/PagingDomain<#A>> // com.srctool.sinew.paging/PagingState.component1|component1(){}[0]
+    final fun component2(): com.srctool.sinew.paging/LoadType // com.srctool.sinew.paging/PagingState.component2|component2(){}[0]
+    final fun copy(com.srctool.sinew.models/ViewState<com.srctool.sinew.models/PagingDomain<#A>> = ..., com.srctool.sinew.paging/LoadType = ...): com.srctool.sinew.paging/PagingState<#A> // com.srctool.sinew.paging/PagingState.copy|copy(com.srctool.sinew.models.ViewState<com.srctool.sinew.models.PagingDomain<1:0>>;com.srctool.sinew.paging.LoadType){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.paging/PagingState.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.paging/PagingState.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.paging/PagingState.toString|toString(){}[0]
+}

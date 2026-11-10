@@ -1,0 +1,44 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-presentation>
+abstract class <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?, #D: kotlin/Any?> com.srctool.sinew.presentation/EventActionHandler : com.srctool.sinew.presentation/StateEffectHandler<#A, #D> { // com.srctool.sinew.presentation/EventActionHandler|null[0]
+    constructor <init>(#A, kotlinx.coroutines/CoroutineScope) // com.srctool.sinew.presentation/EventActionHandler.<init>|<init>(1:0;kotlinx.coroutines.CoroutineScope){}[0]
+
+    abstract fun mapEventToAction(#B): #C? // com.srctool.sinew.presentation/EventActionHandler.mapEventToAction|mapEventToAction(1:1){}[0]
+    abstract suspend fun onAction(#C) // com.srctool.sinew.presentation/EventActionHandler.onAction|onAction(1:2){}[0]
+    final fun onEvent(#B) // com.srctool.sinew.presentation/EventActionHandler.onEvent|onEvent(1:1){}[0]
+}
+
+abstract class <#A: kotlin/Any?, #B: kotlin/Any?> com.srctool.sinew.presentation/StateEffectHandler { // com.srctool.sinew.presentation/StateEffectHandler|null[0]
+    constructor <init>(#A, kotlinx.coroutines/CoroutineScope) // com.srctool.sinew.presentation/StateEffectHandler.<init>|<init>(1:0;kotlinx.coroutines.CoroutineScope){}[0]
+
+    final val currentState // com.srctool.sinew.presentation/StateEffectHandler.currentState|{}currentState[0]
+        final fun <get-currentState>(): #A // com.srctool.sinew.presentation/StateEffectHandler.currentState.<get-currentState>|<get-currentState>(){}[0]
+    final val effects // com.srctool.sinew.presentation/StateEffectHandler.effects|{}effects[0]
+        final fun <get-effects>(): kotlinx.coroutines.flow/Flow<#B> // com.srctool.sinew.presentation/StateEffectHandler.effects.<get-effects>|<get-effects>(){}[0]
+    final val isDisposed // com.srctool.sinew.presentation/StateEffectHandler.isDisposed|{}isDisposed[0]
+        final fun <get-isDisposed>(): kotlin/Boolean // com.srctool.sinew.presentation/StateEffectHandler.isDisposed.<get-isDisposed>|<get-isDisposed>(){}[0]
+    final val scope // com.srctool.sinew.presentation/StateEffectHandler.scope|{}scope[0]
+        final fun <get-scope>(): kotlinx.coroutines/CoroutineScope // com.srctool.sinew.presentation/StateEffectHandler.scope.<get-scope>|<get-scope>(){}[0]
+    final val state // com.srctool.sinew.presentation/StateEffectHandler.state|{}state[0]
+        final fun <get-state>(): kotlinx.coroutines.flow/StateFlow<#A> // com.srctool.sinew.presentation/StateEffectHandler.state.<get-state>|<get-state>(){}[0]
+
+    final fun emitEffect(#B) // com.srctool.sinew.presentation/StateEffectHandler.emitEffect|emitEffect(1:1){}[0]
+    final fun setState(kotlin/Function1<#A, #A>) // com.srctool.sinew.presentation/StateEffectHandler.setState|setState(kotlin.Function1<1:0,1:0>){}[0]
+    open fun dispose() // com.srctool.sinew.presentation/StateEffectHandler.dispose|dispose(){}[0]
+}
+
+final class <#A: kotlin/Any?> com.srctool.sinew.presentation/EffectEmitter { // com.srctool.sinew.presentation/EffectEmitter|null[0]
+    constructor <init>() // com.srctool.sinew.presentation/EffectEmitter.<init>|<init>(){}[0]
+
+    final val effects // com.srctool.sinew.presentation/EffectEmitter.effects|{}effects[0]
+        final fun <get-effects>(): kotlinx.coroutines.flow/Flow<#A> // com.srctool.sinew.presentation/EffectEmitter.effects.<get-effects>|<get-effects>(){}[0]
+
+    final fun dispose() // com.srctool.sinew.presentation/EffectEmitter.dispose|dispose(){}[0]
+    final fun emit(#A) // com.srctool.sinew.presentation/EffectEmitter.emit|emit(1:0){}[0]
+}

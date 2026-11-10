@@ -1,0 +1,347 @@
+// Klib ABI Dump
+// Targets: [iosArm64, iosSimulatorArm64, wasmJs]
+// Alias: ios => [iosArm64, iosSimulatorArm64]
+// Rendering settings:
+// - Signature version: 2
+// - Show manifest properties: true
+// - Show declarations: true
+
+// Library unique name: <com.srctool.sinew:sinew-network>
+final enum class com.srctool.sinew.network/NetworkStatus : kotlin/Enum<com.srctool.sinew.network/NetworkStatus> { // com.srctool.sinew.network/NetworkStatus|null[0]
+    enum entry Offline // com.srctool.sinew.network/NetworkStatus.Offline|null[0]
+    enum entry Online // com.srctool.sinew.network/NetworkStatus.Online|null[0]
+
+    final val entries // com.srctool.sinew.network/NetworkStatus.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.srctool.sinew.network/NetworkStatus> // com.srctool.sinew.network/NetworkStatus.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.srctool.sinew.network/NetworkStatus // com.srctool.sinew.network/NetworkStatus.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.srctool.sinew.network/NetworkStatus> // com.srctool.sinew.network/NetworkStatus.values|values#static(){}[0]
+}
+
+abstract fun interface com.srctool.sinew.network/ErrorBodyReader { // com.srctool.sinew.network/ErrorBodyReader|null[0]
+    abstract fun read(kotlin/Int, kotlin/String?): com.srctool.sinew.network/ErrorBody? // com.srctool.sinew.network/ErrorBodyReader.read|read(kotlin.Int;kotlin.String?){}[0]
+
+    final object Companion { // com.srctool.sinew.network/ErrorBodyReader.Companion|null[0]
+        final val Default // com.srctool.sinew.network/ErrorBodyReader.Companion.Default|{}Default[0]
+            final fun <get-Default>(): com.srctool.sinew.network/ErrorBodyReader // com.srctool.sinew.network/ErrorBodyReader.Companion.Default.<get-Default>|<get-Default>(){}[0]
+    }
+}
+
+abstract fun interface com.srctool.sinew.network/HttpLogger { // com.srctool.sinew.network/HttpLogger|null[0]
+    abstract fun log(kotlin/String) // com.srctool.sinew.network/HttpLogger.log|log(kotlin.String){}[0]
+
+    final object Companion { // com.srctool.sinew.network/HttpLogger.Companion|null[0]
+        final val Default // com.srctool.sinew.network/HttpLogger.Companion.Default|{}Default[0]
+            final fun <get-Default>(): com.srctool.sinew.network/HttpLogger // com.srctool.sinew.network/HttpLogger.Companion.Default.<get-Default>|<get-Default>(){}[0]
+    }
+}
+
+abstract fun interface com.srctool.sinew.network/RefreshCall { // com.srctool.sinew.network/RefreshCall|null[0]
+    abstract suspend fun refresh(kotlin/String): com.srctool.sinew.network/RefreshResult // com.srctool.sinew.network/RefreshCall.refresh|refresh(kotlin.String){}[0]
+}
+
+abstract interface com.srctool.sinew.network/NetworkChecker : kotlin/AutoCloseable { // com.srctool.sinew.network/NetworkChecker|null[0]
+    abstract val status // com.srctool.sinew.network/NetworkChecker.status|{}status[0]
+        abstract fun <get-status>(): kotlinx.coroutines.flow/StateFlow<com.srctool.sinew.network/NetworkStatus> // com.srctool.sinew.network/NetworkChecker.status.<get-status>|<get-status>(){}[0]
+
+    abstract fun close() // com.srctool.sinew.network/NetworkChecker.close|close(){}[0]
+    open fun isOnline(): kotlin/Boolean // com.srctool.sinew.network/NetworkChecker.isOnline|isOnline(){}[0]
+
+    final object Companion { // com.srctool.sinew.network/NetworkChecker.Companion|null[0]
+        final fun create(com.srctool.sinew.models/PlatformContext): com.srctool.sinew.network/NetworkChecker // com.srctool.sinew.network/NetworkChecker.Companion.create|create(com.srctool.sinew.models.PlatformContext){}[0]
+    }
+}
+
+abstract interface com.srctool.sinew.network/RefreshTokenStore { // com.srctool.sinew.network/RefreshTokenStore|null[0]
+    abstract suspend fun delete() // com.srctool.sinew.network/RefreshTokenStore.delete|delete(){}[0]
+    abstract suspend fun read(): kotlin/String? // com.srctool.sinew.network/RefreshTokenStore.read|read(){}[0]
+    abstract suspend fun write(kotlin/String) // com.srctool.sinew.network/RefreshTokenStore.write|write(kotlin.String){}[0]
+}
+
+abstract interface com.srctool.sinew.network/SinewHttpHooks { // com.srctool.sinew.network/SinewHttpHooks|null[0]
+    open fun attached(io.ktor.client/HttpClient) // com.srctool.sinew.network/SinewHttpHooks.attached|attached(io.ktor.client.HttpClient){}[0]
+    open fun detached(io.ktor.client/HttpClient) // com.srctool.sinew.network/SinewHttpHooks.detached|detached(io.ktor.client.HttpClient){}[0]
+    open fun hostOverride(): kotlin/String? // com.srctool.sinew.network/SinewHttpHooks.hostOverride|hostOverride(){}[0]
+    open fun record(com.srctool.sinew.network/HttpExchange) // com.srctool.sinew.network/SinewHttpHooks.record|record(com.srctool.sinew.network.HttpExchange){}[0]
+    open suspend fun fault(kotlin/String, io.ktor.http/Url): com.srctool.sinew.network/FaultDecision? // com.srctool.sinew.network/SinewHttpHooks.fault|fault(kotlin.String;io.ktor.http.Url){}[0]
+
+    final object Companion { // com.srctool.sinew.network/SinewHttpHooks.Companion|null[0]
+        final val None // com.srctool.sinew.network/SinewHttpHooks.Companion.None|{}None[0]
+            final fun <get-None>(): com.srctool.sinew.network/SinewHttpHooks // com.srctool.sinew.network/SinewHttpHooks.Companion.None.<get-None>|<get-None>(){}[0]
+    }
+}
+
+abstract interface com.srctool.sinew.network/TokenSource { // com.srctool.sinew.network/TokenSource|null[0]
+    abstract fun accessToken(): kotlin/String? // com.srctool.sinew.network/TokenSource.accessToken|accessToken(){}[0]
+    abstract suspend fun clear() // com.srctool.sinew.network/TokenSource.clear|clear(){}[0]
+    abstract suspend fun refresh(): com.srctool.sinew.network/RefreshOutcome // com.srctool.sinew.network/TokenSource.refresh|refresh(){}[0]
+}
+
+sealed interface com.srctool.sinew.network/RefreshOutcome { // com.srctool.sinew.network/RefreshOutcome|null[0]
+    final class Unavailable : com.srctool.sinew.network/RefreshOutcome { // com.srctool.sinew.network/RefreshOutcome.Unavailable|null[0]
+        constructor <init>(com.srctool.sinew.models/SinewException) // com.srctool.sinew.network/RefreshOutcome.Unavailable.<init>|<init>(com.srctool.sinew.models.SinewException){}[0]
+
+        final val cause // com.srctool.sinew.network/RefreshOutcome.Unavailable.cause|{}cause[0]
+            final fun <get-cause>(): com.srctool.sinew.models/SinewException // com.srctool.sinew.network/RefreshOutcome.Unavailable.cause.<get-cause>|<get-cause>(){}[0]
+
+        final fun component1(): com.srctool.sinew.models/SinewException // com.srctool.sinew.network/RefreshOutcome.Unavailable.component1|component1(){}[0]
+        final fun copy(com.srctool.sinew.models/SinewException = ...): com.srctool.sinew.network/RefreshOutcome.Unavailable // com.srctool.sinew.network/RefreshOutcome.Unavailable.copy|copy(com.srctool.sinew.models.SinewException){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.network/RefreshOutcome.Unavailable.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.network/RefreshOutcome.Unavailable.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.network/RefreshOutcome.Unavailable.toString|toString(){}[0]
+    }
+
+    final object Refreshed : com.srctool.sinew.network/RefreshOutcome { // com.srctool.sinew.network/RefreshOutcome.Refreshed|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.network/RefreshOutcome.Refreshed.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.network/RefreshOutcome.Refreshed.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.network/RefreshOutcome.Refreshed.toString|toString(){}[0]
+    }
+
+    final object Rejected : com.srctool.sinew.network/RefreshOutcome { // com.srctool.sinew.network/RefreshOutcome.Rejected|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.network/RefreshOutcome.Rejected.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.network/RefreshOutcome.Rejected.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.network/RefreshOutcome.Rejected.toString|toString(){}[0]
+    }
+}
+
+sealed interface com.srctool.sinew.network/RefreshResult { // com.srctool.sinew.network/RefreshResult|null[0]
+    final class Tokens : com.srctool.sinew.network/RefreshResult { // com.srctool.sinew.network/RefreshResult.Tokens|null[0]
+        constructor <init>(kotlin/String, kotlin/String) // com.srctool.sinew.network/RefreshResult.Tokens.<init>|<init>(kotlin.String;kotlin.String){}[0]
+
+        final val access // com.srctool.sinew.network/RefreshResult.Tokens.access|{}access[0]
+            final fun <get-access>(): kotlin/String // com.srctool.sinew.network/RefreshResult.Tokens.access.<get-access>|<get-access>(){}[0]
+        final val refresh // com.srctool.sinew.network/RefreshResult.Tokens.refresh|{}refresh[0]
+            final fun <get-refresh>(): kotlin/String // com.srctool.sinew.network/RefreshResult.Tokens.refresh.<get-refresh>|<get-refresh>(){}[0]
+
+        final fun component1(): kotlin/String // com.srctool.sinew.network/RefreshResult.Tokens.component1|component1(){}[0]
+        final fun component2(): kotlin/String // com.srctool.sinew.network/RefreshResult.Tokens.component2|component2(){}[0]
+        final fun copy(kotlin/String = ..., kotlin/String = ...): com.srctool.sinew.network/RefreshResult.Tokens // com.srctool.sinew.network/RefreshResult.Tokens.copy|copy(kotlin.String;kotlin.String){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.network/RefreshResult.Tokens.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.network/RefreshResult.Tokens.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.network/RefreshResult.Tokens.toString|toString(){}[0]
+    }
+
+    final class Unavailable : com.srctool.sinew.network/RefreshResult { // com.srctool.sinew.network/RefreshResult.Unavailable|null[0]
+        constructor <init>(com.srctool.sinew.models/SinewException) // com.srctool.sinew.network/RefreshResult.Unavailable.<init>|<init>(com.srctool.sinew.models.SinewException){}[0]
+
+        final val cause // com.srctool.sinew.network/RefreshResult.Unavailable.cause|{}cause[0]
+            final fun <get-cause>(): com.srctool.sinew.models/SinewException // com.srctool.sinew.network/RefreshResult.Unavailable.cause.<get-cause>|<get-cause>(){}[0]
+
+        final fun component1(): com.srctool.sinew.models/SinewException // com.srctool.sinew.network/RefreshResult.Unavailable.component1|component1(){}[0]
+        final fun copy(com.srctool.sinew.models/SinewException = ...): com.srctool.sinew.network/RefreshResult.Unavailable // com.srctool.sinew.network/RefreshResult.Unavailable.copy|copy(com.srctool.sinew.models.SinewException){}[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.network/RefreshResult.Unavailable.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.network/RefreshResult.Unavailable.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.network/RefreshResult.Unavailable.toString|toString(){}[0]
+    }
+
+    final object Companion { // com.srctool.sinew.network/RefreshResult.Companion|null[0]
+        final fun from(com.srctool.sinew.models/Result<com.srctool.sinew.network/RefreshResult.Tokens>): com.srctool.sinew.network/RefreshResult // com.srctool.sinew.network/RefreshResult.Companion.from|from(com.srctool.sinew.models.Result<com.srctool.sinew.network.RefreshResult.Tokens>){}[0]
+    }
+
+    final object Rejected : com.srctool.sinew.network/RefreshResult { // com.srctool.sinew.network/RefreshResult.Rejected|null[0]
+        final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.network/RefreshResult.Rejected.equals|equals(kotlin.Any?){}[0]
+        final fun hashCode(): kotlin/Int // com.srctool.sinew.network/RefreshResult.Rejected.hashCode|hashCode(){}[0]
+        final fun toString(): kotlin/String // com.srctool.sinew.network/RefreshResult.Rejected.toString|toString(){}[0]
+    }
+}
+
+final class com.srctool.sinew.network/ErrorBody { // com.srctool.sinew.network/ErrorBody|null[0]
+    constructor <init>(kotlin/String?, kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>?) // com.srctool.sinew.network/ErrorBody.<init>|<init>(kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>?){}[0]
+
+    final val fieldErrors // com.srctool.sinew.network/ErrorBody.fieldErrors|{}fieldErrors[0]
+        final fun <get-fieldErrors>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>? // com.srctool.sinew.network/ErrorBody.fieldErrors.<get-fieldErrors>|<get-fieldErrors>(){}[0]
+    final val message // com.srctool.sinew.network/ErrorBody.message|{}message[0]
+        final fun <get-message>(): kotlin/String? // com.srctool.sinew.network/ErrorBody.message.<get-message>|<get-message>(){}[0]
+
+    final fun component1(): kotlin/String? // com.srctool.sinew.network/ErrorBody.component1|component1(){}[0]
+    final fun component2(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>? // com.srctool.sinew.network/ErrorBody.component2|component2(){}[0]
+    final fun copy(kotlin/String? = ..., kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>? = ...): com.srctool.sinew.network/ErrorBody // com.srctool.sinew.network/ErrorBody.copy|copy(kotlin.String?;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>?){}[0]
+    final fun equals(kotlin/Any?): kotlin/Boolean // com.srctool.sinew.network/ErrorBody.equals|equals(kotlin.Any?){}[0]
+    final fun hashCode(): kotlin/Int // com.srctool.sinew.network/ErrorBody.hashCode|hashCode(){}[0]
+    final fun toString(): kotlin/String // com.srctool.sinew.network/ErrorBody.toString|toString(){}[0]
+}
+
+final class com.srctool.sinew.network/FaultDecision { // com.srctool.sinew.network/FaultDecision|null[0]
+    constructor <init>(kotlin.time/Duration? = ..., kotlin/Int? = ..., kotlin/String? = ..., kotlin/Boolean = ...) // com.srctool.sinew.network/FaultDecision.<init>|<init>(kotlin.time.Duration?;kotlin.Int?;kotlin.String?;kotlin.Boolean){}[0]
+
+    final val body // com.srctool.sinew.network/FaultDecision.body|{}body[0]
+        final fun <get-body>(): kotlin/String? // com.srctool.sinew.network/FaultDecision.body.<get-body>|<get-body>(){}[0]
+    final val delay // com.srctool.sinew.network/FaultDecision.delay|{}delay[0]
+        final fun <get-delay>(): kotlin.time/Duration? // com.srctool.sinew.network/FaultDecision.delay.<get-delay>|<get-delay>(){}[0]
+    final val drop // com.srctool.sinew.network/FaultDecision.drop|{}drop[0]
+        final fun <get-drop>(): kotlin/Boolean // com.srctool.sinew.network/FaultDecision.drop.<get-drop>|<get-drop>(){}[0]
+    final val status // com.srctool.sinew.network/FaultDecision.status|{}status[0]
+        final fun <get-status>(): kotlin/Int? // com.srctool.sinew.network/FaultDecision.status.<get-status>|<get-status>(){}[0]
+}
+
+final class com.srctool.sinew.network/HttpExchange { // com.srctool.sinew.network/HttpExchange|null[0]
+    constructor <init>(io.ktor.client/HttpClient, kotlin/String, kotlin/String, kotlin/String, kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>, kotlin/ByteArray?, kotlin/Boolean, kotlin/Int?, kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>>, kotlin/ByteArray?, kotlin.time/Instant, kotlin.time/Duration, kotlin/Throwable?, kotlin.collections/Set<kotlin/String>, io.ktor.util/Attributes) // com.srctool.sinew.network/HttpExchange.<init>|<init>(io.ktor.client.HttpClient;kotlin.String;kotlin.String;kotlin.String;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>;kotlin.ByteArray?;kotlin.Boolean;kotlin.Int?;kotlin.collections.Map<kotlin.String,kotlin.collections.List<kotlin.String>>;kotlin.ByteArray?;kotlin.time.Instant;kotlin.time.Duration;kotlin.Throwable?;kotlin.collections.Set<kotlin.String>;io.ktor.util.Attributes){}[0]
+
+    final val attributes // com.srctool.sinew.network/HttpExchange.attributes|{}attributes[0]
+        final fun <get-attributes>(): io.ktor.util/Attributes // com.srctool.sinew.network/HttpExchange.attributes.<get-attributes>|<get-attributes>(){}[0]
+    final val client // com.srctool.sinew.network/HttpExchange.client|{}client[0]
+        final fun <get-client>(): io.ktor.client/HttpClient // com.srctool.sinew.network/HttpExchange.client.<get-client>|<get-client>(){}[0]
+    final val defaultHeaderNames // com.srctool.sinew.network/HttpExchange.defaultHeaderNames|{}defaultHeaderNames[0]
+        final fun <get-defaultHeaderNames>(): kotlin.collections/Set<kotlin/String> // com.srctool.sinew.network/HttpExchange.defaultHeaderNames.<get-defaultHeaderNames>|<get-defaultHeaderNames>(){}[0]
+    final val duration // com.srctool.sinew.network/HttpExchange.duration|{}duration[0]
+        final fun <get-duration>(): kotlin.time/Duration // com.srctool.sinew.network/HttpExchange.duration.<get-duration>|<get-duration>(){}[0]
+    final val error // com.srctool.sinew.network/HttpExchange.error|{}error[0]
+        final fun <get-error>(): kotlin/Throwable? // com.srctool.sinew.network/HttpExchange.error.<get-error>|<get-error>(){}[0]
+    final val method // com.srctool.sinew.network/HttpExchange.method|{}method[0]
+        final fun <get-method>(): kotlin/String // com.srctool.sinew.network/HttpExchange.method.<get-method>|<get-method>(){}[0]
+    final val requestBody // com.srctool.sinew.network/HttpExchange.requestBody|{}requestBody[0]
+        final fun <get-requestBody>(): kotlin/ByteArray? // com.srctool.sinew.network/HttpExchange.requestBody.<get-requestBody>|<get-requestBody>(){}[0]
+    final val requestBodyStreamed // com.srctool.sinew.network/HttpExchange.requestBodyStreamed|{}requestBodyStreamed[0]
+        final fun <get-requestBodyStreamed>(): kotlin/Boolean // com.srctool.sinew.network/HttpExchange.requestBodyStreamed.<get-requestBodyStreamed>|<get-requestBodyStreamed>(){}[0]
+    final val requestHeaders // com.srctool.sinew.network/HttpExchange.requestHeaders|{}requestHeaders[0]
+        final fun <get-requestHeaders>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> // com.srctool.sinew.network/HttpExchange.requestHeaders.<get-requestHeaders>|<get-requestHeaders>(){}[0]
+    final val requestedUrl // com.srctool.sinew.network/HttpExchange.requestedUrl|{}requestedUrl[0]
+        final fun <get-requestedUrl>(): kotlin/String // com.srctool.sinew.network/HttpExchange.requestedUrl.<get-requestedUrl>|<get-requestedUrl>(){}[0]
+    final val responseBody // com.srctool.sinew.network/HttpExchange.responseBody|{}responseBody[0]
+        final fun <get-responseBody>(): kotlin/ByteArray? // com.srctool.sinew.network/HttpExchange.responseBody.<get-responseBody>|<get-responseBody>(){}[0]
+    final val responseHeaders // com.srctool.sinew.network/HttpExchange.responseHeaders|{}responseHeaders[0]
+        final fun <get-responseHeaders>(): kotlin.collections/Map<kotlin/String, kotlin.collections/List<kotlin/String>> // com.srctool.sinew.network/HttpExchange.responseHeaders.<get-responseHeaders>|<get-responseHeaders>(){}[0]
+    final val startedAt // com.srctool.sinew.network/HttpExchange.startedAt|{}startedAt[0]
+        final fun <get-startedAt>(): kotlin.time/Instant // com.srctool.sinew.network/HttpExchange.startedAt.<get-startedAt>|<get-startedAt>(){}[0]
+    final val status // com.srctool.sinew.network/HttpExchange.status|{}status[0]
+        final fun <get-status>(): kotlin/Int? // com.srctool.sinew.network/HttpExchange.status.<get-status>|<get-status>(){}[0]
+    final val url // com.srctool.sinew.network/HttpExchange.url|{}url[0]
+        final fun <get-url>(): kotlin/String // com.srctool.sinew.network/HttpExchange.url.<get-url>|<get-url>(){}[0]
+}
+
+final class com.srctool.sinew.network/SessionTokenSource : com.srctool.sinew.network/TokenSource { // com.srctool.sinew.network/SessionTokenSource|null[0]
+    constructor <init>(com.srctool.sinew.network/RefreshTokenStore, com.srctool.sinew.network/RefreshCall, kotlin.coroutines/SuspendFunction0<kotlin/Unit> = ...) // com.srctool.sinew.network/SessionTokenSource.<init>|<init>(com.srctool.sinew.network.RefreshTokenStore;com.srctool.sinew.network.RefreshCall;kotlin.coroutines.SuspendFunction0<kotlin.Unit>){}[0]
+
+    final fun accessToken(): kotlin/String? // com.srctool.sinew.network/SessionTokenSource.accessToken|accessToken(){}[0]
+    final suspend fun clear() // com.srctool.sinew.network/SessionTokenSource.clear|clear(){}[0]
+    final suspend fun refresh(): com.srctool.sinew.network/RefreshOutcome // com.srctool.sinew.network/SessionTokenSource.refresh|refresh(){}[0]
+    final suspend fun start(kotlin/String, kotlin/String) // com.srctool.sinew.network/SessionTokenSource.start|start(kotlin.String;kotlin.String){}[0]
+}
+
+final class com.srctool.sinew.network/SinewAuthConfig { // com.srctool.sinew.network/SinewAuthConfig|null[0]
+    constructor <init>() // com.srctool.sinew.network/SinewAuthConfig.<init>|<init>(){}[0]
+
+    final var anonymousPaths // com.srctool.sinew.network/SinewAuthConfig.anonymousPaths|{}anonymousPaths[0]
+        final fun <get-anonymousPaths>(): kotlin.collections/Set<kotlin/String> // com.srctool.sinew.network/SinewAuthConfig.anonymousPaths.<get-anonymousPaths>|<get-anonymousPaths>(){}[0]
+        final fun <set-anonymousPaths>(kotlin.collections/Set<kotlin/String>) // com.srctool.sinew.network/SinewAuthConfig.anonymousPaths.<set-anonymousPaths>|<set-anonymousPaths>(kotlin.collections.Set<kotlin.String>){}[0]
+    final var baseUrl // com.srctool.sinew.network/SinewAuthConfig.baseUrl|{}baseUrl[0]
+        final fun <get-baseUrl>(): kotlin/String? // com.srctool.sinew.network/SinewAuthConfig.baseUrl.<get-baseUrl>|<get-baseUrl>(){}[0]
+        final fun <set-baseUrl>(kotlin/String?) // com.srctool.sinew.network/SinewAuthConfig.baseUrl.<set-baseUrl>|<set-baseUrl>(kotlin.String?){}[0]
+    final var tokenSource // com.srctool.sinew.network/SinewAuthConfig.tokenSource|{}tokenSource[0]
+        final fun <get-tokenSource>(): com.srctool.sinew.network/TokenSource? // com.srctool.sinew.network/SinewAuthConfig.tokenSource.<get-tokenSource>|<get-tokenSource>(){}[0]
+        final fun <set-tokenSource>(com.srctool.sinew.network/TokenSource?) // com.srctool.sinew.network/SinewAuthConfig.tokenSource.<set-tokenSource>|<set-tokenSource>(com.srctool.sinew.network.TokenSource?){}[0]
+}
+
+final class com.srctool.sinew.network/SinewConfig { // com.srctool.sinew.network/SinewConfig|null[0]
+    constructor <init>(kotlin/String, kotlin/Function0<kotlin/String>, kotlin/Function0<kotlin.collections/Map<kotlin/String, kotlin/String>> = ..., kotlin.time/Duration = ..., kotlin.time/Duration = ..., kotlin.time/Duration = ..., kotlin/Boolean = ..., kotlin.collections/Set<kotlin/String> = ..., com.srctool.sinew.network/ErrorBodyReader = ..., kotlin.collections/Set<kotlin/String> = ...) // com.srctool.sinew.network/SinewConfig.<init>|<init>(kotlin.String;kotlin.Function0<kotlin.String>;kotlin.Function0<kotlin.collections.Map<kotlin.String,kotlin.String>>;kotlin.time.Duration;kotlin.time.Duration;kotlin.time.Duration;kotlin.Boolean;kotlin.collections.Set<kotlin.String>;com.srctool.sinew.network.ErrorBodyReader;kotlin.collections.Set<kotlin.String>){}[0]
+
+    final val anonymousPaths // com.srctool.sinew.network/SinewConfig.anonymousPaths|{}anonymousPaths[0]
+        final fun <get-anonymousPaths>(): kotlin.collections/Set<kotlin/String> // com.srctool.sinew.network/SinewConfig.anonymousPaths.<get-anonymousPaths>|<get-anonymousPaths>(){}[0]
+    final val baseUrl // com.srctool.sinew.network/SinewConfig.baseUrl|{}baseUrl[0]
+        final fun <get-baseUrl>(): kotlin/String // com.srctool.sinew.network/SinewConfig.baseUrl.<get-baseUrl>|<get-baseUrl>(){}[0]
+    final val certificatePins // com.srctool.sinew.network/SinewConfig.certificatePins|{}certificatePins[0]
+        final fun <get-certificatePins>(): kotlin.collections/Set<kotlin/String> // com.srctool.sinew.network/SinewConfig.certificatePins.<get-certificatePins>|<get-certificatePins>(){}[0]
+    final val connectTimeout // com.srctool.sinew.network/SinewConfig.connectTimeout|{}connectTimeout[0]
+        final fun <get-connectTimeout>(): kotlin.time/Duration // com.srctool.sinew.network/SinewConfig.connectTimeout.<get-connectTimeout>|<get-connectTimeout>(){}[0]
+    final val defaultHeaders // com.srctool.sinew.network/SinewConfig.defaultHeaders|{}defaultHeaders[0]
+        final fun <get-defaultHeaders>(): kotlin/Function0<kotlin.collections/Map<kotlin/String, kotlin/String>> // com.srctool.sinew.network/SinewConfig.defaultHeaders.<get-defaultHeaders>|<get-defaultHeaders>(){}[0]
+    final val errorBodyReader // com.srctool.sinew.network/SinewConfig.errorBodyReader|{}errorBodyReader[0]
+        final fun <get-errorBodyReader>(): com.srctool.sinew.network/ErrorBodyReader // com.srctool.sinew.network/SinewConfig.errorBodyReader.<get-errorBodyReader>|<get-errorBodyReader>(){}[0]
+    final val locale // com.srctool.sinew.network/SinewConfig.locale|{}locale[0]
+        final fun <get-locale>(): kotlin/Function0<kotlin/String> // com.srctool.sinew.network/SinewConfig.locale.<get-locale>|<get-locale>(){}[0]
+    final val logHttp // com.srctool.sinew.network/SinewConfig.logHttp|{}logHttp[0]
+        final fun <get-logHttp>(): kotlin/Boolean // com.srctool.sinew.network/SinewConfig.logHttp.<get-logHttp>|<get-logHttp>(){}[0]
+    final val readTimeout // com.srctool.sinew.network/SinewConfig.readTimeout|{}readTimeout[0]
+        final fun <get-readTimeout>(): kotlin.time/Duration // com.srctool.sinew.network/SinewConfig.readTimeout.<get-readTimeout>|<get-readTimeout>(){}[0]
+    final val writeTimeout // com.srctool.sinew.network/SinewConfig.writeTimeout|{}writeTimeout[0]
+        final fun <get-writeTimeout>(): kotlin.time/Duration // com.srctool.sinew.network/SinewConfig.writeTimeout.<get-writeTimeout>|<get-writeTimeout>(){}[0]
+}
+
+final class com.srctool.sinew.network/SinewHeadersConfig { // com.srctool.sinew.network/SinewHeadersConfig|null[0]
+    constructor <init>() // com.srctool.sinew.network/SinewHeadersConfig.<init>|<init>(){}[0]
+
+    final var defaults // com.srctool.sinew.network/SinewHeadersConfig.defaults|{}defaults[0]
+        final fun <get-defaults>(): kotlin/Function0<kotlin.collections/Map<kotlin/String, kotlin/String>> // com.srctool.sinew.network/SinewHeadersConfig.defaults.<get-defaults>|<get-defaults>(){}[0]
+        final fun <set-defaults>(kotlin/Function0<kotlin.collections/Map<kotlin/String, kotlin/String>>) // com.srctool.sinew.network/SinewHeadersConfig.defaults.<set-defaults>|<set-defaults>(kotlin.Function0<kotlin.collections.Map<kotlin.String,kotlin.String>>){}[0]
+    final var locale // com.srctool.sinew.network/SinewHeadersConfig.locale|{}locale[0]
+        final fun <get-locale>(): kotlin/Function0<kotlin/String> // com.srctool.sinew.network/SinewHeadersConfig.locale.<get-locale>|<get-locale>(){}[0]
+        final fun <set-locale>(kotlin/Function0<kotlin/String>) // com.srctool.sinew.network/SinewHeadersConfig.locale.<set-locale>|<set-locale>(kotlin.Function0<kotlin.String>){}[0]
+}
+
+final class com.srctool.sinew.network/SinewHooksConfig { // com.srctool.sinew.network/SinewHooksConfig|null[0]
+    constructor <init>() // com.srctool.sinew.network/SinewHooksConfig.<init>|<init>(){}[0]
+
+    final var baseUrl // com.srctool.sinew.network/SinewHooksConfig.baseUrl|{}baseUrl[0]
+        final fun <get-baseUrl>(): kotlin/String? // com.srctool.sinew.network/SinewHooksConfig.baseUrl.<get-baseUrl>|<get-baseUrl>(){}[0]
+        final fun <set-baseUrl>(kotlin/String?) // com.srctool.sinew.network/SinewHooksConfig.baseUrl.<set-baseUrl>|<set-baseUrl>(kotlin.String?){}[0]
+    final var defaults // com.srctool.sinew.network/SinewHooksConfig.defaults|{}defaults[0]
+        final fun <get-defaults>(): kotlin/Function0<kotlin.collections/Map<kotlin/String, kotlin/String>> // com.srctool.sinew.network/SinewHooksConfig.defaults.<get-defaults>|<get-defaults>(){}[0]
+        final fun <set-defaults>(kotlin/Function0<kotlin.collections/Map<kotlin/String, kotlin/String>>) // com.srctool.sinew.network/SinewHooksConfig.defaults.<set-defaults>|<set-defaults>(kotlin.Function0<kotlin.collections.Map<kotlin.String,kotlin.String>>){}[0]
+    final var hooks // com.srctool.sinew.network/SinewHooksConfig.hooks|{}hooks[0]
+        final fun <get-hooks>(): com.srctool.sinew.network/SinewHttpHooks // com.srctool.sinew.network/SinewHooksConfig.hooks.<get-hooks>|<get-hooks>(){}[0]
+        final fun <set-hooks>(com.srctool.sinew.network/SinewHttpHooks) // com.srctool.sinew.network/SinewHooksConfig.hooks.<set-hooks>|<set-hooks>(com.srctool.sinew.network.SinewHttpHooks){}[0]
+}
+
+final class com.srctool.sinew.network/SinewLogConfig { // com.srctool.sinew.network/SinewLogConfig|null[0]
+    constructor <init>() // com.srctool.sinew.network/SinewLogConfig.<init>|<init>(){}[0]
+
+    final var logger // com.srctool.sinew.network/SinewLogConfig.logger|{}logger[0]
+        final fun <get-logger>(): com.srctool.sinew.network/HttpLogger // com.srctool.sinew.network/SinewLogConfig.logger.<get-logger>|<get-logger>(){}[0]
+        final fun <set-logger>(com.srctool.sinew.network/HttpLogger) // com.srctool.sinew.network/SinewLogConfig.logger.<set-logger>|<set-logger>(com.srctool.sinew.network.HttpLogger){}[0]
+}
+
+final class com.srctool.sinew.network/SinewRedirectConfig { // com.srctool.sinew.network/SinewRedirectConfig|null[0]
+    constructor <init>() // com.srctool.sinew.network/SinewRedirectConfig.<init>|<init>(){}[0]
+
+    final var maxHops // com.srctool.sinew.network/SinewRedirectConfig.maxHops|{}maxHops[0]
+        final fun <get-maxHops>(): kotlin/Int // com.srctool.sinew.network/SinewRedirectConfig.maxHops.<get-maxHops>|<get-maxHops>(){}[0]
+        final fun <set-maxHops>(kotlin/Int) // com.srctool.sinew.network/SinewRedirectConfig.maxHops.<set-maxHops>|<set-maxHops>(kotlin.Int){}[0]
+}
+
+final class com.srctool.sinew.network/SinewTimeoutsConfig { // com.srctool.sinew.network/SinewTimeoutsConfig|null[0]
+    constructor <init>() // com.srctool.sinew.network/SinewTimeoutsConfig.<init>|<init>(){}[0]
+
+    final var connect // com.srctool.sinew.network/SinewTimeoutsConfig.connect|{}connect[0]
+        final fun <get-connect>(): kotlin.time/Duration // com.srctool.sinew.network/SinewTimeoutsConfig.connect.<get-connect>|<get-connect>(){}[0]
+        final fun <set-connect>(kotlin.time/Duration) // com.srctool.sinew.network/SinewTimeoutsConfig.connect.<set-connect>|<set-connect>(kotlin.time.Duration){}[0]
+    final var read // com.srctool.sinew.network/SinewTimeoutsConfig.read|{}read[0]
+        final fun <get-read>(): kotlin.time/Duration // com.srctool.sinew.network/SinewTimeoutsConfig.read.<get-read>|<get-read>(){}[0]
+        final fun <set-read>(kotlin.time/Duration) // com.srctool.sinew.network/SinewTimeoutsConfig.read.<set-read>|<set-read>(kotlin.time.Duration){}[0]
+    final var write // com.srctool.sinew.network/SinewTimeoutsConfig.write|{}write[0]
+        final fun <get-write>(): kotlin.time/Duration // com.srctool.sinew.network/SinewTimeoutsConfig.write.<get-write>|<get-write>(){}[0]
+        final fun <set-write>(kotlin.time/Duration) // com.srctool.sinew.network/SinewTimeoutsConfig.write.<set-write>|<set-write>(kotlin.time.Duration){}[0]
+}
+
+final object com.srctool.sinew.network/SinewHttp { // com.srctool.sinew.network/SinewHttp|null[0]
+    final fun <#A1: io.ktor.client.engine/HttpClientEngineConfig> client(com.srctool.sinew.network/SinewConfig, com.srctool.sinew.network/TokenSource, io.ktor.client.engine/HttpClientEngineFactory<#A1>, com.srctool.sinew.network/HttpLogger = ..., com.srctool.sinew.network/SinewHttpHooks = ..., kotlin/Function1<io.ktor.client/HttpClientConfig<#A1>, kotlin/Unit> = ...): io.ktor.client/HttpClient // com.srctool.sinew.network/SinewHttp.client|client(com.srctool.sinew.network.SinewConfig;com.srctool.sinew.network.TokenSource;io.ktor.client.engine.HttpClientEngineFactory<0:0>;com.srctool.sinew.network.HttpLogger;com.srctool.sinew.network.SinewHttpHooks;kotlin.Function1<io.ktor.client.HttpClientConfig<0:0>,kotlin.Unit>){0§<io.ktor.client.engine.HttpClientEngineConfig>}[0]
+    final fun <#A1: io.ktor.client.engine/HttpClientEngineConfig> client(com.srctool.sinew.network/SinewConfig, com.srctool.sinew.network/TokenSource, io.ktor.client.engine/HttpClientEngineFactory<#A1>, com.srctool.sinew.network/HttpLogger, kotlin.coroutines/CoroutineContext, com.srctool.sinew.network/SinewHttpHooks = ..., kotlin/Function1<io.ktor.client/HttpClientConfig<#A1>, kotlin/Unit>): io.ktor.client/HttpClient // com.srctool.sinew.network/SinewHttp.client|client(com.srctool.sinew.network.SinewConfig;com.srctool.sinew.network.TokenSource;io.ktor.client.engine.HttpClientEngineFactory<0:0>;com.srctool.sinew.network.HttpLogger;kotlin.coroutines.CoroutineContext;com.srctool.sinew.network.SinewHttpHooks;kotlin.Function1<io.ktor.client.HttpClientConfig<0:0>,kotlin.Unit>){0§<io.ktor.client.engine.HttpClientEngineConfig>}[0]
+    final fun client(com.srctool.sinew.network/SinewConfig, com.srctool.sinew.network/TokenSource, com.srctool.sinew.network/HttpLogger = ..., com.srctool.sinew.network/SinewHttpHooks = ..., kotlin/Function1<io.ktor.client/HttpClientConfig<*>, kotlin/Unit> = ...): io.ktor.client/HttpClient // com.srctool.sinew.network/SinewHttp.client|client(com.srctool.sinew.network.SinewConfig;com.srctool.sinew.network.TokenSource;com.srctool.sinew.network.HttpLogger;com.srctool.sinew.network.SinewHttpHooks;kotlin.Function1<io.ktor.client.HttpClientConfig<*>,kotlin.Unit>){}[0]
+    final fun debugExpireToken(io.ktor.client/HttpClient) // com.srctool.sinew.network/SinewHttp.debugExpireToken|debugExpireToken(io.ktor.client.HttpClient){}[0]
+    final suspend fun resetAuth(io.ktor.client/HttpClient) // com.srctool.sinew.network/SinewHttp.resetAuth|resetAuth(io.ktor.client.HttpClient){}[0]
+}
+
+final val com.srctool.sinew.network/SinewAuth // com.srctool.sinew.network/SinewAuth|{}SinewAuth[0]
+    final fun <get-SinewAuth>(): io.ktor.client.plugins.api/ClientPlugin<com.srctool.sinew.network/SinewAuthConfig> // com.srctool.sinew.network/SinewAuth.<get-SinewAuth>|<get-SinewAuth>(){}[0]
+final val com.srctool.sinew.network/SinewHeaders // com.srctool.sinew.network/SinewHeaders|{}SinewHeaders[0]
+    final fun <get-SinewHeaders>(): io.ktor.client.plugins.api/ClientPlugin<com.srctool.sinew.network/SinewHeadersConfig> // com.srctool.sinew.network/SinewHeaders.<get-SinewHeaders>|<get-SinewHeaders>(){}[0]
+final val com.srctool.sinew.network/SinewHooks // com.srctool.sinew.network/SinewHooks|{}SinewHooks[0]
+    final fun <get-SinewHooks>(): io.ktor.client.plugins.api/ClientPlugin<com.srctool.sinew.network/SinewHooksConfig> // com.srctool.sinew.network/SinewHooks.<get-SinewHooks>|<get-SinewHooks>(){}[0]
+final val com.srctool.sinew.network/SinewJson // com.srctool.sinew.network/SinewJson|{}SinewJson[0]
+    final fun <get-SinewJson>(): kotlinx.serialization.json/Json // com.srctool.sinew.network/SinewJson.<get-SinewJson>|<get-SinewJson>(){}[0]
+final val com.srctool.sinew.network/SinewLog // com.srctool.sinew.network/SinewLog|{}SinewLog[0]
+    final fun <get-SinewLog>(): io.ktor.client.plugins.api/ClientPlugin<com.srctool.sinew.network/SinewLogConfig> // com.srctool.sinew.network/SinewLog.<get-SinewLog>|<get-SinewLog>(){}[0]
+final val com.srctool.sinew.network/SinewRedirect // com.srctool.sinew.network/SinewRedirect|{}SinewRedirect[0]
+    final fun <get-SinewRedirect>(): io.ktor.client.plugins.api/ClientPlugin<com.srctool.sinew.network/SinewRedirectConfig> // com.srctool.sinew.network/SinewRedirect.<get-SinewRedirect>|<get-SinewRedirect>(){}[0]
+final val com.srctool.sinew.network/SinewTimeouts // com.srctool.sinew.network/SinewTimeouts|{}SinewTimeouts[0]
+    final fun <get-SinewTimeouts>(): io.ktor.client.plugins.api/ClientPlugin<com.srctool.sinew.network/SinewTimeoutsConfig> // com.srctool.sinew.network/SinewTimeouts.<get-SinewTimeouts>|<get-SinewTimeouts>(){}[0]
+
+final fun (io.ktor.client.plugins/HttpCallValidatorConfig).com.srctool.sinew.network/sinewErrorBody(com.srctool.sinew.network/ErrorBodyReader = ...) // com.srctool.sinew.network/sinewErrorBody|sinewErrorBody@io.ktor.client.plugins.HttpCallValidatorConfig(com.srctool.sinew.network.ErrorBodyReader){}[0]
+final fun (io.ktor.client/HttpClientConfig<*>).com.srctool.sinew.network/sinewBackend(kotlin/String) // com.srctool.sinew.network/sinewBackend|sinewBackend@io.ktor.client.HttpClientConfig<*>(kotlin.String){}[0]
+final fun com.srctool.sinew.network/apiHandlers(kotlin/String, kotlin/String): kotlin.collections/List<com.srctool.sinew.exception/ExceptionHandler> // com.srctool.sinew.network/apiHandlers|apiHandlers(kotlin.String;kotlin.String){}[0]
+final suspend fun <#A: kotlin/Any?> com.srctool.sinew.network/poll(kotlin/String, kotlin/String, kotlin.time/Duration = ..., kotlin.time/Duration = ..., kotlin.time/Duration = ..., kotlin/Function1<#A, kotlin/Boolean>, kotlin.coroutines/SuspendFunction0<com.srctool.sinew.models/Result<#A>>): com.srctool.sinew.models/Result<#A> // com.srctool.sinew.network/poll|poll(kotlin.String;kotlin.String;kotlin.time.Duration;kotlin.time.Duration;kotlin.time.Duration;kotlin.Function1<0:0,kotlin.Boolean>;kotlin.coroutines.SuspendFunction0<com.srctool.sinew.models.Result<0:0>>){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> com.srctool.sinew.network/processApiCall(kotlin/String, kotlin/String, kotlin.coroutines/SuspendFunction0<com.srctool.sinew.models/Envelope<#A>>): com.srctool.sinew.models/Result<#A> // com.srctool.sinew.network/processApiCall|processApiCall(kotlin.String;kotlin.String;kotlin.coroutines.SuspendFunction0<com.srctool.sinew.models.Envelope<0:0>>){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> com.srctool.sinew.network/processOptionalApiCall(kotlin/String, kotlin/String, kotlin.coroutines/SuspendFunction0<com.srctool.sinew.models/Envelope<#A>>): com.srctool.sinew.models/Result<#A?> // com.srctool.sinew.network/processOptionalApiCall|processOptionalApiCall(kotlin.String;kotlin.String;kotlin.coroutines.SuspendFunction0<com.srctool.sinew.models.Envelope<0:0>>){0§<kotlin.Any?>}[0]
+final suspend fun <#A: kotlin/Any?> com.srctool.sinew.network/retryWithBackoff(kotlin/Int = ..., kotlin.time/Duration = ..., kotlin.time/Duration = ..., kotlin/Function1<com.srctool.sinew.models/SinewException, kotlin/Boolean> = ..., kotlin.coroutines/SuspendFunction0<com.srctool.sinew.models/Result<#A>>): com.srctool.sinew.models/Result<#A> // com.srctool.sinew.network/retryWithBackoff|retryWithBackoff(kotlin.Int;kotlin.time.Duration;kotlin.time.Duration;kotlin.Function1<com.srctool.sinew.models.SinewException,kotlin.Boolean>;kotlin.coroutines.SuspendFunction0<com.srctool.sinew.models.Result<0:0>>){0§<kotlin.Any?>}[0]
+
+// Targets: [ios]
+final fun (io.ktor.client.engine.darwin/DarwinClientEngineConfig).com.srctool.sinew.network/pinCertificates(kotlin/String, kotlin.collections/Set<kotlin/String>) // com.srctool.sinew.network/pinCertificates|pinCertificates@io.ktor.client.engine.darwin.DarwinClientEngineConfig(kotlin.String;kotlin.collections.Set<kotlin.String>){}[0]

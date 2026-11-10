@@ -45,6 +45,8 @@ git tag v0.3.0 && git push origin v0.3.0
 
 The publish workflow checks the tag is on `main`, publishes `com.srctool.sinew:*` to Maven Central from a single macOS job (the iOS artifacts need Xcode), then creates the GitHub Release. The tag decides the version.
 
+Before tagging, check that every module publishes and that a consumer compiles against the result: `tool/verify-publish.sh 1.0.0-localcheck` publishes to Maven Local only, then builds a separate project that depends on the BOM on Android, iOS, the JVM and wasm. CI runs it on every pull request (`publish-check`).
+
 Before tagging, merge a PR that updates the version and `CHANGELOG.md`. A fix to a released version is an ordinary PR into `main` followed by a patch tag. After a release, the umbrella repository (`srctool/sinew`) picks up the new commit through its Dependabot submodule PR.
 
 ## Testing
