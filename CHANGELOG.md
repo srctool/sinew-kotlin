@@ -5,6 +5,9 @@ All notable changes to Sinew for Kotlin are documented here. Every module shares
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
+- S7 usage docs samples (#89): the Kotlin code the usage site shows is real code.
+  - `:sample:docs` is a JVM module of the samples (models, errors, paging, presentation, network, stores, cipher, vault and tests), compiled by CI, and its two tests run. Each sample sits between `// region` lines, which the site copies, so a documented call that stops existing fails the build.
+  - The sample app's view model, screen and devtools wiring have region markers too, so the quick start and the production guide quote the code that runs.
 - S7 Camouflage from Maven Central (#85): Sinew builds against Camouflage's released `0.1.0` instead of its source.
   - `gradle/camouflage.versions.toml` holds `0.1.0`. The `third_party/camouflage-kotlin` submodule, its `includeBuild` and `submodules: true` in CI are gone, so the build, the tests and the sample run against the artifacts consumers get, and the publish job has no source dependency to refuse.
   - Nothing Sinew uses changed between the old pin and `0.1.0` (the Carbon skin and Camouflage's accessibility checks). The sample's list screen runs its full cycle on the JVM, iOS and wasm against it.

@@ -16,6 +16,7 @@ sealed interface OrderListEvent {
 
 data class LoadOrders(val type: LoadType)
 
+// region view-model
 class OrderListViewModel(backend: OrderBackend) :
     EventActionViewModel<OrderListState, OrderListEvent, LoadOrders, Nothing>(OrderListState()) {
     private val pager = Pager.offset<Order>(itemKey = { it.id }) { page, _ -> backend.orders(page) }
@@ -31,3 +32,4 @@ class OrderListViewModel(backend: OrderBackend) :
         pager.load(action.type, currentState.orders) { next -> setState { copy(orders = next) } }
     }
 }
+// endregion

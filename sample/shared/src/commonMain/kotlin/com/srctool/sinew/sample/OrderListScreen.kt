@@ -19,6 +19,7 @@ import com.srctool.camouflage.core.provider.Camouflage
 import com.srctool.sinew.camouflage.toCamo
 
 /** The list. There's no pull gesture with a mouse, so the header offers a refresh too. */
+// region screen
 @Composable
 fun OrderListScreen(viewModel: OrderListViewModel) {
     val state by viewModel.state.collectAsState()
@@ -36,3 +37,4 @@ fun OrderListScreen(viewModel: OrderListViewModel) {
         )
     }
 }
+// endregion
