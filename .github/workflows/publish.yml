@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: write # for the GitHub Release
+  actions: read   # to read the CI run of the tagged commit
 
 concurrency:
   group: publish
@@ -47,8 +48,26 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v6
 
-      - name: Check
-        run: ./gradlew check -PVERSION_NAME="$VERSION"
+      # The tagged commit must already be green: CI ran the whole suite when it landed on main, so the release doesn't run
+      # it again. (Rerunning `check` here is what once blocked a Camouflage release that CI had already passed: a flake on
+      # the macOS runner.) A red or still-running CI blocks the release before anything is uploaded.
+      - name: CI passed on this commit
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          run="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow ci.yml --commit "$GITHUB_SHA" --event push --branch main \
+            --json status,conclusion,url --jq '.[0] // empty')"
+          if [[ -z "$run" ]]; then
+            echo "::error::CI has not run on $GITHUB_SHA. Tag the commit CI ran on, on main."
+            exit 1
+          fi
+          status="$(jq -r .status <<< "$run")"
+          conclusion="$(jq -r .conclusion <<< "$run")"
+          if [[ "$status" != completed || "$conclusion" != success ]]; then
+            echo "::error::CI on $GITHUB_SHA is $status/$conclusion, not completed/success: $(jq -r .url <<< "$run"). Wait for it, or fix it, then tag."
+            exit 1
+          fi
+          echo "CI passed on $GITHUB_SHA: $(jq -r .url <<< "$run")"
 
       # The API reference (Dokka HTML, one folder per module) travels with the release, so it needs no Pages setup.
       # Built before the publish on purpose: a failure here must not leave artifacts on Maven Central with no release.

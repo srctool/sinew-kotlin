@@ -5,6 +5,9 @@ All notable changes to Sinew for Kotlin are documented here. Every module shares
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
+- S7 release gate (#39): the publish workflow requires CI to have passed on the tagged commit, instead of running `check` again.
+  - Before anything is uploaded, it reads the CI workflow's push run for the tagged commit on `main` and stops unless it completed successfully, with a message naming a missing, running or failed run. A flake on the macOS runner at release time can no longer block a commit CI already passed, and a red commit can no longer be released.
+  - The tagged commit must be on `main` (checked before) and the API reference is still built before the upload.
 - S7 publishing setup (#38): every module and the BOM are ready for Maven Central, and CI proves a consumer can use them.
   - The BOM uses the `com.srctool.publish` convention plugin like the modules (POM, signing), so all 15 artifacts are published the same way.
   - ABI validation is part of that convention now: every published module has its public API dumped under `api/` and checked by `check` (`checkKotlinAbi`), not only the three devtools modules. A change to a public API fails the build until `updateKotlinAbi` is run and the dump committed.
