@@ -43,6 +43,8 @@ public sealed interface RefreshOutcome {
     /**
      * The refresh couldn't be completed: offline, a timeout, a 5xx. The session is **kept**, and waiting requests fail
      * with [cause], so the page shows a retryable error instead of signing the user out.
+      *
+      * @property cause Why the refresh could not complete.
      */
     public data class Unavailable(val cause: SinewException) : RefreshOutcome
 }

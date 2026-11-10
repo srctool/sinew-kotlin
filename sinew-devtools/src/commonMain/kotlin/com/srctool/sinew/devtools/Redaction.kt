@@ -159,6 +159,7 @@ public class Redaction private constructor(
         return RecordedBody.Text(encoded.decodeToString(0, end), size, truncated = true, masked = masked)
     }
 
+    /** The defaults. */
     public companion object {
         /** The default body cap: 64 KB. */
         public const val DEFAULT_MAX_BODY_BYTES: Int = 64 * 1024
@@ -232,9 +233,19 @@ public sealed interface RecordedBody {
     /**
      * Redacted text, cut at the cap when [truncated]. [size] is the body's real size in bytes. [masked] says whether
      * anything in it was hidden, so a request whose body lost a secret is never replayed.
+      *
+      * @property text The redacted text.
+      * @property size The body's real size in bytes.
+      * @property truncated Whether the text was cut at the cap.
+      * @property masked Whether anything in it was hidden.
      */
     public data class Text(val text: String, val size: Long, val truncated: Boolean, val masked: Boolean = false) : RecordedBody
 
-    /** A binary body: only its type and its size in bytes are kept. */
+    /**
+     * A binary body: only its type and its size in bytes are kept.
+     *
+     * @property contentType The content type, or `null`.
+     * @property size The body's size in bytes.
+     */
     public data class Binary(val contentType: String?, val size: Long) : RecordedBody
 }

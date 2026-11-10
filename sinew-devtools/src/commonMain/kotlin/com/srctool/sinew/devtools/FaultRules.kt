@@ -14,6 +14,13 @@ import kotlin.time.Duration
  *
  * [pathPattern] matches the end of the path, at a `/`: `/orders` matches `/v1/orders` but not `/v1/myorders`. A `*`
  * in it matches any run of characters, `/` included, so `/orders/` followed by a `*` matches every order.
+  *
+  * @property method The HTTP method to match, or `null` for any.
+  * @property pathPattern The path to match, as described above.
+  * @property status The status to answer, or `null`.
+  * @property delay How long to wait first, or `null`.
+  * @property drop Whether to drop the connection.
+  * @property body The body that goes with [status].
  */
 public data class FaultRule(
     val method: String? = null,

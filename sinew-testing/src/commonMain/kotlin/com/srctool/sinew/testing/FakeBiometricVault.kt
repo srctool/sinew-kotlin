@@ -42,10 +42,13 @@ public class FakeBiometricVault(
         secret = null
     }
 
+    /** What [availability] is set to. */
     override suspend fun availability(): BiometricAvailability = availability
 
+    /** Whether a secret is stored. */
     override suspend fun isStored(): Boolean = secret != null
 
+    /** Stores [secret] with no prompt, unless the vault is unavailable or a failure was scripted with [nextStore]. [reason] is recorded in [prompts]. */
     override suspend fun store(secret: String, reason: String): BiometricStore {
         if (availability != BiometricAvailability.Available) return BiometricStore.Failed(BiometricFailure.Unavailable)
         _prompts += reason
@@ -57,6 +60,7 @@ public class FakeBiometricVault(
         return BiometricStore.Stored
     }
 
+    /** Releases the stored secret with no prompt. Nothing stored fails as [BiometricFailure.Invalidated], an unavailable vault as [BiometricFailure.Unavailable], and a failure scripted with [nextUnlock] as that failure. [reason] is recorded in [prompts]. */
     override suspend fun unlock(reason: String): BiometricUnlock {
         val stored = secret ?: return BiometricUnlock.Failed(BiometricFailure.Invalidated)
         if (availability != BiometricAvailability.Available) return BiometricUnlock.Failed(BiometricFailure.Unavailable)
@@ -65,6 +69,7 @@ public class FakeBiometricVault(
         return BiometricUnlock.Unlocked(stored)
     }
 
+    /** Deletes the stored secret. */
     override suspend fun disable() {
         secret = null
     }

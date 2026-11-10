@@ -24,6 +24,9 @@ import kotlin.time.Duration.Companion.seconds
  *   TLS handshake on OkHttp and Darwin: a chain with none of them fails before anything is sent, as a reported
  *   `UnexpectedException`. Pin your authority's or intermediate's key plus a backup, so a renewal doesn't lock users
  *   out. Empty means no pinning. Ignored in the browser (wasm), which owns TLS.
+  *
+  * @property locale The language sent as `Accept-Language`, read on every request.
+  * @property defaultHeaders Headers added to every request, read on every request (a device id, an app version).
  */
 public class SinewConfig(
     public val baseUrl: String,

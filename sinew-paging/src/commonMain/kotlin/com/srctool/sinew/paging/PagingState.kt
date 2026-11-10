@@ -9,7 +9,10 @@ public enum class LoadType { Initial, Refresh, More }
 /**
  * The paging slice of a page's state. [loadType] stays set after the load finishes, so the UI can tell a
  * first-page failure from a next-page failure, and retry knows what to repeat. It starts as a loading
- * [Initial], so a list shows its skeleton from the first frame.
+ * [LoadType.Initial], so a list shows its skeleton from the first frame.
+  *
+  * @property view The list as the UI sees it: loading, the loaded page data, or the failure.
+  * @property loadType The load [view] belongs to; it stays set after the load finishes.
  */
 public data class PagingState<out T>(
     val view: ViewState<PagingDomain<T>> = ViewState.Loading(),

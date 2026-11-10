@@ -22,8 +22,10 @@ public class FakeFieldCipher : FieldCipher {
         failNext = true
     }
 
+    /** Marks [plain] as `enc(…)`, or `enc[context](…)` with a context. Nothing is encrypted. */
     override suspend fun encrypt(plain: String, context: String): String = "${prefix(context)}$plain)"
 
+    /** Reverses [encrypt], checking the mark and the [context]. Throws [DecryptionFailed] on a mismatch, and once after [failNextDecrypt]. */
     override suspend fun decrypt(cipher: String, context: String): String {
         if (failNext) {
             failNext = false
@@ -34,6 +36,7 @@ public class FakeFieldCipher : FieldCipher {
         return cipher.substring(prefix.length, cipher.length - 1)
     }
 
+    /** Only counts the call, in [rotations]. */
     override suspend fun rotateKey() {
         rotations++
     }

@@ -4,13 +4,35 @@ import com.vanniktech.maven.publish.MavenPublishBaseExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.extra
 import org.gradle.kotlin.dsl.getByType
+import org.jetbrains.dokka.gradle.DokkaExtension
 
-/** Maven Central publishing (Central Portal) with the srctool POM. Signing applies when a key is configured. */
+/**
+ * Maven Central publishing (Central Portal) with the srctool POM. Kotlin libraries also get Dokka, which reports every
+ * public declaration without KDoc and fails the build on one, so the API reference has no gaps; a `Module.md` in the
+ * module is its module page. Signing applies when a key is configured.
+ */
 class PublishConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) = with(target) {
         pluginManager.apply("com.vanniktech.maven.publish")
         val srctool = rootProject.extensions.getByType<SrctoolExtension>()
+
+        pluginManager.withPlugin("org.jetbrains.kotlin.multiplatform") {
+            pluginManager.apply("org.jetbrains.dokka")
+            extensions.configure<DokkaExtension> {
+                moduleName.set(project.name)
+                val moduleDoc = layout.projectDirectory.file("Module.md").asFile
+                // A module may opt out of the check with `extra["sinew.undocumentedAllowed"] = true`, and must then say
+                // why on its module page: only an empty stand-in, whose API is documented by the module it mirrors.
+                val checked = provider { !target.extra.has("sinew.undocumentedAllowed") }
+                dokkaSourceSets.configureEach {
+                    reportUndocumented.set(checked)
+                    if (moduleDoc.exists()) includes.from(moduleDoc)
+                }
+                dokkaPublications.configureEach { failOnWarning.set(true) }
+            }
+        }
 
         extensions.configure<MavenPublishBaseExtension> {
             publishToMavenCentral()

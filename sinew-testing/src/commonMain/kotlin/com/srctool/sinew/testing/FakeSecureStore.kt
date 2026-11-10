@@ -6,6 +6,8 @@ import com.srctool.sinew.storage.SecureStore
  * A [SecureStore] in memory, without encryption. A test can fail the next read or write with a platform storage
  * error, or [loseKey] as a restore onto a new device does: from then on every read is absent, as the real store reads
  * a value it can't decrypt, and the lost values are deleted.
+  *
+  * @property name The store's name.
  */
 public class FakeSecureStore(override val name: String = "fake") : SecureStore {
     private val values = mutableMapOf<String, String>()
@@ -44,15 +46,20 @@ public class FakeSecureStore(override val name: String = "fake") : SecureStore {
         values.change()
     }
 
+    /** The secret under [key], or `null` when absent. Throws the error scripted with [failNextRead]. */
     override suspend fun read(key: String): String? {
         checkRead()
         return values[key]
     }
 
+    /** Stores [value] under [key], unencrypted. Throws the error scripted with [failNextWrite]. */
     override suspend fun write(key: String, value: String): Unit = write { put(key, value) }
+    /** Deletes the secret under [key]. Throws the error scripted with [failNextWrite]. */
     override suspend fun delete(key: String): Unit = write { remove(key) }
+    /** Deletes every secret. Throws the error scripted with [failNextWrite]. */
     override suspend fun clearUserData(): Unit = write { clear() }
 
+    /** The stored keys, sorted. */
     override suspend fun keys(): List<String> {
         checkRead()
         return values.keys.sorted()

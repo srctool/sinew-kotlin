@@ -53,6 +53,7 @@ public interface SinewHttpHooks {
     /** Called once per exchange that reached the network or a fault, with the raw values: devtools redacts them. */
     public fun record(exchange: HttpExchange) {}
 
+    /** The hooks Sinew provides. */
     public companion object {
         /** Leaves every request alone. The default. */
         public val None: SinewHttpHooks = object : SinewHttpHooks {}
@@ -62,6 +63,11 @@ public interface SinewHttpHooks {
 /**
  * What a fault does to a request, inside the auth layer: wait [delay], then fail as a dropped connection ([drop]),
  * answer [status] with [body] without reaching the network, or, with neither, send the request after the delay.
+  *
+  * @property delay How long to wait first, or `null` for no wait.
+  * @property status The HTTP status to answer, or `null` to send the request.
+  * @property body The response body that goes with [status].
+  * @property drop Whether to fail as a dropped connection.
  */
 public class FaultDecision(
     public val delay: Duration? = null,
@@ -82,11 +88,13 @@ public class FaultDecision(
 public class HttpExchange(
     /** The client that sent it, to replay through. */
     public val client: HttpClient,
+    /** The HTTP method. */
     public val method: String,
     /** The URL as sent, after a host override. */
     public val url: String,
     /** The URL the caller asked for, before a host override: what a replay asks for again. */
     public val requestedUrl: String,
+    /** The request headers as sent, by name. */
     public val requestHeaders: Map<String, List<String>>,
     /** The request body, or `null` when there was none or it was streamed ([requestBodyStreamed]). */
     public val requestBody: ByteArray?,
@@ -94,11 +102,15 @@ public class HttpExchange(
     public val requestBodyStreamed: Boolean,
     /** The response status, or `null` when the request failed before a response. */
     public val status: Int?,
+    /** The response headers, by name. */
     public val responseHeaders: Map<String, List<String>>,
     /** The response body, or `null` when there was none or it was streamed. */
     public val responseBody: ByteArray?,
+    /** When the request started. */
     public val startedAt: Instant,
+    /** How long it took. */
     public val duration: Duration,
+    /** The failure when the request did not get a response, otherwise `null`. */
     public val error: Throwable?,
     /** The names of the client's default headers when it was sent: devtools redacts them. */
     public val defaultHeaderNames: Set<String>,

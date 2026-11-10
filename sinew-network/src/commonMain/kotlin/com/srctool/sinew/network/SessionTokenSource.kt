@@ -39,15 +39,25 @@ public fun interface RefreshCall {
 
 /** What the backend answered to a refresh. */
 public sealed interface RefreshResult {
-    /** A new pair. With rotating refresh tokens, [refresh] replaces the stored one. */
+    /**
+     * A new pair. With rotating refresh tokens, [refresh] replaces the stored one.
+     *
+     * @property access The new access token.
+     * @property refresh The new refresh token.
+     */
     public data class Tokens(val access: String, val refresh: String) : RefreshResult
 
     /** The backend refused the refresh token: the session is over. */
     public data object Rejected : RefreshResult
 
-    /** The refresh couldn't be completed (offline, a timeout, a 5xx): the session is kept. */
+    /**
+     * The refresh couldn't be completed (offline, a timeout, a 5xx): the session is kept.
+     *
+     * @property cause Why the refresh could not complete.
+     */
     public data class Unavailable(val cause: SinewException) : RefreshResult
 
+    /** Builds a [RefreshResult] from a guarded refresh call. */
     public companion object {
         /**
          * The answer a guarded refresh call means, so a [RefreshCall] is only the HTTP call:

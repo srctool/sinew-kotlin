@@ -13,6 +13,7 @@ public class RecordingCrashReporter : CrashReporter {
     /** The codes of [reports], in order: the usual assertion. */
     public val codes: List<String> get() = _reports.map { it.code }
 
+    /** Keeps [error] in [reports]. */
     override fun recordNonFatal(error: SinewException) {
         _reports += error
     }

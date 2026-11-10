@@ -35,6 +35,7 @@ public interface FieldCipher {
      */
     public suspend fun rotateKey()
 
+    /** Creates the platform's cipher. */
     public companion object {
         /**
          * The platform's cipher for [keyAlias]. Its key is created on first use, so creating it touches no storage.

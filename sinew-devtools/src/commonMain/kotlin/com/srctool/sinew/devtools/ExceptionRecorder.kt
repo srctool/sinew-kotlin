@@ -30,8 +30,11 @@ public enum class ExceptionSource {
  * [firstAt] and [lastAt] when. The message and the stack trace went through [Redaction.redactText].
  */
 public data class ExceptionRecord(
+    /** The row's id. */
     val id: Long,
+    /** When the exception was first seen in this row. */
     val firstAt: Instant,
+    /** When the exception was last seen in this row. */
     val lastAt: Instant,
     /** The exception's type, such as `ParseException`. */
     val type: String,
@@ -39,8 +42,11 @@ public data class ExceptionRecord(
     val code: String?,
     /** The message key of a local message, the server's text, or a plain exception's message. */
     val message: String,
+    /** The stack trace, redacted. */
     val stackTrace: String,
+    /** How many times the exception was seen: repeats within the window are merged. */
     val count: Int,
+    /** How the exception was reported. */
     val source: ExceptionSource,
 ) {
     /** The record as text, for a bug report: already redacted. */
@@ -63,7 +69,9 @@ public data class ExceptionRecord(
  */
 @OptIn(ExperimentalAtomicApi::class)
 public class ExceptionRecorder(
+    /** The most rows kept; the oldest is dropped. */
     public val capacity: Int = DEFAULT_CAPACITY,
+    /** How long after an exception was last seen a repeat is merged into its row. */
     public val dedupeWindow: Duration = DEFAULT_DEDUPE_WINDOW,
     redaction: Redaction = Redaction.Default,
     private val clock: Clock = Clock.System,
@@ -125,6 +133,7 @@ public class ExceptionRecorder(
         _records.value = emptyList()
     }
 
+    /** The defaults. */
     public companion object {
         /** The default number of rows kept. */
         public const val DEFAULT_CAPACITY: Int = 50
@@ -142,6 +151,7 @@ public class DevToolsCrashReporter(
     private val wrapping: CrashReporter,
     private val recorder: ExceptionRecorder = DevTools.exceptions,
 ) : CrashReporter {
+    /** Records [error] in the Exception Log, then passes it to the wrapped reporter. */
     override fun recordNonFatal(error: SinewException) {
         try {
             recorder.record(error, ExceptionSource.Reported)

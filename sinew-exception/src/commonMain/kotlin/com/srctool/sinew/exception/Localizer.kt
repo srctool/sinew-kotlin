@@ -5,6 +5,7 @@ import com.srctool.sinew.models.SinewException
 
 /** How the app resolves a local message key in the current language. `null` means not translated. */
 public fun interface Localizer {
+    /** The text for [key] with [args] filled in, or `null` when the key isn't translated. */
     public fun resolve(key: String, args: Map<String, Any>): String?
 }
 
