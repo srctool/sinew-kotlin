@@ -37,7 +37,9 @@ dependencies {
     androidTestImplementation(androidxLibs.test.ext.junit)
     debugImplementation(composeLibs.ui.test.manifest)
     // Devtools: one artifact per variant (see docs: DevTools). A new variant must be assigned one explicitly.
+    // region devtools-variants
     "productionDebugImplementation"(projects.sinewDevtoolsUi)
     "stagingImplementation"(projects.sinewDevtoolsUi)
     "productionReleaseImplementation"(projects.sinewDevtoolsNoop)
+    // endregion
 }
