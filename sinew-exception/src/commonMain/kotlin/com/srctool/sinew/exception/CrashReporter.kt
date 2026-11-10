@@ -10,8 +10,10 @@ import kotlin.concurrent.atomics.ExperimentalAtomicApi
  * its code and English fallback, never a translated text.
  */
 public fun interface CrashReporter {
+    /** Records [error], a bug the guards caught, without crashing. */
     public fun recordNonFatal(error: SinewException)
 
+    /** The reporter the guards use. */
     @OptIn(ExperimentalAtomicApi::class)
     public companion object {
         /** Records nothing. The default. */

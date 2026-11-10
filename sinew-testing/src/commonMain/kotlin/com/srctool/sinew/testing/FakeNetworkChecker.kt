@@ -9,6 +9,7 @@ import kotlinx.coroutines.flow.asStateFlow
 /** A [NetworkChecker] a test switches by hand. */
 public class FakeNetworkChecker(initial: NetworkStatus = NetworkStatus.Online) : NetworkChecker {
     private val current = MutableStateFlow(initial)
+    /** The status the test last set. */
     override val status: StateFlow<NetworkStatus> = current.asStateFlow()
 
     /** Whether [close] was called. */
@@ -25,6 +26,7 @@ public class FakeNetworkChecker(initial: NetworkStatus = NetworkStatus.Online) :
         current.value = NetworkStatus.Online
     }
 
+    /** Only records the call, in [closed]. */
     override fun close() {
         closed = true
     }

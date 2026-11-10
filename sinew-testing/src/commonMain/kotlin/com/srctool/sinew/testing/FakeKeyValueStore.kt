@@ -7,6 +7,8 @@ import com.srctool.sinew.storage.KeyValueStore
  * absent, and `clear` empties only this store. A test can fail the next read or write with a platform storage error,
  * or the next write with a full disk; through `processStorageCall` they become `StorageReadException`,
  * `StorageWriteException` and `StorageFullException`.
+  *
+  * @property name The store's name.
  */
 public class FakeKeyValueStore(override val name: String = "fake_prefs") : KeyValueStore {
     private val values = mutableMapOf<String, Any>()
@@ -43,17 +45,29 @@ public class FakeKeyValueStore(override val name: String = "fake_prefs") : KeyVa
 
     private inline fun <reified T> get(key: String): T? = read()[key] as? T
 
+    /** As [KeyValueStore.getString]: the string under [key], or `null` when absent or written as another type. */
     override suspend fun getString(key: String): String? = get(key)
+    /** As [KeyValueStore.setString], in memory. */
     override suspend fun setString(key: String, value: String): Unit = write { put(key, value) }
+    /** As [KeyValueStore.getInt]: the integer under [key], or `null` when absent or written as another type. */
     override suspend fun getInt(key: String): Int? = get(key)
+    /** As [KeyValueStore.setInt], in memory. */
     override suspend fun setInt(key: String, value: Int): Unit = write { put(key, value) }
+    /** As [KeyValueStore.getBool]: the boolean under [key], or `null` when absent or written as another type. */
     override suspend fun getBool(key: String): Boolean? = get(key)
+    /** As [KeyValueStore.setBool], in memory. */
     override suspend fun setBool(key: String, value: Boolean): Unit = write { put(key, value) }
+    /** As [KeyValueStore.getDouble]: the double under [key], or `null` when absent or written as another type. */
     override suspend fun getDouble(key: String): Double? = get(key)
+    /** As [KeyValueStore.setDouble], in memory. */
     override suspend fun setDouble(key: String, value: Double): Unit = write { put(key, value) }
+    /** As [KeyValueStore.remove], in memory. */
     override suspend fun remove(key: String): Unit = write { remove(key) }
+    /** As [KeyValueStore.clear]: empties this store only. */
     override suspend fun clear(): Unit = write { clear() }
 
+    /** The stored keys, sorted. */
     override suspend fun keys(): List<String> = read().keys.sorted()
+    /** The value under [key] as text, or `null` when absent. */
     override suspend fun read(key: String): String? = read()[key]?.toString()
 }

@@ -19,10 +19,13 @@ import kotlinx.serialization.encoding.Encoder
  * ```
  */
 public abstract class DomainNotParsed<D>(private val name: String) : KSerializer<D> {
+    /** A descriptor that only names the type; it is never used to parse. */
     override val descriptor: SerialDescriptor = buildClassSerialDescriptor("com.srctool.sinew.DomainNotParsed.$name")
 
+    /** Always throws: a domain model is never parsed. */
     override fun deserialize(decoder: Decoder): D = throw unparsed()
 
+    /** Always throws: a domain model is never written. */
     override fun serialize(encoder: Encoder, value: D): Unit = throw unparsed()
 
     private fun unparsed() = IllegalStateException("$name is a domain model and is never (de)serialized; parse its Remote instead")

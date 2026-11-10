@@ -5,6 +5,14 @@ All notable changes to Sinew for Kotlin are documented here. Every module shares
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
+- S7 API reference (#88): every public declaration has KDoc, and the build fails on one that doesn't.
+  - Dokka is applied to every library module by the `com.srctool.publish` convention plugin, with `reportUndocumented` on and `failOnWarning`, so an undocumented public declaration, or a broken `[link]` in a doc, fails `dokkaGenerate`. CI runs it on every pull request.
+  - About 280 declarations were documented across `sinew-models`, `sinew-exception`, `sinew-network`, `sinew-testing`, `sinew-storage`, `sinew-security`, `sinew-paging`, `sinew-devtools` and `sinew-devtools-ui`. `PagingState`'s doc had a broken link, now fixed.
+  - `sinew-devtools-noop` is the one exception: it has no behavior and mirrors the real devtools' API (checked by `checkDevtoolsNoopAbi`), so its `Module.md` says so instead of repeating the real docs.
+  - The publish workflow builds the reference before publishing and attaches it to the GitHub Release as `sinew-kotlin-api-<version>.zip`, one folder per module.
+- S7 Kotlin README (#87): the README for the 1.0 release.
+  - A Maven Central badge, getting started with the BOM, the devtools wiring per platform, a first screen taken from the sample, a table of every module, and links to the usage docs, the API reference and the Guide.
+  - It says 1.0.0 is in preparation; the release (#40) changes that line.
 - S7 usage docs samples (#89): the Kotlin code the usage site shows is real code.
   - `:sample:docs` is a JVM module of the samples (models, errors, paging, presentation, network, stores, cipher, vault and tests), compiled by CI, and its two tests run. Each sample sits between `// region` lines, which the site copies, so a documented call that stops existing fails the build.
   - The sample app's view model, screen and devtools wiring have region markers too, so the quick start and the production guide quote the code that runs.

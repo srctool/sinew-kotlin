@@ -26,7 +26,7 @@ jobs:
           distribution: temurin
           java-version: 17
       - uses: gradle/actions/setup-gradle@v6
-      - run: ./gradlew jvmTest testAndroidHostTest checkSinewGraph checkDevtoolsNoopAbi :sample:docs:test :sample:androidApp:assembleStagingDebug :sample:androidApp:assembleProductionRelease
+      - run: ./gradlew jvmTest testAndroidHostTest checkSinewGraph checkDevtoolsNoopAbi dokkaGenerate :sample:docs:test :sample:androidApp:assembleStagingDebug :sample:androidApp:assembleProductionRelease
       - name: Keep the devtools screenshots
         # References are per OS; a test records the ones this OS lacks, so the Linux set can be committed from here.
         if: always()

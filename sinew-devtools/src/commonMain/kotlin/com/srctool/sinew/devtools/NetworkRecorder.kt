@@ -21,19 +21,31 @@ import kotlin.time.Instant
  * gets them again from the client, so masking them doesn't stop a replay.
  */
 public class NetworkExchange(
+    /** The HTTP method. */
     public val method: String,
+    /** The URL as sent. */
     public val url: String,
+    /** The request headers, by name. */
     public val requestHeaders: Map<String, List<String>> = emptyMap(),
+    /** The request body, or `null` when there was none. */
     public val requestBody: ByteArray? = null,
     /** Whether the request body was streamed: it's recorded as binary of unknown size, and can't be replayed. */
     public val requestBodyStreamed: Boolean = false,
+    /** The response status, or `null` when the request failed before a response. */
     public val status: Int? = null,
+    /** The response headers, by name. */
     public val responseHeaders: Map<String, List<String>> = emptyMap(),
+    /** The response body, or `null` when there was none. */
     public val responseBody: ByteArray? = null,
+    /** When the request started. */
     public val startedAt: Instant,
+    /** How long it took, or `null` when unknown. */
     public val duration: Duration? = null,
+    /** The failure, or `null`. */
     public val error: Throwable? = null,
+    /** The names of the headers the client adds by itself. */
     public val clientHeaders: Set<String> = emptySet(),
+    /** Whether this is a replay of an earlier request. */
     public val isReplay: Boolean = false,
 )
 
@@ -42,16 +54,25 @@ public class NetworkExchange(
  * [Redaction] before the record existed.
  */
 public data class NetworkRecord(
+    /** The record's id. */
     val id: Long,
+    /** When the request started. */
     val startedAt: Instant,
+    /** The HTTP method. */
     val method: String,
+    /** The URL, redacted. */
     val url: String,
+    /** The request headers, redacted, by name. */
     val requestHeaders: Map<String, List<String>>,
+    /** The request body, redacted. */
     val requestBody: RecordedBody,
     /** The response status, or `null` when the request failed before a response. */
     val status: Int?,
+    /** The response headers, redacted, by name. */
     val responseHeaders: Map<String, List<String>>,
+    /** The response body, redacted. */
     val responseBody: RecordedBody,
+    /** How long it took, or `null` when unknown. */
     val duration: Duration?,
     /** The failure's type, such as `NoInternetConnectionException`. */
     val errorType: String?,
@@ -59,6 +80,7 @@ public data class NetworkRecord(
     val errorCode: String?,
     /** Where a cache serve came from (`memory`, `disk`), or `null` for a request that went out. */
     val cacheSource: String?,
+    /** Whether this request was a replay of an earlier one. */
     val isReplay: Boolean,
     /**
      * Whether the request kept everything it needs to be sent again: nothing in its URL, its own headers or its body
@@ -136,6 +158,7 @@ public data class NetworkRecord(
  */
 @OptIn(ExperimentalAtomicApi::class)
 public class NetworkRecorder(
+    /** The most records kept; the oldest is dropped. */
     public val capacity: Int = DEFAULT_CAPACITY,
     redaction: Redaction = Redaction.Default,
 ) {
@@ -234,6 +257,7 @@ public class NetworkRecorder(
     private fun Map<String, List<String>>.contentType(): String? =
         entries.firstOrNull { it.key.equals("Content-Type", ignoreCase = true) }?.value?.firstOrNull()
 
+    /** The defaults. */
     public companion object {
         /** The default number of records kept. */
         public const val DEFAULT_CAPACITY: Int = 200

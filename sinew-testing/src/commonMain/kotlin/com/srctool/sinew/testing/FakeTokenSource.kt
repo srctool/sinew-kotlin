@@ -40,6 +40,7 @@ public class FakeTokenSource(accessToken: String? = "token-1") : TokenSource {
     /** Replaces the access token with the next one, `token-<n + 1>`, and returns it. */
     public fun rotate(): String = "token-${generation.incrementAndFetch()}".also { token.store(it) }
 
+    /** The current access token, or `null` after [clear]. */
     override fun accessToken(): String? = token.load()
 
     /** Like a real source, a [RefreshOutcome.Rejected] refresh ends the session itself, counted in [clears]. */
@@ -48,6 +49,7 @@ public class FakeTokenSource(accessToken: String? = "token-1") : TokenSource {
         return onRefresh().also { if (it == RefreshOutcome.Rejected) clear() }
     }
 
+    /** Counts the call in [clears] and drops the access token. */
     override suspend fun clear() {
         clearCount.incrementAndFetch()
         token.store(null)

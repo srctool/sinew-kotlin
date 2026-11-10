@@ -24,16 +24,19 @@ public class FakeRefreshTokenStore(token: String? = null) : RefreshTokenStore {
         nextWriteError = error
     }
 
+    /** The stored token, or throws the error scripted with [failNextRead]. */
     override suspend fun read(): String? {
         nextReadError?.let { nextReadError = null; throw it }
         return token
     }
 
+    /** Stores [token], or throws the error scripted with [failNextWrite]. */
     override suspend fun write(token: String) {
         nextWriteError?.let { nextWriteError = null; throw it }
         this.token = token
     }
 
+    /** Deletes the token, or throws the error scripted with [failNextWrite]. */
     override suspend fun delete() {
         nextWriteError?.let { nextWriteError = null; throw it }
         token = null

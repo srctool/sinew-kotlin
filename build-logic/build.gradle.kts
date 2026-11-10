@@ -11,6 +11,7 @@ dependencies {
     compileOnly(composeLibs.gradle.plugin)
     compileOnly(toolLibs.kover.gradle.plugin)
     compileOnly(toolLibs.vanniktech.publish.gradle.plugin)
+    compileOnly(toolLibs.dokka.gradle.plugin)
 }
 
 gradlePlugin {

@@ -16,6 +16,7 @@ public class FakeLocalizer(
     /** Every key resolved, in order. */
     public val requested: List<String> get() = _requested.toList()
 
+    /** The text for [key] with its `{name}` placeholders filled in. A key without text resolves as the class describes. */
     override fun resolve(key: String, args: Map<String, Any>): String? {
         _requested += key
         val text = strings[key] ?: return if (echoKeys) key else null

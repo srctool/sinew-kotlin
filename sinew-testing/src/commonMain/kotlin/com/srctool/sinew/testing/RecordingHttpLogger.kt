@@ -9,6 +9,7 @@ public class RecordingHttpLogger : HttpLogger {
     /** Every logged line, in order. */
     public val lines: List<String> get() = _lines.toList()
 
+    /** Keeps [line] in [lines]. */
     override fun log(line: String) {
         _lines += line
     }

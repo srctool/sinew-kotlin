@@ -25,13 +25,16 @@ public interface SecureStore : InspectableStore {
     /** The secret for [key], or `null` when absent or undecryptable. The devtools show it masked. */
     override suspend fun read(key: String): String?
 
+    /** Encrypts [value] and stores it under [key], replacing the secret already there. */
     public suspend fun write(key: String, value: String)
 
+    /** Deletes the secret under [key]. A missing key is not an error. */
     public suspend fun delete(key: String)
 
     /** Deletes every secret of this store: call it on sign-out. */
     public suspend fun clearUserData()
 
+    /** Creates stores by namespace. */
     public companion object {
         /** The store for [namespace]; on the JVM, `create(directory, namespace)` chooses the folder. */
         public fun create(platform: PlatformContext, namespace: String = "sinew"): SecureStore {

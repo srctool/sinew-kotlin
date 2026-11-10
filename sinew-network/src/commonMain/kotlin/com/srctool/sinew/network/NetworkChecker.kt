@@ -30,6 +30,7 @@ public interface NetworkChecker : AutoCloseable {
     /** Stops monitoring. [status] keeps its last value. */
     override fun close()
 
+    /** Creates the platform's checker. */
     public companion object {
         /** The platform's checker. On Android, [context] carries the `Context`; elsewhere it carries nothing. */
         public fun create(context: PlatformContext): NetworkChecker = platformNetworkChecker(context)

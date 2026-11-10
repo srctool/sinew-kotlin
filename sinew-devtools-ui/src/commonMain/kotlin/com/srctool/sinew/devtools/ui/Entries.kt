@@ -9,6 +9,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 /**
  * A titled group of entries on the dashboard's first screen. Sinew's built-in inspectors are the first section; the
  * app's own sections follow, in the order given.
+  *
+  * @property title The section's heading.
+  * @property entries The section's rows.
  */
 public class DevToolSection(public val title: String, public val entries: List<DevToolEntry>)
 
@@ -31,8 +34,11 @@ public sealed interface DevToolEntry {
         override val name: String,
         override val description: String? = null,
         override val icon: ImageVector? = null,
+        /** The row's accent color, or `null`. */
         public val color: Color? = null,
+        /** Actions in the page's top bar. */
         public val appBarActions: @Composable RowScope.() -> Unit = {},
+        /** The page's content. */
         public val content: @Composable () -> Unit,
     ) : DevToolEntry
 
@@ -41,7 +47,9 @@ public sealed interface DevToolEntry {
         override val name: String,
         override val description: String? = null,
         override val icon: ImageVector? = null,
+        /** The row's accent color, or `null`. */
         public val color: Color? = null,
+        /** The rows of the sub-list. */
         public val children: List<DevToolEntry>,
     ) : DevToolEntry
 
@@ -50,7 +58,9 @@ public sealed interface DevToolEntry {
         override val name: String,
         override val description: String? = null,
         override val icon: ImageVector? = null,
+        /** Reads the switch's state when the row draws. */
         public val value: () -> Boolean,
+        /** Called with the new state when the switch is flipped. */
         public val onChanged: (Boolean) -> Unit,
     ) : DevToolEntry
 
@@ -59,12 +69,18 @@ public sealed interface DevToolEntry {
         override val name: String,
         override val description: String? = null,
         override val icon: ImageVector? = null,
+        /** The text of a dialog that asks before running, or `null` to run at once. */
         public val confirm: String? = null,
+        /** What the row does. */
         public val run: suspend () -> Unit,
     ) : DevToolEntry
 }
 
-/** A label in a corner of every screen, such as `1.4.0 (212) · staging`. The active host and faults are added to it. */
+/**
+ * A label in a corner of every screen, such as `1.4.0 (212) · staging`. The active host and faults are added to it.
+ *
+ * @property label The text shown, such as `1.4.0 (212) · staging`.
+ */
 public class BuildRibbon(public val label: String)
 
 /**
@@ -76,6 +92,8 @@ public sealed interface DevToolsLauncher
 /**
  * A floating button, draggable, that opens the dashboard on tap; a drag never opens it. It starts at
  * [initialPosition], and where it's dragged to is remembered in `SinewDevTools`' `preferences`.
+  *
+  * @property initialPosition Where the button starts.
  */
 public class FloatingLauncher(public val initialPosition: Alignment = Alignment.BottomEnd) : DevToolsLauncher
 

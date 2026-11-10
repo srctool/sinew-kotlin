@@ -11,6 +11,7 @@ plugins {
     alias(composeLibs.plugins.compose.multiplatform) apply false
     alias(toolLibs.plugins.kover) apply false
     alias(toolLibs.plugins.vanniktech.publish) apply false
+    alias(toolLibs.plugins.dokka) apply false
 }
 
 srctool {

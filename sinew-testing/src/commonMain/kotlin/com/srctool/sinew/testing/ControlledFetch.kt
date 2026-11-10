@@ -25,7 +25,12 @@ import kotlin.coroutines.cancellation.CancellationException
  * ```
  */
 public class ControlledFetch<T> {
-    /** One call: the page, cursor or last ID it asked for, and its query. */
+    /**
+     * One call: the page, cursor or last ID it asked for, and its query.
+     *
+     * @property key The page, cursor or last ID the call asked for.
+     * @property query The call's query.
+     */
     public inner class Call internal constructor(public val key: Any?, public val query: String) {
         internal val answer = CompletableDeferred<Result<PagingDomain<T>>>()
 

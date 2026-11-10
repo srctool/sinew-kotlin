@@ -10,7 +10,9 @@ import kotlin.coroutines.cancellation.CancellationException
 
 /** One rule in a guard's handler list: "is this a timeout?" and "make a RequestTimeOutException for this call". */
 public class ExceptionHandler(
+    /** Whether this handler applies to the failure. */
     public val matches: (Throwable) -> Boolean,
+    /** Builds the [SinewException] for this call from the failure. */
     public val transform: (Throwable) -> SinewException,
 )
 

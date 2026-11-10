@@ -109,6 +109,7 @@ public class Pager<T> internal constructor(
         return PagingDomain(items, page.meta)
     }
 
+    /** The factories for the paging styles. */
     public companion object {
         /** Page numbers, where the backend says whether a next page exists. 0-based APIs pass `firstPage = 0`. */
         public fun <T> offset(

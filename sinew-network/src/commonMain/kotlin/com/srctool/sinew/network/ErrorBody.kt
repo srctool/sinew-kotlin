@@ -28,6 +28,7 @@ public fun interface ErrorBodyReader {
     /** The error body of a [status] response, or `null` when there's nothing readable. */
     public fun read(status: Int, body: String?): ErrorBody?
 
+    /** The readers Sinew provides. */
     public companion object {
         /**
          * Reads a JSON object's `message` (a string) and `errors` (`{ "field": ["message", …] }`, or a single string

@@ -9,6 +9,7 @@ public fun interface HttpLogger {
     /** Writes one [line]. */
     public fun log(line: String)
 
+    /** The loggers Sinew provides. */
     public companion object {
         /** Prints to standard output (Logcat on Android). */
         public val Default: HttpLogger = HttpLogger { println("SinewHttp: $it") }

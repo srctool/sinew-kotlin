@@ -34,6 +34,7 @@ public interface BiometricVault {
     /** Deletes the secret and its key. */
     public suspend fun disable()
 
+    /** Creates the platform's vault. */
     public companion object {
         /**
          * The platform's vault for [keyAlias]. With [clearOnReinstall] (iOS), the first use after an install deletes
@@ -84,22 +85,36 @@ public sealed interface BiometricStore {
     /** The secret is stored. */
     public data object Stored : BiometricStore
 
-    /** Nothing was stored. */
+    /**
+     * Nothing was stored.
+     *
+     * @property reason Why nothing was stored.
+     */
     public data class Failed(val reason: BiometricFailure) : BiometricStore
 }
 
 /** The outcome of [BiometricVault.unlock]. */
 public sealed interface BiometricUnlock {
-    /** A real biometric match released [secret]. */
+    /**
+     * A real biometric match released [secret].
+     *
+     * @property secret The secret the match released.
+     */
     public class Unlocked(public val secret: String) : BiometricUnlock {
+        /** Two outcomes are equal when they release the same secret. */
         override fun equals(other: Any?): Boolean = other is Unlocked && other.secret == secret
+        /** A hash of the secret, consistent with [equals]. */
         override fun hashCode(): Int = secret.hashCode()
 
         /** Never the secret: an outcome may be logged. */
         override fun toString(): String = "Unlocked(secret=***)"
     }
 
-    /** The secret wasn't released. */
+    /**
+     * The secret wasn't released.
+     *
+     * @property reason Why the secret wasn't released.
+     */
     public data class Failed(val reason: BiometricFailure) : BiometricUnlock
 }
 
