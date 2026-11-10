@@ -5,6 +5,9 @@ All notable changes to Sinew for Kotlin are documented here. Every module shares
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
+- S7 release gate (#39): the publish workflow requires CI to have passed on the tagged commit, instead of running `check` again.
+  - Before anything is uploaded, it reads the CI workflow's push run for the tagged commit on `main` and stops unless it completed successfully, with a message naming a missing, running or failed run. A flake on the macOS runner at release time can no longer block a commit CI already passed, and a red commit can no longer be released.
+  - The tagged commit must be on `main` (checked before) and the API reference is still built before the upload.
 - S7 API reference (#88): every public declaration has KDoc, and the build fails on one that doesn't.
   - Dokka is applied to every library module by the `com.srctool.publish` convention plugin, with `reportUndocumented` on and `failOnWarning`, so an undocumented public declaration, or a broken `[link]` in a doc, fails `dokkaGenerate`. CI runs it on every pull request.
   - About 280 declarations were documented across `sinew-models`, `sinew-exception`, `sinew-network`, `sinew-testing`, `sinew-storage`, `sinew-security`, `sinew-paging`, `sinew-devtools` and `sinew-devtools-ui`. `PagingState`'s doc had a broken link, now fixed.
