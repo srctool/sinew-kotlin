@@ -6,7 +6,7 @@
 
 Sinew is a plug-and-play app architecture: response mapping, results, a coded error model, paging, presentation base classes, an HTTP client with token refresh, secure storage, and developer tools. This repository is the **Kotlin Multiplatform** implementation (Android, iOS, JVM desktop, wasmJs), usable from a plain Android app. The same architecture exists for Flutter in [sinew-dart](https://github.com/srctool/sinew-dart).
 
-> **Status:** 1.0.0 is in preparation. The snippets below use `1.0.0`; until it reaches Maven Central, build from source (see [Build](#build)). Every module is released at one version.
+> **Status:** 1.0.0 is released on Maven Central. Every module is released at one version, and the [CHANGELOG](CHANGELOG.md) has what it contains.
 
 ## Getting started
 
