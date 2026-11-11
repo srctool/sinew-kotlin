@@ -5,6 +5,22 @@ All notable changes to Sinew for Kotlin are documented here. Every module shares
 The format is based on Keep a Changelog, and this project adheres to Semantic Versioning.
 
 ## [Unreleased]
+
+## [1.0.0] - 2026-11-11
+
+The first release, on Maven Central (`com.srctool.sinew`), with the API reference attached to the GitHub Release. Every module is released at this one version: add `sinew-bom` once and name the modules without versions.
+
+- **Models and errors:** `sinew-models` (`Domain`, `Remote`, `Entity`, envelopes, `Result`, `ViewState`), `sinew-exception` (a coded error model: typed exceptions, guards, `CrashReporter`, `Localizer`) and `sinew-l10n` (English and Indonesian for the failures' messages).
+- **Paging and presentation:** `sinew-paging` (`Pager`, `PagingState`, `LoadType`), `sinew-presentation` and `sinew-viewmodel` (state and one-time effects, on an AndroidX view model).
+- **Network:** `sinew-network`, with `SinewHttp` on Ktor (token refresh, `processApiCall`, retry and polling, `NetworkChecker`, certificate pinning).
+- **Security and storage:** `sinew-security` (`FieldCipher`, `BiometricVault`) and `sinew-storage` (`KeyValueStore`, `SecureStore`, `processStorageCall`, `pagedQuery`).
+- **Testing:** `sinew-testing`, a fake for every interface, for tests only.
+- **Camouflage:** `sinew-camouflage` maps `PagingState` to Camouflage's `CamoPagedList`.
+- **Developer tools:** `sinew-devtools`, `sinew-devtools-ui` and `sinew-devtools-noop`, with a CI check that production builds carry none of it.
+- **Build:** Android (`minSdk` 24), iOS, JVM desktop and wasmJs; ABI validation and an API reference gate on every module; a consumer check against the published artifacts.
+
+### Details by milestone
+
 - S7 release gate (#39): the publish workflow requires CI to have passed on the tagged commit, instead of running `check` again.
   - Before anything is uploaded, it reads the CI workflow's push run for the tagged commit on `main` and stops unless it completed successfully, with a message naming a missing, running or failed run. A flake on the macOS runner at release time can no longer block a commit CI already passed, and a red commit can no longer be released.
   - The tagged commit must be on `main` (checked before) and the API reference is still built before the upload.
