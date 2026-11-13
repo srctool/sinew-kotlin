@@ -8,6 +8,7 @@
 // Library unique name: <com.srctool.sinew:sinew-models>
 final enum class com.srctool.sinew.models/ExceptionLayer : kotlin/Enum<com.srctool.sinew.models/ExceptionLayer> { // com.srctool.sinew.models/ExceptionLayer|null[0]
     enum entry Repository // com.srctool.sinew.models/ExceptionLayer.Repository|null[0]
+    enum entry Service // com.srctool.sinew.models/ExceptionLayer.Service|null[0]
     enum entry UseCase // com.srctool.sinew.models/ExceptionLayer.UseCase|null[0]
     enum entry Utility // com.srctool.sinew.models/ExceptionLayer.Utility|null[0]
     enum entry ViewModel // com.srctool.sinew.models/ExceptionLayer.ViewModel|null[0]

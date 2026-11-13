@@ -6,6 +6,17 @@
 // - Show declarations: true
 
 // Library unique name: <com.srctool.sinew:sinew-presentation>
+final enum class com.srctool.sinew.presentation/ServiceLifetime : kotlin/Enum<com.srctool.sinew.presentation/ServiceLifetime> { // com.srctool.sinew.presentation/ServiceLifetime|null[0]
+    enum entry App // com.srctool.sinew.presentation/ServiceLifetime.App|null[0]
+    enum entry Session // com.srctool.sinew.presentation/ServiceLifetime.Session|null[0]
+
+    final val entries // com.srctool.sinew.presentation/ServiceLifetime.entries|#static{}entries[0]
+        final fun <get-entries>(): kotlin.enums/EnumEntries<com.srctool.sinew.presentation/ServiceLifetime> // com.srctool.sinew.presentation/ServiceLifetime.entries.<get-entries>|<get-entries>#static(){}[0]
+
+    final fun valueOf(kotlin/String): com.srctool.sinew.presentation/ServiceLifetime // com.srctool.sinew.presentation/ServiceLifetime.valueOf|valueOf#static(kotlin.String){}[0]
+    final fun values(): kotlin/Array<com.srctool.sinew.presentation/ServiceLifetime> // com.srctool.sinew.presentation/ServiceLifetime.values|values#static(){}[0]
+}
+
 abstract class <#A: kotlin/Any?, #B: kotlin/Any?, #C: kotlin/Any?, #D: kotlin/Any?> com.srctool.sinew.presentation/EventActionHandler : com.srctool.sinew.presentation/StateEffectHandler<#A, #D> { // com.srctool.sinew.presentation/EventActionHandler|null[0]
     constructor <init>(#A, kotlinx.coroutines/CoroutineScope) // com.srctool.sinew.presentation/EventActionHandler.<init>|<init>(1:0;kotlinx.coroutines.CoroutineScope){}[0]
 
@@ -33,6 +44,17 @@ abstract class <#A: kotlin/Any?, #B: kotlin/Any?> com.srctool.sinew.presentation
     open fun dispose() // com.srctool.sinew.presentation/StateEffectHandler.dispose|dispose(){}[0]
 }
 
+abstract class com.srctool.sinew.presentation/AppService { // com.srctool.sinew.presentation/AppService|null[0]
+    constructor <init>(com.srctool.sinew.presentation/ServiceLifetime) // com.srctool.sinew.presentation/AppService.<init>|<init>(com.srctool.sinew.presentation.ServiceLifetime){}[0]
+
+    final val lifetime // com.srctool.sinew.presentation/AppService.lifetime|{}lifetime[0]
+        final fun <get-lifetime>(): com.srctool.sinew.presentation/ServiceLifetime // com.srctool.sinew.presentation/AppService.lifetime.<get-lifetime>|<get-lifetime>(){}[0]
+
+    abstract fun listen(kotlinx.coroutines/CoroutineScope) // com.srctool.sinew.presentation/AppService.listen|listen(kotlinx.coroutines.CoroutineScope){}[0]
+    open suspend fun destroy() // com.srctool.sinew.presentation/AppService.destroy|destroy(){}[0]
+    open suspend fun init() // com.srctool.sinew.presentation/AppService.init|init(){}[0]
+}
+
 final class <#A: kotlin/Any?> com.srctool.sinew.presentation/EffectEmitter { // com.srctool.sinew.presentation/EffectEmitter|null[0]
     constructor <init>() // com.srctool.sinew.presentation/EffectEmitter.<init>|<init>(){}[0]
 
@@ -41,4 +63,13 @@ final class <#A: kotlin/Any?> com.srctool.sinew.presentation/EffectEmitter { // 
 
     final fun dispose() // com.srctool.sinew.presentation/EffectEmitter.dispose|dispose(){}[0]
     final fun emit(#A) // com.srctool.sinew.presentation/EffectEmitter.emit|emit(1:0){}[0]
+}
+
+final class com.srctool.sinew.presentation/AppServiceHost { // com.srctool.sinew.presentation/AppServiceHost|null[0]
+    constructor <init>(kotlinx.coroutines/CoroutineScope, kotlin.collections/List<com.srctool.sinew.presentation/AppService>) // com.srctool.sinew.presentation/AppServiceHost.<init>|<init>(kotlinx.coroutines.CoroutineScope;kotlin.collections.List<com.srctool.sinew.presentation.AppService>){}[0]
+
+    final fun startApp() // com.srctool.sinew.presentation/AppServiceHost.startApp|startApp(){}[0]
+    final fun startSession() // com.srctool.sinew.presentation/AppServiceHost.startSession|startSession(){}[0]
+    final suspend fun stopAll() // com.srctool.sinew.presentation/AppServiceHost.stopAll|stopAll(){}[0]
+    final suspend fun stopSession() // com.srctool.sinew.presentation/AppServiceHost.stopSession|stopSession(){}[0]
 }

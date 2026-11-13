@@ -75,6 +75,7 @@ public final class com/srctool/sinew/models/ErrorMessage$Server : com/srctool/si
 
 public final class com/srctool/sinew/models/ExceptionLayer : java/lang/Enum {
 	public static final field Repository Lcom/srctool/sinew/models/ExceptionLayer;
+	public static final field Service Lcom/srctool/sinew/models/ExceptionLayer;
 	public static final field UseCase Lcom/srctool/sinew/models/ExceptionLayer;
 	public static final field Utility Lcom/srctool/sinew/models/ExceptionLayer;
 	public static final field ViewModel Lcom/srctool/sinew/models/ExceptionLayer;
