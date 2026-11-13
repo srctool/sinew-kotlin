@@ -1,3 +1,19 @@
+public abstract class com/srctool/sinew/presentation/AppService {
+	public fun <init> (Lcom/srctool/sinew/presentation/ServiceLifetime;)V
+	public fun destroy (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun getLifetime ()Lcom/srctool/sinew/presentation/ServiceLifetime;
+	public fun init (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public abstract fun listen (Lkotlinx/coroutines/CoroutineScope;)V
+}
+
+public final class com/srctool/sinew/presentation/AppServiceHost {
+	public fun <init> (Lkotlinx/coroutines/CoroutineScope;Ljava/util/List;)V
+	public final fun startApp ()V
+	public final fun startSession ()V
+	public final fun stopAll (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+	public final fun stopSession (Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+}
+
 public final class com/srctool/sinew/presentation/EffectEmitter {
 	public fun <init> ()V
 	public final fun dispose ()V
@@ -10,6 +26,14 @@ public abstract class com/srctool/sinew/presentation/EventActionHandler : com/sr
 	protected abstract fun mapEventToAction (Ljava/lang/Object;)Ljava/lang/Object;
 	protected abstract fun onAction (Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 	public final fun onEvent (Ljava/lang/Object;)V
+}
+
+public final class com/srctool/sinew/presentation/ServiceLifetime : java/lang/Enum {
+	public static final field App Lcom/srctool/sinew/presentation/ServiceLifetime;
+	public static final field Session Lcom/srctool/sinew/presentation/ServiceLifetime;
+	public static fun getEntries ()Lkotlin/enums/EnumEntries;
+	public static fun valueOf (Ljava/lang/String;)Lcom/srctool/sinew/presentation/ServiceLifetime;
+	public static fun values ()[Lcom/srctool/sinew/presentation/ServiceLifetime;
 }
 
 public abstract class com/srctool/sinew/presentation/StateEffectHandler {

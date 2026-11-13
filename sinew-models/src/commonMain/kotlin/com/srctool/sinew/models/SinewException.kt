@@ -10,6 +10,9 @@ public enum class ExceptionLayer(public val code: String) {
     UseCase("UC"),
     Repository("R"),
     Utility("UT"),
+
+    /** An app service: work with the app's or the signed-in session's lifetime and no UI (a purchase, pub/sub, push). */
+    Service("SV"),
 }
 
 /** Who provides a failure's user-facing text. */

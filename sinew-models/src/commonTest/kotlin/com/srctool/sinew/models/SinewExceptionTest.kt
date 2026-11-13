@@ -18,7 +18,7 @@ class SinewExceptionTest {
     @Test
     fun codeReadsModuleLayerFunctionType() {
         val codes = ExceptionLayer.entries.map { TestException(it, ErrorMessage.Server("x")).code }
-        assertEquals(listOf("ORD-VM-PO-TST", "ORD-UC-PO-TST", "ORD-R-PO-TST", "ORD-UT-PO-TST"), codes)
+        assertEquals(listOf("ORD-VM-PO-TST", "ORD-UC-PO-TST", "ORD-R-PO-TST", "ORD-UT-PO-TST", "ORD-SV-PO-TST"), codes)
     }
 
     @Test

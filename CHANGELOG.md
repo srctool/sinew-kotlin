@@ -6,6 +6,8 @@ The format is based on Keep a Changelog, and this project adheres to Semantic Ve
 
 ## [Unreleased]
 
+- App services (#96): `ExceptionLayer.Service` (`SV`) in `sinew-models`, and `AppService`, `ServiceLifetime` and `AppServiceHost` in `sinew-presentation`. `startApp` runs `init` then `listen` for app services in list order; `startSession` starts the session services in a scope of their own; `stopSession` cancels it (an `init` still running included) and destroys them in reverse order. A step that throws is surfaced as an unhandled error, and the service still listens and the others still start. A new public API, so the next release is 1.1.0. Raised by Graft.
+
 ## [1.0.0] - 2026-11-11
 
 The first release, on Maven Central (`com.srctool.sinew`), with the API reference attached to the GitHub Release. Every module is released at this one version: add `sinew-bom` once and name the modules without versions.
