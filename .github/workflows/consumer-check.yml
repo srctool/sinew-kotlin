@@ -1,0 +1,75 @@
+name: Consumer check
+
+# A release from the consumer's side: the sample app's tests run on an Android emulator with every Sinew module resolved
+# from Maven Central at one version instead of built from this repository (-Psinew.published, see build.gradle.kts). The
+# sample's list screen runs its full cycle there. Run it after a release:
+#   gh workflow run consumer-check.yml -f version=1.1.0
+# With no version it checks the latest GitHub Release. It also runs weekly (a newer Android or Compose shows up here, not
+# in a pull request) and on a pull request that changes it.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The release to check (default: the latest GitHub Release)'
+        required: false
+        default: ''
+  schedule:
+    - cron: '43 5 * * 1'
+  pull_request:
+    paths:
+      - '.github/workflows/consumer-check.yml'
+      - 'build.gradle.kts'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: consumer-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sample-on-central:
+    name: The sample on Android, Sinew from Maven Central
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+      - name: Which release
+        id: release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REQUESTED: ${{ inputs.version }}
+        run: |
+          version="${REQUESTED#v}"
+          if [[ -z "$version" ]]; then
+            version="$(gh release view --repo "$GITHUB_REPOSITORY" --json tagName --jq .tagName)"
+            version="${version#v}"
+          fi
+          echo "Checking $version"
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: 17
+      - uses: gradle/actions/setup-gradle@v6
+      - name: Enable KVM
+        run: |
+          echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
+          sudo udevadm control --reload-rules
+          sudo udevadm trigger --name-match=kvm
+      - name: Build the sample's tests before the emulator starts
+        run: ./gradlew -Psinew.published=${{ steps.release.outputs.version }} :sample:androidApp:assembleStagingDebugAndroidTest
+      - uses: reactivecircus/android-emulator-runner@v2
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          disable-animations: true
+          emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none -no-snapshot
+          script: ./gradlew -Psinew.published=${{ steps.release.outputs.version }} :sample:androidApp:connectedStagingDebugAndroidTest
+      - name: Keep the test reports
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: consumer-check-reports
+          path: '*/build/reports/androidTests/'
