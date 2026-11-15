@@ -26,6 +26,21 @@ allprojects {
     version = providers.gradleProperty("VERSION_NAME").get()
 }
 
+// -Psinew.published=<version>: the Sinew modules come from Maven Central at that version instead of from this build, so
+// the sample (and its tests) run against what a consumer gets (see tool/verify-published-sample.sh). Only dependencies
+// on a Sinew module are replaced; the sample's own modules still build from source.
+providers.gradleProperty("sinew.published").orNull?.let { published ->
+    allprojects {
+        configurations.configureEach {
+            resolutionStrategy.dependencySubstitution {
+                rootProject.subprojects.filter { it.name.startsWith("sinew-") && it.name != "sinew-bom" }.forEach { module ->
+                    substitute(project(module.path)).using(module("com.srctool.sinew:${module.name}:$published"))
+                }
+            }
+        }
+    }
+}
+
 // Fails on any project-to-project dependency between Sinew modules that isn't listed in gradle/sinew-graph.txt.
 // The allow-list mirrors the dependency graph in the docs, so a leaked edge can't ship unnoticed.
 tasks.register("checkSinewGraph") {
